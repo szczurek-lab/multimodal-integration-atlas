@@ -1,47 +1,38 @@
 # Contributing
 
-Contributions are welcome when they improve the scientific accuracy, coverage, or usability of the method atlas.
+Contributions should improve scientific accuracy, coverage or usefulness for method selection. Use the website contribution form or the GitHub “Method suggestion” issue template. Proposals remain pending until a curator reviews their evidence.
 
-## Suggesting a Method
+## Evidence to provide
 
-Use the `Suggest method` form on the website or the GitHub issue template named
-`Method suggestion`. The website form produces a candidate CSV row so curators
-can review and copy classifications more easily.
+- Official method name and original method publication. Prefer a verified journal/proceedings version; label preprints. Do not substitute a review article.
+- Measured modalities, observational units and how they are linked. Labels, augmentations, multiple patches or protein channels alone do not establish a multimodal integrator.
+- Public author software/documentation, when available.
+- Supported properties along the current axes, training requirements and source passages or documentation supporting the classification.
 
-Please include:
+The current vocabulary is in `data/schema.json` and described in `docs/schema.md`. Several values can apply when documented. Leave uncertain properties `not-assessed` rather than inferring them from a model family or the manuscript section where a method appears.
 
-- method name
-- citation or DOI
-- online tool/resource URL, if available
-- resource type, if available
-- method family
-- correspondence
-- missingness
-- granularity
-- prior knowledge category
-- latent design
-- architecture
-- application level
-- supervision
-- primary application task
-- short rationale for the classification
+## Important distinctions
 
-## Updating the Library
+- Unpaired application may still require paired training.
+- Missing-input support differs from imputation, cross-modal prediction and generation.
+- Biological/technical separation is not automatically a shared/private modality decomposition.
+- Outcome labels belong under supervision, not biological prior knowledge.
+- Posterior/evidential uncertainty does not establish calibration.
+- Reusable weights, code availability and independent benchmarking are separate claims, each requiring its own evidence.
+- Dataset size needs an observation count, unit and workflow stage; pretraining cells, image patches and patients are not interchangeable.
+- Compute tiers describe documented hardware examples or recommendations; optional GPU support alone is insufficient.
+- Software maturity uses documented packaging, setup, examples, tests and release/check infrastructure. A reachable placeholder or data-only repository is not model code.
+- Author-led evaluation, independent-team evaluation and prospective model validation are distinct. Retrospective use of clinical-trial data is not prospective validation.
 
-Curated method entries live in:
+## Updating records
 
-```text
-data/integration_methods_library.csv
-```
+1. Keep a unique `method_id` and one included method per row in `data/integration_methods_library.csv`.
+2. Use controlled values and semicolon-delimited lists. Preserve historical provenance fields.
+3. Record original sources, the review date and a rationale. Mark substantive unresolved classifications `needs_curation=yes`, `curation_status=provisional`.
+4. Record checked software destinations and dates. Do not label rate limits, access restrictions or transient failures as a confirmed dead link.
+5. Keep contextual/excluded records with reasons in `data/contextual_methods.csv`; do not return them as shortlist candidates.
+6. Update the classification audit and curation record when decisions change. Do not add private manuscript drafts or unpublished collaborative notes.
+7. Maintain a practical profile for every included method in `data/operational-evidence.json`, including unknown properties, dated rationale and primary sources. Update its counts and the curation-page totals; run `python3 scripts/sync_operational.py` to synchronize the browser CSV.
+8. Run `python3 scripts/validate_atlas.py` and `node --test tests/atlas-core.test.js`, then preview affected browser flows.
 
-For pull requests:
-
-1. Keep one method per row.
-2. Prefer existing controlled values from `docs/schema.md`.
-3. Set `needs_curation=yes` if a classification is uncertain.
-4. Add a short note in `curation_notes` when judgement calls are involved.
-5. Keep manuscript drafts, private notes, and extractor scripts out of this repository.
-
-## Review Criteria
-
-Changes should be evidence-backed, consistent with the schema, and useful for researchers selecting multimodal integration methods.
+Use a pull request for curator review. Website submissions prepare an issue and CSV candidate; they do not modify the public library directly.

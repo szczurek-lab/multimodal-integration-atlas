@@ -1,0 +1,702 @@
+{
+  "date": "2026-11-18",
+  "schema_version": "2.1",
+  "baseline_count": 76,
+  "included_count": 92,
+  "added_count": 30,
+  "removed_from_shortlist_count": 14,
+  "contextual_count": 31,
+  "context_added_count": 17,
+  "manuscript_coverage_added_count": 13,
+  "provisional_count": 2,
+  "inclusion_rule": "Methods integrating distinct measured modalities or distinct assay processes, including cross-modal prediction trained on linked modalities. Labels, augmentations, multiplex channels or a generic architecture alone do not qualify. Contextual methods remain in a separate register.",
+  "changes": [
+    {
+      "method": "ABMIL",
+      "action": "removed-from-shortlist",
+      "reason": "Generic attention MIL architecture; the original method does not itself integrate independently measured biological modalities.",
+      "sources": [
+        "https://doi.org/10.48550/arXiv.1802.04712",
+        "https://github.com/AMLab-Amsterdam/AttentionDeepMIL"
+      ]
+    },
+    {
+      "method": "AlphaGenome",
+      "action": "removed-from-shortlist",
+      "reason": "Sequence-to-function model with multiple molecular prediction targets. Kept outside the study-specific multimodal integration shortlist; multiple outputs are acknowledged.",
+      "sources": [
+        "https://doi.org/10.1038/s41586-025-10014-0",
+        "https://github.com/google-deepmind/alphagenome_research"
+      ]
+    },
+    {
+      "method": "CAMIL",
+      "action": "removed-from-shortlist",
+      "reason": "The cited original CAMIL paper classifies whole-slide images; feature channels and image scales are not distinct biological modalities.",
+      "sources": [
+        "https://doi.org/10.1093/bioinformatics/btaf024",
+        "https://github.com/maojy0914/CAMIL"
+      ]
+    },
+    {
+      "method": "CLAM",
+      "action": "removed-from-shortlist",
+      "reason": "The cited CLAM paper concerns whole-slide image learning. Reusable MIL components are not standalone multimodal integrators.",
+      "sources": [
+        "https://doi.org/10.1038/s41551-020-00682-w",
+        "https://github.com/mahmoodlab/CLAM"
+      ]
+    },
+    {
+      "method": "CONCORD",
+      "action": "removed-from-shortlist",
+      "reason": "Integrates datasets within RNA or ATAC separately. Applicability across assay types is not joint integration of different modalities.",
+      "sources": [
+        "https://doi.org/10.1038/s41587-025-02950-z",
+        "https://github.com/Gartner-Lab/Concord"
+      ]
+    },
+    {
+      "method": "COPS",
+      "action": "removed-from-shortlist",
+      "reason": "Clustering selection/evaluation platform; retained as context rather than classified as a specific integration model.",
+      "sources": [
+        "https://doi.org/10.1371/journal.pcbi.1012275",
+        "to_be_curated"
+      ]
+    },
+    {
+      "method": "DRVI",
+      "action": "removed-from-shortlist",
+      "reason": "Unimodal single-cell representation model used as a transparency example. The cited paper does not establish a multimodal integrator.",
+      "sources": [
+        "https://doi.org/10.1101/2024.11.06.622266",
+        "https://github.com/theislab/DRVI"
+      ]
+    },
+    {
+      "method": "KRONOS",
+      "action": "removed-from-shortlist",
+      "reason": "Spatial proteomics foundation encoder; multiplex protein channels are treated as features of one assay under the review scope.",
+      "sources": [
+        "https://doi.org/10.48550/arXiv.2506.03373",
+        "https://github.com/mahmoodlab/KRONOS"
+      ]
+    },
+    {
+      "method": "MixMIL",
+      "action": "removed-from-shortlist",
+      "reason": "Generic mixed-model MIL framework for predicting patient features from cell embeddings; outcome labels do not themselves constitute another measured modality.",
+      "sources": [
+        "https://proceedings.mlr.press/v238/engelmann24a/engelmann24a.pdf",
+        "https://github.com/AIH-SGML/mixmil"
+      ]
+    },
+    {
+      "method": "scConcept",
+      "action": "removed-from-shortlist",
+      "reason": "Transcriptomic representation learning across technologies. The multiome evaluation uses the gene-expression modality rather than joint RNA–ATAC modelling.",
+      "sources": [
+        "https://doi.org/10.1101/2025.10.14.682419",
+        "https://github.com/theislab/scConcept"
+      ]
+    },
+    {
+      "method": "SDUCL",
+      "action": "removed-from-shortlist",
+      "reason": "Spatial transcriptomics representation learning from expression and spatial structure; graph augmentation is not a second measured modality.",
+      "sources": [
+        "https://doi.org/10.1093/bioinformatics/btae663",
+        "https://github.com/WeiMin-Li-visual/SDUCL"
+      ]
+    },
+    {
+      "method": "Tacos",
+      "action": "removed-from-shortlist",
+      "reason": "Aligns spatial transcriptomics slices/platforms using expression and spatial graphs; not a distinct multi-assay integration method in this shortlist.",
+      "sources": [
+        "https://doi.org/10.1371/journal.pcbi.1012948",
+        "https://github.com/0617spec/tacos"
+      ]
+    },
+    {
+      "method": "TransMIL",
+      "action": "removed-from-shortlist",
+      "reason": "Original method is whole-slide image classification; multiple patches or feature views do not make the model multimodal.",
+      "sources": [
+        "https://doi.org/10.48550/arXiv.2106.00908",
+        "https://github.com/szc19990412/TransMIL"
+      ]
+    },
+    {
+      "method": "VirTues",
+      "action": "removed-from-shortlist",
+      "reason": "Excluded according to the author’s scope decision: spatial proteomics representation learning is not a multimodal integration method for this atlas.",
+      "sources": [
+        "https://doi.org/10.48550/arXiv.2501.06039",
+        "https://github.com/bunnelab/virtues"
+      ]
+    },
+    {
+      "method": "AJIVE",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1016/j.jmva.2018.03.008",
+        "https://github.com/idc9/r_jive"
+      ]
+    },
+    {
+      "method": "DIVAS",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1007/s11749-024-00923-z",
+        "https://github.com/ByronSyun/DIVAS"
+      ]
+    },
+    {
+      "method": "DIABLO",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1093/bioinformatics/bty1054",
+        "https://mixomics.org/methods/diablo/"
+      ]
+    },
+    {
+      "method": "MatchCLOT",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1093/bib/bbad130",
+        "https://github.com/AI4SCR/MatchCLOT"
+      ]
+    },
+    {
+      "method": "CLUE",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.52202/068431-1160",
+        "https://github.com/gao-lab/GLUE"
+      ]
+    },
+    {
+      "method": "APOLLO",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1038/s43588-025-00948-w",
+        "https://github.com/uhlerlab/APOLLO"
+      ]
+    },
+    {
+      "method": "MultiMIL",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1101/2024.07.29.605625",
+        "https://github.com/theislab/multimil"
+      ]
+    },
+    {
+      "method": "scMGCL",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1093/bioinformatics/btaf392",
+        "https://github.com/zlCreator/scMGCL"
+      ]
+    },
+    {
+      "method": "MedHiVE",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.48550/arXiv.2611.08185",
+        "https://github.com/szczurek-lab/MedHiVE"
+      ]
+    },
+    {
+      "method": "Celloscope",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1186/s13059-023-02951-8",
+        "https://github.com/szczurek-lab/Celloscope"
+      ]
+    },
+    {
+      "method": "Echidna",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1038/s41592-026-03279-4",
+        "https://github.com/azizilab/echidna"
+      ]
+    },
+    {
+      "method": "Palette",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1038/s41467-026-72933-4",
+        "https://github.com/qiongyusheng/Palette"
+      ]
+    },
+    {
+      "method": "MIND",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1038/s41467-026-74413-1",
+        "https://github.com/hwxing3259/MIND"
+      ]
+    },
+    {
+      "method": "DIRAC",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1038/s41592-026-03282-9",
+        "https://github.com/boxiangliulab/DIRAC"
+      ]
+    },
+    {
+      "method": "Multi-Embed",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1038/s41592-026-03070-5",
+        "https://github.com/Epoch1128/Multi-Embed"
+      ]
+    },
+    {
+      "method": "Metabolic–imaging integration (Eftekhari et al.)",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1016/j.cels.2026.101594",
+        ""
+      ]
+    },
+    {
+      "method": "StabMap",
+      "action": "added",
+      "reason": "Eligible original method described in the revised manuscript.",
+      "sources": [
+        "https://doi.org/10.1038/s41587-023-01766-z",
+        "https://github.com/MarioniLab/StabMap"
+      ]
+    },
+    {
+      "method": "CarHE",
+      "action": "publication-updated",
+      "old_doi": "10.1101/2025.06.15.659438",
+      "doi": "10.1158/0008-5472.CAN-26-1480",
+      "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480"
+    },
+    {
+      "method": "ConVIRT",
+      "action": "publication-updated",
+      "old_doi": "10.48550/arXiv.2010.00747",
+      "doi": "",
+      "url": "https://proceedings.mlr.press/v182/zhang22a.html"
+    },
+    {
+      "method": "FACTM",
+      "action": "publication-updated",
+      "old_doi": "10.48550/arXiv.2504.18914",
+      "doi": "",
+      "url": "https://proceedings.mlr.press/v258/lazecka25a.html"
+    },
+    {
+      "method": "FGOT",
+      "action": "publication-updated",
+      "old_doi": "10.1609/aaai.v36i7.20738",
+      "doi": "10.1016/j.cels.2025.101479",
+      "url": "https://doi.org/10.1016/j.cels.2025.101479"
+    },
+    {
+      "method": "gimVI",
+      "action": "publication-updated",
+      "old_doi": "10.48550/arXiv.1905.02269",
+      "doi": "10.48550/arXiv.1905.02269",
+      "url": "https://arxiv.org/abs/1905.02269"
+    },
+    {
+      "method": "JAFAR",
+      "action": "publication-updated",
+      "old_doi": "10.48550/arXiv.2406.00778",
+      "doi": "10.1093/biomtc/ujag021",
+      "url": "https://doi.org/10.1093/biomtc/ujag021"
+    },
+    {
+      "method": "MMP",
+      "action": "publication-updated",
+      "old_doi": "to_be_curated",
+      "doi": "",
+      "url": "https://proceedings.mlr.press/v235/song24b.html"
+    },
+    {
+      "method": "MULTIFAC",
+      "action": "publication-updated",
+      "old_doi": "10.48550/arXiv.2502.20286",
+      "doi": "10.1080/10618600.2026.2685851",
+      "url": "https://doi.org/10.1080/10618600.2026.2685851"
+    },
+    {
+      "method": "MuVI",
+      "action": "publication-updated",
+      "old_doi": "to_be_curated",
+      "doi": "",
+      "url": "https://proceedings.mlr.press/v206/qoku23a.html"
+    },
+    {
+      "method": "Multigrate / PoE-VAE",
+      "action": "publication-updated",
+      "old_doi": "10.1101/2022.03.16.484643",
+      "doi": "10.1007/978-3-031-90252-9_36",
+      "url": "https://link.springer.com/chapter/10.1007/978-3-031-90252-9_36"
+    },
+    {
+      "method": "SOFA",
+      "action": "publication-updated",
+      "old_doi": "10.1101/2024.10.10.617527",
+      "doi": "10.1038/s41467-026-74694-6",
+      "url": "https://doi.org/10.1038/s41467-026-74694-6"
+    },
+    {
+      "method": "DIVAS",
+      "action": "profile-and-software-expanded",
+      "reason": "Added the documented neuroimaging/genetics application and published R implementation; preserved the original method paper and MATLAB source.",
+      "sources": [
+        "https://doi.org/10.1007/s11749-024-00923-z",
+        "https://github.com/ByronSyun/DIVAS/blob/main/README.md",
+        "https://doi.org/10.1017/psy.2025.10020",
+        "https://doi.org/10.1093/bioinformatics/btag615",
+        "https://github.com/jbprothero/Data-Integration-Via-Analysis-of-Subspaces"
+      ]
+    },
+    {
+      "method": "CLUE",
+      "action": "publication-updated",
+      "old_doi": "10.52202/068431-1160",
+      "doi": "10.52202/068431-1160",
+      "url": "https://papers.neurips.cc/paper_files/paper/2022/hash/662b1774ba8845fc1fa3d1fc0177ceeb-Abstract-Conference.html"
+    },
+    {
+      "method": "MedHiVE",
+      "action": "publication-updated",
+      "old_doi": "10.48550/arXiv.2611.08185",
+      "doi": "10.48550/arXiv.2611.08185",
+      "url": "https://arxiv.org/abs/2611.08185"
+    },
+    {
+      "method": "ACE",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1093/gpbjnl/qzaf062",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12582371/",
+        "https://raw.githubusercontent.com/CSUBioGroup/ACE-main/main/README.md",
+        "https://github.com/CSUBioGroup/ACE-main"
+      ]
+    },
+    {
+      "method": "CellWhisperer",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1038/s41587-025-02857-9",
+        "https://raw.githubusercontent.com/epigen/CellWhisperer/main/README.md",
+        "https://github.com/epigen/CellWhisperer"
+      ]
+    },
+    {
+      "method": "CONCH",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1038/s41591-024-02856-4",
+        "https://raw.githubusercontent.com/mahmoodlab/CONCH/main/README.md",
+        "https://github.com/mahmoodlab/CONCH"
+      ]
+    },
+    {
+      "method": "DestVI",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1038/s41587-022-01272-8",
+        "https://docs.scvi-tools.org/en/latest/user_guide/models/destvi.html",
+        "https://raw.githubusercontent.com/YosefLab/scviva-tools/main/README.md",
+        "https://github.com/YosefLab/scviva-tools"
+      ]
+    },
+    {
+      "method": "LPM",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1038/s43588-025-00870-1",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12638242/",
+        "https://raw.githubusercontent.com/perturblib/perturblib/main/README.md",
+        "https://github.com/perturblib/perturblib"
+      ]
+    },
+    {
+      "method": "MCFA",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1016/j.xgen.2023.100359",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10435377/",
+        "https://raw.githubusercontent.com/collinwa/MCFA/main/README.md",
+        "https://github.com/collinwa/MCFA"
+      ]
+    },
+    {
+      "method": "MMAI / ArteraAI prostate biomarker",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1038/s41746-022-00613-w",
+        "https://doi.org/10.1016/j.euo.2024.01.004",
+        "https://doi.org/10.1158/1078-0432.CCR-24-3656"
+      ]
+    },
+    {
+      "method": "Pathomic Fusion",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1109/TMI.2020.3021387",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10339462/",
+        "https://raw.githubusercontent.com/mahmoodlab/PathomicFusion/master/README.md",
+        "https://github.com/mahmoodlab/PathomicFusion"
+      ]
+    },
+    {
+      "method": "PertFormer",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1101/2024.12.19.629561",
+        "https://raw.githubusercontent.com/alibaba/damo-pertformer/main/README.md",
+        "https://github.com/alibaba/damo-pertformer"
+      ]
+    },
+    {
+      "method": "scGPT",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1038/s41592-024-02201-0",
+        "https://www.nature.com/articles/s41467-026-72570-x",
+        "https://raw.githubusercontent.com/bowang-lab/scGPT/main/README.md",
+        "https://github.com/bowang-lab/scGPT"
+      ]
+    },
+    {
+      "method": "SCOT",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1089/cmb.2021.0446",
+        "https://raw.githubusercontent.com/rsinghlab/SCOT/master/README.md",
+        "https://github.com/rsinghlab/SCOT"
+      ]
+    },
+    {
+      "method": "Tilted-CCA",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1073/pnas.2303647120",
+        "https://raw.githubusercontent.com/linnykos/tiltedCCA/master/README.md",
+        "https://github.com/linnykos/tiltedCCA"
+      ]
+    },
+    {
+      "method": "VirtualMultiplexer",
+      "action": "added",
+      "reason": "Eligible method identified in the full manuscript and supplementary-method coverage audit.",
+      "sources": [
+        "https://doi.org/10.1038/s42256-024-00889-5",
+        "https://zenodo.org/doi/10.5281/zenodo.11941982",
+        "https://raw.githubusercontent.com/AI4SCR/VirtualMultiplexer/master/README.md",
+        "https://github.com/AI4SCR/VirtualMultiplexer"
+      ]
+    },
+    {
+      "method": "scVI",
+      "action": "context-added",
+      "reason": "Single-cell transcriptomic generative model; retained as the likelihood and VAE background example, not a joint multi-assay integrator.",
+      "sources": [
+        "https://doi.org/10.1038/s41592-018-0229-2"
+      ]
+    },
+    {
+      "method": "scPoli",
+      "action": "context-added",
+      "reason": "Population-level integration within single-cell assay data. The cited workflow does not demonstrate joint modelling of distinct measured modalities.",
+      "sources": [
+        "https://doi.org/10.1038/s41592-023-02035-2"
+      ]
+    },
+    {
+      "method": "GigaPath / Prov-GigaPath",
+      "action": "context-added",
+      "reason": "Histopathology image encoder and slide model. Patch-to-slide aggregation is multi-level, not independently multimodal.",
+      "sources": [
+        "https://doi.org/10.1038/s41586-024-07441-w"
+      ]
+    },
+    {
+      "method": "UNI",
+      "action": "context-added",
+      "reason": "Histopathology image foundation encoder used for transfer comparisons and as a component of other pipelines; the original model does not integrate another measured modality.",
+      "sources": [
+        "https://doi.org/10.1038/s41591-024-02857-3"
+      ]
+    },
+    {
+      "method": "PathoGraph",
+      "action": "context-added",
+      "reason": "Graph modelling of cells in immunohistochemically labelled slides. Cell graphs and CD276 staining-derived features do not constitute a separate molecular assay in this pipeline.",
+      "sources": [
+        "https://doi.org/10.3390/cancers16040750"
+      ]
+    },
+    {
+      "method": "SGPMIL",
+      "action": "context-added",
+      "reason": "Sparse Gaussian-process uncertainty over image-patch attention in whole-slide MIL. The cited work treats extension to clinical/genomic multimodal inputs as future work.",
+      "sources": [
+        "https://doi.org/10.1109/WACV61042.2026.00057"
+      ]
+    },
+    {
+      "method": "CellFluxV2",
+      "action": "context-added",
+      "reason": "Perturbation-conditioned image generation from cell morphology. Perturbation identity and control/treated image domains do not establish joint integration of distinct measured modalities in this study.",
+      "sources": [
+        "https://doi.org/10.64898/2026.01.19.696785"
+      ]
+    },
+    {
+      "method": "scChat",
+      "action": "context-added",
+      "reason": "LLM-assisted single-cell RNA analysis and workflow orchestration; contextual interface rather than a dedicated model integrating measured modalities.",
+      "sources": [
+        "https://doi.org/10.1002/aic.70285"
+      ]
+    },
+    {
+      "method": "CELLxGENE",
+      "action": "context-added",
+      "reason": "Interactive data exploration platform, not a multimodal integration algorithm.",
+      "sources": [
+        "https://doi.org/10.1101/2021.04.05.438318"
+      ]
+    },
+    {
+      "method": "Single-cell Omics Arena",
+      "action": "context-added",
+      "reason": "Benchmark of LLM annotation through RNA-seq bridging; an evaluation framework rather than a standalone multimodal integrator.",
+      "sources": [
+        "https://doi.org/10.1093/bib/bbaf622"
+      ]
+    },
+    {
+      "method": "Alvessa / GenomeArena",
+      "action": "context-added",
+      "reason": "Evidence-grounded research assistant and benchmark for functional genomics; workflow context rather than a measured-data integration model.",
+      "sources": [
+        "https://doi.org/10.64898/2025.12.30.697073"
+      ]
+    },
+    {
+      "method": "CompBioBench",
+      "action": "context-added",
+      "reason": "Benchmark of agentic computational-biology systems; no standalone multimodal integration profile is implied.",
+      "sources": [
+        "https://doi.org/10.64898/2026.04.06.716850"
+      ]
+    },
+    {
+      "method": "scvi-tools",
+      "action": "context-added",
+      "reason": "Software infrastructure containing multiple models. Eligible multimodal models have their own atlas records; the library is not counted as an additional algorithm.",
+      "sources": [
+        "https://doi.org/10.1038/s41587-021-01206-w"
+      ]
+    },
+    {
+      "method": "Open Problems in Single-Cell Analysis",
+      "action": "context-added",
+      "reason": "Community benchmarking infrastructure, not an additional integration algorithm.",
+      "sources": [
+        "https://doi.org/10.1038/s41587-025-02694-w"
+      ]
+    },
+    {
+      "method": "ESM-2",
+      "action": "context-added",
+      "reason": "Protein-sequence language model used as an upstream marker-identity encoder. Its use inside another pipeline does not make the original ESM-2 model a multi-assay integrator.",
+      "sources": [
+        "https://doi.org/10.1126/science.ade2574"
+      ]
+    },
+    {
+      "method": "Clinical-grade WSI MIL (Campanella et al.)",
+      "action": "context-added",
+      "reason": "Whole-slide image prediction with weak supervision. Clinical endpoints provide labels rather than an independently measured input modality.",
+      "sources": [
+        "https://doi.org/10.1038/s41591-019-0508-1"
+      ]
+    },
+    {
+      "method": "Uncertainty-informed WSI prediction (Dolezal et al.)",
+      "action": "context-added",
+      "reason": "Dropout-based confidence assessment for image-based histopathology classification; methodological uncertainty context rather than multimodal fusion.",
+      "sources": [
+        "https://doi.org/10.1038/s41467-022-34025-x"
+      ]
+    },
+    {
+      "method": "VirTues",
+      "action": "publication-updated",
+      "old_doi": "10.48550/arXiv.2501.06039",
+      "doi": "10.1038/s41586-026-10884-y",
+      "url": "https://doi.org/10.1038/s41586-026-10884-y"
+    }
+  ],
+  "limits": [
+    "Operational properties not explicitly verified remain not-assessed; absence of verification is not evidence of absence.",
+    "Method-level classifications describe documented workflows and are not a guarantee for arbitrary data.",
+    "Published article dates use online dates where available; year-only dates remain year-only."
+  ],
+  "operational_update": {
+    "checked_on": "2026-11-18",
+    "evidence_record": "data/operational-evidence.json",
+    "assessed_methods": 92,
+    "fields": [
+      "dataset_size",
+      "software_maturity",
+      "compute_demand",
+      "validation_evidence"
+    ],
+    "maturity_graded": 84,
+    "dataset_size_established": 39,
+    "compute_established": 27,
+    "independent_evaluations_verified": 13,
+    "prospective_evaluations_verified": 0,
+    "availability_corrections": {
+      "medhive": "Placeholder repository; no implementation present.",
+      "convirt": "Evaluation data and documentation only; no model implementation in linked repository."
+    }
+  }
+}

@@ -1,645 +1,322 @@
-const DATA_URL = "data/integration_methods_library.csv";
+'use strict';
 
-const filterConfig = [
-  { id: "axis_correspondence", label: "Correspondence" },
-  { id: "axis_missingness", label: "Missingness" },
-  { id: "axis_granularity", label: "Granularity" },
-  { id: "axis_prior_knowledge", label: "Prior knowledge" },
-  { id: "axis_latent_design", label: "Latent design" },
-  { id: "axis_architecture", label: "Architecture" },
-  { id: "axis_application_level", label: "Application level" },
-  { id: "application_task", label: "Application type" },
-  { id: "axis_supervision", label: "Supervision" },
-  { id: "method_family", label: "Method family" },
-];
+const DATA_URL = 'data/integration_methods_library.csv';
+const REPO_URL = 'https://github.com/szczurek-lab/multimodal-integration-atlas';
+const ISSUE_LABELS = 'method suggestion,curation';
+const CURATOR_TO = [['k.gogolewski', 'mimuw.edu.pl']];
+const CURATOR_CC = [['em.szczurek', 'uw.edu.pl'], ['m.lazecka', 'uw.edu.pl'], ['ko373086', 'students.mimuw.edu.pl']];
+const C = AtlasCore;
+const $ = id => document.getElementById(id);
+const esc = C.escapeHtml;
+const practicalAxes = ['dataset_size','software_maturity','compute_demand','validation_evidence'];
+let schema, methods = [], contextual = [], headers = [], filtered = [], resultLimit = 6;
+let comparisonIds = [];
+const labels = new Map();
 
-const axisLabels = {
-  axis_correspondence: "Correspondence",
-  axis_missingness: "Missingness",
-  axis_granularity: "Granularity",
-  axis_prior_knowledge: "Prior knowledge",
-  axis_latent_design: "Latent design",
-  axis_architecture: "Architecture",
-  axis_application_level: "Application level",
-  axis_supervision: "Supervision",
-  application_primary_task: "Application type",
-};
-
-let methods = [];
-let resultLimit = 5;
-
-const suggestionSelects = [
-  { id: "suggestFamily", source: "method_family", fallback: ["Other / unsure"] },
-  { id: "suggestPairedness", source: "axis_correspondence", fallback: ["unsure"] },
-  { id: "suggestMissingness", source: "axis_missingness", fallback: ["unsure"] },
-  { id: "suggestLevel", source: "axis_granularity", fallback: ["unsure"] },
-  { id: "suggestPrior", source: "axis_prior_knowledge", fallback: ["unsure"] },
-  { id: "suggestLatent", source: "axis_latent_design", fallback: ["unsure"] },
-  { id: "suggestArchitecture", source: "axis_architecture", fallback: ["unsure"] },
-  { id: "suggestApplicationLevel", source: "axis_application_level", fallback: ["unsure"] },
-  { id: "suggestSupervision", source: "axis_supervision", fallback: ["unsure"] },
-];
-
-function parseCsv(text) {
-  const rows = [];
-  let row = [];
-  let field = "";
-  let quoted = false;
-
-  for (let i = 0; i < text.length; i += 1) {
-    const char = text[i];
-    const next = text[i + 1];
-
-    if (quoted) {
-      if (char === '"' && next === '"') {
-        field += '"';
-        i += 1;
-      } else if (char === '"') {
-        quoted = false;
-      } else {
-        field += char;
-      }
-      continue;
-    }
-
-    if (char === '"') {
-      quoted = true;
-    } else if (char === ",") {
-      row.push(field);
-      field = "";
-    } else if (char === "\n") {
-      row.push(field);
-      rows.push(row);
-      row = [];
-      field = "";
-    } else if (char !== "\r") {
-      field += char;
-    }
-  }
-
-  if (field || row.length) {
-    row.push(field);
-    rows.push(row);
-  }
-
-  const headers = rows.shift();
-  return rows
-    .filter((values) => values.some(Boolean))
-    .map((values) =>
-      Object.fromEntries(headers.map((header, index) => [header, values[index] || ""])),
-    );
+function optionLabel(field, value) {
+  return schema.fields.find(f => f.id === field)?.options.find(o => o.value === value)?.label || value || 'Not assessed';
 }
-
-function labelize(value) {
-  if (!value) return "unspecified";
-  return value
-    .replaceAll("_", " ")
-    .replaceAll("-", " ")
-    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+function fieldValue(method, id) {
+  return C.displayField(method, id, schema.fields);
 }
-
-function slugify(value) {
-  return (value || "method")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
+function link(label, url, className = 'method-link') {
+  const safe = C.safeUrl(url);
+  return safe ? `<a class="${className}" href="${esc(safe)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>` : '';
 }
-
-function csvEscape(value) {
-  const safe = value || "";
-  if (/[",\n]/.test(safe)) return `"${safe.replaceAll('"', '""')}"`;
-  return safe;
+function formatDate(value) {
+  if (/^\d{4}$/.test(value || '')) return value;
+  if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(value || '')) return '';
+  const [year, month] = value.split('-').map(Number);
+  return new Date(year, month - 1, 1).toLocaleDateString('en', {month:'short', year:'numeric'});
 }
-
-function normalizedDoi(value) {
-  return (value || "")
-    .trim()
-    .replace(/^https?:\/\/(dx\.)?doi\.org\//i, "")
-    .match(/^10\.\S+$/)?.[0] || "";
-}
-
-function publicationUrlFromCitation(value) {
-  const clean = (value || "").trim();
-  const doi = normalizedDoi(clean);
-  if (doi) return `https://doi.org/${doi}`;
-  if (/^https?:\/\//i.test(clean)) return clean;
-  return "";
-}
-
-function isUrl(value) {
-  return /^https?:\/\//i.test(value || "");
-}
-
-function selectOptions(id) {
-  if (id === "application_task") {
-    const tasks = new Set();
-    methods.forEach((method) => {
-      (method.application_tasks || "")
-        .split(";")
-        .map((task) => task.trim())
-        .filter(Boolean)
-        .forEach((task) => tasks.add(task));
-    });
-    return [...tasks].sort();
-  }
-
-  return [...new Set(methods.map((method) => method[id]).filter(Boolean))].sort((a, b) =>
-    labelize(a).localeCompare(labelize(b)),
-  );
-}
-
-function populateSelects() {
-  filterConfig.forEach(({ id }) => {
-    const select = document.getElementById(id);
-    if (!select) return;
-    select.innerHTML = "";
-    const anyOption = document.createElement("option");
-    anyOption.value = "";
-    anyOption.textContent = "Any";
-    select.appendChild(anyOption);
-
-    selectOptions(id).forEach((value) => {
-      const option = document.createElement("option");
-      option.value = value;
-      option.textContent = labelize(value);
-      select.appendChild(option);
-    });
-  });
-}
-
-function populateSuggestionSelects() {
-  suggestionSelects.forEach(({ id, source, fallback }) => {
-    const select = document.getElementById(id);
-    if (!select) return;
-    select.innerHTML = "";
-
-    const unsure = document.createElement("option");
-    unsure.value = "";
-    unsure.textContent = "Unspecified";
-    select.appendChild(unsure);
-
-    const values = [...new Set([...selectOptions(source), ...fallback])].filter(Boolean);
-    values.forEach((value) => {
-      const option = document.createElement("option");
-      option.value = value;
-      option.textContent = labelize(value);
-      select.appendChild(option);
-    });
-  });
-}
-
 function getFilters() {
-  const filters = {};
-  filterConfig.forEach(({ id }) => {
-    filters[id] = document.getElementById(id).value;
-  });
-  filters.search = document.getElementById("searchInput").value.trim().toLowerCase();
-  filters.hideCuration = document.getElementById("hideCuration").checked;
+  const filters = {search:$('searchInput')?.value || '', curatedOnly:$('hideCuration')?.checked || false};
+  for (const f of schema.fields) filters[f.id] = [...document.querySelectorAll(`[data-filter="${f.id}"]:checked`)].map(e => e.value);
   return filters;
 }
-
-function taskMatches(method, value) {
-  if (!value) return true;
-  return (method.application_tasks || "")
-    .split(";")
-    .map((task) => task.trim())
-    .includes(value);
+function selectMethods(filters) {
+  return methods.filter(m => C.methodMatches(m, filters, schema.fields)).sort((a,b) => a.method.localeCompare(b.method));
 }
-
-function methodMatches(method, filters) {
-  if (filters.hideCuration && method.needs_curation === "yes") return false;
-  if (filters.search) {
-    const haystack = [
-      method.method,
-      method.method_family,
-      method.method_scope,
-      method.application_primary_task,
-      method.axis_prior_knowledge,
-      method.axis_latent_design,
-      method.axis_architecture,
-      method.axis_application_level,
-      method.method_doi,
-      method.publication_date,
-      method.publisher,
-      method.resource_url,
-    ]
-      .join(" ")
-      .toLowerCase();
-    if (!haystack.includes(filters.search)) return false;
-  }
-
-  return filterConfig.every(({ id }) => {
-    const value = filters[id];
-    if (!value) return true;
-    if (id === "application_task") return taskMatches(method, value);
-    return method[id] === value;
-  });
-}
-
-function scoreMethod(method, filters) {
-  let matched = 0;
-  let specified = 0;
-  filterConfig.forEach(({ id }) => {
-    const value = filters[id];
-    if (!value) return;
-    specified += 1;
-    if (id === "application_task" ? taskMatches(method, value) : method[id] === value) {
-      matched += 1;
-    }
-  });
-  return specified ? matched : 0;
-}
-
-function renderActiveFilters(filters) {
-  const container = document.getElementById("activeFilters");
-  const chips = [];
-
-  if (filters.search) chips.push(`Search: ${filters.search}`);
-  filterConfig.forEach(({ id, label }) => {
-    if (filters[id]) chips.push(`${label}: ${labelize(filters[id])}`);
-  });
-  if (filters.hideCuration) chips.push("Curated rows only");
-
-  container.innerHTML = "";
-  chips.forEach((chip) => {
-    const element = document.createElement("span");
-    element.className = "chip";
-    element.textContent = chip;
-    container.appendChild(element);
-  });
-}
-
-function axisBlock(label, value) {
-  return `
-    <div class="axis">
-      <span>${label}</span>
-      <strong>${labelize(value)}</strong>
-    </div>
-  `;
-}
-
-function hasCurationValue(value) {
-  return value && value !== "to_be_curated";
-}
-
-function methodLink(label, url, missingLabel, unavailableLabel = missingLabel) {
-  if (url === "unavailable") {
-    return `<span class="method-link missing">${unavailableLabel}</span>`;
-  }
-  if (!hasCurationValue(url) || !isUrl(url)) {
-    return `<span class="method-link missing">${missingLabel}</span>`;
-  }
-  return `<a class="method-link" href="${url}" target="_blank" rel="noreferrer">${label}</a>`;
-}
-
-function formatPublicationDate(value) {
-  if (!/^\d{4}-\d{2}$/.test(value || "")) return "";
-  const [year, month] = value.split("-");
-  const date = new Date(Number(year), Number(month) - 1, 1);
-  return date.toLocaleDateString("en", { month: "short", year: "numeric" });
-}
-
-function renderMethod(method, score) {
-  const statusClass = method.needs_curation === "yes" ? "needs-curation" : "curated";
-  const statusText = method.needs_curation === "yes" ? "Needs curation" : "Curated";
-  const scoreText = score ? `${score} matched` : "No filters";
-  const publicationDate = formatPublicationDate(method.publication_date);
-  const publicationMeta = [publicationDate, method.publisher].filter(hasCurationValue).join(" · ");
-  const publicationLabel = hasCurationValue(method.method_doi)
-    ? `DOI: ${method.method_doi}`
-    : "Publication";
-  const resourceLabel = hasCurationValue(method.resource_type)
-    ? `Resource: ${labelize(method.resource_type)}`
-    : "Resource to curate";
-  return `
-    <article class="method-card">
-      <div class="method-topline">
-        <div>
-          <h3>${method.method}</h3>
-          <div class="method-meta">${method.method_family} · ${labelize(method.method_scope)}</div>
-          ${publicationMeta ? `<div class="publication-meta">${publicationMeta}</div>` : ""}
-          <div class="method-links">
-            ${methodLink(publicationLabel, method.publication_url, "Publication to curate")}
-            ${methodLink(resourceLabel, method.resource_url, "Resource to curate", "Resource unavailable")}
-          </div>
+function createFilters() {
+  const narrow = matchMedia('(max-width: 980px)');
+  const arrangeFilters = () => {$('filtersDisclosure').open = !narrow.matches;};
+  arrangeFilters(); narrow.addEventListener('change', arrangeFilters);
+  const groups = [...new Set(schema.fields.map(f => f.group))];
+  $('filterGroups').innerHTML = groups.map(group => {
+    const practical = group === 'Practical considerations';
+    const controls = schema.fields.filter(f => f.group === group).map(f => `
+      <details class="filter-choice">
+        <summary><span>${esc(f.label)}</span><span id="selected-${f.id}" class="selection-label">Any</span></summary>
+        <p class="field-help" id="help-${f.id}">${esc(f.help)}</p>
+        <div class="choice-list" role="group" aria-label="${esc(f.label)}" aria-describedby="help-${f.id}">
+          ${f.options.map(o => `<label><input type="checkbox" data-filter="${f.id}" value="${esc(o.value)}" /><span>${esc(o.label)}</span><span class="choice-count" data-count-field="${f.id}" data-count-value="${esc(o.value)}"></span></label>`).join('')}
         </div>
-        <div class="score">${scoreText}</div>
-      </div>
-      <div class="axis-grid">
-        ${axisBlock(axisLabels.axis_correspondence, method.axis_correspondence)}
-        ${axisBlock(axisLabels.axis_missingness, method.axis_missingness)}
-        ${axisBlock(axisLabels.axis_granularity, method.axis_granularity)}
-        ${axisBlock(axisLabels.axis_prior_knowledge, method.axis_prior_knowledge)}
-        ${axisBlock(axisLabels.axis_latent_design, method.axis_latent_design)}
-        ${axisBlock(axisLabels.axis_architecture, method.axis_architecture)}
-        ${axisBlock(axisLabels.axis_application_level, method.axis_application_level)}
-        ${axisBlock(axisLabels.axis_supervision, method.axis_supervision)}
-        ${axisBlock(axisLabels.application_primary_task, method.application_primary_task)}
-      </div>
-      <span class="status ${statusClass}">${statusText}</span>
-    </article>
-  `;
+      </details>`).join('');
+    return practical ? `<details class="practical-filters"><summary>${esc(group)}</summary><p class="field-help">The figure’s four practical axes. <a href="curation.html#practical">Read the classification rules</a>.</p>${controls}</details>` : `<fieldset class="filter-group"><legend>${esc(group)}</legend>${controls}</fieldset>`;
+  }).join('');
+  const params = new URLSearchParams(location.search);
+  comparisonIds = C.comparisonMethods(methods, params.getAll('compare')).map(m => m.method_id);
+  if (params.has('q')) $('searchInput').value = params.get('q');
+  $('hideCuration').checked = params.get('reviewed') === '1';
+  document.querySelectorAll('[data-filter]').forEach(input => {
+    input.checked = params.getAll(input.dataset.filter).includes(input.value);
+    if (input.checked) {
+      input.closest('details').open = true;
+      const practical = input.closest('.practical-filters');
+      if (practical) practical.open = true;
+    }
+    input.addEventListener('change', () => renderResults(true));
+  });
 }
-
-function suggestionValue(id) {
-  return document.getElementById(id).value.trim();
+function saveProfile(filters) {
+  const url = new URL(location.href);
+  url.search = '';
+  if (filters.search.trim()) url.searchParams.set('q', filters.search.trim());
+  if (filters.curatedOnly) url.searchParams.set('reviewed', '1');
+  for (const field of schema.fields) for (const value of filters[field.id]) url.searchParams.append(field.id, value);
+  for (const id of comparisonIds) url.searchParams.append('compare',id);
+  history.replaceState(null, '', url.pathname + url.search + url.hash);
+  preserveNavigation();
 }
-
-function legacyGranularity(value) {
-  if (value === "single-level") return "single";
-  if (value === "multi-level") return "multi";
-  return "";
+function preserveNavigation() {
+  document.querySelectorAll('a[href]:not([target])').forEach(anchor => {
+    const url = new URL(anchor.href, location.href);
+    if (url.origin !== location.origin || !/\/(index|timeline|authors|curation)\.html$/.test(url.pathname)) return;
+    url.search = location.search;
+    anchor.href = url.href;
+  });
 }
-
-function candidateCsvRow() {
-  const method = suggestionValue("suggestMethod");
-  const family = suggestionValue("suggestFamily");
-  const task = suggestionValue("suggestTask");
-  const granularity = suggestionValue("suggestLevel");
-  const citation = suggestionValue("suggestCitation");
-  const resourceUrl = suggestionValue("suggestResourceUrl");
-  const resourceType = suggestionValue("suggestResourceType");
-  const doi = normalizedDoi(citation);
-  const row = [
-    slugify(method),
-    method,
-    family,
-    "",
-    doi,
-    publicationUrlFromCitation(citation),
-    "",
-    "",
-    resourceUrl,
-    resourceType,
-    suggestionValue("suggestPairedness"),
-    suggestionValue("suggestMissingness"),
-    granularity,
-    suggestionValue("suggestPrior"),
-    suggestionValue("suggestLatent"),
-    suggestionValue("suggestArchitecture"),
-    suggestionValue("suggestApplicationLevel"),
-    suggestionValue("suggestSupervision"),
-    "Community suggestion",
-    "",
-    "",
-    suggestionValue("suggestPairedness"),
-    suggestionValue("suggestMissingness"),
-    legacyGranularity(granularity),
-    "",
-    suggestionValue("suggestPrior"),
-    task,
-    suggestionValue("suggestSupervision"),
-    task.replace(/\s*\+\s*/g, ";"),
-    "yes",
-    `suggested citation: ${citation}`,
-  ];
-  return row.map(csvEscape).join(",");
-}
-
-function renderTimeline() {
-  const container = document.getElementById("timelineList");
-  if (!container) return;
-  const dated = methods
-    .filter((method) => /^\d{4}-\d{2}$/.test(method.publication_date || ""))
-    .sort((a, b) => a.publication_date.localeCompare(b.publication_date));
-
-  if (!dated.length) {
-    container.innerHTML = `<div class="empty-state">No month-level publication dates have been curated yet.</div>`;
-    return;
+function updateFilterCounts(filters) {
+  for (const f of schema.fields) {
+    const relaxed = {...filters, [f.id]:[]};
+    const candidates = selectMethods(relaxed);
+    const selected = filters[f.id];
+    $(`selected-${f.id}`).textContent = selected.length ? `${selected.length} selected` : 'Any';
+    for (const count of document.querySelectorAll(`[data-count-field="${f.id}"]`)) {
+      const v = count.dataset.countValue;
+      const proposed = f.id === 'methodological_components' ? [...new Set([...selected,v])] : [v];
+      count.textContent = candidates.filter(m => C.methodMatches(m,{...relaxed,[f.id]:proposed},schema.fields)).length;
+    }
   }
-
-  const byYear = new Map();
-  dated.forEach((method) => {
-    const year = method.publication_date.slice(0, 4);
-    if (!byYear.has(year)) byYear.set(year, []);
-    byYear.get(year).push(method);
-  });
-
-  container.innerHTML = [...byYear.entries()]
-    .map(([year, items]) => {
-      const families = new Set(items.map((method) => method.method_family));
-      const visible = items.slice(0, 5);
-      const remaining = items.length - visible.length;
-      const methodWord = items.length === 1 ? "method" : "methods";
-      const familyWord = families.size === 1 ? "family" : "families";
-      return `
-        <article class="timeline-year">
-          <div class="timeline-year-head">
-            <strong>${year}</strong>
-            <span>${items.length} ${methodWord} · ${families.size} ${familyWord}</span>
-          </div>
-          <div class="timeline-methods">
-            ${visible
-              .map(
-                (method) => `
-                  <span>
-                    <b>${method.method}</b>
-                    <small>${formatPublicationDate(method.publication_date)}</small>
-                  </span>
-                `,
-              )
-              .join("")}
-            ${remaining > 0 ? `<span class="timeline-more">+${remaining} more</span>` : ""}
-          </div>
-        </article>
-      `;
-    })
-    .join("");
 }
-
-function issueUrl() {
-  const method = suggestionValue("suggestMethod") || "new method";
-  const body = [
-    "## Method suggestion",
-    "",
-    `- Method: ${method}`,
-    `- Citation or DOI: ${suggestionValue("suggestCitation") || "not provided"}`,
-    `- Online tool/resource: ${suggestionValue("suggestResourceUrl") || "not provided"}`,
-    `- Resource type: ${suggestionValue("suggestResourceType") || "unspecified"}`,
-    `- Method family: ${suggestionValue("suggestFamily") || "unspecified"}`,
-    `- Correspondence: ${suggestionValue("suggestPairedness") || "unspecified"}`,
-    `- Missingness: ${suggestionValue("suggestMissingness") || "unspecified"}`,
-    `- Granularity: ${suggestionValue("suggestLevel") || "unspecified"}`,
-    `- Prior knowledge: ${suggestionValue("suggestPrior") || "unspecified"}`,
-    `- Latent design: ${suggestionValue("suggestLatent") || "unspecified"}`,
-    `- Architecture: ${suggestionValue("suggestArchitecture") || "unspecified"}`,
-    `- Application level: ${suggestionValue("suggestApplicationLevel") || "unspecified"}`,
-    `- Supervision: ${suggestionValue("suggestSupervision") || "unspecified"}`,
-    `- Application type: ${suggestionValue("suggestTask") || "unspecified"}`,
-    "",
-    "## Evidence and rationale",
-    "",
-    suggestionValue("suggestRationale") || "Not provided.",
-    "",
-    "## Candidate CSV row",
-    "",
-    "```csv",
-    candidateCsvRow(),
-    "```",
-  ].join("\n");
-
-  const params = new URLSearchParams({
-    title: `Method suggestion: ${method}`,
-    body,
-    labels: "method suggestion,curation",
-  });
-  return `https://github.com/storaged/multimodal-integration-atlas/issues/new?${params.toString()}`;
+function renderActiveFilters(filters) {
+  const items = [];
+  if (filters.search) items.push({label:`Search: ${filters.search}`,clear:() => {$('searchInput').value='';}});
+  for (const f of schema.fields) for (const v of filters[f.id]) items.push({label:`${f.label}: ${optionLabel(f.id,v)}`,clear:() => {
+    document.querySelectorAll(`[data-filter="${f.id}"]`).forEach(e => {if(e.value===v)e.checked=false;});
+  }});
+  if (filters.curatedOnly) items.push({label:'Reviewed profiles only',clear:() => {$('hideCuration').checked=false;}});
+  $('activeFilters').replaceChildren();
+  for (const item of items) {
+    const button=document.createElement('button');button.type='button';button.className='chip removable-chip';button.textContent=item.label+' ×';
+    button.setAttribute('aria-label','Remove '+item.label);button.onclick=()=>{item.clear();renderResults(true);};$('activeFilters').appendChild(button);
+  }
 }
-
+function axisBlock(method, id) {
+  return `<div class="axis"><span>${esc(labels.get(id))}</span><strong>${esc(fieldValue(method,id))}</strong></div>`;
+}
+function practicalEvidence(method, id) {
+  const sources = C.values(method[id+'_sources']).filter(C.safeUrl);
+  return `<section class="practical-evidence"><h5>${esc(labels.get(id))}</h5><strong>${esc(fieldValue(method,id))}</strong><p>${esc(method[id+'_notes'] || 'No supporting detail established.')}</p><div class="evidence-links">${sources.map((u,i)=>link(`Source ${i+1}`,u)).join(' ')}</div></section>`;
+}
+function renderMethod(m) {
+  const status = m.needs_curation === 'yes' ? 'Profile needs confirmation' : 'Profile reviewed';
+  const publication = [formatDate(m.publication_date),m.publisher,optionLabel('publication_status',m.publication_status)].filter(Boolean).join(' · ');
+  const coreFields=['axis_correspondence','axis_missingness','axis_method_scope','integration_effects'];
+  const remaining=schema.fields.filter(f => !coreFields.includes(f.id) && !practicalAxes.includes(f.id) && f.id!=='methodological_components');
+  const sources=C.values(m.evidence_sources).filter(C.safeUrl);
+  return `<article class="method-card" id="method-${esc(m.method_id)}">
+    <div class="method-topline"><div><h3>${esc(m.method)}</h3><div class="component-tags">${C.values(m.methodological_components).map(v=>`<span>${esc(optionLabel('methodological_components',v))}</span>`).join('')}</div></div>
+      <div class="method-actions"><span class="status ${m.needs_curation==='yes'?'needs-curation':'curated'}">${status}</span><label class="compare-toggle"><input type="checkbox" data-compare="${esc(m.method_id)}" aria-label="Compare ${esc(m.method)}" ${comparisonIds.includes(m.method_id)?'checked':''} /><span>Compare</span></label></div></div>
+    <p class="method-modalities">${esc(m.modalities)}</p>
+    <p class="method-summary">${esc(m.summary)}</p>
+    <div class="publication-meta">${esc(publication)}</div>
+    <div class="method-links">${link(m.method_doi ? `Paper · ${m.method_doi}`:'Original paper',m.publication_url)}
+      ${link('Software / documentation',m.resource_url)}${m.preprint_doi?link('Full preprint','https://doi.org/'+m.preprint_doi):''}</div>
+    <div class="axis-grid compact-axes">${coreFields.map(id=>axisBlock(m,id)).join('')}</div>
+    <details class="method-details"><summary>All axes, requirements and evidence</summary>
+      <h4>Practical profile</h4>
+      <p class="field-help">Reported examples may cover different workflow stages. A filter match does not establish that all properties were demonstrated together. <a href="curation.html#practical">Classification rules</a> · checked ${esc(m.operational_checked_on || 'date not recorded')}.</p>
+      <div class="practical-evidence-grid">${practicalAxes.map(id=>practicalEvidence(m,id)).join('')}</div>
+      <h4>Other axes and supporting evidence</h4>
+      <div class="axis-grid">${remaining.map(f=>axisBlock(m,f.id)).join('')}</div>
+      <h4>Training requirements</h4><p>${esc(m.training_requirements)}</p>
+      ${m.curation_notes!==m.training_requirements?`<h4>Interpretation</h4><p>${esc(m.curation_notes)}</p>`:''}
+      <p><strong>Uncertainty fitting:</strong> ${esc(m.inference_method || 'Not assessed')}. Posterior or evidential uncertainty does not establish calibrated predictions.</p>
+      <h4>Source record</h4><p>${sources.map((u,i)=>link(i===0?'Primary publication':`Supporting source ${i}`,u)).join(' ')}</p>
+      ${m.benchmark_source?`<p>${link('Independent evaluation',m.benchmark_source)}</p>`:''}
+      ${m.pretrained_model_source?`<p>${link('Pretrained-model availability',m.pretrained_model_source)}</p>`:''}
+      <p class="field-help">Profile reviewed ${esc(m.reviewed_on || 'date not recorded')}. Software link: ${esc(m.resource_check_status || 'not verified')}${m.resource_checked_on?' ('+esc(m.resource_checked_on)+')':''}${m.repository_archived==='yes'?'; repository archived':''}. Link availability does not verify installation or reproducibility.</p>
+    </details>
+  </article>`;
+}
+function renderResults(reset = false) {
+  if (reset) resultLimit=6;
+  const filters=getFilters();filtered=selectMethods(filters);
+  saveProfile(filters);updateFilterCounts(filters);renderActiveFilters(filters);
+  const shown=filtered.slice(0,resultLimit);
+  $('resultsMeta').textContent=`${filtered.length} matching ${filtered.length===1?'method':'methods'} · ${shown.length} shown`;
+  $('showMatches').textContent=`Show ${filtered.length} matching ${filtered.length===1?'method':'methods'}`;
+  $('resultsList').innerHTML=shown.length?shown.map(renderMethod).join(''):'<div class="empty-state"><h3>No documented match</h3><p>Try removing a filter. An unassessed property does not count as a confirmed match.</p></div>';
+  const terms=filters.search.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const contextMatches=terms.length?contextual.filter(m=>terms.every(t=>[m.method,m.method_id].join(' ').toLowerCase().includes(t))):[];
+  $('contextMatches').innerHTML=contextMatches.length?`<h3>Related records outside the shortlist</h3>${contextMatches.map(m=>`<p><strong>${esc(m.method)}</strong> ${esc(m.scope_reason)}</p>`).join('')}<a href="curation.html${esc(location.search)}">Read the scope decisions</a>`:'';
+  $('contextMatches').hidden=!contextMatches.length;
+  $('showMoreResults').hidden=resultLimit>=filtered.length;
+  $('showAllResults').hidden=resultLimit>=filtered.length;
+  $('collapseResults').hidden=resultLimit<=6;
+  $('downloadCsv').disabled=!filtered.length;
+  $('downloadEvidence').disabled=!filtered.length;
+  updateComparison();
+}
+function downloadRecords(records, fullEvidence, filename) {
+  const table = fullEvidence ? {records,headers} : C.readableShortlist(records,schema.fields,getFilters());
+  const blob=new Blob(['\uFEFF'+C.serializeCsv(table.records,table.headers,true)],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function comparisonMethods() {
+  return C.comparisonMethods(methods,comparisonIds);
+}
+function updateComparison() {
+  const selected = comparisonMethods();
+  const outside = selected.filter(m => !filtered.some(f => f.method_id === m.method_id)).length;
+  $('comparisonTray').hidden = !selected.length;
+  document.body.classList.toggle('has-comparison',Boolean(selected.length));
+  $('comparisonStatus').textContent = `${selected.length} of 4 selected${selected.length===1?' · Choose one more to compare':''}${outside?` · ${outside} outside current filters`:''}`;
+  $('comparisonChips').innerHTML = selected.map(m=>`<button type="button" class="chip removable-chip" data-remove-comparison="${esc(m.method_id)}" aria-label="Remove ${esc(m.method)} from comparison" title="${esc(m.method)}">${esc(m.method)} ×</button>`).join('');
+  $('openComparison').disabled = selected.length < 2;
+  $('openComparison').textContent = `Compare ${selected.length} ${selected.length===1?'method':'methods'}`;
+  document.querySelectorAll('[data-compare]').forEach(input=>{
+    input.checked = comparisonIds.includes(input.dataset.compare);
+    input.disabled = selected.length >= 4 && !input.checked;
+  });
+  if ($('comparisonDialog').open) {
+    if (selected.length) renderComparison();
+    else {$('comparisonDialog').close();$('searchInput').focus();}
+  }
+}
+function changeComparison(id, checked) {
+  comparisonIds = checked ? C.comparisonMethods(methods,[...comparisonIds,id]).map(m=>m.method_id) : comparisonIds.filter(value=>value!==id);
+  saveProfile(getFilters());
+  updateComparison();
+}
+function comparisonValue(method, field) {
+  let content = `<span>${esc(fieldValue(method,field.id))}</span>`;
+  if (practicalAxes.includes(field.id)) {
+    const sources = C.values(method[field.id+'_sources']).filter(C.safeUrl);
+    content += `<details class="comparison-evidence"><summary aria-label="${esc(field.label)} evidence for ${esc(method.method)}">Evidence notes</summary><p>${esc(method[field.id+'_notes'] || 'Supporting detail remains unestablished.')}</p><div class="evidence-links">${sources.map(u=>link(new URL(u).hostname.replace(/^www\./,''),u)).join(' ')}</div><p class="field-help">Checked ${esc(method.operational_checked_on || 'date not recorded')}</p></details>`;
+  }
+  return content;
+}
+function renderComparison() {
+  const selected = comparisonMethods();
+  const fields = C.comparisonFields(schema.fields,getFilters());
+  $('comparisonTitle').textContent = `Compare ${selected.length} ${selected.length===1?'method':'methods'}`;
+  $('comparisonTable').innerHTML = `<table class="comparison-table"><caption class="visually-hidden">Selected multimodal integration methods, with key axes and practical evidence</caption><thead><tr><th scope="col">Method</th>${selected.map(m=>{
+    const profile=new URL('index.html',location.href);profile.searchParams.set('q',m.method_id);profile.hash='atlas';
+    const matches=filtered.some(f=>f.method_id===m.method_id);
+    return `<th scope="col"><h3>${esc(m.method)}</h3><span class="comparison-review">${m.needs_curation==='yes'?'Profile needs confirmation':'Profile reviewed'}</span>${!matches?'<span class="comparison-outside">Outside current filters</span>':''}<div class="comparison-links">${link('Paper',m.publication_url)}${link('Software',m.resource_url)}${link('Full profile',profile.href)}</div><button class="link-button comparison-remove" type="button" data-remove-comparison="${esc(m.method_id)}" aria-label="Remove ${esc(m.method)} from comparison">Remove</button></th>`;
+  }).join('')}</tr></thead><tbody><tr><th scope="row">Measured modalities</th>${selected.map(m=>`<td>${esc(m.modalities)}</td>`).join('')}</tr>${fields.map(f=>`<tr><th scope="row">${esc(f.label)}</th>${selected.map(m=>`<td>${comparisonValue(m,f)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+}
+function renderAxesGuide() {
+  if (!$('axisDefinitions')) return;
+  $('axisDefinitions').innerHTML=schema.fields.map(f=>`<article><h3>${esc(f.label)}</h3><p>${esc(f.help)}</p></article>`).join('');
+}
+function createSuggestionFields() {
+  if (!$('suggestAxisFields')) return;
+  $('suggestAxisFields').innerHTML=schema.fields.filter(f=>![...practicalAxes,'code_availability','independent_benchmark','pretrained_model','calibration_evidence'].includes(f.id)).map(f=>`
+    <details class="suggest-axis"><summary>${esc(f.label)}</summary><p class="field-help">${esc(f.help)}</p>
+      <div class="choice-list">${f.options.filter(o=>o.value!=='not-assessed').map(o=>`<label><input type="${f.multiple?'checkbox':'radio'}" name="suggest-${f.id}" data-suggest="${f.id}" value="${esc(o.value)}"/><span>${esc(o.label)}</span></label>`).join('')}</div>
+    </details>`).join('');
+}
+function suggestionInput() {
+  const input={method:$('suggestMethod')?.value.trim(),citation:$('suggestCitation')?.value.trim(),resource_url:$('suggestResourceUrl')?.value.trim(),modalities:$('suggestModalities')?.value.trim(),summary:$('suggestSummary')?.value.trim(),rationale:$('suggestRationale')?.value.trim()};
+  for (const f of schema.fields) input[f.id]=[...document.querySelectorAll(`[data-suggest="${f.id}"]:checked`)].map(e=>e.value);
+  return input;
+}
+function suggestionBody(input, record) {
+  return ['## Method suggestion','',`- Method: ${input.method || 'not provided'}`,`- Original publication: ${input.citation || 'not provided'}`,`- Software: ${input.resource_url || 'not provided'}`,`- Measured modalities and units: ${input.modalities || 'not provided'}`,
+    ...schema.fields.filter(f=>input[f.id]?.length).map(f=>`- ${f.label}: ${fieldValue(record,f.id)}`),'','## Method summary','',input.summary || 'Not provided.','','## Evidence and scope rationale','',input.rationale || 'Not provided.'].join('\n');
+}
 function updateSuggestionOutput() {
-  const csvRow = document.getElementById("suggestCsvRow");
-  const issueLink = document.getElementById("openIssueLink");
-  if (csvRow) csvRow.value = candidateCsvRow();
-  if (issueLink) issueLink.href = issueUrl();
+  if (!$('suggestCsvRow')) return;
+  const input=suggestionInput(),record=C.candidateRecord(input,headers,schema.fields),body=suggestionBody(input,record);
+  $('suggestCsvRow').value=C.serializeCsv([record],headers);
+  $('openIssueLink').href=`${REPO_URL}/issues/new?${new URLSearchParams({title:`Method suggestion: ${input.method || 'new method'}`,body,labels:ISSUE_LABELS})}`;
 }
-
-function renderResults() {
-  const filters = getFilters();
-  renderActiveFilters(filters);
-
-  const visible = methods
-    .filter((method) => methodMatches(method, filters))
-    .map((method) => ({ method, score: scoreMethod(method, filters) }))
-    .sort((a, b) => {
-      if (b.score !== a.score) return b.score - a.score;
-      return a.method.method.localeCompare(b.method.method);
-    });
-
-  const visibleCount = document.getElementById("visibleCount");
-  if (visibleCount) visibleCount.textContent = visible.length;
-  const resultMeta = document.getElementById("resultsMeta");
-  const list = document.getElementById("resultsList");
-  const showMore = document.getElementById("showMoreResults");
-  const showAll = document.getElementById("showAllResults");
-  const collapse = document.getElementById("collapseResults");
-  if (!visible.length) {
-    list.innerHTML = `<div class="empty-state">No methods match current filters.</div>`;
-    if (resultMeta) resultMeta.textContent = "0 shown";
-    [showMore, showAll, collapse].forEach((button) => {
-      if (button) button.hidden = true;
-    });
-    return;
-  }
-  const shown = visible.slice(0, resultLimit);
-  list.innerHTML = shown.map(({ method, score }) => renderMethod(method, score)).join("");
-  if (resultMeta) resultMeta.textContent = `Showing ${shown.length} of ${visible.length}`;
-  if (showMore) showMore.hidden = resultLimit >= visible.length;
-  if (showAll) showAll.hidden = resultLimit >= visible.length;
-  if (collapse) collapse.hidden = resultLimit <= 5;
+function emailCurators() {
+  const input=suggestionInput(),record=C.candidateRecord(input,headers,schema.fields);
+  const join=list=>list.map(([a,b])=>`${a}@${b}`).join(',');
+  const params=new URLSearchParams({cc:join(CURATOR_CC),subject:`Method suggestion: ${input.method || 'new method'}`,body:suggestionBody(input,record).replace(/```csv\n|\n```/g,'')});
+  location.href=`mailto:${join(CURATOR_TO)}?${params.toString().replace(/\+/g,'%20')}`;
 }
-
-function resetAndRenderResults() {
-  resultLimit = 5;
-  renderResults();
+async function copyText(value, success) {
+  try {await navigator.clipboard.writeText(value);$('actionStatus').textContent=success;}
+  catch {$('actionStatus').textContent='Copy was unavailable. Select the text and copy it manually.';}
 }
-
-function attachAtlasEvents() {
-  filterConfig.forEach(({ id }) => {
-    document.getElementById(id).addEventListener("change", resetAndRenderResults);
-  });
-  document.getElementById("searchInput").addEventListener("input", resetAndRenderResults);
-  document.getElementById("hideCuration").addEventListener("change", resetAndRenderResults);
-  document.getElementById("clearFilters").addEventListener("click", () => {
-    filterConfig.forEach(({ id }) => {
-      document.getElementById(id).value = "";
-    });
-    document.getElementById("searchInput").value = "";
-    document.getElementById("hideCuration").checked = false;
-    resetAndRenderResults();
-  });
-  document.getElementById("downloadCsv").addEventListener("click", () => {
-    window.location.href = DATA_URL;
-  });
-  document.getElementById("showMoreResults").addEventListener("click", () => {
-    resultLimit += 10;
-    renderResults();
-  });
-  document.getElementById("showAllResults").addEventListener("click", () => {
-    resultLimit = Number.MAX_SAFE_INTEGER;
-    renderResults();
-  });
-  document.getElementById("collapseResults").addEventListener("click", () => {
-    resultLimit = 5;
-    renderResults();
-  });
-}
-
-function attachDialogEvents() {
-  const dialog = document.getElementById("suggestDialog");
-  if (dialog) {
-    document.querySelectorAll(".open-suggest-dialog").forEach((trigger) => {
-      trigger.addEventListener("click", () => {
-        updateSuggestionOutput();
-        dialog.showModal();
-      });
-    });
-    document.getElementById("closeSuggestDialog").addEventListener("click", () => {
-      dialog.close();
-    });
-  }
-
-  const axesDialog = document.getElementById("axesDialog");
-  if (axesDialog) {
-    document.getElementById("openAxesDialog").addEventListener("click", () => {
-      axesDialog.showModal();
-    });
-    document.getElementById("closeAxesDialog").addEventListener("click", () => {
-      axesDialog.close();
-    });
-  }
-
-  document.querySelectorAll("#suggestDialog input, #suggestDialog select, #suggestDialog textarea").forEach((field) => {
-    field.addEventListener("input", updateSuggestionOutput);
-    field.addEventListener("change", updateSuggestionOutput);
-  });
-  const copyButton = document.getElementById("copyCsvRow");
-  if (copyButton) {
-    copyButton.addEventListener("click", async () => {
-      await navigator.clipboard.writeText(document.getElementById("suggestCsvRow").value);
-      copyButton.textContent = "Copied";
-      setTimeout(() => {
-        copyButton.textContent = "Copy CSV row";
-      }, 1600);
-    });
-  }
-
-  if (window.location.hash === "#contribute" && dialog) {
-    updateSuggestionOutput();
-    dialog.showModal();
-    history.replaceState(null, "", window.location.pathname);
-  }
-}
-
 function attachEvents() {
-  if (document.getElementById("atlas")) attachAtlasEvents();
-  attachDialogEvents();
+  if ($('atlas')) {
+    $('searchInput').oninput=()=>renderResults(true);$('hideCuration').onchange=()=>renderResults(true);
+    $('showMatches').onclick=()=>{$('filtersDisclosure').open=false;$('resultsMeta').scrollIntoView({block:'start'});$('resultsMeta').focus({preventScroll:true});};
+    $('clearFilters').onclick=()=>{document.querySelectorAll('[data-filter]').forEach(e=>e.checked=false);$('searchInput').value='';$('hideCuration').checked=false;renderResults(true);};
+    $('showMoreResults').onclick=()=>{resultLimit+=10;renderResults();};$('showAllResults').onclick=()=>{resultLimit=methods.length;renderResults();};$('collapseResults').onclick=()=>renderResults(true);
+    $('downloadCsv').onclick=()=>downloadRecords(filtered,false,'multimodal-atlas-shortlist.csv');
+    $('downloadEvidence').onclick=()=>downloadRecords(filtered,true,'multimodal-atlas-shortlist-full-evidence.csv');
+    $('copyProfile').onclick=()=>copyText(location.href,'Search profile link copied.');
+    $('resultsList').addEventListener('change',event=>{const input=event.target.closest('[data-compare]');if(input)changeComparison(input.dataset.compare,input.checked);});
+    const removeComparison=event=>{
+      const button=event.target.closest('[data-remove-comparison]');
+      if (!button) return;
+      changeComparison(button.dataset.removeComparison,false);
+      if ($('comparisonDialog').open) $('closeComparison').focus();
+      else if (comparisonIds.length >= 2) $('openComparison').focus();
+      else $('searchInput').focus();
+    };
+    $('comparisonChips').addEventListener('click',removeComparison);
+    $('comparisonTable').addEventListener('click',removeComparison);
+    $('clearComparison').onclick=()=>{comparisonIds=[];saveProfile(getFilters());updateComparison();$('searchInput').focus();};
+    $('openComparison').onclick=()=>{renderComparison();$('comparisonDialog').showModal();};
+    $('closeComparison').onclick=()=>$('comparisonDialog').close();
+    $('comparisonDialog').addEventListener('close',()=>{if($('openComparison').disabled)$('searchInput').focus();});
+    $('downloadComparison').onclick=()=>downloadRecords(comparisonMethods(),false,'multimodal-atlas-comparison.csv');
+    $('downloadComparisonEvidence').onclick=()=>downloadRecords(comparisonMethods(),true,'multimodal-atlas-comparison-full-evidence.csv');
+  }
+  const dialog=$('suggestDialog');
+  if (dialog) {
+    document.querySelectorAll('.open-suggest-dialog').forEach(b=>b.onclick=()=>{updateSuggestionOutput();dialog.showModal();});
+    $('closeSuggestDialog').onclick=()=>dialog.close();
+    document.querySelectorAll('#suggestDialog input, #suggestDialog textarea:not([readonly])').forEach(e=>e.addEventListener('input',updateSuggestionOutput));
+    $('copyCsvRow').onclick=async()=>{try{await navigator.clipboard.writeText($('suggestCsvRow').value);$('suggestStatus').textContent='Candidate CSV copied, including column headers.';}catch{$('suggestCsvRow').select();$('suggestStatus').textContent='Select and copy the candidate CSV manually.';}};
+    $('emailCuratorsLink').onclick=emailCurators;
+    if (location.hash==='#contribute'){updateSuggestionOutput();dialog.showModal();history.replaceState(null,'',location.pathname+location.search);}
+  }
+  if ($('axesDialog')){$('openAxesDialog').onclick=()=>$('axesDialog').showModal();$('closeAxesDialog').onclick=()=>$('axesDialog').close();}
 }
-
+function renderTimeline() {
+  if (!$('timelineList')) return;
+  const groups=new Map();
+  const dated=methods.filter(m=>/^\d{4}(-\d{2})?$/.test(m.publication_date)).sort((a,b)=>b.publication_date.localeCompare(a.publication_date)||a.method.localeCompare(b.method));
+  for (const m of dated){const year=m.publication_date.slice(0,4);if(!groups.has(year))groups.set(year,[]);groups.get(year).push(m);}
+  $('timelineList').innerHTML=[...groups].map(([year,list])=>`<article class="timeline-year"><div class="timeline-year-head"><strong>${year}</strong><span>${list.length} methods</span></div><div class="timeline-methods">${list.map(m=>`<div class="timeline-entry"><div>${link(m.method,m.publication_url)}</div><span>${esc(formatDate(m.publication_date))} · ${esc(optionLabel('publication_status',m.publication_status))}</span><p>${esc(m.publication_title || '')}</p></div>`).join('')}</div></article>`).join('');
+  const missing=methods.length-dated.length;if(missing)$('timelineList').insertAdjacentHTML('beforeend',`<p>${missing} entries have no verified publication date and are omitted from the timeline.</p>`);
+}
 async function init() {
-  const response = await fetch(DATA_URL);
-  const csv = await response.text();
-  methods = parseCsv(csv);
-  const methodCount = document.getElementById("methodCount");
-  const doiCount = document.getElementById("doiCount");
-  const resourceCount = document.getElementById("resourceCount");
-  if (methodCount) methodCount.textContent = methods.length;
-  if (doiCount) {
-    doiCount.textContent = methods.filter((method) => isUrl(method.publication_url)).length;
-  }
-  if (resourceCount) {
-    resourceCount.textContent = methods.filter((method) => isUrl(method.resource_url)).length;
-  }
-  populateSelects();
-  populateSuggestionSelects();
-  attachEvents();
-  renderTimeline();
-  if (document.getElementById("atlas")) renderResults();
-  updateSuggestionOutput();
+  const responses=await Promise.all([fetch('data/schema.json',{cache:'no-cache'}),fetch(DATA_URL,{cache:'no-cache'}),fetch('data/contextual_methods.csv',{cache:'no-cache'})]);
+  if(responses.some(r=>!r.ok))throw new Error('The library could not be downloaded.');
+  schema=await responses[0].json();const parsed=C.parseCsv(await responses[1].text());headers=parsed.headers;
+  contextual=C.parseCsv(await responses[2].text()).records;
+  methods=parsed.records.filter(m=>m.inclusion_status==='included');
+  if(new Set(methods.map(m=>m.method_id)).size!==methods.length)throw new Error('Duplicate method identifiers in the library.');
+  schema.fields.forEach(f=>labels.set(f.id,f.label));
+  if($('methodCount'))$('methodCount').textContent=methods.length;
+  if($('libraryUpdated'))$('libraryUpdated').textContent=`Taxonomy and sources reviewed ${schema.updated_on}`;
+  if($('atlas'))createFilters();
+  renderAxesGuide();createSuggestionFields();attachEvents();renderTimeline();updateSuggestionOutput();
+  if($('atlas')){renderResults();document.querySelectorAll('[data-needs-library]').forEach(e=>e.disabled=false);}
+  preserveNavigation();
 }
-
-init().catch((error) => {
-  const list = document.getElementById("resultsList") || document.getElementById("timelineList");
-  if (list) {
-    list.innerHTML = `<div class="empty-state">Could not load method library: ${error.message}</div>`;
-  }
+init().catch(error=>{
+  const target=$('resultsList')||$('timelineList');
+  if(target)target.innerHTML=`<div class="empty-state" role="alert"><h3>Could not load the atlas</h3><p>${esc(error.message)}</p><p>Reload the page, or download the <a href="${DATA_URL}">method library</a>.</p></div>`;
+  if($('resultsMeta'))$('resultsMeta').textContent='Library unavailable';
 });

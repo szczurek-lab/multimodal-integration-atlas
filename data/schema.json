@@ -1,0 +1,650 @@
+{
+  "version": "2.1",
+  "updated_on": "2026-11-19",
+  "unknown_value": "not-assessed",
+  "selection_rule": "AND across fields. OR within a field, except methodological building blocks, which require all selected descriptors. Unknown values do not satisfy a specified property.",
+  "fields": [
+    {
+      "id": "primary_data_regime",
+      "label": "Primary data setting",
+      "group": "Data setting",
+      "help": "Documented application settings; consult the method card for the actual assays and observational units.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "single-cell-omics",
+          "label": "Single-cell multi-omics"
+        },
+        {
+          "value": "sample-omics",
+          "label": "Sample / patient multi-omics"
+        },
+        {
+          "value": "spatial-assays",
+          "label": "Spatial and reference assays"
+        },
+        {
+          "value": "image-omics",
+          "label": "Imaging and molecular profiles"
+        },
+        {
+          "value": "image-text",
+          "label": "Imaging and text"
+        },
+        {
+          "value": "image-clinical",
+          "label": "Imaging and clinical measurements"
+        },
+        {
+          "value": "omics-text",
+          "label": "Molecular profiles and text"
+        },
+        {
+          "value": "perturbation-readouts",
+          "label": "Heterogeneous perturbation readouts"
+        },
+        {
+          "value": "genotype-transcriptome",
+          "label": "Genotype–transcriptome integration"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "axis_correspondence",
+      "label": "Correspondence",
+      "group": "Data regime",
+      "help": "Paired measurements refer to the same cells, samples or patients. Partial pairing provides these matches for a subset of observations or modality combinations. Weak linkage connects datasets through shared features or biological anchors. Check the training requirements for each workflow.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "paired",
+          "label": "Paired units"
+        },
+        {
+          "value": "partially-paired",
+          "label": "Partially paired units"
+        },
+        {
+          "value": "unpaired",
+          "label": "Unpaired units"
+        },
+        {
+          "value": "weak-linkage",
+          "label": "Weak linkage through features or anchors"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "axis_missingness",
+      "label": "Missingness",
+      "group": "Data regime",
+      "help": "Supported input patterns, not an ability to generate a missing modality. Modality-level support does not establish entry-level support or validity under arbitrary missingness mechanisms.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "fully-observed",
+          "label": "Fully observed inputs"
+        },
+        {
+          "value": "entry-level",
+          "label": "Entry-level missingness"
+        },
+        {
+          "value": "modality-level",
+          "label": "Whole-modality missingness"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "axis_granularity",
+      "label": "Observational granularity",
+      "group": "Data regime",
+      "help": "Single-level: feature vectors for units. Multi-level: sets or lower-level observations linked to a sample, patient or region. A tensor or spatial coordinate alone does not establish multi-level modelling.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "single-level",
+          "label": "Single-level"
+        },
+        {
+          "value": "multi-level",
+          "label": "Multi-level / set-valued"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "axis_model_transparency",
+      "label": "Model transparency",
+      "group": "Model design and interpretability",
+      "help": "Select the form of inspection you need. Explicit likelihoods, interpretable loadings and post-hoc attribution describe different properties and may coexist.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "explicit-mapping",
+          "label": "Explicit loadings, mappings or couplings"
+        },
+        {
+          "value": "explicit-likelihood",
+          "label": "Explicit distributional assumptions"
+        },
+        {
+          "value": "structured-neural",
+          "label": "Inspectable neural components"
+        },
+        {
+          "value": "post-hoc",
+          "label": "Post-hoc exploration / attribution"
+        },
+        {
+          "value": "black-box",
+          "label": "Black-box representation"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "axis_modality_decomposition",
+      "label": "Modality decomposition",
+      "group": "Model design and interpretability",
+      "help": "How shared and modality-specific variation is represented. A structured decoder or biological/technical split is not automatically a shared/private decomposition.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "shared-only",
+          "label": "Joint space without explicit shared/private split"
+        },
+        {
+          "value": "shared-and-specific",
+          "label": "Shared and modality-specific components"
+        },
+        {
+          "value": "partially-shared",
+          "label": "Components shared by subsets of modalities"
+        },
+        {
+          "value": "not-applicable",
+          "label": "No latent decomposition to classify"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "axis_prior_knowledge",
+      "label": "Prior biological knowledge",
+      "group": "Model design and interpretability",
+      "help": "External biological information used by the model. Outcome labels and neighbours inferred from the same data are not automatically biological prior knowledge.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "none",
+          "label": "No external biological prior required"
+        },
+        {
+          "value": "pathways",
+          "label": "Pathways / gene sets"
+        },
+        {
+          "value": "gene-networks",
+          "label": "Gene / regulatory networks"
+        },
+        {
+          "value": "feature-links",
+          "label": "Cross-modal feature links"
+        },
+        {
+          "value": "spatial",
+          "label": "Spatial structure"
+        },
+        {
+          "value": "temporal",
+          "label": "Temporal structure"
+        },
+        {
+          "value": "biological-model",
+          "label": "Explicit biological relationship / model"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "axis_method_scope",
+      "label": "Method scope",
+      "group": "Learning setup",
+      "help": "General-purpose representations are reusable across questions; domain-specific methods specialize a biological setting; task-specific models directly estimate a predefined quantity.",
+      "multiple": false,
+      "options": [
+        {
+          "value": "general-purpose",
+          "label": "General-purpose"
+        },
+        {
+          "value": "domain-specific",
+          "label": "Domain-specific"
+        },
+        {
+          "value": "task-specific",
+          "label": "Task-specific"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "axis_supervision",
+      "label": "Supervision",
+      "group": "Learning setup",
+      "help": "Source and resolution of training targets. Pretraining and downstream adaptation may use different supervision; the method notes specify the stage.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "unsupervised",
+          "label": "Unsupervised"
+        },
+        {
+          "value": "self-supervised",
+          "label": "Self-supervised"
+        },
+        {
+          "value": "semi-supervised",
+          "label": "Semi-supervised"
+        },
+        {
+          "value": "supervised",
+          "label": "Supervised"
+        },
+        {
+          "value": "weakly-supervised",
+          "label": "Weakly supervised / bag labels"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "integration_effects",
+      "label": "Integration effect",
+      "group": "Integration effect",
+      "help": "Directly supported outputs. Representation learning and structure discovery share a category. Imputation, cross-modal prediction and generation have separate choices. Uncertainty specification, target and calibration are recorded below.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "discovery",
+          "label": "Representation and structure discovery"
+        },
+        {
+          "value": "alignment",
+          "label": "Alignment and correspondence inference"
+        },
+        {
+          "value": "imputation",
+          "label": "Imputation"
+        },
+        {
+          "value": "cross-modal-prediction",
+          "label": "Cross-modal prediction"
+        },
+        {
+          "value": "generation",
+          "label": "Generation"
+        },
+        {
+          "value": "spatial-mapping",
+          "label": "Spatial / biological mapping"
+        },
+        {
+          "value": "temporal-mapping",
+          "label": "Temporal mapping"
+        },
+        {
+          "value": "endpoint-prediction",
+          "label": "Endpoint prediction"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "uncertainty_type",
+      "label": "Uncertainty specification",
+      "group": "Integration effect",
+      "help": "Form of uncertainty returned by a method. Read the target alongside it and use Calibration evidence to check whether prediction calibration has been evaluated.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "model-based",
+          "label": "Model-based posterior / predictive"
+        },
+        {
+          "value": "evidential",
+          "label": "Evidential"
+        },
+        {
+          "value": "post-hoc",
+          "label": "Post-hoc uncertainty"
+        },
+        {
+          "value": "not-reported",
+          "label": "No uncertainty output documented"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "uncertainty_target",
+      "label": "Uncertainty target",
+      "group": "Integration effect",
+      "help": "Quantity to which uncertainty refers. This field is separate from the posterior approximation used for fitting.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "latent-variables",
+          "label": "Latent variables"
+        },
+        {
+          "value": "parameters",
+          "label": "Parameters / loadings"
+        },
+        {
+          "value": "missing-measurements",
+          "label": "Missing measurements"
+        },
+        {
+          "value": "predictions",
+          "label": "Endpoint predictions"
+        },
+        {
+          "value": "modality-evidence",
+          "label": "Modality evidence"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "calibration_evidence",
+      "label": "Calibration evidence",
+      "group": "Integration effect",
+      "help": "Evidence of held-out calibration is recorded separately from uncertainty output. Not assessed is not a negative result.",
+      "multiple": false,
+      "options": [
+        {
+          "value": "evaluated",
+          "label": "Calibration evaluation verified"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "dataset_size",
+      "label": "Dataset size",
+      "group": "Practical considerations",
+      "help": "Reported example size, with observation unit and workflow in each card. Atlas bands: <1,000; 1,000–99,999; ≥100,000. Includes labelled demos, simulations and pretraining; these are not minimum data requirements or capacity limits.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "small",
+          "label": "Small · fewer than 1,000"
+        },
+        {
+          "value": "medium",
+          "label": "Medium · 1,000–99,999"
+        },
+        {
+          "value": "large",
+          "label": "Large · 100,000 or more"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not established"
+        }
+      ]
+    },
+    {
+      "id": "software_maturity",
+      "label": "Software maturity",
+      "group": "Practical considerations",
+      "help": "Evidence of reusable software: early research code; developing documented setup/use; mature package with documentation, tests and releases or registry checks. Does not certify installation, maintenance or scientific validity.",
+      "multiple": false,
+      "options": [
+        {
+          "value": "early",
+          "label": "Early"
+        },
+        {
+          "value": "developing",
+          "label": "Developing"
+        },
+        {
+          "value": "mature",
+          "label": "Mature"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not established"
+        }
+      ]
+    },
+    {
+      "id": "compute_demand",
+      "label": "Compute demand",
+      "group": "Practical considerations",
+      "help": "Hardware used or recommended for a documented example: limited CPU/ordinary computer; moderate single GPU/workstation; high HPC or large memory. Read workflow and memory details: this is not a minimum requirement or runtime ranking.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "limited",
+          "label": "Limited · CPU / ordinary computer"
+        },
+        {
+          "value": "moderate",
+          "label": "Moderate · GPU / workstation"
+        },
+        {
+          "value": "high",
+          "label": "High · HPC / large memory"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not established"
+        }
+      ]
+    },
+    {
+      "id": "validation_evidence",
+      "label": "Validation evidence",
+      "group": "Practical considerations",
+      "help": "Internal: author-led evaluation. Independent: a separate team actually evaluated the method. Prospective: a locked model tested on subsequently accrued observations/outcomes. Retrospective use of clinical-trial data is not prospective validation.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "internal",
+          "label": "Internal / author-led"
+        },
+        {
+          "value": "independent",
+          "label": "Independent evaluation"
+        },
+        {
+          "value": "prospective",
+          "label": "Prospective evaluation"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not established"
+        }
+      ]
+    },
+    {
+      "id": "methodological_components",
+      "label": "Methodological building blocks",
+      "group": "Methodological building blocks",
+      "help": "The six building blocks describe model construction and combine within a method. Foundation models contribute pretrained representations. Set representation includes aggregation and multiple instance learning. Selecting several blocks requires all of them.",
+      "multiple": true,
+      "options": [
+        {
+          "value": "deterministic",
+          "label": "Deterministic optimization"
+        },
+        {
+          "value": "probabilistic",
+          "label": "Probabilistic modeling"
+        },
+        {
+          "value": "vae",
+          "label": "Variational autoencoders"
+        },
+        {
+          "value": "contrastive",
+          "label": "Contrastive learning"
+        },
+        {
+          "value": "foundation-pretraining",
+          "label": "Foundation models"
+        },
+        {
+          "value": "mil",
+          "label": "Set representation and multiple instance learning"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "publication_status",
+      "label": "Publication status",
+      "group": "Supporting evidence",
+      "help": "The original method publication, using the journal or proceedings version when verified. A retained preprint is labelled explicitly.",
+      "multiple": false,
+      "options": [
+        {
+          "value": "journal",
+          "label": "Peer-reviewed journal article"
+        },
+        {
+          "value": "conference",
+          "label": "Peer-reviewed conference paper"
+        },
+        {
+          "value": "preprint",
+          "label": "Preprint"
+        },
+        {
+          "value": "not-verified",
+          "label": "Publication status not verified"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "code_availability",
+      "label": "Software availability",
+      "group": "Supporting evidence",
+      "help": "A reachable repository is not a guarantee of installation, maintenance or reproducibility. Check date and destination are recorded in each card.",
+      "multiple": false,
+      "options": [
+        {
+          "value": "public-code",
+          "label": "Public code verified"
+        },
+        {
+          "value": "public-documentation",
+          "label": "Public documentation verified"
+        },
+        {
+          "value": "not-verified",
+          "label": "Availability not verified"
+        },
+        {
+          "value": "not-found",
+          "label": "No public implementation located"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "independent_benchmark",
+      "label": "Independent benchmarking",
+      "group": "Supporting evidence",
+      "help": "Requires a separate evaluation source; comparisons in the method authors’ own paper do not establish independent benchmarking.",
+      "multiple": false,
+      "options": [
+        {
+          "value": "verified",
+          "label": "Independent evaluation identified"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Not assessed"
+        }
+      ]
+    },
+    {
+      "id": "pretrained_model",
+      "label": "Pretrained model",
+      "group": "Supporting evidence",
+      "help": "Availability of reusable weights, distinct from code availability. Not assessed does not mean unavailable.",
+      "multiple": false,
+      "options": [
+        {
+          "value": "available",
+          "label": "Public weights documented"
+        },
+        {
+          "value": "not-applicable",
+          "label": "Not a pretrained model"
+        },
+        {
+          "value": "not-assessed",
+          "label": "Availability not assessed"
+        }
+      ]
+    }
+  ]
+}

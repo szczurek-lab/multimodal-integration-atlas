@@ -4,3 +4,34 @@ node_modules/
 dist/
 .env
 .env.*
+
+# Outreach material must never enter this public repository.
+# It contains personal data (names, institutional emails, h-index) collected for
+# a specific academic purpose, and the scripts that collect it. It normally lives
+# outside this repo; these rules are a backstop against a stray copy.
+outreach/
+outreach*/
+**/outreach/
+pi_outreach*.csv
+crawl_raw*.csv
+outreach_candidates*.csv
+outreach_shortlist*.csv
+crawl_epmc.py
+add_full_names.py
+add_openalex.py
+add_s2.py
+rank_outreach.py
+make_final.py
+email_template.md
+linkedin_posts.md
+
+# Anything that looks like a harvested contact list
+*contacts*.csv
+*emails*.csv
+*_pi_*.csv
+*mailing*.csv
+
+# Private curation notes and manuscript drafts (per CONTRIBUTING.md)
+notes/
+private/
+*.docx

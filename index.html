@@ -8,7 +8,7 @@
       content="Curated atlas of multimodal integration methods for biology, searchable by data regime, method properties, supervision, and application task."
     />
     <title>Multimodal Integration Atlas</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=2.1.20261119.2" />
   </head>
   <body>
     <header class="site-header">
@@ -22,7 +22,7 @@
           <button class="link-button open-suggest-dialog" type="button">
             Contribute
           </button>
-          <a href="timeline.html">Timelines</a>
+          <a href="timeline.html">Timeline</a>
           <a href="authors.html">Authors</a>
         </nav>
       </div>
@@ -68,8 +68,8 @@
             </span>
             <h3><span id="methodCount">0</span> methods classified</h3>
             <p>
-              Current atlas entries are human-curated along the review axes and
-              ready to be matched to a user's data, assumptions, and task.
+              Method profiles connect the review axes to documented data requirements,
+              model properties and outputs. Remaining uncertainties are explicit.
             </p>
           </article>
           <article class="about-card">
@@ -77,7 +77,7 @@
               <svg viewBox="0 0 24 24"><path d="M4 18h16"/><path d="M7 15V7M12 15V4M17 15v-5"/><path d="M5 7h4M10 4h4M15 10h4"/></svg>
             </span>
             <h3>Assumption-aware</h3>
-            <p>Filters follow the review axes: data regime, mathematical design, supervision, and task.</p>
+            <p>Filters follow the review axes: data regime, model design, learning setup and integration effect.</p>
           </article>
           <article class="about-card">
             <span class="about-icon" aria-hidden="true">
@@ -98,232 +98,70 @@
       </section>
 
       <section id="atlas" class="workspace" aria-label="Method search">
-        <section class="filters" aria-label="Filters">
-          <div class="filters-head">
-            <div>
-              <p class="section-kicker">Filter by review axes</p>
-              <h2>Method properties</h2>
-            </div>
-            <button id="clearFilters" class="link-button" type="button">Clear</button>
-          </div>
-
-          <div class="filter-intro">
-            <label class="field">
-              <span>Search</span>
-              <input id="searchInput" type="search" placeholder="Method or family" />
-            </label>
-            <div class="filter-help">
-              <h3>More about filtering</h3>
-              <p>
-                Filters follow the conceptual axes introduced in the review,
-                so each result reflects explicit data and modelling assumptions.
-              </p>
-              <button id="openAxesDialog" class="link-button" type="button">See more</button>
-            </div>
-          </div>
-
-          <fieldset class="filter-group">
-            <legend>Data regime</legend>
-            <label class="field">
-              <span>Correspondence</span>
-              <select id="axis_correspondence"></select>
-            </label>
-            <label class="field">
-              <span>Missingness</span>
-              <select id="axis_missingness"></select>
-            </label>
-            <label class="field">
-              <span>Granularity</span>
-              <select id="axis_granularity"></select>
-            </label>
-          </fieldset>
-
-          <fieldset class="filter-group">
-            <legend>Modelling formalism and interpretability</legend>
-            <label class="field">
-              <span>Prior knowledge</span>
-              <select id="axis_prior_knowledge"></select>
-            </label>
-            <label class="field">
-              <span>Latent design</span>
-              <select id="axis_latent_design"></select>
-            </label>
-            <label class="field">
-              <span>Architecture</span>
-              <select id="axis_architecture"></select>
-            </label>
-          </fieldset>
-
-          <fieldset class="filter-group">
-            <legend>Application level</legend>
-            <label class="field">
-              <span>Application level</span>
-              <select id="axis_application_level"></select>
-            </label>
-            <label class="field">
-              <span>Application type</span>
-              <select id="application_task"></select>
-            </label>
-          </fieldset>
-
-          <fieldset class="filter-group">
-            <legend>Supervision and family</legend>
-            <label class="field">
-              <span>Supervision</span>
-              <select id="axis_supervision"></select>
-            </label>
-            <label class="field">
-              <span>Method family</span>
-              <select id="method_family"></select>
-            </label>
-          </fieldset>
-
-        </section>
-
+        <aside class="filters" aria-label="Filter methods">
+          <div class="filters-head"><div><p class="section-kicker">Start from your research question</p><h2>Choose by axes</h2></div><button id="clearFilters" class="link-button" type="button" disabled data-needs-library>Clear</button></div>
+          <label class="field"><span>Search methods, assays or papers</span><input id="searchInput" type="search" placeholder="e.g. RNA, MOFA, survival" disabled data-needs-library /></label>
+          <details id="filtersDisclosure" class="filters-disclosure" open><summary>Filter axes and practical requirements</summary>
+          <p class="field-help selection-help">Different axes are combined. Within one axis, choices are alternatives. Selected methodological building blocks must all be present.</p>
+          <button id="openAxesDialog" class="link-button" type="button" disabled data-needs-library>Read the axis definitions</button>
+          <div id="filterGroups"></div>
+          <div class="mobile-filter-action"><button id="showMatches" class="button primary" type="button" disabled data-needs-library>Show matching methods</button></div>
+          </details>
+        </aside>
         <section class="results" aria-label="Method results">
-          <div class="results-toolbar">
-            <div>
-              <h2>Methods</h2>
-              <p id="resultsMeta" class="results-meta">Showing 0 of 0</p>
-            </div>
-            <div class="toolbar-controls">
-              <label>
-                <input id="hideCuration" type="checkbox" />
-                Hide rows needing curation
-              </label>
-              <button id="downloadCsv" class="button secondary" type="button">Download CSV</button>
-            </div>
-          </div>
-          <div id="activeFilters" class="active-filters" aria-live="polite"></div>
-          <div id="resultsList" class="results-list"></div>
-          <div class="results-actions">
-            <button id="showMoreResults" class="button secondary" type="button">Show 10 more</button>
-            <button id="showAllResults" class="link-button" type="button">Reveal all</button>
-            <button id="collapseResults" class="link-button" type="button" hidden>Hide expanded list</button>
-          </div>
+          <div class="results-toolbar"><div><p class="section-kicker">Your shortlist</p><h2>Compatible method profiles</h2><p id="resultsMeta" class="results-meta" role="status" aria-live="polite" tabindex="-1">Loading the method library…</p></div>
+            <div class="toolbar-controls"><div class="export-options"><button id="downloadCsv" class="button secondary" type="button" disabled>Download shortlist</button><button id="downloadEvidence" class="link-button" type="button" disabled>Full evidence CSV</button></div><button id="copyProfile" class="link-button" type="button" disabled data-needs-library>Copy search link</button></div></div>
+          <div class="curation-toolbar"><label><input id="hideCuration" type="checkbox" disabled data-needs-library /> Reviewed profiles only</label><a href="curation.html">Scope and curation record</a></div>
+          <p class="field-help">Matches indicate documented properties, not a performance ranking. Unknown evidence is kept separate from a confirmed capability. Dataset size and compute describe specific examples; check their units and workflow stages in each practical profile. <a href="curation.html#practical">Read the practical-axis rubric</a>.</p>
+          <div id="activeFilters" class="active-filters"></div>
+          <p class="field-help comparison-instruction">Select up to four methods to compare side by side. Download shortlist saves all matches with readable labels and practical evidence notes.</p>
+          <div id="resultsList" class="results-list" aria-label="Matching methods"></div>
+          <aside id="contextMatches" class="empty-state" aria-label="Related contextual records" hidden></aside>
+          <div class="results-actions"><button id="showMoreResults" class="button secondary" type="button" hidden>Show 10 more</button><button id="showAllResults" class="link-button" type="button" hidden>Reveal all</button><button id="collapseResults" class="link-button" type="button" hidden>Collapse list</button></div>
+          <p id="actionStatus" class="field-help" role="status" aria-live="polite"></p>
+          <p id="libraryUpdated" class="field-help"></p>
+          <p class="field-help"><a href="data/integration_methods_library.csv" download>Download the complete library</a> · <a href="docs/schema.md">Data definitions</a></p>
         </section>
       </section>
     </main>
 
-    <dialog id="axesDialog" class="info-dialog">
-      <div class="info-panel">
-        <div class="dialog-head">
-          <div>
-            <p class="section-kicker">Review framework</p>
-            <h2>Conceptual axes for filtering</h2>
-          </div>
-          <button id="closeAxesDialog" class="link-button" type="button">Close</button>
-        </div>
-        <img src="assets/multimodal-axes.png" alt="Conceptual axes for multimodal data regimes and model properties" />
-        <div class="axis-definitions">
-          <article>
-            <h3>Data regime</h3>
-            <p>Correspondence, missingness, and granularity describe how strongly the modalities align and how demanding the observed data setting is.</p>
-          </article>
-          <article>
-            <h3>Modelling formalism</h3>
-            <p>Prior knowledge, latent design, and architecture place methods between informed, structured, inspectable formulations and agnostic, unstructured, black-box ones.</p>
-          </article>
-          <article>
-            <h3>Application level</h3>
-            <p>Application level distinguishes broadly reusable general-purpose models from application-driven formulations targeting a specific biological question.</p>
-          </article>
-        </div>
-        <p class="figure-caption">
-          Figure 1. Conceptual axes for classifying multimodal integration methods in biology. Multimodal integration methods can be positioned along three complementary dimensions. The data regime can be progressively relaxed from its most controlled form, namely paired, fully observed, single-level measurements, toward increasingly demanding settings with stronger missingness, weaker cross-modal correspondence, or multi-level granularity. The modelling formalism can be tightened or loosened independently of the data: a formulation may move toward stronger prior knowledge, more structured latent representations, and more inspectable architectures, or remain agnostic, unstructured, and black-box. Finally, the application level distinguishes broadly reusable general-purpose models from application-driven formulations targeting a specific biological question. Together, these axes situate any integration method within a common framework and make explicit what assumptions a method requires and what it gives up.
-        </p>
+    <section id="comparisonTray" class="comparison-tray" aria-label="Selected methods" hidden>
+      <div class="comparison-selection"><p id="comparisonStatus" role="status" aria-live="polite"></p><div id="comparisonChips" class="comparison-chips"></div></div>
+      <div class="comparison-actions"><button id="openComparison" class="button primary" type="button" disabled>Compare methods</button><button id="clearComparison" class="link-button" type="button">Clear selection</button></div>
+    </section>
+    <dialog id="comparisonDialog" class="comparison-dialog" aria-labelledby="comparisonTitle" aria-describedby="comparisonHelp">
+      <div class="comparison-heading"><div class="dialog-head"><div><p class="section-kicker">Your selected methods</p><h2 id="comparisonTitle">Compare methods</h2></div><button id="closeComparison" class="link-button" type="button" autofocus>Close comparison</button></div>
+        <p id="comparisonHelp" class="field-help">Compare the key axes and your selected criteria. Open the evidence notes for observation units and workflow stages.</p>
+        <div class="comparison-exports"><button id="downloadComparison" class="button secondary" type="button">Download comparison</button><button id="downloadComparisonEvidence" class="link-button" type="button">Full comparison evidence CSV</button></div>
+        <p class="field-help comparison-scroll-hint">Scroll across the table to see every method.</p>
       </div>
+      <div id="comparisonTable" class="comparison-table-scroll" role="region" aria-label="Method comparison table" tabindex="0"></div>
     </dialog>
 
-    <dialog id="suggestDialog" class="suggest-dialog">
+    <dialog id="axesDialog" class="info-dialog" aria-labelledby="axesTitle">
+      <div class="info-panel"><div class="dialog-head"><div><p class="section-kicker">The revised review framework</p><h2 id="axesTitle">Axes for method choice</h2></div><button id="closeAxesDialog" class="link-button" type="button">Close</button></div>
+        <p>Begin with the available measurements and required output. Then refine model design, learning setup and practical requirements. Methodological building blocks can overlap.</p>
+        <div id="axisDefinitions" class="axis-definitions"></div>
+        <p class="field-help">Capabilities refer to documented workflows. An unpaired application may require a model trained on paired data. Biological/technical separation is not the same as shared/private modality decomposition; predictive uncertainty is not automatically calibrated.</p>
+      </div>
+    </dialog>
+    <dialog id="suggestDialog" class="suggest-dialog" aria-labelledby="suggestTitle">
       <form method="dialog" class="suggest-form">
-        <div class="dialog-head">
-          <div>
-            <p class="section-kicker">Curation workflow</p>
-            <h2>Suggest a method</h2>
-          </div>
-          <button id="closeSuggestDialog" class="link-button" type="button">Close</button>
-        </div>
-
-        <p class="dialog-copy">
-          Fill the fields you know. The atlas will generate a GitHub issue and a
-          candidate CSV row for curator review.
-        </p>
-
+        <div class="dialog-head"><div><p class="section-kicker">Community curation</p><h2 id="suggestTitle">Suggest a method or correction</h2></div><button id="closeSuggestDialog" class="link-button" type="button">Close</button></div>
+        <p class="dialog-copy">Describe the measured modalities and link the original method paper. Fill only classifications supported by evidence; the other fields remain unassessed until curator review.</p>
         <div class="suggest-grid">
-          <label class="field">
-            <span>Method name</span>
-            <input id="suggestMethod" type="text" placeholder="e.g. NewMethod" />
-          </label>
-          <label class="field">
-            <span>Citation or DOI</span>
-            <input id="suggestCitation" type="text" placeholder="DOI, preprint, repository, or paper URL" />
-          </label>
-          <label class="field">
-            <span>Online tool/resource</span>
-            <input id="suggestResourceUrl" type="text" placeholder="GitHub, package, web service, or documentation URL" />
-          </label>
-          <label class="field">
-            <span>Resource type</span>
-            <input id="suggestResourceType" type="text" placeholder="software, package, web service, documentation" />
-          </label>
-          <label class="field">
-            <span>Method family</span>
-            <select id="suggestFamily"></select>
-          </label>
-          <label class="field">
-            <span>Correspondence</span>
-            <select id="suggestPairedness"></select>
-          </label>
-          <label class="field">
-            <span>Missingness</span>
-            <select id="suggestMissingness"></select>
-          </label>
-          <label class="field">
-            <span>Granularity</span>
-            <select id="suggestLevel"></select>
-          </label>
-          <label class="field">
-            <span>Architecture</span>
-            <select id="suggestArchitecture"></select>
-          </label>
-          <label class="field">
-            <span>Prior knowledge</span>
-            <select id="suggestPrior"></select>
-          </label>
-          <label class="field">
-            <span>Latent design</span>
-            <select id="suggestLatent"></select>
-          </label>
-          <label class="field">
-            <span>Application level</span>
-            <select id="suggestApplicationLevel"></select>
-          </label>
-          <label class="field">
-            <span>Supervision</span>
-            <select id="suggestSupervision"></select>
-          </label>
-          <label class="field">
-            <span>Application task</span>
-            <input id="suggestTask" type="text" placeholder="e.g. Discovery+Imputation" />
-          </label>
-          <label class="field">
-            <span>Rationale</span>
-            <textarea id="suggestRationale" rows="4" placeholder="Short evidence for the classification"></textarea>
-          </label>
+          <label class="field"><span>Method name</span><input id="suggestMethod" type="text" maxlength="120" placeholder="Official method name" /></label>
+          <label class="field"><span>Original publication DOI or URL</span><input id="suggestCitation" type="text" maxlength="500" placeholder="Published paper or clearly identified preprint" /></label>
+          <label class="field"><span>Software or documentation URL</span><input id="suggestResourceUrl" type="url" maxlength="500" placeholder="https://…" /></label>
+          <label class="field"><span>Measured modalities and observational units</span><input id="suggestModalities" type="text" maxlength="500" placeholder="e.g. RNA and ATAC in the same cells" /></label>
+          <label class="field"><span>What does the method do?</span><input id="suggestSummary" type="text" maxlength="600" /></label>
+          <label class="field"><span>Evidence and scope rationale</span><textarea id="suggestRationale" rows="4" maxlength="2000" placeholder="Sources, training requirements, and reasons for the proposed classification"></textarea></label>
         </div>
-
-        <label class="field">
-          <span>Candidate CSV row</span>
-          <textarea id="suggestCsvRow" rows="4" readonly></textarea>
-        </label>
-
-        <div class="dialog-actions">
-          <button id="copyCsvRow" class="button secondary" type="button">Copy CSV row</button>
-          <a id="openIssueLink" class="button primary" target="_blank" rel="noreferrer" href="https://github.com/storaged/multimodal-integration-atlas/issues/new">
-            Open GitHub issue
-          </a>
-        </div>
+        <details class="suggest-classifications"><summary>Classify along the review axes (optional)</summary><div id="suggestAxisFields" class="suggest-grid"></div></details>
+        <details class="candidate-preview"><summary>Preview candidate data</summary><label class="field"><span>Candidate CSV, including headers</span><textarea id="suggestCsvRow" rows="5" readonly></textarea></label></details>
+        <div class="dialog-actions"><button id="copyCsvRow" class="button secondary" type="button">Copy candidate CSV</button><a id="openIssueLink" class="button primary" target="_blank" rel="noopener noreferrer" href="https://github.com/szczurek-lab/multimodal-integration-atlas/issues/new">Open GitHub issue</a><button id="emailCuratorsLink" class="link-button" type="button">No GitHub account? Email the curators</button></div>
+        <p id="suggestStatus" class="field-help" role="status" aria-live="polite"></p>
+        <p class="dialog-copy">The GitHub route is preferred: it keeps the suggestion and curator response together. Opening the form does not submit an issue; a GitHub account is needed to submit it.</p>
       </form>
     </dialog>
 
@@ -332,11 +170,12 @@
         Public data library for multimodal integration methods. The article link
         will be added after manuscript release.
       </p>
-      <a href="https://github.com/storaged/multimodal-integration-atlas" target="_blank" rel="noreferrer">
+      <a href="https://github.com/szczurek-lab/multimodal-integration-atlas" target="_blank" rel="noreferrer">
         GitHub repository
       </a>
     </footer>
 
-    <script src="app.js"></script>
+    <script src="atlas-core.js?v=2.1.20261119.2"></script>
+    <script src="app.js?v=2.1.20261119.2"></script>
   </body>
 </html>

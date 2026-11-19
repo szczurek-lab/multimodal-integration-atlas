@@ -1,144 +1,226 @@
 name: Method suggestion
-description: Suggest a new multimodal integration method or update an existing entry.
+description: Suggest a multimodal method or correct an existing profile using original evidence.
 title: "Method suggestion: "
 labels: ["method suggestion", "curation"]
 body:
   - type: input
     id: method
     attributes:
-      label: Method name
-      description: Official or commonly used method name.
+      label: "Method name"
+      description: "Official name or existing atlas identifier."
     validations:
       required: true
   - type: input
     id: citation
     attributes:
-      label: Citation or DOI
-      description: DOI, preprint link, journal page, or repository.
+      label: "Original method publication"
+      description: "DOI or original publication URL; use the published version when available and label preprints."
     validations:
       required: true
   - type: input
     id: resource_url
     attributes:
-      label: Online tool/resource
-      description: GitHub, package, web service, or documentation URL if available.
+      label: "Software or documentation"
+      description: "Public author implementation, if available."
     validations:
       required: false
-  - type: input
-    id: resource_type
+  - type: textarea
+    id: modalities
     attributes:
-      label: Resource type
-      description: For example software, package, web service, or documentation.
-    validations:
-      required: false
-  - type: dropdown
-    id: method_family
-    attributes:
-      label: Method family
-      options:
-        - Deterministic
-        - Probabilistic
-        - VAE / Representation learning
-        - Foundation models
-        - MIL
-        - Contrastive learning
-        - Other / unsure
+      label: "Measured modalities and observational units"
+      description: "Describe the inputs and how observations are linked. Labels, augmentations or multiple channels alone do not establish multimodal integration."
     validations:
       required: true
   - type: dropdown
     id: axis_correspondence
     attributes:
-      label: Correspondence
+      label: "Correspondence"
+      description: "Paired measurements refer to the same cells, samples or patients. Partial pairing provides these matches for a subset of observations or modality combinations. Weak linkage connects datasets through shared features or biological anchors. Check the training requirements for each workflow."
+      multiple: true
       options:
-        - paired
-        - partial
-        - unpaired
-        - unsure
-    validations:
-      required: true
+        - "paired"
+        - "partially-paired"
+        - "unpaired"
+        - "weak-linkage"
+        - "not-assessed"
   - type: dropdown
     id: axis_missingness
     attributes:
-      label: Missingness
+      label: "Missingness"
+      description: "Supported input patterns, not an ability to generate a missing modality. Modality-level support does not establish entry-level support or validity under arbitrary missingness mechanisms."
+      multiple: true
       options:
-        - none
-        - partial
-        - modality
-        - generative
-        - unsure
-    validations:
-      required: true
+        - "fully-observed"
+        - "entry-level"
+        - "modality-level"
+        - "not-assessed"
   - type: dropdown
-    id: granularity
+    id: axis_granularity
     attributes:
-      label: Granularity
+      label: "Observational granularity"
+      description: "Single-level: feature vectors for units. Multi-level: sets or lower-level observations linked to a sample, patient or region. A tensor or spatial coordinate alone does not establish multi-level modelling."
+      multiple: true
       options:
-        - single-level
-        - multi-level
-        - unsure
-    validations:
-      required: true
+        - "single-level"
+        - "multi-level"
+        - "not-assessed"
   - type: dropdown
-    id: prior
+    id: axis_model_transparency
     attributes:
-      label: Prior knowledge
+      label: "Model transparency"
+      description: "Select the form of inspection you need. Explicit likelihoods, interpretable loadings and post-hoc attribution describe different properties and may coexist."
+      multiple: true
       options:
-        - none
-        - structure
-        - supervision
-        - soft
-        - unsure
-    validations:
-      required: true
+        - "explicit-mapping"
+        - "explicit-likelihood"
+        - "structured-neural"
+        - "post-hoc"
+        - "black-box"
+        - "not-assessed"
   - type: dropdown
-    id: latent_design
+    id: axis_modality_decomposition
     attributes:
-      label: Latent design
+      label: "Modality decomposition"
+      description: "How shared and modality-specific variation is represented. A structured decoder or biological/technical split is not automatically a shared/private decomposition."
+      multiple: true
       options:
-        - structured
-        - unstructured
-        - unsure
-    validations:
-      required: true
+        - "shared-only"
+        - "shared-and-specific"
+        - "partially-shared"
+        - "not-applicable"
+        - "not-assessed"
   - type: dropdown
-    id: architecture
+    id: axis_prior_knowledge
     attributes:
-      label: Architecture
+      label: "Prior biological knowledge"
+      description: "External biological information used by the model. Outcome labels and neighbours inferred from the same data are not automatically biological prior knowledge."
+      multiple: true
       options:
-        - white-box
-        - black-box
-        - unsure
-    validations:
-      required: true
+        - "none"
+        - "pathways"
+        - "gene-networks"
+        - "feature-links"
+        - "spatial"
+        - "temporal"
+        - "biological-model"
+        - "not-assessed"
   - type: dropdown
-    id: application_level
+    id: axis_method_scope
     attributes:
-      label: Application level
+      label: "Method scope"
+      description: "General-purpose representations are reusable across questions; domain-specific methods specialize a biological setting; task-specific models directly estimate a predefined quantity."
+      multiple: false
       options:
-        - general-purpose
-        - application-driven
-        - unsure
-    validations:
-      required: true
-  - type: input
-    id: supervision
+        - "general-purpose"
+        - "domain-specific"
+        - "task-specific"
+        - "not-assessed"
+  - type: dropdown
+    id: axis_supervision
     attributes:
-      label: Supervision
-      description: Use the manuscript term if known.
-      placeholder: supervised, unsupervised, self-supervised, semi-supervised, or unsure
-    validations:
-      required: true
-  - type: input
-    id: task
+      label: "Supervision"
+      description: "Source and resolution of training targets. Pretraining and downstream adaptation may use different supervision; the method notes specify the stage."
+      multiple: true
+      options:
+        - "unsupervised"
+        - "self-supervised"
+        - "semi-supervised"
+        - "supervised"
+        - "weakly-supervised"
+        - "not-assessed"
+  - type: dropdown
+    id: integration_effects
     attributes:
-      label: Application type
-      description: For example discovery, alignment, imputation, prediction, deconvolution, generation.
-    validations:
-      required: true
+      label: "Integration effect"
+      description: "Directly supported outputs. Representation learning and structure discovery share a category. Imputation, cross-modal prediction and generation have separate choices. Uncertainty specification, target and calibration are recorded below."
+      multiple: true
+      options:
+        - "discovery"
+        - "alignment"
+        - "imputation"
+        - "cross-modal-prediction"
+        - "generation"
+        - "spatial-mapping"
+        - "temporal-mapping"
+        - "endpoint-prediction"
+        - "not-assessed"
+  - type: dropdown
+    id: uncertainty_type
+    attributes:
+      label: "Uncertainty specification"
+      description: "Form of uncertainty returned by a method. Read the target alongside it and use Calibration evidence to check whether prediction calibration has been evaluated."
+      multiple: true
+      options:
+        - "model-based"
+        - "evidential"
+        - "post-hoc"
+        - "not-reported"
+        - "not-assessed"
+  - type: dropdown
+    id: uncertainty_target
+    attributes:
+      label: "Uncertainty target"
+      description: "Quantity to which uncertainty refers. This field is separate from the posterior approximation used for fitting."
+      multiple: true
+      options:
+        - "latent-variables"
+        - "parameters"
+        - "missing-measurements"
+        - "predictions"
+        - "modality-evidence"
+        - "not-assessed"
+  - type: dropdown
+    id: methodological_components
+    attributes:
+      label: "Methodological building blocks"
+      description: "The six building blocks describe model construction and combine within a method. Foundation models contribute pretrained representations. Set representation includes aggregation and multiple instance learning. Selecting several blocks requires all of them."
+      multiple: true
+      options:
+        - "deterministic"
+        - "probabilistic"
+        - "vae"
+        - "contrastive"
+        - "foundation-pretraining"
+        - "mil"
+        - "not-assessed"
+  - type: dropdown
+    id: primary_data_regime
+    attributes:
+      label: "Primary data setting"
+      description: "Documented application settings; consult the method card for the actual assays and observational units."
+      multiple: true
+      options:
+        - "single-cell-omics"
+        - "sample-omics"
+        - "spatial-assays"
+        - "image-omics"
+        - "image-text"
+        - "image-clinical"
+        - "omics-text"
+        - "perturbation-readouts"
+        - "genotype-transcriptome"
+        - "not-assessed"
+  - type: dropdown
+    id: publication_status
+    attributes:
+      label: "Publication status"
+      description: "The original method publication, using the journal or proceedings version when verified. A retained preprint is labelled explicitly."
+      multiple: false
+      options:
+        - "journal"
+        - "conference"
+        - "preprint"
+        - "not-verified"
+        - "not-assessed"
+  - type: textarea
+    id: practical_evidence
+    attributes:
+      label: "Practical evidence (optional)"
+      description: "Provide source links for dataset size (count, unit and workflow), hardware use, software documentation/tests/releases and separate validation studies. Distinguish pretraining from routine use and retrospective trial data from prospective model evaluation. Curators assign the practical categories after checking this evidence."
   - type: textarea
     id: rationale
     attributes:
-      label: Evidence and rationale
-      description: Briefly explain why the method should be classified this way.
+      label: "Evidence and scope rationale"
+      description: "Cite source passages or documentation; distinguish paired training from unpaired application, and missing input from modality prediction. Leave uncertain classifications unassessed."
     validations:
       required: true

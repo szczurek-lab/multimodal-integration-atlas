@@ -1,0 +1,1744 @@
+{
+  "date": "2026-11-18",
+  "scope": "Revised manuscript and Supplementary Methods; named methods, original citations, publication aliases and general methodological references are distinguished. This is not an exhaustive field-wide literature census.",
+  "counts": {
+    "included_methods": 92,
+    "contextual_records": 31,
+    "new_included_methods": 13,
+    "doi_identifiers": 174,
+    "additional_non_doi_checks": 6,
+    "reference_categories": {
+      "contextual-resource": 29,
+      "included-method": 93,
+      "review-or-perspective": 29,
+      "general-building-block": 15,
+      "evaluation-or-theory": 14
+    },
+    "included_methods_matched": 92,
+    "missing_eligible_methods": 0
+  },
+  "references": [
+    {
+      "identifier": "10.1002/aic.70285",
+      "title": "<scp>scChat</scp>\n                    : A large language model‐powered co‐pilot for contextualized single‐cell\n                    <scp>RNA</scp>\n                    sequencing analysis",
+      "url": "https://doi.org/10.1002/aic.70285",
+      "category": "contextual-resource",
+      "method_ids": [
+        "scchat"
+      ],
+      "reason": "LLM-assisted single-cell RNA analysis and workflow orchestration; contextual interface rather than a dedicated model integrating measured modalities."
+    },
+    {
+      "identifier": "10.1007/s11749-024-00923-z",
+      "title": "Data integration via analysis of subspaces (DIVAS)",
+      "url": "https://doi.org/10.1007/s11749-024-00923-z",
+      "category": "included-method",
+      "method_ids": [
+        "divas"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1007/s12551-023-01092-3",
+      "title": "Progress in single-cell multimodal sequencing and multi-omics data integration",
+      "url": "https://doi.org/10.1007/s12551-023-01092-3",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1007/s12561-024-09452-7",
+      "title": "Graph-Guided Bayesian Factor Model for Integrative Analysis of Multi-modal Data with Noisy Network Information",
+      "url": "https://doi.org/10.1007/s12561-024-09452-7",
+      "category": "included-method",
+      "method_ids": [
+        "noisebfash"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1007/s41666-025-00212-w",
+      "title": "Multimodal Data Fusion for Whole-Slide Histopathology Image Classification",
+      "url": "https://doi.org/10.1007/s41666-025-00212-w",
+      "category": "included-method",
+      "method_ids": [
+        "mpathnet"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1016/j.artmed.2024.102830",
+      "title": "Trustworthy clinical AI solutions: A unified review of uncertainty quantification in Deep Learning models for medical image analysis",
+      "url": "https://doi.org/10.1016/j.artmed.2024.102830",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1016/j.cell.2024.11.015",
+      "title": "How to build the virtual cell with artificial intelligence: Priorities and opportunities",
+      "url": "https://doi.org/10.1016/j.cell.2024.11.015",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1016/j.cels.2025.101479",
+      "title": "Interpretable data integration for single-cell and spatial multi-omics",
+      "url": "https://doi.org/10.1016/j.cels.2025.101479",
+      "category": "included-method",
+      "method_ids": [
+        "fgot"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1016/j.cels.2026.101594",
+      "title": "Fusing imaging and metabolic modeling via multimodal deep learning in ovarian cancer",
+      "url": "https://doi.org/10.1016/j.cels.2026.101594",
+      "category": "included-method",
+      "method_ids": [
+        "metabolic-imaging"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1016/j.copbio.2022.102881",
+      "title": "Perspectives for self-driving labs in synthetic biology",
+      "url": "https://doi.org/10.1016/j.copbio.2022.102881",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1016/j.crmeth.2023.100563",
+      "title": "Single-cell multi-omics topic embedding reveals cell-type-specific and COVID-19 severity-related immune signatures",
+      "url": "https://doi.org/10.1016/j.crmeth.2023.100563",
+      "category": "included-method",
+      "method_ids": [
+        "moetm"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1016/j.csda.2024.107974",
+      "title": "Bayesian simultaneous factorization and prediction using multi-omic data",
+      "url": "https://doi.org/10.1016/j.csda.2024.107974",
+      "category": "included-method",
+      "method_ids": [
+        "bsf-bsfp"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1016/j.jmva.2018.03.008",
+      "title": "Angle-based joint and individual variation explained",
+      "url": "https://doi.org/10.1016/j.jmva.2018.03.008",
+      "category": "included-method",
+      "method_ids": [
+        "ajive"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1016/j.landig.2025.100933",
+      "title": "Application of artificial intelligence and digital tools in cancer pathology",
+      "url": "https://doi.org/10.1016/j.landig.2025.100933",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1016/j.modpat.2024.100609",
+      "title": "Regulatory Aspects of Artificial Intelligence and Machine Learning",
+      "url": "https://doi.org/10.1016/j.modpat.2024.100609",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1016/j.molcel.2021.12.012",
+      "title": "New horizons in the stormy sea of multimodal single-cell data integration",
+      "url": "https://doi.org/10.1016/j.molcel.2021.12.012",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1016/s0004-3702(96)00034-3",
+      "title": "Solving the multiple instance problem with axis-parallel rectangles",
+      "url": "https://doi.org/10.1016/s0004-3702(96)00034-3",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "Axis-parallel rectangle MIL: a general learning construction, not a biological multimodal integration model."
+    },
+    {
+      "identifier": "10.1021/acs.jcim.4c02114",
+      "title": "scMDCL: A Deep Collaborative Contrastive Learning Framework for Matched Single-Cell Multiomics Data Clustering",
+      "url": "https://doi.org/10.1021/acs.jcim.4c02114",
+      "category": "included-method",
+      "method_ids": [
+        "scmdcl"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/nmeth.2810",
+      "title": "Similarity network fusion for aggregating data types on a genomic scale",
+      "url": "https://doi.org/10.1038/nmeth.2810",
+      "category": "included-method",
+      "method_ids": [
+        "snf"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s12276-024-01186-2",
+      "title": "Advances in single-cell omics and multiomics for high-resolution molecular profiling",
+      "url": "https://doi.org/10.1038/s12276-024-01186-2",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1038/s41467-022-28431-4",
+      "title": "UINMF performs mosaic integration of single-cell multi-omic datasets using nonnegative matrix factorization",
+      "url": "https://doi.org/10.1038/s41467-022-28431-4",
+      "category": "included-method",
+      "method_ids": [
+        "uinmf"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-022-31104-x",
+      "title": "Diagonal integration of multimodal single-cell data: potential pitfalls and paths forward",
+      "url": "https://doi.org/10.1038/s41467-022-31104-x",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1038/s41467-022-34025-x",
+      "title": "Uncertainty-informed deep learning models enable high-confidence predictions for digital histopathology",
+      "url": "https://doi.org/10.1038/s41467-022-34025-x",
+      "category": "contextual-resource",
+      "method_ids": [
+        "dolezal-uncertainty"
+      ],
+      "reason": "Dropout-based confidence assessment for image-based histopathology classification; methodological uncertainty context rather than multimodal fusion."
+    },
+    {
+      "identifier": "10.1038/s41467-023-36202-y",
+      "title": "Reconstructing clonal tree for phylo-phenotypic characterization of cancer using single-cell transcriptomics",
+      "url": "https://doi.org/10.1038/s41467-023-36202-y",
+      "category": "included-method",
+      "method_ids": [
+        "phylex"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-023-43019-2",
+      "title": "Paired single-cell multi-omics data integration with Mowgli",
+      "url": "https://doi.org/10.1038/s41467-023-43019-2",
+      "category": "included-method",
+      "method_ids": [
+        "mowgli"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-024-46710-0",
+      "title": "Allele-specific transcriptional effects of subclonal copy number alterations enable genotype-phenotype mapping in cancer cells",
+      "url": "https://doi.org/10.1038/s41467-024-46710-0",
+      "category": "included-method",
+      "method_ids": [
+        "treealign"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-024-53355-6",
+      "title": "Modal-nexus auto-encoder for multi-modality cellular data integration and imputation",
+      "url": "https://doi.org/10.1038/s41467-024-53355-6",
+      "category": "included-method",
+      "method_ids": [
+        "monae"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-024-53374-3",
+      "title": "Integrative spatial and genomic analysis of tumor heterogeneity with Tumoroscope",
+      "url": "https://doi.org/10.1038/s41467-024-53374-3",
+      "category": "included-method",
+      "method_ids": [
+        "tumoroscope"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-025-56523-4",
+      "title": "Spatial integration of multi-omics single-cell data with SIMO",
+      "url": "https://doi.org/10.1038/s41467-025-56523-4",
+      "category": "included-method",
+      "method_ids": [
+        "simo"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-025-60822-1",
+      "title": "GAUDI: interpretable multi-omics integration with UMAP embeddings and density-based clustering",
+      "url": "https://doi.org/10.1038/s41467-025-60822-1",
+      "category": "included-method",
+      "method_ids": [
+        "gaudi"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-025-62346-0",
+      "title": "ROSIE: AI generation of multiplex immunofluorescence staining from histopathology images",
+      "url": "https://doi.org/10.1038/s41467-025-62346-0",
+      "category": "included-method",
+      "method_ids": [
+        "rosie"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-025-66220-x",
+      "title": "A multimodal knowledge-enhanced whole-slide pathology foundation model",
+      "url": "https://doi.org/10.1038/s41467-025-66220-x",
+      "category": "included-method",
+      "method_ids": [
+        "mstar"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-026-72933-4",
+      "title": "Robust integration of single-cell datasets with imbalanced modality composition",
+      "url": "https://doi.org/10.1038/s41467-026-72933-4",
+      "category": "included-method",
+      "method_ids": [
+        "palette"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-026-74413-1",
+      "title": "MIND: multimodal integration with neighbourhood-aware distributions",
+      "url": "https://doi.org/10.1038/s41467-026-74413-1",
+      "category": "included-method",
+      "method_ids": [
+        "mind"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41467-026-74694-6",
+      "title": "Semi-supervised Omics Factor Analysis (SOFA) disentangles known and latent sources of variation in multi-omic data",
+      "url": "https://doi.org/10.1038/s41467-026-74694-6",
+      "category": "included-method",
+      "method_ids": [
+        "sofa"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41551-020-00682-w",
+      "title": "Data-efficient and weakly supervised computational pathology on whole-slide images",
+      "url": "https://doi.org/10.1038/s41551-020-00682-w",
+      "category": "contextual-resource",
+      "method_ids": [
+        "clam"
+      ],
+      "reason": "The cited CLAM paper concerns whole-slide image learning. Reusable MIL components are not standalone multimodal integrators."
+    },
+    {
+      "identifier": "10.1038/s41564-026-02328-0",
+      "title": "Navigating multi-omic integration methods for human microbiome research",
+      "url": "https://doi.org/10.1038/s41564-026-02328-0",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1038/s41576-025-00920-4",
+      "title": "Interpretation, extrapolation and perturbation of single cells",
+      "url": "https://doi.org/10.1038/s41576-025-00920-4",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1038/s41586-024-07441-w",
+      "title": "A whole-slide foundation model for digital pathology from real-world data",
+      "url": "https://doi.org/10.1038/s41586-024-07441-w",
+      "category": "contextual-resource",
+      "method_ids": [
+        "gigapath"
+      ],
+      "reason": "Histopathology image encoder and slide model. Patch-to-slide aggregation is multi-level, not independently multimodal."
+    },
+    {
+      "identifier": "10.1038/s41586-024-08453-2",
+      "title": "Mapping cells through time and space with moscot",
+      "url": "https://doi.org/10.1038/s41586-024-08453-2",
+      "category": "included-method",
+      "method_ids": [
+        "moscot"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41586-025-08710-y",
+      "title": "Towards multimodal foundation models in molecular cell biology",
+      "url": "https://doi.org/10.1038/s41586-025-08710-y",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1038/s41586-026-10884-y",
+      "title": "The Virtual Tissues foundation model resolves spatial proteomics across scales",
+      "url": "https://doi.org/10.1038/s41586-026-10884-y",
+      "category": "contextual-resource",
+      "method_ids": [
+        "virtues"
+      ],
+      "reason": "Excluded according to the author’s scope decision: spatial proteomics representation learning is not a multimodal integration method for this atlas."
+    },
+    {
+      "identifier": "10.1038/s41587-021-00895-7",
+      "title": "Computational principles and challenges in single-cell data integration",
+      "url": "https://doi.org/10.1038/s41587-021-00895-7",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1038/s41587-021-01139-4",
+      "title": "Cell2location maps fine-grained cell types in spatial transcriptomics",
+      "url": "https://doi.org/10.1038/s41587-021-01139-4",
+      "category": "included-method",
+      "method_ids": [
+        "cell2location"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41587-021-01206-w",
+      "title": "A Python library for probabilistic analysis of single-cell omics data",
+      "url": "https://doi.org/10.1038/s41587-021-01206-w",
+      "category": "contextual-resource",
+      "method_ids": [
+        "scvi-tools"
+      ],
+      "reason": "Software infrastructure containing multiple models. Eligible multimodal models have their own atlas records; the library is not counted as an additional algorithm."
+    },
+    {
+      "identifier": "10.1038/s41587-022-01272-8",
+      "title": "DestVI identifies continuums of cell types in spatial transcriptomics data",
+      "url": "https://doi.org/10.1038/s41587-022-01272-8",
+      "category": "included-method",
+      "method_ids": [
+        "destvi"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41587-022-01284-4",
+      "title": "Multi-omics single-cell data integration and regulatory inference with graph-linked embedding",
+      "url": "https://doi.org/10.1038/s41587-022-01284-4",
+      "category": "included-method",
+      "method_ids": [
+        "glue"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41587-023-01766-z",
+      "title": "Stabilized mosaic single-cell data integration using unshared features",
+      "url": "https://doi.org/10.1038/s41587-023-01766-z",
+      "category": "included-method",
+      "method_ids": [
+        "stabmap"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41587-023-01935-0",
+      "title": "Integration of spatial and single-cell data across modalities with weakly linked features",
+      "url": "https://doi.org/10.1038/s41587-023-01935-0",
+      "category": "included-method",
+      "method_ids": [
+        "maxfuse"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41587-023-02040-y",
+      "title": "Mosaic integration and knowledge transfer of single-cell multimodal data with MIDAS",
+      "url": "https://doi.org/10.1038/s41587-023-02040-y",
+      "category": "included-method",
+      "method_ids": [
+        "midas"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41587-024-02193-4",
+      "title": "The covariance environment defines cellular niches for spatial inference",
+      "url": "https://doi.org/10.1038/s41587-024-02193-4",
+      "category": "included-method",
+      "method_ids": [
+        "envi"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41587-025-02694-w",
+      "title": "Defining and benchmarking open problems in single-cell analysis",
+      "url": "https://doi.org/10.1038/s41587-025-02694-w",
+      "category": "contextual-resource",
+      "method_ids": [
+        "open-problems"
+      ],
+      "reason": "Community benchmarking infrastructure, not an additional integration algorithm."
+    },
+    {
+      "identifier": "10.1038/s41587-025-02857-9",
+      "title": "Multimodal learning enables chat-based exploration of single-cell data",
+      "url": "https://doi.org/10.1038/s41587-025-02857-9",
+      "category": "included-method",
+      "method_ids": [
+        "cellwhisperer"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41587-025-02950-z",
+      "title": "Revealing a coherent cell-state landscape across single-cell datasets with CONCORD",
+      "url": "https://doi.org/10.1038/s41587-025-02950-z",
+      "category": "contextual-resource",
+      "method_ids": [
+        "concord"
+      ],
+      "reason": "Integrates datasets within RNA or ATAC separately. Applicability across assay types is not joint integration of different modalities."
+    },
+    {
+      "identifier": "10.1038/s41587-026-03035-1",
+      "title": "Agentic AI and the rise of in silico team science in biomedical research",
+      "url": "https://doi.org/10.1038/s41587-026-03035-1",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1038/s41591-019-0508-1",
+      "title": "Clinical-grade computational pathology using weakly supervised deep learning on whole slide images",
+      "url": "https://doi.org/10.1038/s41591-019-0508-1",
+      "category": "contextual-resource",
+      "method_ids": [
+        "campanella-wsi-mil"
+      ],
+      "reason": "Whole-slide image prediction with weak supervision. Clinical endpoints provide labels rather than an independently measured input modality."
+    },
+    {
+      "identifier": "10.1038/s41591-024-02856-4",
+      "title": "A visual-language foundation model for computational pathology",
+      "url": "https://doi.org/10.1038/s41591-024-02856-4",
+      "category": "included-method",
+      "method_ids": [
+        "conch"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41591-024-02857-3",
+      "title": "Towards a general-purpose foundation model for computational pathology",
+      "url": "https://doi.org/10.1038/s41591-024-02857-3",
+      "category": "contextual-resource",
+      "method_ids": [
+        "uni"
+      ],
+      "reason": "Histopathology image foundation encoder used for transfer comparisons and as a component of other pipelines; the original model does not integrate another measured modality."
+    },
+    {
+      "identifier": "10.1038/s41591-025-03982-3",
+      "title": "A multimodal whole-slide foundation model for pathology",
+      "url": "https://doi.org/10.1038/s41591-025-03982-3",
+      "category": "included-method",
+      "method_ids": [
+        "titan"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41592-018-0229-2",
+      "title": "Deep generative modeling for single-cell transcriptomics",
+      "url": "https://doi.org/10.1038/s41592-018-0229-2",
+      "category": "contextual-resource",
+      "method_ids": [
+        "scvi"
+      ],
+      "reason": "Single-cell transcriptomic generative model; retained as the likelihood and VAE background example, not a joint multi-assay integrator."
+    },
+    {
+      "identifier": "10.1038/s41592-020-01050-x",
+      "title": "Joint probabilistic modeling of single-cell multi-omic data with totalVI",
+      "url": "https://doi.org/10.1038/s41592-020-01050-x",
+      "category": "included-method",
+      "method_ids": [
+        "totalvi"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41592-021-01343-9",
+      "title": "Identifying temporal and spatial patterns of variation from multimodal data using MEFISTO",
+      "url": "https://doi.org/10.1038/s41592-021-01343-9",
+      "category": "included-method",
+      "method_ids": [
+        "mefisto"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41592-023-01909-9",
+      "title": "MultiVI: deep generative model for the integration of multimodal data",
+      "url": "https://doi.org/10.1038/s41592-023-01909-9",
+      "category": "included-method",
+      "method_ids": [
+        "multivi"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41592-023-02035-2",
+      "title": "Population-level integration of single-cell datasets enables multi-scale analysis across samples",
+      "url": "https://doi.org/10.1038/s41592-023-02035-2",
+      "category": "contextual-resource",
+      "method_ids": [
+        "scpoli"
+      ],
+      "reason": "Population-level integration within single-cell assay data. The cited workflow does not demonstrate joint modelling of distinct measured modalities."
+    },
+    {
+      "identifier": "10.1038/s41592-024-02201-0",
+      "title": "scGPT: toward building a foundation model for single-cell multi-omics using generative AI",
+      "url": "https://doi.org/10.1038/s41592-024-02201-0",
+      "category": "included-method",
+      "method_ids": [
+        "scgpt"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41592-024-02257-y",
+      "title": "Dependency-aware deep generative models for multitasking analysis of spatial omics data",
+      "url": "https://doi.org/10.1038/s41592-024-02257-y",
+      "category": "included-method",
+      "method_ids": [
+        "spamultivae"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41592-024-02316-4",
+      "title": "Deciphering spatial domains from spatial multi-omics with SpatialGlue",
+      "url": "https://doi.org/10.1038/s41592-024-02316-4",
+      "category": "included-method",
+      "method_ids": [
+        "spatialglue"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41592-025-02737-9",
+      "title": "Benchmarking single-cell multi-modal data integrations",
+      "url": "https://doi.org/10.1038/s41592-025-02737-9",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.1038/s41592-025-02772-6",
+      "title": "Deep-learning-based gene perturbation effect prediction does not yet outperform simple linear baselines",
+      "url": "https://doi.org/10.1038/s41592-025-02772-6",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.1038/s41592-025-02856-3",
+      "title": "Multitask benchmarking of single-cell multimodal omics integration methods",
+      "url": "https://doi.org/10.1038/s41592-025-02856-3",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.1038/s41592-026-03070-5",
+      "title": "Systematically decoding pathological morphologies and molecular profiles with unified multimodal embedding",
+      "url": "https://doi.org/10.1038/s41592-026-03070-5",
+      "category": "included-method",
+      "method_ids": [
+        "multi-embed"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41592-026-03279-4",
+      "title": "Echidna: a Bayesian framework for integrative inference of copy number alterations impacting phenotypic plasticity",
+      "url": "https://doi.org/10.1038/s41592-026-03279-4",
+      "category": "included-method",
+      "method_ids": [
+        "echidna"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41592-026-03282-9",
+      "title": "Integration and annotation of spatial multi-omic data with DIRAC",
+      "url": "https://doi.org/10.1038/s41592-026-03282-9",
+      "category": "included-method",
+      "method_ids": [
+        "dirac"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s41598-018-19333-x",
+      "title": "Gene annotation bias impedes biomedical research",
+      "url": "https://doi.org/10.1038/s41598-018-19333-x",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.1038/s41598-025-93770-3",
+      "title": "Multimodal multi-instance evidence fusion neural networks for cancer survival prediction",
+      "url": "https://doi.org/10.1038/s41598-025-93770-3",
+      "category": "included-method",
+      "method_ids": [
+        "m2ef-nns"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s42256-024-00889-5",
+      "title": "Accelerating histopathology workflows with generative AI-based virtually multiplexed tumour profiling",
+      "url": "https://doi.org/10.1038/s42256-024-00889-5",
+      "category": "included-method",
+      "method_ids": [
+        "virtualmultiplexer"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s43018-022-00356-3",
+      "title": "Cell type and gene expression deconvolution with BayesPrism enables Bayesian integrative analysis across bulk and single-cell RNA sequencing in oncology",
+      "url": "https://doi.org/10.1038/s43018-022-00356-3",
+      "category": "included-method",
+      "method_ids": [
+        "bayesprism"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s43588-025-00870-1",
+      "title": "In silico biological discovery with large perturbation models",
+      "url": "https://doi.org/10.1038/s43588-025-00870-1",
+      "category": "included-method",
+      "method_ids": [
+        "lpm"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1038/s43588-025-00948-w",
+      "title": "Partially shared multi-modal embedding learns holistic representation of cell state",
+      "url": "https://doi.org/10.1038/s43588-025-00948-w",
+      "category": "included-method",
+      "method_ids": [
+        "apollo"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1073/pnas.2303647120",
+      "title": "Quantifying common and distinct information in single-cell multimodal data with Tilted Canonical Correlation Analysis",
+      "url": "https://doi.org/10.1073/pnas.2303647120",
+      "category": "included-method",
+      "method_ids": [
+        "tilted-cca"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1080/10618600.2026.2685851",
+      "title": "Multiple Linked Tensor Factorization",
+      "url": "https://doi.org/10.1080/10618600.2026.2685851",
+      "category": "included-method",
+      "method_ids": [
+        "multifac"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1089/cmb.2021.0446",
+      "title": "SCOT: Single-Cell Multi-Omics Alignment with Optimal Transport",
+      "url": "https://doi.org/10.1089/cmb.2021.0446",
+      "category": "included-method",
+      "method_ids": [
+        "scot"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/bib/bbad130",
+      "title": "Matching single cells across modalities with contrastive learning and optimal transport",
+      "url": "https://doi.org/10.1093/bib/bbad130",
+      "category": "included-method",
+      "method_ids": [
+        "matchclot"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/bib/bbae228",
+      "title": "scMNMF: a novel method for single-cell multi-omics clustering based on matrix factorization",
+      "url": "https://doi.org/10.1093/bib/bbae228",
+      "category": "included-method",
+      "method_ids": [
+        "scmnmf"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/bib/bbaf209",
+      "title": "MMsurv: a multimodal multi-instance multi-cancer survival prediction model integrating pathological images, clinical information, and sequencing data",
+      "url": "https://doi.org/10.1093/bib/bbaf209",
+      "category": "included-method",
+      "method_ids": [
+        "mmsurv"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/bib/bbaf355",
+      "title": "A technical review of multi-omics data integration methods: from classical statistical to deep generative approaches",
+      "url": "https://doi.org/10.1093/bib/bbaf355",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1093/bib/bbaf622",
+      "title": "Single-cell omics arena: evaluation of large language models for automatic cell-type annotations on single-cell omics data via RNA-seq bridging",
+      "url": "https://doi.org/10.1093/bib/bbaf622",
+      "category": "contextual-resource",
+      "method_ids": [
+        "single-cell-omics-arena"
+      ],
+      "reason": "Benchmark of LLM annotation through RNA-seq bridging; an evaluation framework rather than a standalone multimodal integrator."
+    },
+    {
+      "identifier": "10.1093/bib/bbag073",
+      "title": "Computational approaches to multimodal data integration in rheumatoid arthritis: from data landscape to clinical translation",
+      "url": "https://doi.org/10.1093/bib/bbag073",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1093/bioadv/vbag108",
+      "title": "A review of multi-omics integration techniques across five machine learning method families",
+      "url": "https://doi.org/10.1093/bioadv/vbag108",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1093/bioinformatics/btae169",
+      "title": "Clustering single-cell multi-omics data via graph regularized multi-view ensemble learning",
+      "url": "https://doi.org/10.1093/bioinformatics/btae169",
+      "category": "included-method",
+      "method_ids": [
+        "grmec-sc"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/bioinformatics/btae202",
+      "title": "A supervised Bayesian factor model for the identification of multi-omics signatures",
+      "url": "https://doi.org/10.1093/bioinformatics/btae202",
+      "category": "included-method",
+      "method_ids": [
+        "spear"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/bioinformatics/btae663",
+      "title": "A signal-diffusion-based unsupervised contrastive representation learning for spatial transcriptomics analysis",
+      "url": "https://doi.org/10.1093/bioinformatics/btae663",
+      "category": "contextual-resource",
+      "method_ids": [
+        "sducl"
+      ],
+      "reason": "Spatial transcriptomics representation learning from expression and spatial structure; graph augmentation is not a second measured modality."
+    },
+    {
+      "identifier": "10.1093/bioinformatics/btae705",
+      "title": "Integrating single-cell multimodal epigenomic data using 1D convolutional neural networks",
+      "url": "https://doi.org/10.1093/bioinformatics/btae705",
+      "category": "included-method",
+      "method_ids": [
+        "convnet-vae"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/bioinformatics/btaf024",
+      "title": "CAMIL: channel attention-based multiple instance learning for whole slide image classification",
+      "url": "https://doi.org/10.1093/bioinformatics/btaf024",
+      "category": "contextual-resource",
+      "method_ids": [
+        "camil"
+      ],
+      "reason": "The cited original CAMIL paper classifies whole-slide images; feature channels and image scales are not distinct biological modalities."
+    },
+    {
+      "identifier": "10.1093/bioinformatics/btaf213",
+      "title": "GRACKLE: an interpretable matrix factorization approach for biomedical representation learning",
+      "url": "https://doi.org/10.1093/bioinformatics/btaf213",
+      "category": "included-method",
+      "method_ids": [
+        "grackle"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/bioinformatics/btaf317",
+      "title": "Simple controls exceed best deep learning algorithms and reveal foundation model effectiveness for predicting genetic perturbations",
+      "url": "https://doi.org/10.1093/bioinformatics/btaf317",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.1093/bioinformatics/btaf392",
+      "title": "scMGCL: accurate and efficient integration representation of single-cell multi-omics data",
+      "url": "https://doi.org/10.1093/bioinformatics/btaf392",
+      "category": "included-method",
+      "method_ids": [
+        "scmgcl"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/bioinformatics/bty1054",
+      "title": "DIABLO: an integrative approach for identifying key molecular drivers from multi-omics assays",
+      "url": "https://doi.org/10.1093/bioinformatics/bty1054",
+      "category": "included-method",
+      "method_ids": [
+        "diablo"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/biomet/63.3.581",
+      "title": "Inference and missing data",
+      "url": "https://doi.org/10.1093/biomet/63.3.581",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.1093/biomethods/bpaf028",
+      "title": "Navigating the Multiverse: a Hitchhiker’s guide to selecting harmonization methods for multimodal biomedical data",
+      "url": "https://doi.org/10.1093/biomethods/bpaf028",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1093/biomtc/ujag021",
+      "title": "Bayesian joint additive factor models for multiview learning",
+      "url": "https://doi.org/10.1093/biomtc/ujag021",
+      "category": "included-method",
+      "method_ids": [
+        "jafar"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/gigascience/giag012",
+      "title": "An interpretable Graph-Regularized Optimal Transport Framework for Diagonal Single-Cell Integrative Analysis",
+      "url": "https://doi.org/10.1093/gigascience/giag012",
+      "category": "included-method",
+      "method_ids": [
+        "grotia"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/gpbjnl/qzaf062",
+      "title": "ACE: A Versatile Contrastive Learning Framework for Single-cell Mosaic Integration",
+      "url": "https://doi.org/10.1093/gpbjnl/qzaf062",
+      "category": "included-method",
+      "method_ids": [
+        "ace"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1093/nar/gky889",
+      "title": "Multi-omic and multi-view clustering algorithms: review and cancer benchmark",
+      "url": "https://doi.org/10.1093/nar/gky889",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.1098/rsos.250646",
+      "title": "Autonomous ‘self-driving’ laboratories: a review of technology and policy implications",
+      "url": "https://doi.org/10.1098/rsos.250646",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1098/rsta.2024.0232",
+      "title": "Challenges and opportunities in uncertainty quantification for healthcare and biological systems",
+      "url": "https://doi.org/10.1098/rsta.2024.0232",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1101/2021.04.05.438318",
+      "title": "cellxgene: a performant, scalable exploration platform for high dimensional sparse matrices",
+      "url": "https://doi.org/10.1101/2021.04.05.438318",
+      "category": "contextual-resource",
+      "method_ids": [
+        "cellxgene"
+      ],
+      "reason": "Interactive data exploration platform, not a multimodal integration algorithm."
+    },
+    {
+      "identifier": "10.1101/2022.03.16.484643",
+      "title": "Integration and querying of multimodal single-cell data with PoE-VAE",
+      "url": "https://doi.org/10.1101/2022.03.16.484643",
+      "category": "included-method",
+      "method_ids": [
+        "poe-vae"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1101/2024.07.29.605625",
+      "title": "Weakly supervised learning uncovers phenotypic signatures in single-cell data",
+      "url": "https://doi.org/10.1101/2024.07.29.605625",
+      "category": "included-method",
+      "method_ids": [
+        "multimil"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1101/2024.11.06.622266",
+      "title": "Disentangling cellular heterogeneity into interpretable biological factors through structured latent representations",
+      "url": "https://doi.org/10.1101/2024.11.06.622266",
+      "category": "contextual-resource",
+      "method_ids": [
+        "drvi"
+      ],
+      "reason": "Unimodal single-cell representation model used as a transparency example. The cited paper does not establish a multimodal integrator."
+    },
+    {
+      "identifier": "10.1101/2024.12.10.627865",
+      "title": "PathOmCLIP: Connecting tumor histology with spatial gene expression via locally enhanced contrastive learning of Pathology and Single-cell foundation model",
+      "url": "https://doi.org/10.1101/2024.12.10.627865",
+      "category": "included-method",
+      "method_ids": [
+        "pathomclip"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1101/2024.12.19.629561",
+      "title": "Multimodal foundation model predicts zero-shot functional perturbations and cell fate dynamics",
+      "url": "https://doi.org/10.1101/2024.12.19.629561",
+      "category": "included-method",
+      "method_ids": [
+        "pertformer"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1101/2025.01.24.634799",
+      "title": "ECLARE: multi-teacher contrastive learning via ensemble distillation for diagonal integration of single-cell multi-omic data",
+      "url": "https://doi.org/10.1101/2025.01.24.634799",
+      "category": "included-method",
+      "method_ids": [
+        "eclare"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1101/2025.06.10.657924",
+      "title": "Biologically Informed Variational Inference Enables Interpretable Cell Phenotyping and Discovery",
+      "url": "https://doi.org/10.1101/2025.06.10.657924",
+      "category": "included-method",
+      "method_ids": [
+        "networkvi"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1101/2025.10.14.682419",
+      "title": "scConcept: Contrastive pretraining for technology-agnostic single-cell representations beyond reconstruction",
+      "url": "https://doi.org/10.1101/2025.10.14.682419",
+      "category": "contextual-resource",
+      "method_ids": [
+        "scconcept"
+      ],
+      "reason": "Transcriptomic representation learning across technologies. The multiome evaluation uses the gene-expression modality rather than joint RNA–ATAC modelling."
+    },
+    {
+      "identifier": "10.1109/tmi.2020.3021387",
+      "title": "Pathomic Fusion: An Integrated Framework for Fusing Histopathology and Genomic Features for Cancer Diagnosis and Prognosis",
+      "url": "https://doi.org/10.1109/tmi.2020.3021387",
+      "category": "included-method",
+      "method_ids": [
+        "pathomic-fusion"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1111/rssa.12378",
+      "title": "Visualization in Bayesian Workflow",
+      "url": "https://doi.org/10.1111/rssa.12378",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.1146/annurev-biodatasci-102423-113534",
+      "title": "Mapping the Multiscale Proteomic Organization of Cellular and Disease Phenotypes",
+      "url": "https://doi.org/10.1146/annurev-biodatasci-102423-113534",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1146/annurev-biodatasci-102523-103801",
+      "title": "Harnessing Artificial Intelligence in Multimodal Omics Data Integration: Paving the Path for the Next Frontier in Precision Medicine",
+      "url": "https://doi.org/10.1146/annurev-biodatasci-102523-103801",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1146/annurev-statistics-040522-015915",
+      "title": "Bayesian Inference for Misspecified Generative Models",
+      "url": "https://doi.org/10.1146/annurev-statistics-040522-015915",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.1158/0008-5472.can-26-1480",
+      "title": "The Multimodal Pretraining Framework CarHE Predicts Spatial Transcriptomics in Tumors from Routine Pathology Images",
+      "url": "https://doi.org/10.1158/0008-5472.can-26-1480",
+      "category": "included-method",
+      "method_ids": [
+        "carhe"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1158/1078-0432.ccr-24-3656",
+      "title": "Validation of a Digital Pathology–Based Multimodal Artificial Intelligence Biomarker in a Prospective, Real-World Prostate Cancer Cohort Treated with Prostatectomy",
+      "url": "https://doi.org/10.1158/1078-0432.ccr-24-3656",
+      "category": "included-method",
+      "method_ids": [
+        "mmai"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1162/089976602760128018",
+      "title": "Training Products of Experts by Minimizing Contrastive Divergence",
+      "url": "https://doi.org/10.1162/089976602760128018",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "Product of Experts: a general probabilistic composition rule used by multiple models."
+    },
+    {
+      "identifier": "10.1162/neco.1991.3.1.79",
+      "title": "Adaptive Mixtures of Local Experts",
+      "url": "https://doi.org/10.1162/neco.1991.3.1.79",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "Mixture of Experts: a general gating architecture, not a specific biological integrator."
+    },
+    {
+      "identifier": "10.1183/16000617.0286-2024",
+      "title": "Multi-omics to study chronic respiratory diseases and viral infections",
+      "url": "https://doi.org/10.1183/16000617.0286-2024",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1186/s12859-025-06239-5",
+      "title": "Semi-supervised contrastive learning variational autoencoder Integrating single-cell multimodal mosaic datasets",
+      "url": "https://doi.org/10.1186/s12859-025-06239-5",
+      "category": "included-method",
+      "method_ids": [
+        "scgcm"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1186/s12864-025-11462-8",
+      "title": "JSNMFuP: a unsupervised method for the integrative analysis of single-cell multi-omics data based on non-negative matrix factorization",
+      "url": "https://doi.org/10.1186/s12864-025-11462-8",
+      "category": "included-method",
+      "method_ids": [
+        "jsnmfup"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1186/s12967-025-07245-0",
+      "title": "SpateCV: cross-modality alignment regularization of cell types improves spatial gene imputation for spatial transcriptomics",
+      "url": "https://doi.org/10.1186/s12967-025-07245-0",
+      "category": "included-method",
+      "method_ids": [
+        "spatecv"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1186/s13059-019-1645-z",
+      "title": "clonealign: statistical integration of independent single-cell RNA and DNA sequencing data from human cancers",
+      "url": "https://doi.org/10.1186/s13059-019-1645-z",
+      "category": "included-method",
+      "method_ids": [
+        "clonealign"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1186/s13059-020-02015-1",
+      "title": "MOFA+: a statistical framework for comprehensive integration of multi-modal single-cell data",
+      "url": "https://doi.org/10.1186/s13059-020-02015-1",
+      "category": "included-method",
+      "method_ids": [
+        "mofa-plus"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1186/s13059-024-03289-5",
+      "title": "iIMPACT: integrating image and molecular profiles for spatial transcriptomics analysis",
+      "url": "https://doi.org/10.1186/s13059-024-03289-5",
+      "category": "included-method",
+      "method_ids": [
+        "iimpact"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1186/s13059-024-03338-z",
+      "title": "scCross: a deep generative model for unifying single-cell multi-omics with seamless integration, cross-modal generation, and in silico exploration",
+      "url": "https://doi.org/10.1186/s13059-024-03338-z",
+      "category": "included-method",
+      "method_ids": [
+        "sccross"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1186/s13059-024-03417-1",
+      "title": "CaClust: linking genotype to transcriptional heterogeneity of follicular lymphoma using BCR and exomic variants",
+      "url": "https://doi.org/10.1186/s13059-024-03417-1",
+      "category": "included-method",
+      "method_ids": [
+        "caclust"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1186/s13073-021-00842-w",
+      "title": "CACTUS: integrating clonal architecture with genomic clustering and transcriptome profiling of single tumor cells",
+      "url": "https://doi.org/10.1186/s13073-021-00842-w",
+      "category": "included-method",
+      "method_ids": [
+        "cactus"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1186/s13073-024-01350-3",
+      "title": "Machine learning integrative approaches to advance computational immunology",
+      "url": "https://doi.org/10.1186/s13073-024-01350-3",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.1214/12-aoas597",
+      "title": "Joint and individual variation explained (JIVE) for integrated analysis of multiple data types",
+      "url": "https://doi.org/10.1214/12-aoas597",
+      "category": "included-method",
+      "method_ids": [
+        "jive"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1371/journal.pcbi.1012275",
+      "title": "COPS: A novel platform for multi-omic disease subtype discovery via robust multi-objective evaluation of clustering algorithms",
+      "url": "https://doi.org/10.1371/journal.pcbi.1012275",
+      "category": "contextual-resource",
+      "method_ids": [
+        "cops"
+      ],
+      "reason": "Clustering selection/evaluation platform; retained as context rather than classified as a specific integration model."
+    },
+    {
+      "identifier": "10.1371/journal.pcbi.1012948",
+      "title": "Integrating multiple spatial transcriptomics data using community-enhanced graph contrastive learning",
+      "url": "https://doi.org/10.1371/journal.pcbi.1012948",
+      "category": "contextual-resource",
+      "method_ids": [
+        "tacos"
+      ],
+      "reason": "Aligns spatial transcriptomics slices/platforms using expression and spatial graphs; not a distinct multi-assay integration method in this shortlist."
+    },
+    {
+      "identifier": "10.1371/journal.pone.0337261",
+      "title": "Beyond accuracy: Quantifying the reliability of multiple instance learning for whole slide image classification",
+      "url": "https://doi.org/10.1371/journal.pone.0337261",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.15252/msb.20178124",
+      "title": "Multi‐Omics Factor Analysis—a framework for unsupervised integration of multi‐omics data sets",
+      "url": "https://doi.org/10.15252/msb.20178124",
+      "category": "included-method",
+      "method_ids": [
+        "mofa"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.1561/2200000056",
+      "title": "An Introduction to Variational Autoencoders",
+      "url": "https://doi.org/10.1561/2200000056",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "VAE tutorial and methodological background; concrete multimodal implementations are listed separately."
+    },
+    {
+      "identifier": "10.18653/v1/n19-1357",
+      "title": "Attention is not Explanation",
+      "url": "https://doi.org/10.18653/v1/n19-1357",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.3389/fgene.2024.1425456",
+      "title": "Methods for multi-omic data integration in cancer research",
+      "url": "https://doi.org/10.3389/fgene.2024.1425456",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.3389/frai.2023.1098308",
+      "title": "Missing data in multi-omics integration: Recent advances through artificial intelligence",
+      "url": "https://doi.org/10.3389/frai.2023.1098308",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.3389/fsysb.2023.1155990",
+      "title": "Single-cell technologies for multimodal omics measurements",
+      "url": "https://doi.org/10.3389/fsysb.2023.1155990",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.3390/cancers16040750",
+      "title": "PathoGraph: An Attention-Based Graph Neural Network Capable of Prognostication Based on CD276 Labelling of Malignant Glioma Cells",
+      "url": "https://doi.org/10.3390/cancers16040750",
+      "category": "contextual-resource",
+      "method_ids": [
+        "pathograph"
+      ],
+      "reason": "Graph modelling of cells in immunohistochemically labelled slides. Cell graphs and CD276 staining-derived features do not constitute a separate molecular assay in this pipeline."
+    },
+    {
+      "identifier": "10.48550/arxiv.1312.6114",
+      "title": "Auto-Encoding Variational Bayes",
+      "url": "https://doi.org/10.48550/arxiv.1312.6114",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "General VAE construction; concrete biological multimodal implementations are separate records."
+    },
+    {
+      "identifier": "10.48550/arxiv.1401.4082",
+      "title": "Stochastic Backpropagation and Approximate Inference in Deep Generative Models",
+      "url": "https://doi.org/10.48550/arxiv.1401.4082",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "General stochastic-backpropagation and deep latent-variable inference construction."
+    },
+    {
+      "identifier": "10.48550/arxiv.1703.06114",
+      "title": "Deep Sets",
+      "url": "https://doi.org/10.48550/arxiv.1703.06114",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "Deep Sets: a general permutation-invariant set encoder, not by itself a biological multimodal integrator."
+    },
+    {
+      "identifier": "10.48550/arxiv.1802.04712",
+      "title": "Attention-based Deep Multiple Instance Learning",
+      "url": "https://doi.org/10.48550/arxiv.1802.04712",
+      "category": "contextual-resource",
+      "method_ids": [
+        "abmil"
+      ],
+      "reason": "Generic attention MIL architecture; the original method does not itself integrate independently measured biological modalities."
+    },
+    {
+      "identifier": "10.48550/arxiv.1802.05335",
+      "title": "Multimodal Generative Models for Scalable Weakly-Supervised Learning",
+      "url": "https://doi.org/10.48550/arxiv.1802.05335",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "MVAE: a general Product-of-Experts multimodal architecture; the cited study uses non-biological tasks."
+    },
+    {
+      "identifier": "10.48550/arxiv.1807.03748",
+      "title": "Representation Learning with Contrastive Predictive Coding",
+      "url": "https://doi.org/10.48550/arxiv.1807.03748",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "Contrastive Predictive Coding: a general representation-learning construction."
+    },
+    {
+      "identifier": "10.48550/arxiv.1810.00825",
+      "title": "Set Transformer: A Framework for Attention-based Permutation-Invariant Neural Networks",
+      "url": "https://doi.org/10.48550/arxiv.1810.00825",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "Set Transformer: a general attention-based set encoder; concrete biological fusion pipelines have separate records."
+    },
+    {
+      "identifier": "10.48550/arxiv.1902.10811",
+      "title": "Do ImageNet Classifiers Generalize to ImageNet?",
+      "url": "https://doi.org/10.48550/arxiv.1902.10811",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.48550/arxiv.1905.02269",
+      "title": "A joint model of unpaired data from scRNA-seq and spatial transcriptomics for imputing missing gene expression measurements",
+      "url": "https://doi.org/10.48550/arxiv.1905.02269",
+      "category": "included-method",
+      "method_ids": [
+        "gimvi"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.48550/arxiv.1905.06922",
+      "title": "On Variational Bounds of Mutual Information",
+      "url": "https://doi.org/10.48550/arxiv.1905.06922",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "Theory and estimation of mutual-information bounds; not a biological multimodal method."
+    },
+    {
+      "identifier": "10.48550/arxiv.1907.04809",
+      "title": "Variational Autoencoders and Nonlinear ICA: A Unifying Framework",
+      "url": "https://doi.org/10.48550/arxiv.1907.04809",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "iVAE identifiability construction used for theoretical discussion, not a demonstrated multi-assay biological integration workflow."
+    },
+    {
+      "identifier": "10.48550/arxiv.2002.05709",
+      "title": "A Simple Framework for Contrastive Learning of Visual Representations",
+      "url": "https://doi.org/10.48550/arxiv.2002.05709",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "SimCLR: a generic image-augmentation contrastive method, not itself biological multimodal integration."
+    },
+    {
+      "identifier": "10.48550/arxiv.2002.07017",
+      "title": "Learning Robust Representations via Multi-View Information Bottleneck",
+      "url": "https://doi.org/10.48550/arxiv.2002.07017",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "Multi-View Information Bottleneck: a general representation-learning method evaluated on non-biological tasks. This identifier does not cite the conditional VAE paper."
+    },
+    {
+      "identifier": "10.48550/arxiv.2010.00747",
+      "title": "Contrastive Learning of Medical Visual Representations from Paired Images and Text",
+      "url": "https://doi.org/10.48550/arxiv.2010.00747",
+      "category": "included-method",
+      "method_ids": [
+        "convirt"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.48550/arxiv.2106.00908",
+      "title": "TransMIL: Transformer based Correlated Multiple Instance Learning for Whole Slide Image Classification",
+      "url": "https://doi.org/10.48550/arxiv.2106.00908",
+      "category": "contextual-resource",
+      "method_ids": [
+        "transmil"
+      ],
+      "reason": "Original method is whole-slide image classification; multiple patches or feature views do not make the model multimodal."
+    },
+    {
+      "identifier": "10.48550/arxiv.2204.06242",
+      "title": "Encoding Domain Knowledge in Multi-view Latent Variable Models: A Bayesian Approach with Structured Sparsity",
+      "url": "https://doi.org/10.48550/arxiv.2204.06242",
+      "category": "included-method",
+      "method_ids": [
+        "muvi"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.48550/arxiv.2311.02455",
+      "title": "Mixed Models with Multiple Instance Learning",
+      "url": "https://doi.org/10.48550/arxiv.2311.02455",
+      "category": "contextual-resource",
+      "method_ids": [
+        "mixmil"
+      ],
+      "reason": "Generic mixed-model MIL framework for predicting patient features from cell embeddings; outcome labels do not themselves constitute another measured modality."
+    },
+    {
+      "identifier": "10.48550/arxiv.2407.00224",
+      "title": "Multimodal Prototyping for cancer survival prediction",
+      "url": "https://doi.org/10.48550/arxiv.2407.00224",
+      "category": "included-method",
+      "method_ids": [
+        "mmp"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.48550/arxiv.2504.18914",
+      "title": "Factor Analysis with Correlated Topic Model for Multi-Modal Data",
+      "url": "https://doi.org/10.48550/arxiv.2504.18914",
+      "category": "included-method",
+      "method_ids": [
+        "factm"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.48550/arxiv.2506.09593",
+      "title": "Beyond Overconfidence: Foundation Models Redefine Calibration in Deep Neural Networks",
+      "url": "https://doi.org/10.48550/arxiv.2506.09593",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Evaluation, statistical theory, reliability or methodological criticism; this citation does not request another biological multimodal integration profile."
+    },
+    {
+      "identifier": "10.48550/arxiv.2507.08711",
+      "title": "SGPMIL: Sparse Gaussian Process Multiple Instance Learning",
+      "url": "https://doi.org/10.48550/arxiv.2507.08711",
+      "category": "contextual-resource",
+      "method_ids": [
+        "sgpmil"
+      ],
+      "reason": "Sparse Gaussian-process uncertainty over image-patch attention in whole-slide MIL. The cited work treats extension to clinical/genomic multimodal inputs as future work."
+    },
+    {
+      "identifier": "10.48550/arxiv.2508.14111",
+      "title": "From AI for Science to Agentic Science: A Survey on Autonomous Scientific Discovery",
+      "url": "https://doi.org/10.48550/arxiv.2508.14111",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Review, perspective or clinical/regulatory overview; not an original integration algorithm."
+    },
+    {
+      "identifier": "10.48550/arxiv.2611.08185",
+      "title": "Multimodal Hierarchical Mixture-of-Experts for 3D Medical Vision-Language Modeling",
+      "url": "https://doi.org/10.48550/arxiv.2611.08185",
+      "category": "included-method",
+      "method_ids": [
+        "medhive"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.52202/068431-1160",
+      "title": "Cross-Linked Unified Embedding for Cross-Modality Representation Learning",
+      "url": "https://doi.org/10.52202/068431-1160",
+      "category": "included-method",
+      "method_ids": [
+        "clue"
+      ],
+      "reason": "Mapped to an included method profile, allowing publication/preprint and supporting-paper aliases."
+    },
+    {
+      "identifier": "10.64898/2025.12.30.697073",
+      "title": "An Evidence-Grounded Research Assistant for Functional Genomics and Drug Target Assessment",
+      "url": "https://doi.org/10.64898/2025.12.30.697073",
+      "category": "contextual-resource",
+      "method_ids": [
+        "alvessa"
+      ],
+      "reason": "Evidence-grounded research assistant and benchmark for functional genomics; workflow context rather than a measured-data integration model."
+    },
+    {
+      "identifier": "10.64898/2026.01.19.696785",
+      "title": "<i>CellFluxV2</i>\n                  : An Image Generative Foundation Model for Virtual Cell Modeling",
+      "url": "https://doi.org/10.64898/2026.01.19.696785",
+      "category": "contextual-resource",
+      "method_ids": [
+        "cellfluxv2"
+      ],
+      "reason": "Perturbation-conditioned image generation from cell morphology. Perturbation identity and control/treated image domains do not establish joint integration of distinct measured modalities in this study."
+    },
+    {
+      "identifier": "10.64898/2026.04.06.716850",
+      "title": "Agentic systems are adept at solving well-scoped, verifiable problems in computational biology",
+      "url": "https://doi.org/10.64898/2026.04.06.716850",
+      "category": "contextual-resource",
+      "method_ids": [
+        "compbiobench"
+      ],
+      "reason": "Benchmark of agentic computational-biology systems; no standalone multimodal integration profile is implied."
+    },
+    {
+      "identifier": "PMLR 176:162-176 (2022)",
+      "title": "Multimodal single cell data integration challenge: Results and lessons learned",
+      "url": "https://proceedings.mlr.press/v176/lance22a.html",
+      "category": "evaluation-or-theory",
+      "method_ids": [],
+      "reason": "Benchmark report, not a new standalone integration algorithm."
+    },
+    {
+      "identifier": "Supplementary bibliography: Liu, Dai & Wang (2026)",
+      "title": "Spatial omics at the forefront: emerging technologies, analytical innovations, and clinical applications",
+      "url": "https://doi.org/10.1016/j.ccell.2025.12.009",
+      "category": "review-or-perspective",
+      "method_ids": [],
+      "reason": "Technology and analysis review, cited by title without a DOI in the supplementary bibliography."
+    },
+    {
+      "identifier": "MuVI / PMLR v206 qoku23a",
+      "title": "Encoding Domain Knowledge in Multi-view Latent Variable Models: A Bayesian Approach with Structured Sparsity",
+      "url": "https://proceedings.mlr.press/v206/qoku23a.html",
+      "category": "included-method",
+      "method_ids": [
+        "muvi"
+      ],
+      "reason": "Conference URL and preprint DOI refer to the same existing MuVI entry."
+    },
+    {
+      "identifier": "MCFA: named in Supplementary Methods S2",
+      "title": "Multiset correlation and factor analysis enables exploration of multi-omics data",
+      "url": "https://doi.org/10.1016/j.xgen.2023.100359",
+      "category": "included-method",
+      "method_ids": [
+        "mcfa"
+      ],
+      "reason": "Named method without an adjacent citation; original article located and new atlas profile added."
+    },
+    {
+      "identifier": "10.1186/s13059-023-02951-8",
+      "title": "Celloscope: a probabilistic model for marker-gene-driven cell type deconvolution in spatial transcriptomics data",
+      "url": "https://doi.org/10.1186/s13059-023-02951-8",
+      "category": "included-method",
+      "method_ids": [
+        "celloscope"
+      ],
+      "reason": "Celloscope is included. The initial pass repaired a missing leading DOI digit. The current manuscript now contains the correct identifier."
+    },
+    {
+      "identifier": "ESM-2: named in Supplementary Methods S5",
+      "title": "Evolutionary-scale prediction of atomic-level protein structure with a language model",
+      "url": "https://doi.org/10.1126/science.ade2574",
+      "category": "contextual-resource",
+      "method_ids": [
+        "esm-2"
+      ],
+      "reason": "Protein-sequence language model used as an upstream marker-identity encoder. Its use inside another pipeline does not make the original ESM-2 model a multi-assay integrator."
+    },
+    {
+      "identifier": "NIPS 2015",
+      "title": "Under-specified conditional-VAE citation",
+      "url": "",
+      "category": "general-building-block",
+      "method_ids": [],
+      "reason": "General conditional-VAE background. Venue/year alone do not uniquely identify a paper; author confirmation is needed before replacing this manuscript citation."
+    }
+  ],
+  "name_only_checks": [
+    {
+      "identifier": "MCFA: named in Supplementary Methods S2",
+      "title": "Multiset correlation and factor analysis enables exploration of multi-omics data",
+      "url": "https://doi.org/10.1016/j.xgen.2023.100359",
+      "category": "included-method",
+      "method_ids": [
+        "mcfa"
+      ],
+      "reason": "Named method without an adjacent citation; original article located and new atlas profile added."
+    },
+    {
+      "identifier": "10.1186/s13059-023-02951-8",
+      "title": "Celloscope: a probabilistic model for marker-gene-driven cell type deconvolution in spatial transcriptomics data",
+      "url": "https://doi.org/10.1186/s13059-023-02951-8",
+      "category": "included-method",
+      "method_ids": [
+        "celloscope"
+      ],
+      "reason": "Celloscope is included. The initial pass repaired a missing leading DOI digit. The current manuscript now contains the correct identifier."
+    },
+    {
+      "identifier": "ESM-2: named in Supplementary Methods S5",
+      "title": "Evolutionary-scale prediction of atomic-level protein structure with a language model",
+      "url": "https://doi.org/10.1126/science.ade2574",
+      "category": "contextual-resource",
+      "method_ids": [
+        "esm-2"
+      ],
+      "reason": "Protein-sequence language model used as an upstream marker-identity encoder. Its use inside another pipeline does not make the original ESM-2 model a multi-assay integrator."
+    }
+  ],
+  "alignment_rechecked_on": "2026-11-19",
+  "alignment_check": {
+    "active_doi_identifiers": 168,
+    "unmapped_identifiers": 0,
+    "scope": "Retained text of the current main manuscript and Supplementary Methods. Suggested deletions excluded. Historical publication aliases and earlier scope decisions remain in this ledger."
+  }
+}
