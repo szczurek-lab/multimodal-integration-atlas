@@ -410,7 +410,7 @@
       "method_ids": [
         "virtues"
       ],
-      "reason": "Excluded according to the author’s scope decision: spatial proteomics representation learning is not a multimodal integration method for this atlas."
+      "reason": "VirTues learns representations from multiplexed spatial proteomics. Protein-sequence embeddings encode marker identity as prior information. The measured inputs remain within spatial proteomics, placing this method outside the atlas scope of integration across distinct measured modalities."
     },
     {
       "identifier": "10.1038/s41587-021-00895-7",
