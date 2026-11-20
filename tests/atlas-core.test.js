@@ -24,8 +24,8 @@ test('Modality prediction does not imply missing-input tolerance', () => {
   assert.equal(matches('multivi',{integration_effects:['cross-modal-prediction'],axis_missingness:['modality-level']}),true);
 });
 test('Unknown properties cannot satisfy positive requirements', () => {
-  assert.equal(matches('dirac',{methodological_components:['vae']}),false);
-  assert.equal(matches('dirac',{methodological_components:['not-assessed']}),true);
+  assert.equal(matches('clue',{axis_supervision:['supervised']}),false);
+  assert.equal(matches('clue',{axis_supervision:['not-assessed']}),true);
   assert.equal(matches('mofa',{calibration_evidence:['evaluated']}),false);
 });
 test('Pending, contextual and excluded records are never recommendations', () => {
@@ -65,7 +65,9 @@ test('Untrusted text, links and spreadsheet formulas stay inert', () => {
   assert.equal(C.safeUrl('https://example.org/test'),'https://example.org/test');
   assert.equal(C.parseCsv(C.serializeCsv([{x:'=1+1'}],['x'],true)).records[0].x,"'=1+1");
 });
-test('Corrected identity and citation regressions', () => {
+test('Corrected identity, classification and citation regressions', () => {
+  assert.equal(matches('dirac',{methodological_components:['deterministic'],curatedOnly:true}),true);
+  assert.equal(matches('dirac',{methodological_components:['vae','deterministic']}),false);
   assert.notEqual(byId('mofa').method_doi,byId('mofa-plus').method_doi);
   assert.equal(byId('fgot').method_doi,'10.1016/j.cels.2025.101479');
   assert.equal(byId('scgcm').resource_url,'https://github.com/closmouz/scGCM');

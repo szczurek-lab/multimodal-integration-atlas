@@ -8,7 +8,7 @@
   "contextual_count": 31,
   "context_added_count": 17,
   "manuscript_coverage_added_count": 13,
-  "provisional_count": 2,
+  "provisional_count": 1,
   "inclusion_rule": "Methods integrating distinct measured modalities or distinct assay processes, including cross-modal prediction trained on linked modalities. Labels, augmentations, multiplex channels or a generic architecture alone do not qualify. Contextual methods remain in a separate register.",
   "changes": [
     {
@@ -672,6 +672,20 @@
       "old_doi": "10.48550/arXiv.2501.06039",
       "doi": "10.1038/s41586-026-10884-y",
       "url": "https://doi.org/10.1038/s41586-026-10884-y"
+    },
+    {
+      "method": "DIRAC",
+      "action": "classification-corrected",
+      "date": "2026-11-20",
+      "field": "methodological_components",
+      "before": "not-assessed",
+      "after": "deterministic",
+      "reason": "DIRAC uses graph encoders trained with reconstruction, domain-adversarial, maximum mean discrepancy and multimodal-consistency objectives. These explicit optimization objectives support the deterministic optimization building block.",
+      "sources": [
+        "https://www.nature.com/articles/s41592-026-03282-9.pdf",
+        "https://github.com/boxiangliulab/DIRAC/blob/b3875d059266ffdc1cd4ce9c18abd88da533d7c1/sodirac/model.py#L242-L320",
+        "https://github.com/boxiangliulab/DIRAC/blob/b3875d059266ffdc1cd4ce9c18abd88da533d7c1/sodirac/trainer.py#L144-L174"
+      ]
     }
   ],
   "limits": [

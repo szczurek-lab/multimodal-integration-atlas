@@ -664,19 +664,23 @@
         "uncertainty_type": "not-assessed",
         "uncertainty_target": "not-assessed",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "not-assessed",
+        "methodological_components": "deterministic",
         "primary_data_regime": "spatial-assays",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Paired within-unit multimodal integration and annotation transfer are distinct workflows. Horizontal integration of the same modality is not evidence of unpaired cross-modality support.",
+      "rationale": "DIRAC uses graph encoders trained with reconstruction, domain-adversarial, maximum mean discrepancy and multimodal-consistency objectives. These explicit optimization objectives support the deterministic optimization building block. Paired within-unit multimodal integration and annotation transfer are distinct workflows. Horizontal integration of the same modality is not evidence of unpaired cross-modality support.",
       "sources": [
         "https://doi.org/10.1038/s41592-026-03282-9",
-        "https://github.com/boxiangliulab/DIRAC/blob/main/README.md"
+        "https://github.com/boxiangliulab/DIRAC/blob/main/README.md",
+        "https://www.nature.com/articles/s41592-026-03282-9.pdf",
+        "https://github.com/boxiangliulab/DIRAC/blob/b3875d059266ffdc1cd4ce9c18abd88da533d7c1/sodirac/model.py#L242-L320",
+        "https://github.com/boxiangliulab/DIRAC/blob/b3875d059266ffdc1cd4ce9c18abd88da533d7c1/sodirac/trainer.py#L144-L174"
       ],
-      "status": "provisional"
+      "status": "reviewed",
+      "reviewed_on": "2026-11-20"
     },
     {
       "method_id": "divas",
