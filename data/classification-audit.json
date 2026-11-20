@@ -671,7 +671,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "DIRAC uses graph encoders trained with reconstruction, domain-adversarial, maximum mean discrepancy and multimodal-consistency objectives. These explicit optimization objectives support the deterministic optimization building block. Paired within-unit multimodal integration and annotation transfer are distinct workflows. Horizontal integration of the same modality is not evidence of unpaired cross-modality support.",
+      "rationale": "DIRAC maps each modality to point embeddings with graph encoders. Training optimizes reconstruction, domain-adversarial, maximum mean discrepancy and multimodal-consistency objectives. This construction belongs to the Deterministic optimization building block. Paired within-unit multimodal integration and annotation transfer are distinct workflows. Horizontal integration of the same modality is not evidence of unpaired cross-modality support.",
       "sources": [
         "https://doi.org/10.1038/s41592-026-03282-9",
         "https://github.com/boxiangliulab/DIRAC/blob/main/README.md",

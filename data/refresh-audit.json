@@ -680,7 +680,7 @@
       "field": "methodological_components",
       "before": "not-assessed",
       "after": "deterministic",
-      "reason": "DIRAC uses graph encoders trained with reconstruction, domain-adversarial, maximum mean discrepancy and multimodal-consistency objectives. These explicit optimization objectives support the deterministic optimization building block.",
+      "reason": "DIRAC maps each modality to point embeddings with graph encoders. Training optimizes reconstruction, domain-adversarial, maximum mean discrepancy and multimodal-consistency objectives. This construction belongs to the Deterministic optimization building block.",
       "sources": [
         "https://www.nature.com/articles/s41592-026-03282-9.pdf",
         "https://github.com/boxiangliulab/DIRAC/blob/b3875d059266ffdc1cd4ce9c18abd88da533d7c1/sodirac/model.py#L242-L320",
