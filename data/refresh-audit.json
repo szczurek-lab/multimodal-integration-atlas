@@ -763,5 +763,14 @@
       "evidence_record": "data/table1-evidence.json",
       "criterion_record": "data/table1-definition.json"
     }
-  ]
+  ],
+  "uncertainty_target_update": {
+    "checked_on": "2026-11-21",
+    "method_id": "spear",
+    "endpoint_predictive_uncertainty": "scoped negative",
+    "posterior_uncertainty": "positive, unchanged",
+    "calibration_evidence": "not-assessed, unchanged",
+    "repository_commit": "e7096291ef3aa3a0147acccdc0141f08fa59d43d",
+    "evidence_record": "data/table1-evidence.json"
+  }
 }

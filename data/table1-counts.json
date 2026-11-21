@@ -108,10 +108,10 @@
     ]
   },
   "input_hashes": {
-    "data/integration_methods_library.csv": "e5bcf3555e68407d63fa884527b66af21bb11ddeab927112e3898d6596b68bbb",
+    "data/integration_methods_library.csv": "35ac34bbb14fef2c782bb51ed64243d49881c5889f78e341c65ea0c51c5a2e1e",
     "data/table1-definition.json": "e1a1fba8f01348bb9935438abf44eb2176c73bc1fa6dc9ebddf3eb8efc9c127e",
     "data/table1-population.json": "12f41139dad07e38a8b15d46dcb4d18fcbd4c80151e36e1a81267846e7c5b654",
-    "data/table1-evidence.json": "de9093b745c0d12601bb936c9b16eb861889f8aec0dd86639a5242c594ee2327"
+    "data/table1-evidence.json": "325b4756c9a1f4c21626798c8f0564d71a6575552c9bd10591b4b5cf9c9b1858"
   },
   "totals": {
     "unique_methods": 91,
@@ -7087,10 +7087,10 @@
         },
         "probabilistic": {
           "n": 2,
-          "N": 40,
-          "unknown": 1,
+          "N": 41,
+          "unknown": 0,
           "column_total": 41,
-          "pct": 5.0,
+          "pct": 4.878048780487805,
           "display_pct": 5,
           "band": "0–<25%",
           "members": [
@@ -7133,13 +7133,12 @@
             "sofa",
             "spamultivae",
             "spatecv",
+            "spear",
             "totalvi",
             "treealign",
             "tumoroscope"
           ],
-          "excluded_unknown": [
-            "spear"
-          ]
+          "excluded_unknown": []
         },
         "vae": {
           "n": 0,
@@ -22228,9 +22227,13 @@
       "sources": [
         "https://doi.org/10.1093/bioinformatics/btae202",
         "https://bitbucket.org/kleinstein/SPEAR",
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11078774/"
+        "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-331",
+        "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-662",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11078774/",
+        "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-687",
+        "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-708"
       ],
-      "curation_notes": "Factors are fitted jointly with an outcome; explanatory signatures do not establish calibrated predictive intervals. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026).",
+      "curation_notes": "Factors are fitted jointly with an outcome. Posterior uncertainty for latent factors and loadings is retained. Direct inspection of the author prediction functions found point outputs or ordinary class probabilities, without endpoint predictive draws, intervals or variance. Endpoint predictive uncertainty is therefore a scoped negative under the table rule. Calibration evidence remains separately not-assessed.",
       "reviewed_on": "2026-11-21",
       "profile": {
         "method_id": "spear",
@@ -22247,16 +22250,43 @@
           ]
         },
         "predictive": {
-          "status": "not-assessed",
+          "status": "no",
           "target": "disease, clinical response, survival or other task-level phenotype",
-          "evidence": [
+          "rationale": "The inspected prediction workflow returns point predictions or ordinary softmax/logistic class probabilities from fitted coefficient matrices. It does not return endpoint posterior predictive draws, intervals or variance estimates. These outputs do not meet the endpoint uncertainty rule. This is a scoped negative for the inspected workflow, not a claim about every possible extension.",
+          "sources": [
+            {
+              "url": "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-331",
+              "locator": "get.factor.scores 331-348",
+              "evidence": "Forms factor scores by multiplying X by a fixed fitted regression coefficient matrix. Cross-validated predictions select the fitted matrix for the held-out fold. No posterior draws or variance propagation.",
+              "checked_on": "2026-11-21"
+            },
+            {
+              "url": "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-662",
+              "locator": "get.predictions 662-686",
+              "evidence": "Multiplies factor scores by fixed fitted response projection coefficients. For Gaussian responses returns the resulting prediction matrix only.",
+              "checked_on": "2026-11-21"
+            },
+            {
+              "url": "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-687",
+              "locator": "get.predictions 687-706",
+              "evidence": "Multinomial branch applies ordinary softmax to fixed signals plus fitted intercepts and returns class predictions, encoded predictions, class probabilities and signals.",
+              "checked_on": "2026-11-21"
+            },
+            {
+              "url": "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-708",
+              "locator": "get.predictions 708-754",
+              "evidence": "Ordinal/binomial branch transforms fixed signals and fitted thresholds with logistic functions, then returns class predictions, separations, probabilities and signals. No endpoint posterior predictive samples, intervals or variance output.",
+              "checked_on": "2026-11-21"
+            },
             {
               "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11078774/",
-              "locator": "Methods and Fig.1B",
-              "paraphrase": "Phenotype class probabilities are documented, but endpoint uncertainty beyond those probabilities (e.g. posterior predictive draws or intervals) was not established. Counts as yes only if the table rule includes uncalibrated predictive probabilities."
+              "locator": "Paper Methods and Figure 1B",
+              "evidence": "Paper describes variational posterior inference for factor scores/loadings and probabilities of class assignment. This supports retaining posterior uncertainty while distinguishing class probabilities from the table endpoint-uncertainty criterion.",
+              "checked_on": "2026-11-21"
             }
           ],
-          "probabilities_only": true
+          "repository_commit": "e7096291ef3aa3a0147acccdc0141f08fa59d43d",
+          "calibration_note": "Calibration evidence remains not-assessed. Lack of calibration is not the reason for this classification."
         },
         "source_audit": {
           "posterior_uncertainty": {
@@ -22360,8 +22390,83 @@
           "axis_supervision": "supervised",
           "axis_model_transparency": "explicit-mapping;explicit-likelihood",
           "uncertainty_type": "model-based",
-          "uncertainty_target": "latent-variables;predictions",
+          "uncertainty_target": "latent-variables",
           "calibration_evidence": "not-assessed"
+        },
+        "prior_uncertainty_assessments": [
+          {
+            "field": "predictive",
+            "assessment": {
+              "status": "not-assessed",
+              "target": "disease, clinical response, survival or other task-level phenotype",
+              "evidence": [
+                {
+                  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11078774/",
+                  "locator": "Methods and Fig.1B",
+                  "paraphrase": "Phenotype class probabilities are documented, but endpoint uncertainty beyond those probabilities (e.g. posterior predictive draws or intervals) was not established. Counts as yes only if the table rule includes uncalibrated predictive probabilities."
+                }
+              ],
+              "probabilities_only": true
+            },
+            "superseded_on": "2026-11-21",
+            "reason": "Direct author-code inspection resolves the output under the finalized table rule."
+          }
+        ],
+        "prior_source_audit_note": "source_audit and accepted_changes retain the earlier audit for provenance. The current predictive decision and followup_accepted_changes supersede the earlier unassessed endpoint uncertainty entry.",
+        "followup_source_review": {
+          "date": "2026-11-21",
+          "scope": "Current documented public prediction workflow; no claim that a mathematical extension or uninspected implementation cannot return posterior predictive uncertainty.",
+          "repository_commit": "e7096291ef3aa3a0147acccdc0141f08fa59d43d",
+          "sources": [
+            {
+              "url": "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-331",
+              "locator": "get.factor.scores 331-348",
+              "evidence": "Forms factor scores by multiplying X by a fixed fitted regression coefficient matrix. Cross-validated predictions select the fitted matrix for the held-out fold. No posterior draws or variance propagation.",
+              "checked_on": "2026-11-21"
+            },
+            {
+              "url": "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-662",
+              "locator": "get.predictions 662-686",
+              "evidence": "Multiplies factor scores by fixed fitted response projection coefficients. For Gaussian responses returns the resulting prediction matrix only.",
+              "checked_on": "2026-11-21"
+            },
+            {
+              "url": "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-687",
+              "locator": "get.predictions 687-706",
+              "evidence": "Multinomial branch applies ordinary softmax to fixed signals plus fitted intercepts and returns class predictions, encoded predictions, class probabilities and signals.",
+              "checked_on": "2026-11-21"
+            },
+            {
+              "url": "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-708",
+              "locator": "get.predictions 708-754",
+              "evidence": "Ordinal/binomial branch transforms fixed signals and fitted thresholds with logistic functions, then returns class predictions, separations, probabilities and signals. No endpoint posterior predictive samples, intervals or variance output.",
+              "checked_on": "2026-11-21"
+            },
+            {
+              "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11078774/",
+              "locator": "Paper Methods and Figure 1B",
+              "evidence": "Paper describes variational posterior inference for factor scores/loadings and probabilities of class assignment. This supports retaining posterior uncertainty while distinguishing class probabilities from the table endpoint-uncertainty criterion.",
+              "checked_on": "2026-11-21"
+            }
+          ]
+        },
+        "followup_accepted_changes": {
+          "uncertainty_target": {
+            "before": "latent-variables;predictions",
+            "after": "latent-variables"
+          },
+          "curation_notes": {
+            "before": "Factors are fitted jointly with an outcome; explanatory signatures do not establish calibrated predictive intervals. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026).",
+            "after": "Factors are fitted jointly with an outcome. Posterior uncertainty for latent factors and loadings is retained. Direct inspection of the author prediction functions found point outputs or ordinary class probabilities, without endpoint predictive draws, intervals or variance. Endpoint predictive uncertainty is therefore a scoped negative under the table rule. Calibration evidence remains separately not-assessed."
+          },
+          "evidence_sources": {
+            "before": "https://doi.org/10.1093/bioinformatics/btae202;https://bitbucket.org/kleinstein/SPEAR",
+            "after": "https://doi.org/10.1093/bioinformatics/btae202;https://bitbucket.org/kleinstein/SPEAR;https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-331;https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-662"
+          },
+          "endpoint_predictive_uncertainty": {
+            "before": "not-assessed",
+            "after": "no"
+          }
         }
       },
       "axis_values": {

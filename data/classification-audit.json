@@ -3125,7 +3125,7 @@
         "axis_supervision": "supervised",
         "integration_effects": "discovery;endpoint-prediction",
         "uncertainty_type": "model-based",
-        "uncertainty_target": "latent-variables;predictions",
+        "uncertainty_target": "latent-variables",
         "calibration_evidence": "not-assessed",
         "methodological_components": "probabilistic",
         "primary_data_regime": "sample-omics",
@@ -3134,10 +3134,12 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Factors are fitted jointly with an outcome; explanatory signatures do not establish calibrated predictive intervals. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
+      "rationale": "Factors are fitted jointly with an outcome. Posterior uncertainty for latent factors and loadings is retained. Direct inspection of the author prediction functions found point outputs or ordinary class probabilities, without endpoint predictive draws, intervals or variance. Endpoint predictive uncertainty is therefore a scoped negative under the table rule. Calibration evidence remains separately not-assessed.",
       "sources": [
         "https://doi.org/10.1093/bioinformatics/btae202",
-        "https://bitbucket.org/kleinstein/SPEAR"
+        "https://bitbucket.org/kleinstein/SPEAR",
+        "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-331",
+        "https://bitbucket.org/kleinstein/spear/src/e7096291ef3aa3a0147acccdc0141f08fa59d43d/R/2_helpers.R#lines-662"
       ],
       "status": "reviewed"
     },
