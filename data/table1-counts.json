@@ -108,10 +108,10 @@
     ]
   },
   "input_hashes": {
-    "data/integration_methods_library.csv": "35ac34bbb14fef2c782bb51ed64243d49881c5889f78e341c65ea0c51c5a2e1e",
-    "data/table1-definition.json": "e1a1fba8f01348bb9935438abf44eb2176c73bc1fa6dc9ebddf3eb8efc9c127e",
+    "data/integration_methods_library.csv": "67ed0e836c57c45e14c45c5663aef8f1e5954a8a1d77f3757b3a756b9a0b44e9",
+    "data/table1-definition.json": "460aed0a9a03728eef3821dbef681867bd1fb164769cfdb2a0d54f24da42b245",
     "data/table1-population.json": "12f41139dad07e38a8b15d46dcb4d18fcbd4c80151e36e1a81267846e7c5b654",
-    "data/table1-evidence.json": "325b4756c9a1f4c21626798c8f0564d71a6575552c9bd10591b4b5cf9c9b1858"
+    "data/table1-evidence.json": "6c6697193fc0efb81d5a4641cbb44e5fb2f9fe5ef4372dd123b64b2575084c69"
   },
   "totals": {
     "unique_methods": 91,
@@ -325,19 +325,19 @@
       "id": "25–<50%",
       "minimum": 25,
       "maximum_exclusive": 50,
-      "color": "#fff0bb"
+      "color": "#c9e4ff"
     },
     {
       "id": "50–<75%",
       "minimum": 50,
       "maximum_exclusive": 75,
-      "color": "#cee6d6"
+      "color": "#f1a9e1"
     },
     {
       "id": "75–100%",
       "minimum": 75,
       "maximum_inclusive": 100,
-      "color": "#83bea0"
+      "color": "#c485cd"
     }
   ],
   "rules": {
@@ -1026,7 +1026,7 @@
       "values": [
         "entry-level"
       ],
-      "definition": "The method explicitly handles unavailable individual measurements within an otherwise observed modality. Ordinary observed zeros in count data do not by themselves establish missing-data support.",
+      "definition": "The method explicitly handles unavailable individual measurements within an otherwise observed input modality. Differences between fixed assay feature panels and ordinary observed zeros do not alone establish missing-input support. The supported input pattern and fitting or inference stage are recorded.",
       "cells": {
         "deterministic": {
           "n": 2,
@@ -1246,7 +1246,7 @@
       "values": [
         "modality-level"
       ],
-      "definition": "The method explicitly supports an entirely unavailable modality for some units during fitting or inference. The evidence record identifies the stage. Cross-modal prediction after paired training can qualify at inference.",
+      "definition": "The documented fitting or inference procedure obtains the integrated representation or model output from available input modalities when another input modality is absent for a unit. The supported input pattern and stage are recorded. Predicting a prespecified target assay from complete source inputs does not by itself establish missing-input support. Absent measured unit pairs alone do not qualify.",
       "cells": {
         "deterministic": {
           "n": 4,
@@ -7735,9 +7735,10 @@
         "https://github.com/uhlerlab/APOLLO/blob/main/README.md",
         "https://www.nature.com/articles/s43588-025-00948-w",
         "https://github.com/uhlerlab/APOLLO/blob/main/atac_rna/model_lord.py",
-        "https://github.com/uhlerlab/APOLLO/blob/main/chromark/train_cnnvae_splitChannels_conditional_lord_randNoise_reverse_bce.ipynb"
+        "https://github.com/uhlerlab/APOLLO/blob/main/chromark/train_cnnvae_splitChannels_conditional_lord_randNoise_reverse_bce.ipynb",
+        "https://www.nature.com/articles/s43588-025-00948-w.pdf"
       ],
-      "curation_notes": "Core APOLLO is deterministic despite VAE-named baseline files. Shared/private separation is distinct from explicit subset-shared factors. Paired training and missing-target inference are recorded separately. Gaussian latent noise is regularization, not a learned posterior uncertainty output. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
+      "curation_notes": "Core APOLLO is deterministic despite VAE-named baseline files. Shared/private separation is distinct from explicit subset-shared factors. Paired training and single-assay inference of the integrated latent representation are recorded separately. Cross-modal target prediction is a distinct output. Gaussian latent noise is regularization, not a learned posterior uncertainty output. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
       "reviewed_on": "2026-11-21",
       "profile": {
         "method_id": "apollo",
@@ -7844,7 +7845,17 @@
           "axis_model_transparency": "structured-neural;post-hoc",
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
-          "calibration_evidence": "not-assessed"
+          "calibration_evidence": "not-assessed",
+          "axis_missingness": "fully-observed;modality-level",
+          "training_requirements": "Two-stage latent optimization learns shared/private embeddings and decoders from paired modalities, followed by modality-specific encoder fitting. After training, either RNA or chromatin accessibility alone can infer the learned shared factors for cell-type analysis. This is inference-stage support and does not establish training with incomplete profiles."
+        },
+        "missingness_clarification": {
+          "checked_on": "2026-11-21",
+          "status": "Existing modality-level assignment retained with clarified inference-stage evidence",
+          "training_requirements": "Two-stage latent optimization learns shared/private embeddings and decoders from paired modalities, followed by modality-specific encoder fitting. After training, either RNA or chromatin accessibility alone can infer the learned shared factors for cell-type analysis. This is inference-stage support and does not establish training with incomplete profiles.",
+          "source": "https://www.nature.com/articles/s43588-025-00948-w.pdf",
+          "locator": "Methods: Cell-type prediction based on the inferred latent spaces of scRNA-seq and scATAC-seq. Also Methods: Step 2 inference and Encoders of paired scRNA-seq and scATAC-seq.",
+          "finding": "Four classifiers are evaluated using shared factors from RNA alone, shared factors from ATAC alone, and shared plus modality-specific factors from either individual assay. Separate encoders were fitted to stage-1 latent targets."
         }
       },
       "axis_values": {

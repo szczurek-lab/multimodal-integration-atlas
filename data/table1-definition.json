@@ -51,19 +51,19 @@
       "id": "25–<50%",
       "minimum": 25,
       "maximum_exclusive": 50,
-      "color": "#fff0bb"
+      "color": "#c9e4ff"
     },
     {
       "id": "50–<75%",
       "minimum": 50,
       "maximum_exclusive": 75,
-      "color": "#cee6d6"
+      "color": "#f1a9e1"
     },
     {
       "id": "75–100%",
       "minimum": 75,
       "maximum_inclusive": 100,
-      "color": "#83bea0"
+      "color": "#c485cd"
     }
   ],
   "unknown_color": "#ffffff",
@@ -106,7 +106,7 @@
       "values": [
         "entry-level"
       ],
-      "definition": "The method explicitly handles unavailable individual measurements within an otherwise observed modality. Ordinary observed zeros in count data do not by themselves establish missing-data support."
+      "definition": "The method explicitly handles unavailable individual measurements within an otherwise observed input modality. Differences between fixed assay feature panels and ordinary observed zeros do not alone establish missing-input support. The supported input pattern and fitting or inference stage are recorded."
     },
     {
       "id": "modality-missing",
@@ -116,7 +116,7 @@
       "values": [
         "modality-level"
       ],
-      "definition": "The method explicitly supports an entirely unavailable modality for some units during fitting or inference. The evidence record identifies the stage. Cross-modal prediction after paired training can qualify at inference."
+      "definition": "The documented fitting or inference procedure obtains the integrated representation or model output from available input modalities when another input modality is absent for a unit. The supported input pattern and stage are recorded. Predicting a prespecified target assay from complete source inputs does not by itself establish missing-input support. Absent measured unit pairs alone do not qualify."
     },
     {
       "id": "single-level",

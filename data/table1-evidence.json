@@ -521,7 +521,17 @@
         "axis_model_transparency": "structured-neural;post-hoc",
         "uncertainty_type": "not-reported",
         "uncertainty_target": "not-applicable",
-        "calibration_evidence": "not-assessed"
+        "calibration_evidence": "not-assessed",
+        "axis_missingness": "fully-observed;modality-level",
+        "training_requirements": "Two-stage latent optimization learns shared/private embeddings and decoders from paired modalities, followed by modality-specific encoder fitting. After training, either RNA or chromatin accessibility alone can infer the learned shared factors for cell-type analysis. This is inference-stage support and does not establish training with incomplete profiles."
+      },
+      "missingness_clarification": {
+        "checked_on": "2026-11-21",
+        "status": "Existing modality-level assignment retained with clarified inference-stage evidence",
+        "training_requirements": "Two-stage latent optimization learns shared/private embeddings and decoders from paired modalities, followed by modality-specific encoder fitting. After training, either RNA or chromatin accessibility alone can infer the learned shared factors for cell-type analysis. This is inference-stage support and does not establish training with incomplete profiles.",
+        "source": "https://www.nature.com/articles/s43588-025-00948-w.pdf",
+        "locator": "Methods: Cell-type prediction based on the inferred latent spaces of scRNA-seq and scATAC-seq. Also Methods: Step 2 inference and Encoders of paired scRNA-seq and scATAC-seq.",
+        "finding": "Four classifiers are evaluated using shared factors from RNA alone, shared factors from ATAC alone, and shared plus modality-specific factors from either individual assay. Separate encoders were fitted to stage-1 latent targets."
       }
     },
     {
