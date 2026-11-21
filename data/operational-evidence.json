@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "schema_version": "2.1",
-  "checked_on": "2026-11-18",
+  "checked_on": "2026-11-21",
   "rubric": {
     "dataset_size": "Reported example scale: small <1,000; medium 1,000–99,999; large >=100,000 observational units. These thresholds are an atlas convention, not thresholds stated in the manuscript figure. Always read the unit, workflow and simulation/pretraining status. Examples do not establish minimum data needs, capacity, statistical power or equal difficulty across modalities.",
     "software_maturity": "Early: research code/archive with limited reuse infrastructure. Developing: documented setup and usage, but the full mature criteria are not established. Mature: installable package, documentation/tutorials, tests and versioned releases, or an established package-registry release with documentation and registry checks. This is an engineering-evidence classification, not age, popularity, maintenance, installation success, scientific accuracy or clinical certification. No inspectable implementation: not established.",
@@ -13,52 +13,73 @@
   },
   "counts": {
     "dataset_size": {
-      "not-assessed": 53,
-      "medium": 26,
-      "small": 12,
-      "large": 6
+      "large": 9,
+      "small": 20,
+      "medium": 38,
+      "not-assessed": 37
     },
     "software_maturity": {
-      "developing": 52,
+      "developing": 53,
       "mature": 24,
       "early": 8,
-      "not-assessed": 8
+      "not-assessed": 7
     },
     "compute_demand": {
-      "not-assessed": 65,
-      "moderate": 16,
-      "high": 7,
-      "limited": 9
+      "moderate": 22,
+      "not-assessed": 54,
+      "high": 13,
+      "limited": 11
     },
     "validation_evidence": {
       "internal": 92,
-      "independent": 13
+      "independent": 15
     }
   },
   "profiles": [
     {
       "method_id": "ace",
       "method": "ACE",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "large"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "160,000 cells in the reported scalability experiment. This describes the experiment, not a minimum requirement.",
         "sources": [
           "https://doi.org/10.1093/gpbjnl/qzaf062",
-          "https://github.com/CSUBioGroup/ACE-main"
+          "https://github.com/CSUBioGroup/ACE-main",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12582371/"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 160000,
+            "unit": "cells",
+            "stage": "scalability experiment",
+            "kind": "documented application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12582371/",
+            "locator": "Scalability analysis, Figure S15D"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "moderate"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "RTX 3090 with 128 GB host RAM in the scalability experiment.",
         "sources": [
-          "https://doi.org/10.1093/gpbjnl/qzaf062",
-          "https://github.com/CSUBioGroup/ACE-main"
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12582371/"
+        ],
+        "configurations": [
+          {
+            "field": "compute_demand",
+            "stage": "scalability experiment",
+            "accelerator_count": 1,
+            "accelerator": "RTX3090",
+            "host_ram_gb": 128,
+            "tier": "moderate",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12582371/",
+            "locator": "Scalability analysis"
+          }
         ]
       },
       "validation_evidence": {
@@ -95,17 +116,27 @@
     {
       "method_id": "ajive",
       "method": "AJIVE",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "small"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Author README constructs 200 observations in its reproducible AJIVE simulation. This is a synthetic example, not a biological cohort or minimum requirement. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
           "https://doi.org/10.1016/j.jmva.2018.03.008",
-          "https://github.com/idc9/r_jive"
+          "https://github.com/idc9/r_jive",
+          "https://github.com/idc9/r_jive/blob/HEAD/README.md"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 200,
+            "unit": "observations",
+            "stage": "reproducible demonstration",
+            "kind": "simulation",
+            "source": "https://github.com/idc9/r_jive/blob/HEAD/README.md",
+            "locator": "README, Generate simulated data example"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
@@ -424,8 +455,8 @@
       "checked_on": "2026-11-18",
       "dataset_size": {
         "values": [
-          "medium",
-          "small"
+          "small",
+          "medium"
         ],
         "note": "One lymphoma subject contributes 1,524 cells; the other contributes 874. The second subject demonstrates a smaller cellular dataset. These are reported examples, not a minimum sample size, capacity ceiling or power recommendation.",
         "sources": [
@@ -571,17 +602,27 @@
     {
       "method_id": "cell2location",
       "method": "cell2location",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "medium"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Documented posterior sample tensor has4035 locations and34 cell types. The observational units are4035 spatial locations, not1000 posterior draws. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
           "https://doi.org/10.1038/s41587-021-01139-4",
-          "https://github.com/BayraktarLab/cell2location"
+          "https://github.com/BayraktarLab/cell2location",
+          "https://cell2location.readthedocs.io/en/latest/notebooks/cell2location_tutorial.html"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 4035,
+            "unit": "spatial locations",
+            "stage": "author tutorial posterior inference",
+            "kind": "documented tutorial",
+            "source": "https://cell2location.readthedocs.io/en/latest/notebooks/cell2location_tutorial.html",
+            "locator": "Advanced use, posterior sample tensor shape"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
@@ -906,17 +947,59 @@
     {
       "method_id": "clue",
       "method": "CLUE",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "medium"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "42,492 Multiome training cells plus20,009 held-out;66,175 CITE-seq training plus15,066 held-out;34,774 SHARE-seq cells. Each experiment remains below100,000 cells. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
           "https://papers.neurips.cc/paper_files/paper/2022/hash/662b1774ba8845fc1fa3d1fc0177ceeb-Abstract-Conference.html",
-          "https://github.com/gao-lab/GLUE"
+          "https://github.com/gao-lab/GLUE",
+          "https://proceedings.neurips.cc/paper_files/paper/2022/file/662b1774ba8845fc1fa3d1fc0177ceeb-Paper-Conference.pdf"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 42492,
+            "unit": "cells",
+            "stage": "Multiome training",
+            "kind": "application",
+            "source": "https://proceedings.neurips.cc/paper_files/paper/2022/file/662b1774ba8845fc1fa3d1fc0177ceeb-Paper-Conference.pdf",
+            "locator": "Section5.1 p6"
+          },
+          {
+            "count": 20009,
+            "unit": "cells",
+            "stage": "Multiome held-out",
+            "kind": "application",
+            "source": "https://proceedings.neurips.cc/paper_files/paper/2022/file/662b1774ba8845fc1fa3d1fc0177ceeb-Paper-Conference.pdf",
+            "locator": "Section5.1 p6"
+          },
+          {
+            "count": 66175,
+            "unit": "cells",
+            "stage": "CITE training",
+            "kind": "application",
+            "source": "https://proceedings.neurips.cc/paper_files/paper/2022/file/662b1774ba8845fc1fa3d1fc0177ceeb-Paper-Conference.pdf",
+            "locator": "Section5.1 p6"
+          },
+          {
+            "count": 15066,
+            "unit": "cells",
+            "stage": "CITE held-out",
+            "kind": "application",
+            "source": "https://proceedings.neurips.cc/paper_files/paper/2022/file/662b1774ba8845fc1fa3d1fc0177ceeb-Paper-Conference.pdf",
+            "locator": "Section5.1 p6"
+          },
+          {
+            "count": 34774,
+            "unit": "cells",
+            "stage": "SHARE-seq integration",
+            "kind": "application",
+            "source": "https://proceedings.neurips.cc/paper_files/paper/2022/file/662b1774ba8845fc1fa3d1fc0177ceeb-Paper-Conference.pdf",
+            "locator": "Section5.1 p6"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
@@ -1019,7 +1102,7 @@
     {
       "method_id": "conch",
       "method": "CONCH",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
           "large"
@@ -1041,21 +1124,34 @@
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "high"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "Eight 80-GB A100 GPUs for pretraining. Do not apply this requirement to routine use of released weights.",
         "sources": [
-          "https://doi.org/10.1038/s41591-024-02856-4",
-          "https://github.com/mahmoodlab/CONCH"
+          "https://openreview.net/pdf/da0b92ad1ce26922877f70404a91245daa9d931f.pdf"
+        ],
+        "configurations": [
+          {
+            "field": "compute_demand",
+            "stage": "visual-language pretraining",
+            "accelerator_count": 8,
+            "accelerator": "A100",
+            "accelerator_memory_gb_each": 80,
+            "tier": "high",
+            "source": "https://openreview.net/pdf/da0b92ad1ce26922877f70404a91245daa9d931f.pdf",
+            "locator": "Methods: visual-language pretraining"
+          }
         ]
       },
       "validation_evidence": {
         "values": [
-          "internal"
+          "internal",
+          "independent"
         ],
-        "note": "Author-led experimental evaluation is reported in the original method publication. This audit has not established a separate independent or prospective evaluation; this is not evidence that none exists.",
+        "note": "Author-led experimental evaluation is reported in the original method publication. This audit has not established a separate independent or prospective evaluation; this is not evidence that none exists. Neidlinger et al. directly evaluate CONCH, with a distinct author team. This validates downstream feature transfer, not every multimodal use.",
         "sources": [
-          "https://doi.org/10.1038/s41591-024-02856-4"
+          "https://doi.org/10.1038/s41591-024-02856-4",
+          "https://www.nature.com/articles/s41551-025-01516-3"
         ]
       },
       "software_maturity": {
@@ -1083,35 +1179,68 @@
     {
       "method_id": "convirt",
       "method": "ConVIRT",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "medium",
+          "large"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "48,000 bone and 217,000 chest image/report pairs in separate pretraining datasets. These are images/pairs, not independent patients.",
         "sources": [
           "https://proceedings.mlr.press/v182/zhang22a.html",
-          "https://github.com/yuhaozhang/convirt"
+          "https://github.com/yuhaozhang/convirt",
+          "https://proceedings.mlr.press/v182/zhang22a/zhang22a.pdf"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 217000,
+            "unit": "image/report pairs",
+            "stage": "chest pretraining",
+            "kind": "pretraining",
+            "source": "https://proceedings.mlr.press/v182/zhang22a/zhang22a.pdf",
+            "locator": "Appendix, page21: data preprocessing",
+            "approximate": true
+          },
+          {
+            "count": 48000,
+            "unit": "image/report pairs",
+            "stage": "bone pretraining",
+            "kind": "pretraining",
+            "source": "https://proceedings.mlr.press/v182/zhang22a/zhang22a.pdf",
+            "locator": "Appendix, page21: data preprocessing",
+            "approximate": true
+          }
+        ]
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "moderate"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "Single Titan RTX GPU for the reported training configuration.",
         "sources": [
-          "https://proceedings.mlr.press/v182/zhang22a.html",
-          "https://github.com/yuhaozhang/convirt"
+          "https://proceedings.mlr.press/v182/zhang22a/zhang22a.pdf"
+        ],
+        "configurations": [
+          {
+            "field": "compute_demand",
+            "stage": "pretraining",
+            "accelerator_count": 1,
+            "accelerator": "Titan RTX",
+            "tier": "moderate",
+            "source": "https://proceedings.mlr.press/v182/zhang22a/zhang22a.pdf",
+            "locator": "Appendix: training details"
+          }
         ]
       },
       "validation_evidence": {
         "values": [
-          "internal"
+          "internal",
+          "independent"
         ],
-        "note": "Author-led experimental evaluation is reported in the original method publication. This audit has not established a separate independent or prospective evaluation; this is not evidence that none exists.",
+        "note": "Author-led experimental evaluation is reported in the original method publication. This audit has not established a separate independent or prospective evaluation; this is not evidence that none exists. BenchX directly evaluates ConVIRT under standardized pretraining and downstream protocols, with a distinct author team.",
         "sources": [
-          "https://proceedings.mlr.press/v182/zhang22a.html"
+          "https://proceedings.mlr.press/v182/zhang22a.html",
+          "https://papers.neurips.cc/paper_files/paper/2024/file/0cb35e10bf7bb73d10c12414edbd63fd-Paper-Datasets_and_Benchmarks_Track.pdf"
         ]
       },
       "software_maturity": {
@@ -1191,12 +1320,13 @@
     {
       "method_id": "destvi",
       "method": "DestVI",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "small"
+          "small",
+          "medium"
         ],
-        "note": "The MS1 spatial section has 400 spots (other sections have 369 and 323); the single-cell reference is an additional input. These are reported examples, not a minimum sample size, capacity ceiling or power recommendation.",
+        "note": "Tumor sections contain2125 and1902 spots after filtering, in addition to lymph-node sections with400,369 and323 spots. Existing small-only label omits the documented medium example. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
           "https://pmc.ncbi.nlm.nih.gov/articles/PMC9756396/"
         ],
@@ -1208,6 +1338,22 @@
             "kind": "published",
             "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9756396/",
             "note": "The MS1 spatial section has 400 spots (other sections have 369 and 323); the single-cell reference is an additional input."
+          },
+          {
+            "count": 2125,
+            "unit": "spatial spots",
+            "stage": "tumour section",
+            "kind": "application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9756396/",
+            "locator": "DestVI identifies a hypoxic population of macrophages"
+          },
+          {
+            "count": 1902,
+            "unit": "spatial spots",
+            "stage": "tumour section",
+            "kind": "application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9756396/",
+            "locator": "DestVI identifies a hypoxic population of macrophages"
           }
         ]
       },
@@ -1498,17 +1644,27 @@
     {
       "method_id": "divas",
       "method": "DIVAS",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "small"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "The author-maintained R implementation documents a six-block COVID-19 case study with 114 patient samples. This is an applied 2026 implementation example, not the original 2024 experiment. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
           "https://doi.org/10.1007/s11749-024-00923-z",
-          "https://github.com/ByronSyun/DIVAS"
+          "https://github.com/ByronSyun/DIVAS",
+          "https://github.com/jbprothero/Data-Integration-Via-Analysis-of-Subspaces"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 114,
+            "unit": "patient samples",
+            "stage": "COVID-19 author implementation example",
+            "kind": "application",
+            "source": "https://github.com/jbprothero/Data-Integration-Via-Analysis-of-Subspaces",
+            "locator": "README, Available Datasets: COVID-19 Multi-Omics"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
@@ -2968,24 +3124,64 @@
     {
       "method_id": "m2ef-nns",
       "method": "M2EF-NNs",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "small"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Each reported cancer cohort has fewer than 1,000 patients: 373, 567 and 955.",
         "sources": [
-          "https://doi.org/10.1038/s41598-025-93770-3"
+          "https://doi.org/10.1038/s41598-025-93770-3",
+          "https://www.nature.com/articles/s41598-025-93770-3"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 373,
+            "unit": "patients",
+            "stage": "survival-model training/evaluation",
+            "kind": "documented application",
+            "source": "https://www.nature.com/articles/s41598-025-93770-3",
+            "locator": "Experiments, dataset descriptions / Table1",
+            "cohort": "BLCA"
+          },
+          {
+            "count": 567,
+            "unit": "patients",
+            "stage": "survival-model training/evaluation",
+            "kind": "documented application",
+            "source": "https://www.nature.com/articles/s41598-025-93770-3",
+            "locator": "Experiments, dataset descriptions / Table1",
+            "cohort": "GBMLGG"
+          },
+          {
+            "count": 955,
+            "unit": "patients",
+            "stage": "survival-model training/evaluation",
+            "kind": "documented application",
+            "source": "https://www.nature.com/articles/s41598-025-93770-3",
+            "locator": "Experiments, dataset descriptions / Table1",
+            "cohort": "BRCA"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "moderate"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "A single NVIDIA 4090 GPU is explicitly reported.",
         "sources": [
           "https://doi.org/10.1038/s41598-025-93770-3"
+        ],
+        "configurations": [
+          {
+            "field": "compute_demand",
+            "stage": "training",
+            "accelerator_count": 1,
+            "accelerator": "NVIDIA 4090 (paper says GTX4090)",
+            "tier": "moderate",
+            "source": "https://www.nature.com/articles/s41598-025-93770-3",
+            "locator": "Implementation details"
+          }
         ]
       },
       "validation_evidence": {
@@ -3288,26 +3484,56 @@
     {
       "method_id": "medhive",
       "method": "MedHiVE",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "medium"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Merlin paired pretraining: 25,494 CT scans from 18,321 patients; both units lie within the medium band.",
         "sources": [
           "https://arxiv.org/abs/2611.08185",
-          "https://github.com/szczurek-lab/MedHiVE"
+          "https://github.com/szczurek-lab/MedHiVE",
+          "https://arxiv.org/html/2611.08185v1"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 25494,
+            "unit": "CT scans",
+            "stage": "paired Merlin pretraining",
+            "kind": "pretraining",
+            "source": "https://arxiv.org/html/2611.08185v1",
+            "locator": "Methods: datasets; Appendix B"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "high"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "Eight H100 GPUs for pretraining, one H100 80-GB GPU for fine-tuning/evaluation.",
         "sources": [
-          "https://arxiv.org/abs/2611.08185",
-          "https://github.com/szczurek-lab/MedHiVE"
+          "https://arxiv.org/html/2611.08185v1"
+        ],
+        "configurations": [
+          {
+            "field": "compute_demand",
+            "stage": "pretraining",
+            "accelerator_count": 8,
+            "accelerator": "H100",
+            "tier": "high",
+            "source": "https://arxiv.org/html/2611.08185v1",
+            "locator": "Implementation details"
+          },
+          {
+            "field": "compute_demand",
+            "stage": "fine-tuning/evaluation",
+            "accelerator_count": 1,
+            "accelerator": "H100",
+            "accelerator_memory_gb_each": 80,
+            "tier": "high",
+            "source": "https://arxiv.org/html/2611.08185v1",
+            "locator": "Implementation details"
+          }
         ]
       },
       "validation_evidence": {
@@ -3428,7 +3654,7 @@
     {
       "method_id": "metabolic-imaging",
       "method": "Metabolic–imaging integration (Eftekhari et al.)",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
           "not-assessed"
@@ -3459,11 +3685,12 @@
       },
       "software_maturity": {
         "values": [
-          "not-assessed"
+          "developing"
         ],
-        "note": "No inspectable public implementation was established for grading software maturity. Publication status and commercial availability do not substitute for inspectable software evidence.",
+        "note": "Author repository provides dependencies, setup and usage instructions for the main workflow. No tests/release evidence was established for a mature rating.",
         "sources": [
-          "https://doi.org/10.1016/j.cels.2026.101594"
+          "https://github.com/Angione-Lab/Fusing-imaging-and-metabolic-modelling-via-deep-learning/blob/HEAD/README.md",
+          "https://github.com/Angione-Lab/Fusing-imaging-and-metabolic-modelling-via-deep-learning/blob/HEAD/Survival%20model/Survival-prediction.py"
         ],
         "implementation": ""
       }
@@ -3756,17 +3983,73 @@
     {
       "method_id": "mmp",
       "method": "MMP",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "small"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "The six reported training/evaluation cohorts contain 359, 868, 412, 318, 296 and 340 patients.",
         "sources": [
           "https://proceedings.mlr.press/v235/song24b.html",
-          "https://github.com/mahmoodlab/MMP"
+          "https://github.com/mahmoodlab/MMP",
+          "https://arxiv.org/html/2407.00224v1"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 359,
+            "unit": "patients",
+            "stage": "survival training/evaluation",
+            "kind": "documented application",
+            "source": "https://arxiv.org/html/2407.00224v1",
+            "locator": "Experiments, datasets; Appendix D/Table5",
+            "cohort": "BLCA"
+          },
+          {
+            "count": 868,
+            "unit": "patients",
+            "stage": "survival training/evaluation",
+            "kind": "documented application",
+            "source": "https://arxiv.org/html/2407.00224v1",
+            "locator": "Experiments, datasets; Appendix D/Table5",
+            "cohort": "BRCA"
+          },
+          {
+            "count": 412,
+            "unit": "patients",
+            "stage": "survival training/evaluation",
+            "kind": "documented application",
+            "source": "https://arxiv.org/html/2407.00224v1",
+            "locator": "Experiments, datasets; Appendix D/Table5",
+            "cohort": "LUAD"
+          },
+          {
+            "count": 318,
+            "unit": "patients",
+            "stage": "survival training/evaluation",
+            "kind": "documented application",
+            "source": "https://arxiv.org/html/2407.00224v1",
+            "locator": "Experiments, datasets; Appendix D/Table5",
+            "cohort": "STAD"
+          },
+          {
+            "count": 296,
+            "unit": "patients",
+            "stage": "survival training/evaluation",
+            "kind": "documented application",
+            "source": "https://arxiv.org/html/2407.00224v1",
+            "locator": "Experiments, datasets; Appendix D/Table5",
+            "cohort": "CRC"
+          },
+          {
+            "count": 340,
+            "unit": "patients",
+            "stage": "survival training/evaluation",
+            "kind": "documented application",
+            "source": "https://arxiv.org/html/2407.00224v1",
+            "locator": "Experiments, datasets; Appendix D/Table5",
+            "cohort": "KIRC"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
@@ -3810,24 +4093,98 @@
     {
       "method_id": "mmsurv",
       "method": "MMSurv",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "small"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Each of the six cancer-specific cohorts in Table 1 has fewer than 1,000 patients. Do not replace patients with total tiles or pooled WSI count.",
         "sources": [
-          "https://doi.org/10.1093/bib/bbaf209"
+          "https://doi.org/10.1093/bib/bbaf209",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12077396/"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 801,
+            "unit": "patients",
+            "stage": "clinical cohorts described in Table1",
+            "kind": "documented application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12077396/",
+            "locator": "Table1: Clinical characteristics, gender/age rows",
+            "derivation": "Sum of male/female counts; independently agrees with age-band total. Do not pool with the Discussion total of 2364 WSIs.",
+            "cohort": "BRCA"
+          },
+          {
+            "count": 397,
+            "unit": "patients",
+            "stage": "clinical cohorts described in Table1",
+            "kind": "documented application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12077396/",
+            "locator": "Table1: Clinical characteristics, gender/age rows",
+            "derivation": "Sum of male/female counts; independently agrees with age-band total. Do not pool with the Discussion total of 2364 WSIs.",
+            "cohort": "COAD"
+          },
+          {
+            "count": 110,
+            "unit": "patients",
+            "stage": "clinical cohorts described in Table1",
+            "kind": "documented application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12077396/",
+            "locator": "Table1: Clinical characteristics, gender/age rows",
+            "derivation": "Sum of male/female counts; independently agrees with age-band total. Do not pool with the Discussion total of 2364 WSIs.",
+            "cohort": "ESCA"
+          },
+          {
+            "count": 331,
+            "unit": "patients",
+            "stage": "clinical cohorts described in Table1",
+            "kind": "documented application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12077396/",
+            "locator": "Table1: Clinical characteristics, gender/age rows",
+            "derivation": "Sum of male/female counts; independently agrees with age-band total. Do not pool with the Discussion total of 2364 WSIs.",
+            "cohort": "LIHC"
+          },
+          {
+            "count": 410,
+            "unit": "patients",
+            "stage": "clinical cohorts described in Table1",
+            "kind": "documented application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12077396/",
+            "locator": "Table1: Clinical characteristics, gender/age rows",
+            "derivation": "Sum of male/female counts; independently agrees with age-band total. Do not pool with the Discussion total of 2364 WSIs.",
+            "cohort": "LUAD"
+          },
+          {
+            "count": 381,
+            "unit": "patients",
+            "stage": "clinical cohorts described in Table1",
+            "kind": "documented application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12077396/",
+            "locator": "Table1: Clinical characteristics, gender/age rows",
+            "derivation": "Sum of male/female counts; independently agrees with age-band total. Do not pool with the Discussion total of 2364 WSIs.",
+            "cohort": "STAD"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "high"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "The paper names A100 for training. Manufacturer specifications establish 40-GB and 80-GB A100 variants, both meeting the atlas high-memory threshold. The paper does not distinguish the variant. This describes the documented device, not measured memory consumption or a minimum requirement.",
         "sources": [
-          "https://doi.org/10.1093/bib/bbaf209"
+          "https://doi.org/10.1093/bib/bbaf209",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12077396/",
+          "https://images.nvidia.com/data-center/a100/a100-datasheet.pdf"
+        ],
+        "configurations": [
+          {
+            "stage": "training",
+            "device": "A100",
+            "device_memory_gb_minimum": 40,
+            "paper_source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12077396/",
+            "specification_source": "https://images.nvidia.com/data-center/a100/a100-datasheet.pdf",
+            "basis": "Named device in paper plus manufacturer capacity specifications, not inferred workload demand."
+          }
         ]
       },
       "validation_evidence": {
@@ -4070,26 +4427,81 @@
     {
       "method_id": "monae",
       "method": "Monae",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "medium",
+          "large"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Documented examples include 9,631 PBMCs, 9,190 cortical cells and 32,231 skin cells, as well as 4,062,980 RNA and 720,613 ATAC cells across human organs. These distinct datasets support medium and large example scales.",
         "sources": [
           "https://doi.org/10.1038/s41467-024-53355-6",
-          "https://github.com/shapsider/monae"
+          "https://github.com/shapsider/monae",
+          "https://www.nature.com/articles/s41467-024-53355-6"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 9631,
+            "unit": "cells",
+            "stage": "multimodal integration",
+            "kind": "application",
+            "source": "https://www.nature.com/articles/s41467-024-53355-6",
+            "locator": "Results: Model architecture and experiments"
+          },
+          {
+            "count": 9190,
+            "unit": "cells",
+            "stage": "multimodal integration",
+            "kind": "application",
+            "source": "https://www.nature.com/articles/s41467-024-53355-6",
+            "locator": "Results: Model architecture and experiments"
+          },
+          {
+            "count": 32231,
+            "unit": "cells",
+            "stage": "multimodal integration",
+            "kind": "application",
+            "source": "https://www.nature.com/articles/s41467-024-53355-6",
+            "locator": "Results: Model architecture and experiments"
+          },
+          {
+            "count": 4062980,
+            "unit": "RNA-profiled cells",
+            "stage": "multimodal integration",
+            "kind": "application",
+            "source": "https://www.nature.com/articles/s41467-024-53355-6",
+            "locator": "Results: Model architecture and experiments"
+          },
+          {
+            "count": 720613,
+            "unit": "ATAC-profiled cells",
+            "stage": "multimodal integration",
+            "kind": "application",
+            "source": "https://www.nature.com/articles/s41467-024-53355-6",
+            "locator": "Results: Model architecture and experiments"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "high"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "The paper names RTX A6000 for training. Manufacturer specifications establish 48 GB device memory. This describes the documented device, not measured memory consumption or a minimum requirement.",
         "sources": [
           "https://doi.org/10.1038/s41467-024-53355-6",
-          "https://github.com/shapsider/monae"
+          "https://github.com/shapsider/monae",
+          "https://www.nature.com/articles/s41467-024-53355-6",
+          "https://www.nvidia.com/content/dam/en-zz/Solutions/products/workstations/nvidia-rtx-a6000-datasheet.pdf"
+        ],
+        "configurations": [
+          {
+            "stage": "training",
+            "device": "RTX A6000",
+            "device_memory_gb_minimum": 48,
+            "paper_source": "https://www.nature.com/articles/s41467-024-53355-6",
+            "specification_source": "https://www.nvidia.com/content/dam/en-zz/Solutions/products/workstations/nvidia-rtx-a6000-datasheet.pdf",
+            "basis": "Named device in paper plus manufacturer capacity specifications, not inferred workload demand."
+          }
         ]
       },
       "validation_evidence": {
@@ -4269,14 +4681,16 @@
     {
       "method_id": "mowgli",
       "method": "Mowgli",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "small"
+          "small",
+          "medium"
         ],
-        "note": "README PBMC demo contains 500 cells; its cell-line demo contains 206. These are reported examples, not a minimum sample size, capacity ceiling or power recommendation.",
+        "note": "Published BM-CITE analysis has 29,803 cells. Keep earlier documented small examples and add medium. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
-          "https://github.com/cantinilab/Mowgli"
+          "https://github.com/cantinilab/Mowgli",
+          "https://www.nature.com/articles/s41467-023-43019-2"
         ],
         "examples": [
           {
@@ -4286,6 +4700,14 @@
             "kind": "documented example",
             "source": "https://github.com/cantinilab/Mowgli",
             "note": "README PBMC demo contains 500 cells; its cell-line demo contains 206."
+          },
+          {
+            "count": 29803,
+            "unit": "cells",
+            "stage": "BM-CITE integration",
+            "kind": "application",
+            "source": "https://www.nature.com/articles/s41467-023-43019-2",
+            "locator": "Original paper, Results: complex and heterogeneous datasets and Methods: BM-CITE"
           }
         ]
       },
@@ -4693,7 +5115,7 @@
     {
       "method_id": "multimil",
       "method": "MultiMIL",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
           "not-assessed"
@@ -4728,9 +5150,10 @@
         "values": [
           "mature"
         ],
-        "note": "Observed in the public implementation: package setup, test files, tutorial/API documentation files, setup instructions, usage example, versioned release v1.0.0. Classification concerns the inspected software, not installation success, accuracy, clinical readiness or active maintenance.",
+        "note": "Pinned v1 implementation: installable PyPI 0.2.0 release (30 July 2024), documented setup, paired/trimodal integration and MIL tutorials, and package build/twine checks. This meets the registry/documentation/build-check route. The inspected tests are smoke tests, not substantive scientific validation. Later MIL-only releases are not the basis of this grade.",
         "sources": [
-          "https://github.com/theislab/multimil/tree/c34d1c4b1d3d4f123f9b888ac8a75645e6bea14e"
+          "https://github.com/theislab/multimil/tree/2bb4f90eff483df0b6deff73f505ed2db38fb08e",
+          "https://pypi.org/project/multimil/0.2.0/"
         ],
         "implementation": "https://github.com/theislab/multimil",
         "repository_commit": "c34d1c4b1d3d4f123f9b888ac8a75645e6bea14e",
@@ -5652,7 +6075,7 @@
     {
       "method_id": "rosie",
       "method": "ROSIE",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
           "medium"
@@ -5674,12 +6097,36 @@
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "limited",
+          "moderate",
+          "high"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "CPU/consumer-GPU deployment is described; training uses four V100 GPUs. Retain stage labels.",
         "sources": [
-          "https://doi.org/10.1038/s41467-025-62346-0",
-          "https://gitlab.com/enable-medicine-public/rosie"
+          "https://doi.org/10.1038/s41467-025-62346-0"
+        ],
+        "configurations": [
+          {
+            "field": "compute_demand",
+            "stage": "training",
+            "accelerator_count": 4,
+            "accelerator": "V100",
+            "tier": "high",
+            "source": "https://www.nature.com/articles/s41467-025-62346-0",
+            "locator": "Methods: model architecture and training"
+          },
+          {
+            "field": "compute_demand",
+            "stage": "deployment recommendation",
+            "cpu_supported": true,
+            "accelerator_count": 1,
+            "accelerator": "consumer-grade GPU, not further specified",
+            "tier": "limited;moderate",
+            "evidence_type": "author-stated deployment capability, not a timed or memory-profiled single-device benchmark",
+            "source": "https://www.nature.com/articles/s41467-025-62346-0",
+            "locator": "Methods, immediately after four-V100 training/evaluation paragraph",
+            "evidence": "The authors explicitly state deployment on a single on-premise consumer-grade GPU or CPU."
+          }
         ]
       },
       "validation_evidence": {
@@ -6036,7 +6483,7 @@
     {
       "method_id": "scmgcl",
       "method": "scMGCL",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
           "not-assessed"
@@ -6050,12 +6497,25 @@
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "moderate"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "Reported benchmark configuration uses a 120-GB workstation and GPU configuration RTX4090 24 GB. Exact CPU/GPU assignment for each tool is in Supplementary Table S3.",
         "sources": [
-          "https://doi.org/10.1093/bioinformatics/btaf392",
-          "https://github.com/zlCreator/scMGCL"
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC12308176/"
+        ],
+        "configurations": [
+          {
+            "field": "compute_demand",
+            "stage": "benchmark hardware pool",
+            "cpu": "16-vCPU Xeon Gold6430",
+            "host_ram_gb": 120,
+            "accelerator": "RTX4090",
+            "accelerator_memory_gb_each": 24,
+            "tier": "moderate",
+            "limitation": "Source does not assign the CPU/GPU configuration to each method in main text. TableS3 is required before claiming scMGCL GPU use.",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12308176/",
+            "locator": "Results 3.3"
+          }
         ]
       },
       "validation_evidence": {
@@ -6090,17 +6550,76 @@
     {
       "method_id": "scmnmf",
       "method": "scMNMF",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "small",
+          "medium"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Table 1: simulated 530 and 250 cells; real datasets 3,762, 6,661, 11,020, 16,828 and 30,672 cells. Both bands are supported and example type remains explicit. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
           "https://doi.org/10.1093/bib/bbae228",
-          "https://github.com/yushanqiu/scMNMF"
+          "https://github.com/yushanqiu/scMNMF",
+          "https://academic.oup.com/bib/article/25/3/bbae228/7675151"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 530,
+            "unit": "cells",
+            "stage": "simulation 1",
+            "kind": "simulation",
+            "source": "https://academic.oup.com/bib/article/25/3/bbae228/7675151",
+            "locator": "Original paper Table 1"
+          },
+          {
+            "count": 250,
+            "unit": "cells",
+            "stage": "simulation 2",
+            "kind": "simulation",
+            "source": "https://academic.oup.com/bib/article/25/3/bbae228/7675151",
+            "locator": "Original paper Table 1"
+          },
+          {
+            "count": 3762,
+            "unit": "cells",
+            "stage": "paired multiomics integration",
+            "kind": "application",
+            "source": "https://academic.oup.com/bib/article/25/3/bbae228/7675151",
+            "locator": "Original paper Table 1"
+          },
+          {
+            "count": 6661,
+            "unit": "cells",
+            "stage": "paired multiomics integration",
+            "kind": "application",
+            "source": "https://academic.oup.com/bib/article/25/3/bbae228/7675151",
+            "locator": "Original paper Table 1"
+          },
+          {
+            "count": 11020,
+            "unit": "cells",
+            "stage": "paired multiomics integration",
+            "kind": "application",
+            "source": "https://academic.oup.com/bib/article/25/3/bbae228/7675151",
+            "locator": "Original paper Table 1"
+          },
+          {
+            "count": 16828,
+            "unit": "cells",
+            "stage": "paired multiomics integration",
+            "kind": "application",
+            "source": "https://academic.oup.com/bib/article/25/3/bbae228/7675151",
+            "locator": "Original paper Table 1"
+          },
+          {
+            "count": 30672,
+            "unit": "cells",
+            "stage": "paired multiomics integration",
+            "kind": "application",
+            "source": "https://academic.oup.com/bib/article/25/3/bbae228/7675151",
+            "locator": "Original paper Table 1"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
@@ -6359,17 +6878,27 @@
     {
       "method_id": "sofa",
       "method": "SOFA",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "medium"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Joint RNA/ATAC application comprises45,549 cells from12 donors. This records cells as analysis units, not45,549 independent patients. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
           "https://doi.org/10.1038/s41467-026-74694-6",
-          "https://github.com/tcapraz/SOFA"
+          "https://github.com/tcapraz/SOFA",
+          "https://www.nature.com/articles/s41467-026-74694-6"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 45549,
+            "unit": "cells",
+            "stage": "joint RNA/ATAC cortex analysis (12 donors)",
+            "kind": "application",
+            "source": "https://www.nature.com/articles/s41467-026-74694-6",
+            "locator": "Results, developing cerebral cortex application"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
@@ -6635,17 +7164,52 @@
     {
       "method_id": "spear",
       "method": "SPEAR",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "small",
+          "medium"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Synthetic experiments use500 training and2000 test samples; real data include989 breast biopsies and254 COVID plus124 healthy samples. Small and medium documented scale, distinguishing synthetic from clinical cohorts. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
           "https://doi.org/10.1093/bioinformatics/btae202",
-          "https://bitbucket.org/kleinstein/SPEAR"
+          "https://bitbucket.org/kleinstein/SPEAR",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC11078774/"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 500,
+            "unit": "observations",
+            "stage": "simulation training",
+            "kind": "simulation",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11078774/",
+            "locator": "Results Sections3.1–3.2"
+          },
+          {
+            "count": 2000,
+            "unit": "observations",
+            "stage": "simulation test",
+            "kind": "simulation",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11078774/",
+            "locator": "Results Sections3.1–3.2"
+          },
+          {
+            "count": 989,
+            "unit": "breast biopsies",
+            "stage": "breast-cancer application",
+            "kind": "application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11078774/",
+            "locator": "Results Sections3.1–3.2"
+          },
+          {
+            "count": 378,
+            "unit": "participants",
+            "stage": "COVID19 and healthy cohort (254+124)",
+            "kind": "application",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11078774/",
+            "locator": "Results Sections3.1–3.2"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
@@ -6769,7 +7333,7 @@
     {
       "method_id": "tilted-cca",
       "method": "Tilted-CCA",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
           "not-assessed"
@@ -6783,13 +7347,13 @@
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "limited"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "Author README states development/testing on a MacBook with Intel Core i7 running macOS 11.6.8.",
         "sources": [
-          "https://doi.org/10.1073/pnas.2303647120",
-          "https://github.com/linnykos/tiltedCCA"
-        ]
+          "https://github.com/linnykos/tiltedCCA/blob/HEAD/README.md"
+        ],
+        "configurations": []
       },
       "validation_evidence": {
         "values": [
@@ -6864,7 +7428,7 @@
     {
       "method_id": "titan",
       "method": "TITAN",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
           "large"
@@ -6886,12 +7450,34 @@
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "moderate",
+          "high"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "Single 24-GB RTX3090 for downstream experiments; eight 80-GB A100 GPUs for TITAN pretraining.",
         "sources": [
-          "https://doi.org/10.1038/s41591-025-03982-3",
-          "https://github.com/mahmoodlab/TITAN"
+          "https://doi.org/10.1038/s41591-025-03982-3"
+        ],
+        "configurations": [
+          {
+            "field": "compute_demand",
+            "stage": "TITAN pretraining",
+            "accelerator_count": 8,
+            "accelerator": "A100",
+            "accelerator_memory_gb_each": 80,
+            "tier": "high",
+            "source": "https://www.nature.com/articles/s41591-025-03982-3",
+            "locator": "Methods: computing software and hardware"
+          },
+          {
+            "field": "compute_demand",
+            "stage": "downstream experiments",
+            "accelerator_count": 1,
+            "accelerator": "RTX3090",
+            "accelerator_memory_gb_each": 24,
+            "tier": "moderate",
+            "source": "https://www.nature.com/articles/s41591-025-03982-3",
+            "locator": "Methods: computing software and hardware"
+          }
         ]
       },
       "validation_evidence": {
@@ -7244,17 +7830,44 @@
     {
       "method_id": "treealign",
       "method": "TreeAlign",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "small",
+          "medium"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Explicit simulations use100,1000 and5000 scRNA cells. Both documented tiers apply, including synthetic examples. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
           "https://doi.org/10.1038/s41467-024-46710-0",
-          "https://github.com/shahcompbio/TreeAlign"
+          "https://github.com/shahcompbio/TreeAlign",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC10954741/"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 100,
+            "unit": "cells",
+            "stage": "clone assignment simulation",
+            "kind": "simulation",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10954741/",
+            "locator": "Methods: Benchmarking clone assignment and dosage effect prediction with simulations"
+          },
+          {
+            "count": 1000,
+            "unit": "cells",
+            "stage": "clone assignment simulation",
+            "kind": "simulation",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10954741/",
+            "locator": "Methods: Benchmarking clone assignment and dosage effect prediction with simulations"
+          },
+          {
+            "count": 5000,
+            "unit": "cells",
+            "stage": "clone assignment simulation",
+            "kind": "simulation",
+            "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10954741/",
+            "locator": "Methods: Benchmarking clone assignment and dosage effect prediction with simulations"
+          }
+        ]
       },
       "compute_demand": {
         "values": [
@@ -7355,17 +7968,35 @@
     {
       "method_id": "uinmf",
       "method": "UINMF",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "medium"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Original paper documents joint integration of mouse 71,639 and lizard 4,187 cells; both medium. These are reported applications, not capacity limits. Reported examples retain their observation unit and stage, and do not establish a minimum sample size or capacity limit.",
         "sources": [
           "https://doi.org/10.1038/s41467-022-28431-4",
-          "https://github.com/welch-lab/liger"
+          "https://github.com/welch-lab/liger",
+          "https://www.nature.com/articles/s41467-022-28431-4"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 71639,
+            "unit": "mouse cells",
+            "stage": "cross-species integration",
+            "kind": "application",
+            "source": "https://www.nature.com/articles/s41467-022-28431-4",
+            "locator": "Original paper, cross-species integration Results"
+          },
+          {
+            "count": 4187,
+            "unit": "lizard cells",
+            "stage": "cross-species integration",
+            "kind": "application",
+            "source": "https://www.nature.com/articles/s41467-022-28431-4",
+            "locator": "Original paper, cross-species integration Results"
+          }
+        ]
       },
       "compute_demand": {
         "values": [

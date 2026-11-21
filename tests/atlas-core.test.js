@@ -24,9 +24,15 @@ test('Modality prediction does not imply missing-input tolerance', () => {
   assert.equal(matches('multivi',{integration_effects:['cross-modal-prediction'],axis_missingness:['modality-level']}),true);
 });
 test('Unknown properties cannot satisfy positive requirements', () => {
-  assert.equal(matches('clue',{axis_supervision:['supervised']}),false);
-  assert.equal(matches('clue',{axis_supervision:['not-assessed']}),true);
-  assert.equal(matches('mofa',{calibration_evidence:['evaluated']}),false);
+  // Synthetic fixtures keep unknown handling independent of new evidence about real methods.
+  for (const value of ['not-assessed', '', undefined]) {
+    const method={method_id:'unknown-fixture',inclusion_status:'included',axis_supervision:value,calibration_evidence:value};
+    assert.equal(C.methodMatches(method,{axis_supervision:['supervised']},schema.fields),false);
+    assert.equal(C.methodMatches(method,{axis_supervision:['not-assessed']},schema.fields),true);
+    assert.equal(C.methodMatches(method,{calibration_evidence:['evaluated']},schema.fields),false);
+    assert.equal(C.methodMatches(method,{calibration_evidence:['not-assessed']},schema.fields),true);
+  }
+  assert.equal(C.methodMatches({inclusion_status:'included',axis_supervision:'supervised'}, {axis_supervision:['supervised']},schema.fields),true);
 });
 test('Pending, contextual and excluded records are never recommendations', () => {
   for (const status of ['pending','contextual','excluded']) assert.equal(C.methodMatches({...byId('mofa'),inclusion_status:status},{},schema.fields),false);
@@ -84,10 +90,20 @@ test('Practical criteria combine with the scientific axes and survive shortlist 
   assert.ok(exported.every(r=>r.compute_demand_sources && r.dataset_size_notes && r.operational_checked_on));
 });
 test('Unestablished practical evidence cannot satisfy a positive filter', () => {
-  assert.equal(matches('medhive',{software_maturity:['mature','developing','early']}),false);
-  assert.equal(matches('medhive',{software_maturity:['not-assessed']}),true);
-  assert.equal(matches('ajive',{compute_demand:['limited','moderate','high']}),false);
-  assert.equal(matches('ajive',{dataset_size:['small','medium','large']}),false);
+  const practicalValues={
+    software_maturity:['mature','developing','early'],
+    compute_demand:['limited','moderate','high'],
+    dataset_size:['small','medium','large'],
+    validation_evidence:['internal','independent','prospective']
+  };
+  for (const [field, positiveValues] of Object.entries(practicalValues)) {
+    for (const value of ['not-assessed', '', undefined]) {
+      const method={method_id:'unknown-practical-fixture',inclusion_status:'included',[field]:value};
+      assert.equal(C.methodMatches(method,{[field]:positiveValues},schema.fields),false,field);
+      assert.equal(C.methodMatches(method,{[field]:['not-assessed']},schema.fields),true,field);
+    }
+    assert.equal(C.methodMatches({inclusion_status:'included',[field]:positiveValues[0]},{[field]:positiveValues},schema.fields),true,field);
+  }
 });
 test('Trial provenance and a reachable data repository do not overstate readiness', () => {
   assert.equal(matches('mmai',{validation_evidence:['internal']}),true);

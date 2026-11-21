@@ -354,6 +354,10 @@
           "label": "Post-hoc uncertainty"
         },
         {
+          "value": "resampling-based",
+          "label": "Resampling / structural inference"
+        },
+        {
           "value": "not-reported",
           "label": "No uncertainty output documented"
         },
@@ -389,6 +393,14 @@
         {
           "value": "modality-evidence",
           "label": "Modality evidence"
+        },
+        {
+          "value": "structure",
+          "label": "Ranks / subspaces"
+        },
+        {
+          "value": "not-applicable",
+          "label": "No uncertainty output documented"
         },
         {
           "value": "not-assessed",
@@ -542,7 +554,7 @@
         },
         {
           "value": "mil",
-          "label": "Set representation and multiple instance learning"
+          "label": "Set representation / MIL"
         },
         {
           "value": "not-assessed",

@@ -15,8 +15,8 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "self-supervised",
         "integration_effects": "discovery;alignment;imputation",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "contrastive",
         "primary_data_regime": "single-cell-omics",
@@ -25,7 +25,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "ACE-align learns cross-modal alignment from overlapping measurements; ACE-spec preserves modality-specific representations and completes missing modalities. A connected pattern of paired modalities is required; this is not unsupported diagonal alignment with no bridge.",
+      "rationale": "ACE-align learns cross-modal alignment from overlapping measurements; ACE-spec preserves modality-specific representations and completes missing modalities. A connected pattern of paired modalities is required; this is not unsupported diagonal alignment with no bridge. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/gpbjnl/qzaf062",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC12582371/",
@@ -48,17 +48,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "resampling-based",
+        "uncertainty_target": "structure",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "sample-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Angle-based estimation separates joint and individual variation for matched observations.",
+      "rationale": "Angle-based estimation separates joint and individual variation for matched observations. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1016/j.jmva.2018.03.008",
         "https://github.com/idc9/r_jive/blob/master/README.md",
@@ -72,16 +72,16 @@
       "legacy_axes": {},
       "current_profile": {
         "axis_correspondence": "paired",
-        "axis_missingness": "fully-observed",
+        "axis_missingness": "fully-observed;modality-level",
         "axis_granularity": "single-level",
         "axis_model_transparency": "structured-neural;post-hoc",
-        "axis_modality_decomposition": "shared-and-specific;partially-shared",
+        "axis_modality_decomposition": "shared-and-specific",
         "axis_prior_knowledge": "none",
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
-        "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "integration_effects": "discovery;cross-modal-prediction",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics;image-omics",
@@ -90,7 +90,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Explicit partially shared and modality-specific embeddings. The author implementation uses latent optimization; a VAE label is not assumed solely from its position in the review.",
+      "rationale": "Explicit partially shared and modality-specific embeddings. The author implementation uses latent optimization; a VAE label is not assumed solely from its position in the review. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s43588-025-00948-w",
         "https://github.com/uhlerlab/APOLLO/blob/main/README.md"
@@ -130,7 +130,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Reference-guided bulk deconvolution; shared genes link assays. Cell-type fractions are the target, not a generic shared/private embedding.",
+      "rationale": "Reference-guided bulk deconvolution; shared genes link assays. Cell-type fractions are the target, not a generic shared/private embedding. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s43018-022-00356-3",
         "https://github.com/Danko-Lab/BayesPrism/blob/main/README.md"
@@ -170,7 +170,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "BSF is unsupervised; the BSFP extension jointly models an outcome. Gibbs sampling uses analytic full conditionals, not a closed-form joint posterior.",
+      "rationale": "BSF is unsupervised; the BSFP extension jointly models an outcome. Gibbs sampling uses analytic full conditionals, not a closed-form joint posterior. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1016/j.csda.2024.107974",
         "https://github.com/sarahsamorodnitsky/BSFP/blob/master/README.md"
@@ -210,7 +210,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Clonal information is integrated with transcriptional heterogeneity; correspondence depends on the available genotyping evidence.",
+      "rationale": "Clonal information is integrated with transcriptional heterogeneity; correspondence depends on the available genotyping evidence. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1186/s13059-024-03417-1",
         "https://github.com/szczurek-lab/CaClust/blob/main/README.md"
@@ -250,7 +250,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Clonal architecture and transcriptomic groups are related through a task-specific probabilistic model.",
+      "rationale": "Clonal architecture and transcriptomic groups are related through a task-specific probabilistic model. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1186/s13073-021-00842-w",
         "https://github.com/LUMC/CACTUS/blob/master/README.md"
@@ -280,17 +280,17 @@
         "axis_method_scope": "task-specific",
         "axis_supervision": "self-supervised",
         "integration_effects": "alignment;cross-modal-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "contrastive;foundation-pretraining",
+        "methodological_components": "contrastive",
         "primary_data_regime": "image-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders.",
+      "rationale": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1158/0008-5472.CAN-26-1480",
         "https://github.com/Jwzouchenlab/CarHE/blob/main/README.md"
@@ -330,7 +330,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Estimates cell-type abundance at spatial locations using a reference; shared genes link assays. Sparse count zeros are not treated as arbitrary missing entries.",
+      "rationale": "Estimates cell-type abundance at spatial locations using a reference; shared genes link assays. Sparse count zeros are not treated as arbitrary missing entries. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41587-021-01139-4",
         "https://github.com/BayraktarLab/cell2location/blob/master/README.md"
@@ -361,7 +361,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "The multimodal pipeline uses histology-derived cell-count estimates plus marker-gene priors; curated marker lists alone are not an independently measured modality.",
+      "rationale": "The multimodal pipeline uses histology-derived cell-count estimates plus marker-gene priors; curated marker lists alone are not an independently measured modality. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1186/s13059-023-02951-8",
         "https://github.com/szczurek-lab/Celloscope/blob/main/README.md"
@@ -382,8 +382,8 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "self-supervised",
         "integration_effects": "discovery;alignment",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "contrastive;foundation-pretraining",
         "primary_data_regime": "omics-text",
@@ -392,7 +392,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "available"
       },
-      "rationale": "Contrastive transcriptome-text pretraining supports retrieval and a transcriptome-aware chat interface. Text descriptions are curated from metadata; they are not a second molecular assay. Paired training is separate from querying a new RNA-only dataset.",
+      "rationale": "Contrastive transcriptome-text pretraining supports retrieval and a transcriptome-aware chat interface. Text descriptions are curated from metadata; they are not a second molecular assay. Paired training is separate from querying a new RNA-only dataset. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41587-025-02857-9",
         "https://raw.githubusercontent.com/epigen/CellWhisperer/main/README.md",
@@ -433,7 +433,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Uses a copy-number–expression relationship to assign cells to clones; no cell-level pairing is required.",
+      "rationale": "Uses a copy-number–expression relationship to assign cells to clones; no cell-level pairing is required. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1186/s13059-019-1645-z",
         "https://github.com/kieranrcampbell/clonealign/blob/master/README.md"
@@ -452,7 +452,7 @@
         "axis_modality_decomposition": "shared-and-specific",
         "axis_prior_knowledge": "none",
         "axis_method_scope": "general-purpose",
-        "axis_supervision": "not-assessed",
+        "axis_supervision": "unsupervised",
         "integration_effects": "discovery;alignment;cross-modal-prediction",
         "uncertainty_type": "model-based",
         "uncertainty_target": "latent-variables",
@@ -464,7 +464,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Cross-encoders recover missing-view representations with shared/private structure. The paper calls training semi-supervised; the relationship to the review’s endpoint-label categories needs confirmation.",
+      "rationale": "Cross-encoders recover missing-view representations with shared/private structure. The paper calls training semi-supervised; the relationship to the review’s endpoint-label categories needs confirmation. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://papers.neurips.cc/paper_files/paper/2022/hash/662b1774ba8845fc1fa3d1fc0177ceeb-Abstract-Conference.html",
         "https://github.com/gao-lab/GLUE/blob/master/README.md"
@@ -485,17 +485,17 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "self-supervised",
         "integration_effects": "discovery;alignment;cross-modal-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "contrastive;foundation-pretraining",
         "primary_data_regime": "image-text",
         "publication_status": "journal",
         "code_availability": "public-code",
-        "independent_benchmark": "not-assessed",
+        "independent_benchmark": "verified",
         "pretrained_model": "available"
       },
-      "rationale": "Image-caption pretraining combines contrastive alignment with a captioning objective. Slide-level aggregation and endpoint adaptation are downstream stages. Released encoder weights omit the caption decoder, so public weights do not reproduce every published capability.",
+      "rationale": "Image-caption pretraining combines contrastive alignment with a captioning objective. Slide-level aggregation and endpoint adaptation are downstream stages. Released encoder weights omit the caption decoder, so public weights do not reproduce every published capability. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41591-024-02856-4",
         "https://raw.githubusercontent.com/mahmoodlab/CONCH/main/README.md",
@@ -526,17 +526,17 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "self-supervised",
         "integration_effects": "alignment;discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "contrastive",
+        "methodological_components": "contrastive;foundation-pretraining",
         "primary_data_regime": "image-text",
         "publication_status": "conference",
         "code_availability": "public-documentation",
-        "independent_benchmark": "not-assessed",
+        "independent_benchmark": "verified",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Contrastive image-text pretraining. Downstream supervised adaptation is a separate stage; reports are not disease-class labels.",
+      "rationale": "Contrastive image-text pretraining. Downstream supervised adaptation is a separate stage; reports are not disease-class labels. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://proceedings.mlr.press/v182/zhang22a.html",
         "https://github.com/yuhaozhang/convirt/blob/master/README.md"
@@ -576,7 +576,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Convolutions exploit genomic locality. A structured convolutional architecture is not an explicit modality-specific latent decomposition.",
+      "rationale": "Convolutions exploit genomic locality. A structured convolutional architecture is not an explicit modality-specific latent decomposition. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/bioinformatics/btae705",
         "https://github.com/welch-lab/ConvNetVAE/blob/main/README.md"
@@ -607,7 +607,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "A conditional single-cell latent model guides spatial deconvolution into cell types and continuous within-type states. Reference cell-type labels are required. The reference uses variational inference; the spatial model estimates latent quantities by penalized likelihood/MAP. Current maintenance has moved from scvi-tools to scVIVA-Tools.",
+      "rationale": "A conditional single-cell latent model guides spatial deconvolution into cell types and continuous within-type states. Reference cell-type labels are required. The reference uses variational inference; the spatial model estimates latent quantities by penalized likelihood/MAP. Current maintenance has moved from scvi-tools to scVIVA-Tools. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41587-022-01272-8",
         "https://docs.scvi-tools.org/en/latest/user_guide/models/destvi.html",
@@ -630,17 +630,17 @@
         "axis_method_scope": "task-specific",
         "axis_supervision": "supervised",
         "integration_effects": "endpoint-prediction;discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "sample-omics",
         "publication_status": "journal",
         "code_availability": "public-documentation",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Supervised latent components jointly select cross-omic features and discriminate phenotypes.",
+      "rationale": "Supervised latent components jointly select cross-omic features and discriminate phenotypes. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/bioinformatics/bty1054",
         "https://mixomics.org/mixdiablo/diablo-tcga-case-study/"
@@ -661,8 +661,8 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "unsupervised;semi-supervised",
         "integration_effects": "alignment;discovery;spatial-mapping",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "spatial-assays",
@@ -671,7 +671,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "DIRAC maps each modality to point embeddings with graph encoders. Training optimizes reconstruction, domain-adversarial, maximum mean discrepancy and multimodal-consistency objectives. This construction belongs to the Deterministic optimization building block. Paired within-unit multimodal integration and annotation transfer are distinct workflows. Horizontal integration of the same modality is not evidence of unpaired cross-modality support.",
+      "rationale": "DIRAC maps each modality to point embeddings with graph encoders. Training optimizes reconstruction, domain-adversarial, maximum mean discrepancy and multimodal-consistency objectives. This construction belongs to the Deterministic optimization building block. Paired within-unit multimodal integration and annotation transfer are distinct workflows. Horizontal integration of the same modality is not evidence of unpaired cross-modality support. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41592-026-03282-9",
         "https://github.com/boxiangliulab/DIRAC/blob/main/README.md",
@@ -696,17 +696,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "resampling-based",
+        "uncertainty_target": "structure",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "sample-omics;image-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Identifies variation shared by all or selected subsets of data blocks, as well as individual structure. Published applications include multi-omics and neuroimaging linked to genetic and behavioural measurements. The original method paper is retained; the software link points to the R implementation published in 2026, with the original MATLAB implementation linked among the supporting sources.",
+      "rationale": "Identifies variation shared by all or selected subsets of data blocks, as well as individual structure. Published applications include multi-omics and neuroimaging linked to genetic and behavioural measurements. The original method paper is retained; the software link points to the R implementation published in 2026, with the original MATLAB implementation linked among the supporting sources. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1007/s11749-024-00923-z",
         "https://github.com/ByronSyun/DIVAS/blob/main/README.md",
@@ -740,7 +740,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Pairs assays at sample/time-point level; cell-state proportions link bulk dosage to cell-level expression. CNA-dependent application scope.",
+      "rationale": "Pairs assays at sample/time-point level; cell-state proportions link bulk dosage to cell-level expression. CNA-dependent application scope. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41592-026-03279-4",
         "https://github.com/azizilab/echidna/blob/main/README.md"
@@ -770,8 +770,8 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "self-supervised",
         "integration_effects": "alignment;discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "contrastive;deterministic",
         "primary_data_regime": "single-cell-omics",
@@ -780,7 +780,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Unpaired application relies on teachers trained on paired data; ensemble distillation and optimal-transport-based alignment are used.",
+      "rationale": "Unpaired application relies on teachers trained on paired data; ensemble distillation and optimal-transport-based alignment are used. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1101/2025.01.24.634799",
         "https://github.com/li-lab-mcgill/ECLARE/blob/main/README.md"
@@ -820,7 +820,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Integrates dissociated and spatial assays through shared genes and covariance environments. The assays need not be measured on the same cells.",
+      "rationale": "Integrates dissociated and spatial assays through shared genes and covariance environments. The assays need not be measured on the same cells. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41587-024-02193-4",
         "https://github.com/dpeerlab/ENVI/blob/main/README.md"
@@ -860,7 +860,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Pairs modalities at the sample level and combines factor analysis with topic structure for subobservations.",
+      "rationale": "Pairs modalities at the sample level and combines factor analysis with topic structure for subobservations. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://proceedings.mlr.press/v258/lazecka25a.html",
         "https://github.com/szczurek-lab/FACTM/blob/main/README.md"
@@ -890,8 +890,8 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "unsupervised",
         "integration_effects": "alignment;discovery;spatial-mapping",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
@@ -900,7 +900,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Biological FGOT from Cell Systems. Corrects the earlier accidental DOI of the unrelated AAAI graph-filter method fGOT.",
+      "rationale": "Biological FGOT from Cell Systems. Corrects the earlier accidental DOI of the unrelated AAAI graph-filter method fGOT. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1016/j.cels.2025.101479",
         "https://github.com/lhzhanglabtools/FGOT/blob/main/README.md"
@@ -930,8 +930,8 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "sample-omics",
@@ -940,7 +940,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "UMAP-based integration and density clustering; does not provide a linear factor loading model.",
+      "rationale": "UMAP-based integration and density clustering; does not provide a linear factor loading model. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-025-60822-1",
         "https://github.com/hirscheylab/gaudi/blob/main/README.md"
@@ -980,7 +980,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Transfers expression through shared genes between two assay processes; unmeasured spatial genes are predicted, not evidence of arbitrary missing-input tolerance.",
+      "rationale": "Transfers expression through shared genes between two assay processes; unmeasured spatial genes are predicted, not evidence of arbitrary missing-input tolerance. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://arxiv.org/abs/1905.02269",
         "https://github.com/scverse/scvi-tools/blob/main/README.md"
@@ -1020,7 +1020,7 @@
         "independent_benchmark": "verified",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "A guidance graph connects modality-specific features. Separate encoders/decoders do not establish separate shared and private cell latents.",
+      "rationale": "A guidance graph connects modality-specific features. Separate encoders/decoders do not establish separate shared and private cell latents. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41587-022-01284-4",
         "https://github.com/gao-lab/GLUE/blob/master/README.md"
@@ -1050,17 +1050,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "sample-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Graph-regularized matrix factorization. Data-derived sample similarities and biological network priors are distinguished in the interpretation.",
+      "rationale": "Graph-regularized matrix factorization. Data-derived sample similarities and biological network priors are distinguished in the interpretation. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/bioinformatics/btaf213",
         "https://github.com/lagillenwater/GRACKLE/blob/main/README.md"
@@ -1090,17 +1090,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Graph-regularized factorization and clustering; neighbourhood graphs derived from measurements are not external biological knowledge.",
+      "rationale": "Graph-regularized factorization and clustering; neighbourhood graphs derived from measurements are not external biological knowledge. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/bioinformatics/btae169",
         "https://github.com/polarisChen/GRMEC-SC/blob/main/README.md"
@@ -1130,17 +1130,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "alignment;discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Optimal transport with graph regularization. Feature importance uses partial derivatives; no supplied cross-modal feature correspondence is required.",
+      "rationale": "Optimal transport with graph regularization. Feature importance uses partial derivatives; no supplied cross-modal feature correspondence is required. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/gigascience/giag012",
         "https://github.com/PennShenLab/GROTIA/blob/main/README.md"
@@ -1180,7 +1180,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Image and molecular profiles are linked at tissue locations; spatial domain inference is not a shared/private latent decomposition.",
+      "rationale": "Image and molecular profiles are linked at tissue locations; spatial domain inference is not a shared/private latent decomposition. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1186/s13059-024-03289-5",
         "https://github.com/Xijiang1997/iIMPACT/blob/main/README.md"
@@ -1212,7 +1212,7 @@
         "integration_effects": "discovery;endpoint-prediction",
         "uncertainty_type": "model-based",
         "uncertainty_target": "latent-variables;parameters;predictions",
-        "calibration_evidence": "not-assessed",
+        "calibration_evidence": "evaluated",
         "methodological_components": "probabilistic",
         "primary_data_regime": "sample-omics",
         "publication_status": "journal",
@@ -1220,7 +1220,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "JAFAR is response-aware factor regression with distinct shared and view-specific components; the authors’ implementation describes it as supervised.",
+      "rationale": "JAFAR is response-aware factor regression with distinct shared and view-specific components; the authors’ implementation describes it as supervised. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/biomtc/ujag021",
         "https://github.com/niccoloanceschi/jafar/blob/main/README.md"
@@ -1250,17 +1250,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "sample-omics",
         "publication_status": "journal",
         "code_availability": "public-documentation",
         "independent_benchmark": "verified",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Joint and individual low-rank terms are explicit. JIVE itself does not impose non-negativity.",
+      "rationale": "Joint and individual low-rank terms are explicit. JIVE itself does not impose non-negativity. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1214/12-AOAS597",
         "https://genome-publications.bioinf.unc.edu/jive/"
@@ -1290,17 +1290,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Feature association matrices link modalities alongside within-modality graph regularization.",
+      "rationale": "Feature association matrices link modalities alongside within-modality graph regularization. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1186/s12864-025-11462-8",
         "https://github.com/ZB-JN/JSNMFuP/blob/main/README.md"
@@ -1321,8 +1321,8 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "self-supervised",
         "integration_effects": "discovery;imputation;endpoint-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "perturbation-readouts",
@@ -1331,7 +1331,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Learns from heterogeneous measured readouts indexed by perturbation, context and readout identity, including incomplete experimental grids. These symbolic embeddings are not shared/private modality factors. Predictions are limited to the learned vocabulary; the model is not a universal unseen-cell-type simulator.",
+      "rationale": "Learns from heterogeneous measured readouts indexed by perturbation, context and readout identity, including incomplete experimental grids. These symbolic embeddings are not shared/private modality factors. Predictions are limited to the learned vocabulary; the model is not a universal unseen-cell-type simulator. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s43588-025-00870-1",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC12638242/",
@@ -1364,7 +1364,7 @@
         "axis_supervision": "weakly-supervised",
         "integration_effects": "endpoint-prediction",
         "uncertainty_type": "evidential",
-        "uncertainty_target": "modality-evidence",
+        "uncertainty_target": "modality-evidence;predictions",
         "calibration_evidence": "not-assessed",
         "methodological_components": "mil",
         "primary_data_regime": "image-omics",
@@ -1373,7 +1373,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Dempster–Shafer evidential fusion for survival. Modality evidence is not proof of calibrated survival predictions.",
+      "rationale": "Dempster–Shafer evidential fusion for survival. Modality evidence is not proof of calibrated survival predictions. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41598-025-93770-3"
       ],
@@ -1393,8 +1393,8 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "self-supervised",
         "integration_effects": "alignment",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "contrastive;deterministic",
         "primary_data_regime": "single-cell-omics",
@@ -1403,7 +1403,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Requires paired training data; a trained model matches new unpaired cells using entropic optimal transport.",
+      "rationale": "Requires paired training data; a trained model matches new unpaired cells using entropic optimal transport. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/bib/bbad130",
         "https://github.com/AI4SCR/MatchCLOT/blob/main/README.md"
@@ -1433,17 +1433,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "alignment",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "verified",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Uses weak gene–protein feature linkage and neighbourhood refinement. Unpaired cell matching is not generic missing-modality generation.",
+      "rationale": "Uses weak gene–protein feature linkage and neighbourhood refinement. Unpaired cell matching is not generic missing-modality generation. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41587-023-01935-0",
         "https://github.com/shuxiaoc/maxfuse/blob/main/README.md"
@@ -1497,8 +1497,8 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "self-supervised",
         "integration_effects": "alignment;discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "contrastive;foundation-pretraining",
         "primary_data_regime": "image-text",
@@ -1507,7 +1507,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Hierarchical vision-language mixture-of-experts uses anatomy-level and global alignment. Repository mentions WACV 2027; kept as a preprint until proceedings publication is verified.",
+      "rationale": "Hierarchical vision-language mixture-of-experts uses anatomy-level and global alignment. Repository mentions WACV 2027; kept as a preprint until proceedings publication is verified. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://arxiv.org/abs/2611.08185",
         "https://github.com/szczurek-lab/MedHiVE/blob/main/README.md"
@@ -1547,7 +1547,7 @@
         "independent_benchmark": "verified",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Gaussian-process priors encode smooth factors. Time or space covariates guide the representation but are not outcome-label supervision.",
+      "rationale": "Gaussian-process priors encode smooth factors. Time or space covariates guide the representation but are not outcome-label supervision. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41592-021-01343-9",
         "https://github.com/bioFAM/MOFA2/blob/master/README.md"
@@ -1568,17 +1568,17 @@
         "axis_method_scope": "task-specific",
         "axis_supervision": "supervised",
         "integration_effects": "endpoint-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "image-omics",
         "publication_status": "journal",
-        "code_availability": "not-verified",
+        "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Patient-specific metabolic networks produce flux features. These fluxes are derived from transcriptomics, not an independently measured third modality.",
+      "rationale": "Patient-specific metabolic networks produce flux features. These fluxes are derived from transcriptomics, not an independently measured third modality. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1016/j.cels.2026.101594"
       ],
@@ -1617,7 +1617,7 @@
         "independent_benchmark": "verified",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Separates biological state from technical noise; this is distinct from a shared/private modality decomposition.",
+      "rationale": "Separates biological state from technical noise; this is distinct from a shared/private modality decomposition. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41587-023-02040-y",
         "https://github.com/labomics/midas/blob/main/README.md"
@@ -1648,7 +1648,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Neighbourhoods derived from observed assays regularize a VAE. Entry-level missing values in observed modalities are preprocessed; only whole-modality missingness is classified as native support.",
+      "rationale": "Neighbourhoods derived from observed assays regularize a VAE. Entry-level missing values in observed modalities are preprocessed; only whole-modality missingness is classified as native support. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-026-74413-1",
         "https://github.com/hwxing3259/MIND/blob/main/README.md"
@@ -1669,8 +1669,8 @@
         "axis_method_scope": "task-specific",
         "axis_supervision": "weakly-supervised",
         "integration_effects": "endpoint-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "mil",
         "primary_data_regime": "image-clinical",
@@ -1679,7 +1679,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Multimodal clinical prediction combines biopsy image features with clinical measurements. Later versions use attention MIL and have external validation, including the prospective prostatectomy cohort cited in the review. The 2022 development paper and later validation sources describe related versions; weights and general-purpose public code were not verified.",
+      "rationale": "Multimodal clinical prediction combines biopsy image features with clinical measurements. Later versions use attention MIL and have external validation, including the prospective prostatectomy cohort cited in the review. The 2022 development paper and later validation sources describe related versions; weights and general-purpose public code were not verified. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41746-022-00613-w",
         "https://doi.org/10.1016/j.euo.2024.01.004",
@@ -1704,23 +1704,23 @@
         "axis_correspondence": "paired",
         "axis_missingness": "fully-observed",
         "axis_granularity": "multi-level",
-        "axis_model_transparency": "structured-neural;post-hoc",
+        "axis_model_transparency": "structured-neural;post-hoc;explicit-likelihood",
         "axis_modality_decomposition": "shared-only",
         "axis_prior_knowledge": "pathways",
         "axis_method_scope": "task-specific",
         "axis_supervision": "weakly-supervised",
         "integration_effects": "endpoint-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "mil;deterministic",
+        "methodological_components": "deterministic;probabilistic;mil",
         "primary_data_regime": "image-omics",
         "publication_status": "conference",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Pathway and morphology prototypes feed transformer or transport-based fusion. Reuses encoders; MMP is a survival method, not itself a general foundation model.",
+      "rationale": "Pathway and morphology prototypes feed transformer or transport-based fusion. Reuses encoders; MMP is a survival method, not itself a general foundation model. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://proceedings.mlr.press/v235/song24b.html",
         "https://github.com/mahmoodlab/MMP/blob/main/README.md"
@@ -1750,8 +1750,8 @@
         "axis_method_scope": "task-specific",
         "axis_supervision": "weakly-supervised",
         "integration_effects": "endpoint-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "mil",
         "primary_data_regime": "image-omics",
@@ -1760,7 +1760,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Patient-level survival labels supervise bags. Complete-case curation in the study is not native handling of missing modalities.",
+      "rationale": "Patient-level survival labels supervise bags. Complete-case curation in the study is not native handling of missing modalities. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/bib/bbaf209"
       ],
@@ -1799,7 +1799,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Topic-feature matrices expose interpretable multi-omic programs. Separate topic-feature decoders do not imply private cell factors.",
+      "rationale": "Topic-feature matrices expose interpretable multi-omic programs. Separate topic-feature decoders do not imply private cell factors. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1016/j.crmeth.2023.100563",
         "https://github.com/manqizhou/moETM/blob/main/README.md"
@@ -1839,7 +1839,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "View-specific shrinkage allows factors active in all, some or one modality. Missing measurements are omitted from the likelihood.",
+      "rationale": "View-specific shrinkage allows factors active in all, some or one modality. Missing measurements are omitted from the likelihood. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.15252/msb.20178124",
         "https://github.com/bioFAM/MOFA/blob/master/README.md"
@@ -1879,7 +1879,7 @@
         "independent_benchmark": "verified",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Sparse modality-specific loadings describe how each factor contributes to each modality. Group-specific factor activity captures variation across sample groups.",
+      "rationale": "Sparse modality-specific loadings describe how each factor contributes to each modality. Group-specific factor activity captures variation across sample groups. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1186/s13059-020-02015-1",
         "https://github.com/bioFAM/MOFA2/blob/master/README.md"
@@ -1903,23 +1903,23 @@
         "axis_correspondence": "unpaired;weak-linkage",
         "axis_missingness": "fully-observed;modality-level",
         "axis_granularity": "single-level",
-        "axis_model_transparency": "structured-neural",
+        "axis_model_transparency": "structured-neural;explicit-likelihood",
         "axis_modality_decomposition": "shared-only",
         "axis_prior_knowledge": "gene-networks;feature-links",
         "axis_method_scope": "general-purpose",
-        "axis_supervision": "unsupervised",
+        "axis_supervision": "unsupervised;self-supervised",
         "integration_effects": "discovery;alignment;cross-modal-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "model-based",
+        "uncertainty_target": "latent-variables",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "deterministic",
+        "methodological_components": "probabilistic;vae;contrastive",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "available"
       },
-      "rationale": "Multimodal integration and cross-modal imputation with biologically informed neural structure; do not infer a private latent partition from that structure.",
+      "rationale": "Multimodal integration and cross-modal imputation with biologically informed neural structure; do not infer a private latent partition from that structure. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-024-53355-6",
         "https://github.com/shapsider/monae/blob/main/README.md"
@@ -1949,17 +1949,17 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "unsupervised",
         "integration_effects": "alignment;spatial-mapping;temporal-mapping",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "spatial-assays;single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Transport couplings support temporal and spatial mapping. Properties depend on the chosen moscot problem and supplied biological constraints.",
+      "rationale": "Transport couplings support temporal and spatial mapping. Properties depend on the chosen moscot problem and supplied biological constraints. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41586-024-08453-2",
         "https://github.com/theislab/moscot/blob/main/README.md"
@@ -1989,17 +1989,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Combines non-negative factorization with optimal transport. Joint factorization alone does not establish JIVE-like private components.",
+      "rationale": "Combines non-negative factorization with optimal transport. Joint factorization alone does not establish JIVE-like private components. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-023-43019-2",
         "https://github.com/cantinilab/Mowgli/blob/main/README.md"
@@ -2029,8 +2029,8 @@
         "axis_method_scope": "task-specific",
         "axis_supervision": "weakly-supervised",
         "integration_effects": "endpoint-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "mil",
         "primary_data_regime": "image-text",
@@ -2039,7 +2039,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "MIL image aggregation is fused with report embeddings for cancer subtype classification.",
+      "rationale": "MIL image aggregation is fused with report embeddings for cancer subtype classification. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1007/s41666-025-00212-w"
       ],
@@ -2066,19 +2066,19 @@
         "axis_modality_decomposition": "shared-only",
         "axis_prior_knowledge": "none",
         "axis_method_scope": "domain-specific",
-        "axis_supervision": "self-supervised",
+        "axis_supervision": "self-supervised;weakly-supervised",
         "integration_effects": "discovery;alignment",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "foundation-pretraining;contrastive",
+        "methodological_components": "foundation-pretraining;contrastive;mil",
         "primary_data_regime": "image-text;image-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "available"
       },
-      "rationale": "Pairwise contrastive pretraining admits incomplete modality combinations but requires at least two modalities per contributing sample. Endpoint prediction needs a downstream head.",
+      "rationale": "Pairwise contrastive pretraining admits incomplete modality combinations but requires at least two modalities per contributing sample. Endpoint prediction needs a downstream head. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-025-66220-x",
         "https://github.com/Innse/mSTAR/blob/main/README.md"
@@ -2099,8 +2099,8 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "self-supervised",
         "integration_effects": "discovery;alignment;cross-modal-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "contrastive",
         "primary_data_regime": "image-omics",
@@ -2109,7 +2109,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "available"
       },
-      "rationale": "Self-supervised morphology–molecule embeddings support slide- and spot-level applications. Endpoint heads are trained separately.",
+      "rationale": "Self-supervised morphology–molecule embeddings support slide- and spot-level applications. Endpoint heads are trained separately. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41592-026-03070-5",
         "https://github.com/Epoch1128/Multi-Embed/blob/main/README.md"
@@ -2139,17 +2139,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery;imputation",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "sample-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Linked tensor factorization reconstructs missing entries. Multiway arrays are not automatically hierarchical sets of observations.",
+      "rationale": "Linked tensor factorization reconstructs missing entries. Multiway arrays are not automatically hierarchical sets of observations. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1080/10618600.2026.2685851",
         "https://github.com/zhiyu-kang/MULTIFAC/blob/main/README.md"
@@ -2189,7 +2189,7 @@
         "independent_benchmark": "verified",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Multigrate combines available modality-specific posteriors as a product of experts. The full preprint remains linked alongside the published proceedings contribution.",
+      "rationale": "Multigrate combines available modality-specific posteriors as a product of experts. The full preprint remains linked alongside the published proceedings contribution. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1007/978-3-031-90252-9_36",
         "https://github.com/theislab/multigrate/blob/main/README.md",
@@ -2221,7 +2221,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "A multimodal VAE feeds attention MIL; donor-level phenotype targets supervise sets of cells.",
+      "rationale": "A multimodal VAE feeds attention MIL; donor-level phenotype targets supervise sets of cells. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1101/2024.07.29.605625",
         "https://github.com/theislab/multimil/blob/main/README.md"
@@ -2261,7 +2261,7 @@
         "independent_benchmark": "verified",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "A joint biological latent representation combines modality-specific inference networks; unmeasured modalities can be predicted.",
+      "rationale": "A joint biological latent representation combines modality-specific inference networks; unmeasured modalities can be predicted. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41592-023-01909-9",
         "https://github.com/scverse/scvi-tools/blob/main/README.md"
@@ -2301,7 +2301,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Structured sparse loading priors incorporate gene sets while permitting data-adaptive factors.",
+      "rationale": "Structured sparse loading priors incorporate gene sets while permitting data-adaptive factors. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://proceedings.mlr.press/v206/qoku23a.html",
         "https://github.com/MLO-lab/MuVI/blob/master/README.md"
@@ -2341,7 +2341,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "GO and genomic interaction structure guide a deep generative model. Interpretability depends on coverage and reliability of the biological annotations.",
+      "rationale": "GO and genomic interaction structure guide a deep generative model. Interpretability depends on coverage and reliability of the biological annotations. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1101/2025.06.10.657924",
         "https://github.com/LArnoldt/networkvi/blob/main/README.md"
@@ -2381,7 +2381,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Graph-guided Bayesian shrinkage combines curated and data-estimated network information; inference uses posterior sampling.",
+      "rationale": "Graph-guided Bayesian shrinkage combines curated and data-estimated network information; inference uses posterior sampling. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1007/s12561-024-09452-7",
         "https://github.com/wenrui-li/NoiseBFASH/blob/main/README.md"
@@ -2402,17 +2402,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised;supervised",
         "integration_effects": "discovery;alignment;imputation",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Supports supervised and unsupervised variants with imbalanced modality coverage. Technical/biological separation is not a shared/private modality split.",
+      "rationale": "Supports supervised and unsupervised variants with imbalanced modality coverage. Technical/biological separation is not a shared/private modality split. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-026-72933-4",
         "https://github.com/qiongyusheng/Palette/blob/main/README.md"
@@ -2445,14 +2445,14 @@
         "uncertainty_type": "not-assessed",
         "uncertainty_target": "not-assessed",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "contrastive;foundation-pretraining",
+        "methodological_components": "contrastive;mil",
         "primary_data_regime": "spatial-assays;image-omics",
         "publication_status": "preprint",
         "code_availability": "not-verified",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Paired cross-modal contrastive learning reuses pathology and single-cell encoders. Generation is not inferred from alignment alone.",
+      "rationale": "Paired cross-modal contrastive learning reuses pathology and single-cell encoders. Generation is not inferred from alignment alone. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1101/2024.12.10.627865"
       ],
@@ -2472,17 +2472,17 @@
         "axis_method_scope": "task-specific",
         "axis_supervision": "supervised",
         "integration_effects": "endpoint-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "image-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "available"
       },
-      "rationale": "Gated tensor fusion combines image, cell-graph and genomic representations for grade and survival prediction. Multiple image feature branches are not extra measured modalities. Supervised neural fusion is not automatically an attention-MIL model.",
+      "rationale": "Gated tensor fusion combines image, cell-graph and genomic representations for grade and survival prediction. Multiple image feature branches are not extra measured modalities. Supervised neural fusion is not automatically an attention-MIL model. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1109/TMI.2020.3021387",
         "https://pmc.ncbi.nlm.nih.gov/articles/PMC10339462/",
@@ -2505,8 +2505,8 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "self-supervised",
         "integration_effects": "discovery;endpoint-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "foundation-pretraining",
         "primary_data_regime": "single-cell-omics;sample-omics",
@@ -2515,7 +2515,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "available"
       },
-      "rationale": "Pretraining uses measured epigenomic and transcriptomic context around genes for in silico perturbation analyses. Genomic positions link the modalities. Zero-shot perturbation claims refer to the authors' evaluation; the source remains a preprint and does not establish causal or calibrated predictions for arbitrary interventions.",
+      "rationale": "Pretraining uses measured epigenomic and transcriptomic context around genes for in silico perturbation analyses. Genomic positions link the modalities. Zero-shot perturbation claims refer to the authors' evaluation; the source remains a preprint and does not establish causal or calibrated predictions for arbitrary interventions. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1101/2024.12.19.629561",
         "https://raw.githubusercontent.com/alibaba/damo-pertformer/main/README.md",
@@ -2556,7 +2556,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Combines genomic variant evidence with single-cell expression for clonal tree and phenotype characterization.",
+      "rationale": "Combines genomic variant evidence with single-cell expression for clonal tree and phenotype characterization. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-023-36202-y",
         "https://github.com/junseonghwan/PhylExAnalysis/blob/main/README.md"
@@ -2586,17 +2586,17 @@
         "axis_method_scope": "task-specific",
         "axis_supervision": "supervised",
         "integration_effects": "cross-modal-prediction;generation",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "foundation-pretraining",
+        "methodological_components": "deterministic",
         "primary_data_regime": "spatial-assays;image-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Virtual protein staining is cross-modal prediction from images; it does not establish missing-input tolerance during training.",
+      "rationale": "Virtual protein staining is cross-modal prediction from images; it does not establish missing-input tolerance during training. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-025-62346-0",
         "https://gitlab.com/enable-medicine-public/rosie"
@@ -2636,7 +2636,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Cross-modal generation and in-silico exploration are explicit targets; pathway information informs the model.",
+      "rationale": "Cross-modal generation and in-silico exploration are explicit targets; pathway information informs the model. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1186/s13059-024-03338-z",
         "https://github.com/mcgilldinglab/scCross/blob/main/README.md"
@@ -2676,7 +2676,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Combines VAE reconstruction with contrastive neighbour matching. The paper’s semi-supervised terminology concerns cross-modal relationships; endpoint-label supervision is not assumed.",
+      "rationale": "Combines VAE reconstruction with contrastive neighbour matching. The paper’s semi-supervised terminology concerns cross-modal relationships; endpoint-label supervision is not assumed. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1186/s12859-025-06239-5",
         "https://github.com/closmouz/scGCM/blob/main/README.md"
@@ -2697,8 +2697,8 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "self-supervised",
         "integration_effects": "discovery;alignment",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "foundation-pretraining",
         "primary_data_regime": "single-cell-omics",
@@ -2707,7 +2707,7 @@
         "independent_benchmark": "verified",
         "pretrained_model": "available"
       },
-      "rationale": "The multimodal profile describes paired multi-omic fine-tuning, distinct from transcriptomic pretraining and RNA-only zero-shot use. Integration benchmarks and author tutorials support this workflow; arbitrary unpaired or whole-modality-missing integration is not inferred from masked-token training.",
+      "rationale": "The multimodal profile describes paired multi-omic fine-tuning, distinct from transcriptomic pretraining and RNA-only zero-shot use. Integration benchmarks and author tutorials support this workflow; arbitrary unpaired or whole-modality-missing integration is not inferred from masked-token training. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41592-024-02201-0",
         "https://www.nature.com/articles/s41467-026-72570-x",
@@ -2739,8 +2739,8 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "self-supervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "contrastive",
         "primary_data_regime": "single-cell-omics",
@@ -2749,7 +2749,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Collaborative contrastive learning uses matched modalities and data-derived targets.",
+      "rationale": "Collaborative contrastive learning uses matched modalities and data-derived targets. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1021/acs.jcim.4c02114",
         "https://github.com/ubuntu1024/scMDCL/blob/main/README.md"
@@ -2770,8 +2770,8 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "self-supervised",
         "integration_effects": "alignment;discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "contrastive",
         "primary_data_regime": "single-cell-omics",
@@ -2780,7 +2780,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Cross-modality graph contrastive learning; retaining modality-specific signal does not establish separately identifiable private latent factors.",
+      "rationale": "Cross-modality graph contrastive learning; retaining modality-specific signal does not establish separately identifiable private latent factors. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/bioinformatics/btaf392",
         "https://github.com/zlCreator/scMGCL/blob/main/README.md"
@@ -2810,17 +2810,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Non-negative matrix factorization yields shared representations; an explicit shared/private split is not inferred from the method family.",
+      "rationale": "Non-negative matrix factorization yields shared representations; an explicit shared/private split is not inferred from the method family. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/bib/bbae228",
         "https://github.com/yushanqiu/scMNMF/blob/main/README.md"
@@ -2841,17 +2841,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "alignment",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Gromov-Wasserstein optimal transport aligns the geometry of separate assay populations without known cell pairs or feature correspondences. This profile refers to the original SCOT formulation; the repository also contains SCOTv2 with different assumptions about population proportions.",
+      "rationale": "Gromov-Wasserstein optimal transport aligns the geometry of separate assay populations without known cell pairs or feature correspondences. This profile refers to the original SCOT formulation; the repository also contains SCOTv2 with different assumptions about population proportions. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1089/cmb.2021.0446",
         "https://raw.githubusercontent.com/rsinghlab/SCOT/master/README.md",
@@ -2882,17 +2882,17 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "unsupervised",
         "integration_effects": "alignment;spatial-mapping",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "spatial-assays;single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Spatial mapping links modalities through common or biologically linked features.",
+      "rationale": "Spatial mapping links modalities through common or biologically linked features. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-025-56523-4",
         "https://github.com/ZJUFanLab/SIMO/blob/main/README.md"
@@ -2922,17 +2922,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "sample-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Fuses sample-similarity networks. The fused network is inspectable but is not a factor loading matrix.",
+      "rationale": "Fuses sample-similarity networks. The fused network is inspectable but is not a factor loading matrix. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/nmeth.2810",
         "https://github.com/maxconway/SNFtool/blob/master/README.md"
@@ -2972,7 +2972,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Known covariates guide selected factors while other factors remain free. This differs from assuming that only some samples have labels.",
+      "rationale": "Known covariates guide selected factors while other factors remain free. This differs from assuming that only some samples have labels. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-026-74694-6",
         "https://github.com/tcapraz/SOFA/blob/main/README.md"
@@ -3012,7 +3012,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "spaMultiVAE is the multimodal member of the spaVAE framework. Spatial priors and prediction do not establish arbitrary incomplete-input support.",
+      "rationale": "spaMultiVAE is the multimodal member of the spaVAE framework. Spatial priors and prediction do not establish arbitrary incomplete-input support. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41592-024-02257-y",
         "https://github.com/ttgump/spaVAE/blob/main/README.md"
@@ -3052,7 +3052,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Cell-type alignment regularizes spatial gene imputation; label information belongs under supervision, not biological prior knowledge.",
+      "rationale": "Cell-type alignment regularizes spatial gene imputation; label information belongs under supervision, not biological prior knowledge. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1186/s12967-025-07245-0",
         "https://github.com/SevensLab/SpateCV/blob/master/README.md"
@@ -3082,8 +3082,8 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery;spatial-mapping",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "spatial-assays",
@@ -3092,7 +3092,7 @@
         "independent_benchmark": "verified",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Graph attention integrates spatial and molecular information. A graph autoencoder is not automatically a variational autoencoder.",
+      "rationale": "Graph attention integrates spatial and molecular information. A graph autoencoder is not automatically a variational autoencoder. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41592-024-02316-4",
         "https://github.com/JinmiaoChenLab/SpatialGlue/blob/main/README.md"
@@ -3132,7 +3132,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Factors are fitted jointly with an outcome; explanatory signatures do not establish calibrated predictive intervals.",
+      "rationale": "Factors are fitted jointly with an outcome; explanatory signatures do not establish calibrated predictive intervals. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1093/bioinformatics/btae202",
         "https://bitbucket.org/kleinstein/SPEAR"
@@ -3153,17 +3153,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised;supervised",
         "integration_effects": "alignment;discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "verified",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Traverses a topology of shared features, including multi-hop links; supports supervised or unsupervised reference coordinates.",
+      "rationale": "Traverses a topology of shared features, including multi-hop links; supports supervised or unsupervised reference coordinates. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41587-023-01766-z",
         "https://github.com/MarioniLab/StabMap/blob/main/README.md"
@@ -3184,17 +3184,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Decomposes two measured views into common and distinct embeddings by tilting canonical scores toward a target common manifold. The distinct components are explicitly retained; extension to arbitrary subsets of many modalities is not claimed.",
+      "rationale": "Decomposes two measured views into common and distinct embeddings by tilting canonical scores toward a target common manifold. The distinct components are explicitly retained; extension to arbitrary subsets of many modalities is not claimed. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1073/pnas.2303647120",
         "https://raw.githubusercontent.com/linnykos/tiltedCCA/master/README.md",
@@ -3225,17 +3225,17 @@
         "axis_method_scope": "domain-specific",
         "axis_supervision": "self-supervised",
         "integration_effects": "discovery;alignment",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "foundation-pretraining;contrastive",
+        "methodological_components": "foundation-pretraining;contrastive;mil",
         "primary_data_regime": "image-text",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "available"
       },
-      "rationale": "Foundation-style pretraining learns reusable pathology representations. Supervised or weakly supervised endpoint adaptation is a later stage.",
+      "rationale": "Foundation-style pretraining learns reusable pathology representations. Supervised or weakly supervised endpoint adaptation is a later stage. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41591-025-03982-3",
         "https://github.com/mahmoodlab/TITAN/blob/main/README.md"
@@ -3267,7 +3267,7 @@
         "integration_effects": "discovery;imputation;cross-modal-prediction",
         "uncertainty_type": "model-based",
         "uncertainty_target": "latent-variables;missing-measurements",
-        "calibration_evidence": "not-assessed",
+        "calibration_evidence": "evaluated",
         "methodological_components": "probabilistic;vae",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
@@ -3275,7 +3275,7 @@
         "independent_benchmark": "verified",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Joint RNA/protein likelihood distinguishes protein foreground and background. This is not a private/shared latent partition.",
+      "rationale": "Joint RNA/protein likelihood distinguishes protein foreground and background. This is not a private/shared latent partition. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41592-020-01050-x",
         "https://github.com/scverse/scvi-tools/blob/main/README.md"
@@ -3315,7 +3315,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Allele-specific copy-number effects support genotype–phenotype mapping without matched cells.",
+      "rationale": "Allele-specific copy-number effects support genotype–phenotype mapping without matched cells. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-024-46710-0",
         "https://github.com/shahcompbio/TreeAlign/blob/master/README.md"
@@ -3355,7 +3355,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Links clone genotypes to mixed spatial observations; pairing is at the tissue/sample level rather than a one-cell match.",
+      "rationale": "Links clone genotypes to mixed spatial observations; pairing is at the tissue/sample level rather than a one-cell match. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-024-53374-3",
         "https://github.com/szczurek-lab/Tumoroscope/blob/main/README.md"
@@ -3385,17 +3385,17 @@
         "axis_method_scope": "general-purpose",
         "axis_supervision": "unsupervised",
         "integration_effects": "discovery;alignment",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "deterministic",
         "primary_data_regime": "single-cell-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "verified",
-        "pretrained_model": "not-assessed"
+        "pretrained_model": "not-applicable"
       },
-      "rationale": "Uses non-overlapping features without requiring a biological correspondence for every feature. Unequal feature coverage is not generic whole-modality missingness.",
+      "rationale": "Uses non-overlapping features without requiring a biological correspondence for every feature. Unequal feature coverage is not generic whole-modality missingness. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s41467-022-28431-4",
         "https://github.com/welch-lab/liger/blob/master/README.md"
@@ -3414,19 +3414,19 @@
         "axis_modality_decomposition": "not-applicable",
         "axis_prior_knowledge": "none",
         "axis_method_scope": "task-specific",
-        "axis_supervision": "unsupervised",
+        "axis_supervision": "self-supervised;weakly-supervised",
         "integration_effects": "cross-modal-prediction;generation",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "deterministic",
+        "methodological_components": "contrastive",
         "primary_data_regime": "image-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Learns unpaired stain-to-stain translation from measured H&E and IHC image collections. Separate assays supply the training modalities; generated marker maps are predictions. Unpaired training does not imply native training on missing pixel values or arbitrary absent assay domains.",
+      "rationale": "Learns unpaired stain-to-stain translation from measured H&E and IHC image collections. Separate assays supply the training modalities; generated marker maps are predictions. Unpaired training does not imply native training on missing pixel values or arbitrary absent assay domains. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
       "sources": [
         "https://doi.org/10.1038/s42256-024-00889-5",
         "https://zenodo.org/doi/10.5281/zenodo.11941982",

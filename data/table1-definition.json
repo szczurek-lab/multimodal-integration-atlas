@@ -1,0 +1,395 @@
+{
+  "version": "1.0",
+  "date": "2026-11-21",
+  "title": "Documented axis properties across methodological building blocks",
+  "blocks": [
+    {
+      "id": "deterministic",
+      "label": "Deterministic optimization",
+      "short": "Deterministic",
+      "definition": "A dedicated point-estimate integration construction, such as matrix factorization, matching/transport, network fusion, direct latent optimization or cross-modal target regression. Generic numerical optimization, a point prediction head or ordinary neural reconstruction within another block does not supply this tag by itself. Random initialization and stochastic minibatches do not make the model probabilistic."
+    },
+    {
+      "id": "probabilistic",
+      "label": "Probabilistic graphical models",
+      "short": "PGM",
+      "definition": "An explicit probabilistic model of observations and latent quantities used in the integration workflow. Point estimates of some parameters are compatible with this block. A probability-valued matching weight or discriminative score alone is insufficient."
+    },
+    {
+      "id": "vae",
+      "label": "Variational autoencoders",
+      "short": "VAE",
+      "definition": "An encoder approximates a latent posterior and is trained with a variational reconstruction/regularization objective. Every VAE also belongs to the probabilistic column. Deterministic autoencoders and VAE-named baseline files do not qualify."
+    },
+    {
+      "id": "contrastive",
+      "label": "Contrastive learning",
+      "short": "Contrastive",
+      "definition": "A contrastive objective compares related and nonmatching observations or representations, or an explicitly documented negative-free contrastive construction. A generic similarity penalty alone is insufficient."
+    },
+    {
+      "id": "foundation-pretraining",
+      "label": "Foundation models",
+      "short": "Foundation",
+      "definition": "The method itself includes large-scale pretraining intended to yield reusable representations or adaptation across tasks or datasets. Merely using an externally pretrained backbone does not qualify."
+    },
+    {
+      "id": "mil",
+      "label": "Set representation and multiple instance learning",
+      "short": "Set / MIL",
+      "definition": "An integral aggregation step summarizes variable-size collections of observed subunits, such as cells or image patches, into a fixed-dimensional representation for integration. Permutation-invariant or explicitly location-aware set aggregation can qualify. MIL is the subset trained with bag-level labels and does not require instance labels. Mean pooling and attention can both qualify. Ordinary fixed-grid image tokenization or incidental preprocessing alone does not qualify."
+    }
+  ],
+  "bands": [
+    {
+      "id": "0–<25%",
+      "minimum": 0,
+      "maximum_exclusive": 25,
+      "color": "#edf0f3"
+    },
+    {
+      "id": "25–<50%",
+      "minimum": 25,
+      "maximum_exclusive": 50,
+      "color": "#fff0bb"
+    },
+    {
+      "id": "50–<75%",
+      "minimum": 50,
+      "maximum_exclusive": 75,
+      "color": "#cee6d6"
+    },
+    {
+      "id": "75–100%",
+      "minimum": 75,
+      "maximum_inclusive": 100,
+      "color": "#83bea0"
+    }
+  ],
+  "unknown_color": "#ffffff",
+  "rows": [
+    {
+      "id": "paired",
+      "group": "Correspondence",
+      "label": "Paired data",
+      "field": "axis_correspondence",
+      "values": [
+        "paired"
+      ],
+      "definition": "The documented workflow uses known links between measurements of the same observational units. This denotes supported pairing, not a requirement that every unit be fully profiled. Methods may also support partial or absent pairing."
+    },
+    {
+      "id": "weak-linkage",
+      "group": "Correspondence",
+      "label": "Weak linkage",
+      "field": "axis_correspondence",
+      "values": [
+        "weak-linkage"
+      ],
+      "definition": "Shared or biologically related features, spatial context or other linking information connect modalities without establishing measured pairs of observational units."
+    },
+    {
+      "id": "unpaired",
+      "group": "Correspondence",
+      "label": "Unpaired observations",
+      "field": "axis_correspondence",
+      "values": [
+        "unpaired"
+      ],
+      "definition": "The workflow integrates observations without known cross-modal unit pairs. Learned matches do not retroactively make the input paired."
+    },
+    {
+      "id": "entry-missing",
+      "group": "Missingness",
+      "label": "Entry-level missingness",
+      "field": "axis_missingness",
+      "values": [
+        "entry-level"
+      ],
+      "definition": "The method explicitly handles unavailable individual measurements within an otherwise observed modality. Ordinary observed zeros in count data do not by themselves establish missing-data support."
+    },
+    {
+      "id": "modality-missing",
+      "group": "Missingness",
+      "label": "Modality-level missingness",
+      "field": "axis_missingness",
+      "values": [
+        "modality-level"
+      ],
+      "definition": "The method explicitly supports an entirely unavailable modality for some units during fitting or inference. The evidence record identifies the stage. Cross-modal prediction after paired training can qualify at inference."
+    },
+    {
+      "id": "single-level",
+      "group": "Granularity",
+      "label": "Single-level observations",
+      "field": "axis_granularity",
+      "values": [
+        "single-level"
+      ],
+      "definition": "Integrated inputs are represented at one observational level, such as matched cells or patient-level profiles."
+    },
+    {
+      "id": "multi-level",
+      "group": "Granularity",
+      "label": "Multi-level observations",
+      "field": "axis_granularity",
+      "values": [
+        "multi-level"
+      ],
+      "definition": "The integration explicitly relates nested or different observational levels, such as patches within patients or cells contributing to tissue locations. Routine within-modality preprocessing alone does not qualify."
+    },
+    {
+      "id": "explicit-mapping",
+      "group": "Model transparency",
+      "label": "Explicit mappings or loadings",
+      "field": "axis_model_transparency",
+      "values": [
+        "explicit-mapping"
+      ],
+      "definition": "Documented loadings, mappings or couplings directly connect the represented quantities. This does not by itself certify biological correctness or complete interpretability."
+    },
+    {
+      "id": "explicit-likelihood",
+      "group": "Model transparency",
+      "label": "Explicit likelihoods",
+      "field": "axis_model_transparency",
+      "values": [
+        "explicit-likelihood"
+      ],
+      "definition": "A stated likelihood specifies a measurement distribution in the integrated model. A numerical loss that can be given a probabilistic interpretation is not sufficient without such a model specification."
+    },
+    {
+      "id": "structured-neural",
+      "group": "Model transparency",
+      "label": "Inspectable neural structure",
+      "field": "axis_model_transparency",
+      "values": [
+        "structured-neural"
+      ],
+      "definition": "Neural components have documented roles that can be inspected, such as separated latent branches, biologically structured decoders or attention aggregation. Attention alone is not a causal explanation."
+    },
+    {
+      "id": "post-hoc",
+      "group": "Model transparency",
+      "label": "Post-hoc inspection",
+      "field": "axis_model_transparency",
+      "values": [
+        "post-hoc"
+      ],
+      "definition": "The reviewed workflow documents an analysis of fitted representations or predictions, such as latent traversal or attribution. Availability of generic external explanation tools does not qualify automatically."
+    },
+    {
+      "id": "shared-specific",
+      "group": "Modality decomposition",
+      "label": "Shared and modality-specific",
+      "field": "axis_modality_decomposition",
+      "values": [
+        "shared-and-specific"
+      ],
+      "definition": "The model explicitly distinguishes variation common to modalities from modality-specific variation. A biological/technical split or one joint embedding alone does not qualify."
+    },
+    {
+      "id": "partially-shared",
+      "group": "Modality decomposition",
+      "label": "Shared by subsets of modalities",
+      "field": "axis_modality_decomposition",
+      "values": [
+        "partially-shared"
+      ],
+      "definition": "The model resolves components active in a proper subset of at least two among three or more modalities. A two-modality shared/private split is not sufficient."
+    },
+    {
+      "id": "prior",
+      "group": "Prior biological knowledge",
+      "label": "Explicit biological knowledge",
+      "field": "axis_prior_knowledge",
+      "values": [
+        "pathways",
+        "gene-networks",
+        "feature-links",
+        "spatial",
+        "temporal",
+        "biological-model"
+      ],
+      "definition": "External biological structure or measured spatial/temporal context is explicitly used in model construction or fitting. The property is not inferred from post-hoc biological interpretation or a graph learned solely from the integrated features."
+    },
+    {
+      "id": "general",
+      "group": "Method scope",
+      "label": "General-purpose",
+      "field": "axis_method_scope",
+      "values": [
+        "general-purpose"
+      ],
+      "definition": "The methodological construction is not restricted to one data domain or endpoint, although reported applications can be narrower. This is the curated design scope, not proof of universal validity."
+    },
+    {
+      "id": "domain",
+      "group": "Method scope",
+      "label": "Domain-specific",
+      "field": "axis_method_scope",
+      "values": [
+        "domain-specific"
+      ],
+      "definition": "The construction uses assumptions or representations designed for a defined data domain, while supporting several analyses within that domain."
+    },
+    {
+      "id": "task",
+      "group": "Method scope",
+      "label": "Task-specific",
+      "field": "axis_method_scope",
+      "values": [
+        "task-specific"
+      ],
+      "definition": "The construction is organized around a defined inference or prediction task rather than a broadly reusable representation."
+    },
+    {
+      "id": "unsupervised",
+      "group": "Supervision",
+      "label": "Unsupervised",
+      "field": "axis_supervision",
+      "values": [
+        "unsupervised"
+      ],
+      "definition": "The profiled stage learns structure without externally supplied outcome or class labels. Reconstruction- or likelihood-only fitting is placed here for consistency with the review."
+    },
+    {
+      "id": "self-supervised",
+      "group": "Supervision",
+      "label": "Self-supervised",
+      "field": "axis_supervision",
+      "values": [
+        "self-supervised"
+      ],
+      "definition": "Training targets are constructed from the observations or their known correspondence, such as contrastive pairs or masked measurements. This review does not separately tag ordinary likelihood/reconstruction fitting as self-supervision."
+    },
+    {
+      "id": "semi-supervised",
+      "group": "Supervision",
+      "label": "Semi-supervised",
+      "field": "axis_supervision",
+      "values": [
+        "semi-supervised"
+      ],
+      "definition": "External labels supervise only part of the training observations or an explicitly designated subset of latent factors, while other observations or factors remain unlabelled or unguided. The evidence distinguishes these two uses. Partial modality pairing alone is not semi-supervision on this axis."
+    },
+    {
+      "id": "supervised",
+      "group": "Supervision",
+      "label": "Supervised",
+      "field": "axis_supervision",
+      "values": [
+        "supervised"
+      ],
+      "definition": "Observed target variables supervise prediction for the modelled units, including phenotype or annotation labels and an explicitly predicted target assay. Reconstruction of the observed inputs and constructed contrastive or masking targets follow the unsupervised/self-supervised conventions above. Bag-level labels supervising unlabelled constituent instances are classified as weakly supervised instead. Both tags require separately documented stages or objectives. A classifier used only to evaluate frozen embeddings does not establish supervision of representation learning."
+    },
+    {
+      "id": "weakly-supervised",
+      "group": "Supervision",
+      "label": "Weakly supervised",
+      "field": "axis_supervision",
+      "values": [
+        "weakly-supervised"
+      ],
+      "definition": "Labels are coarser or less direct than the instance-level quantities being learned, for example patient outcomes supervising patch aggregation."
+    },
+    {
+      "id": "discovery",
+      "group": "Integration effect",
+      "label": "Representation and discovery",
+      "field": "integration_effects",
+      "values": [
+        "discovery"
+      ],
+      "definition": "The workflow returns representations, networks, programs or composition estimates for exploratory biological analysis."
+    },
+    {
+      "id": "alignment",
+      "group": "Integration effect",
+      "label": "Alignment and correspondence",
+      "field": "integration_effects",
+      "values": [
+        "alignment"
+      ],
+      "definition": "The workflow estimates cross-modal correspondences or an alignment, beyond simply combining already matched measurements."
+    },
+    {
+      "id": "imputation",
+      "group": "Integration effect",
+      "label": "Imputation",
+      "field": "integration_effects",
+      "values": [
+        "imputation"
+      ],
+      "definition": "The workflow estimates unavailable entries in a measurement block, including documented within-modality recovery. Reconstruction of fully observed data alone does not establish imputation."
+    },
+    {
+      "id": "cross-modal",
+      "group": "Integration effect",
+      "label": "Cross-modal prediction",
+      "field": "integration_effects",
+      "values": [
+        "cross-modal-prediction"
+      ],
+      "definition": "One or more observed modalities predict a different, unavailable target modality."
+    },
+    {
+      "id": "generation",
+      "group": "Integration effect",
+      "label": "Generation",
+      "field": "integration_effects",
+      "values": [
+        "generation"
+      ],
+      "definition": "The workflow explicitly samples or generates new measurements from a learned model. Merely calling a model generative or obtaining a point reconstruction does not establish this output."
+    },
+    {
+      "id": "spatiotemporal",
+      "group": "Integration effect",
+      "label": "Spatial or temporal mapping",
+      "field": "integration_effects",
+      "values": [
+        "spatial-mapping",
+        "temporal-mapping"
+      ],
+      "definition": "The workflow maps observations to spatial locations or temporal states, or infers transitions. Spatial coordinates used solely as input do not establish a mapping output."
+    },
+    {
+      "id": "endpoint",
+      "group": "Integration effect",
+      "label": "Endpoint prediction",
+      "field": "integration_effects",
+      "values": [
+        "endpoint-prediction"
+      ],
+      "definition": "The profiled workflow predicts a defined phenotype, response, survival outcome or other endpoint. Generic downstream predictability of embeddings alone is insufficient."
+    },
+    {
+      "id": "posterior",
+      "group": "Uncertainty output",
+      "label": "Posterior uncertainty",
+      "field": "posterior",
+      "values": [],
+      "definition": "The documented workflow exposes a posterior distribution, samples or summaries for biological latent quantities, parameters or missing measurements. Point/MAP estimates alone, auxiliary mixture responsibilities used only for pooling, perturbation tests and seed-to-seed variation do not qualify. A variational posterior is an approximation, not a calibration guarantee."
+    },
+    {
+      "id": "predictive",
+      "group": "Uncertainty output",
+      "label": "Endpoint predictive uncertainty",
+      "field": "predictive",
+      "values": [],
+      "definition": "The documented workflow returns an explicit uncertainty estimate or posterior-predictive distribution for a defined endpoint. Evidential uncertainty qualifies and is distinguished from a Bayesian posterior. A point risk score, ordinary softmax probabilities or performance error bars alone do not qualify. Posterior uncertainty about missing assays is recorded in the posterior row. A noise likelihood or point reconstruction alone does not qualify."
+    }
+  ],
+  "rules": {
+    "population": "Freeze method IDs in table1-population.json. One method record is the counting unit. All applicable methodological_components contribute once to their columns. VAE is nested within probabilistic models. Columns overlap. Unresolved membership in a particular block is excluded from that column and reported separately. A method still contributes to every confirmed block.",
+    "workflow": "Classify the documented method workflow, including supported training and inference stages. Preserve stage-specific notes. Properties in one profile need not be simultaneously available in every configuration. A downstream evaluation alone does not add a building block or training target to the integration model.",
+    "counting": "For each row and column, n is the number of positive documented profiles and N is the number classified positive or scoped negative for that property. Exclude not-assessed from N and list excluded methods. A known not-applicable property is a scoped negative and remains in N. If N=0, display NA and do not color the cell. Column-membership uncertainty is distinct from an unassessed row property: both exclusions are explicitly recorded.",
+    "negative": "A scoped negative means the property is not documented in the reviewed workflow or is inapplicable to that workflow. It does not assert impossibility, or prove absence from every implementation. An incomplete field remains not-assessed, never negative.",
+    "profile_mapping": "For the established categorical axes, a known field is a curated complete assignment of applicable values for the profiled workflow. Membership in the stated values is positive. Other known values are scoped negatives. Any unassessed field is excluded. The two uncertainty rows use the source-audited per-method statuses in table1-evidence.json.",
+    "frequency": "Compute p=100*n/N. Determine bins from the unrounded fraction: 0<=p<25, 25<=p<50, 50<=p<75, 75<=p<=100. Display n/N and rounded whole percent. Small denominators remain visible. Do not interpret these bands as performance or suitability scores. Frequency categories are descriptive conventions, not statistical confidence levels.",
+    "interpretation": "This is a descriptive summary of the illustrative manuscript corpus, not an estimate of all published methods. No confidence interval or population prevalence claim is implied. Multi-block profiles describe combinations, so a property cannot be attributed causally to one block.",
+    "provenance": "Preserve source URLs, locators, rationales, date, baseline source commit, frozen IDs and input hashes. Store cell membership and excluded-method lists. Regenerate outputs from the same machine-readable definitions after any curation change.",
+    "review": "Evidence extraction and the additional audit were AI-assisted. Sources and decisions are retained for author review. Automated consistency checks test arithmetic and data integrity, not scientific truth."
+  }
+}
