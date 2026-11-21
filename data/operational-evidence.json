@@ -13,7 +13,7 @@
   },
   "counts": {
     "dataset_size": {
-      "large": 9,
+      "large": 10,
       "small": 21,
       "medium": 38,
       "not-assessed": 36
@@ -532,14 +532,16 @@
     {
       "method_id": "carhe",
       "method": "CarHE",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "small"
+          "small",
+          "large"
         ],
-        "note": "Published lung-cancer application includes 880 patients. These are reported examples, not a minimum sample size, capacity ceiling or power recommendation.",
+        "note": "Distinct stages and units: the published lung-cancer application includes 880 patients. The original preprint v1 reports more than 2,000,000 cells/spots in pooled human pretraining (Results overview, p.4). The latter is a lower-bound pretraining example, not a verified final-publication total. These counts are not minimum requirements or a capacity ceiling.",
         "sources": [
-          "https://doi.org/10.1158/0008-5472.CAN-26-1480"
+          "https://doi.org/10.1158/0008-5472.CAN-26-1480",
+          "https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1"
         ],
         "examples": [
           {
@@ -549,6 +551,16 @@
             "kind": "published",
             "source": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
             "note": "Published lung-cancer application includes 880 patients."
+          },
+          {
+            "count": 2000000,
+            "count_relation": ">",
+            "unit": "cells or spots",
+            "stage": "pooled human pretraining",
+            "kind": "preprint v1 reported lower bound",
+            "source": "https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1",
+            "locator": "Results: The overview of CarHE, PDF p.4.",
+            "note": "More than two million cells/spots, not an exact count or patient count. Original preprint, not a verified final-publication corpus size."
           }
         ]
       },

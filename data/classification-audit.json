@@ -277,23 +277,24 @@
         "axis_model_transparency": "post-hoc;black-box",
         "axis_modality_decomposition": "shared-only",
         "axis_prior_knowledge": "none",
-        "axis_method_scope": "task-specific",
+        "axis_method_scope": "domain-specific",
         "axis_supervision": "self-supervised",
-        "integration_effects": "alignment;cross-modal-prediction",
+        "integration_effects": "discovery;alignment;cross-modal-prediction;endpoint-prediction",
         "uncertainty_type": "not-reported",
         "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "contrastive",
+        "methodological_components": "contrastive;foundation-pretraining",
         "primary_data_regime": "image-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow.",
+      "rationale": "Foundation pretraining is supported by the original preprint v1: a pooled multi-tissue, multi-platform human corpus and reuse of learned reference representations for query images and downstream analyses. This goes beyond use of external HIPT/scGPT encoders. Full-method evidence is version-qualified because final published Methods were unavailable. The mouse experiment is separately trained, so it does not establish cross-species transfer of the human checkpoint. The clinical MLP is a downstream application and does not change the self-supervised tag for representation learning. Posterior or endpoint predictive uncertainty is not documented.",
       "sources": [
         "https://doi.org/10.1158/0008-5472.CAN-26-1480",
-        "https://github.com/Jwzouchenlab/CarHE/blob/main/README.md"
+        "https://github.com/Jwzouchenlab/CarHE/blob/main/README.md",
+        "https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1"
       ],
       "status": "reviewed"
     },

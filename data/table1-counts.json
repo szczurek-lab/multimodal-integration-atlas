@@ -108,15 +108,15 @@
     ]
   },
   "input_hashes": {
-    "data/integration_methods_library.csv": "10a2f45d89e09d0f0398f280bb33f173635909020a6b7e2cc6834d28e534e5c0",
+    "data/integration_methods_library.csv": "e5bcf3555e68407d63fa884527b66af21bb11ddeab927112e3898d6596b68bbb",
     "data/table1-definition.json": "e1a1fba8f01348bb9935438abf44eb2176c73bc1fa6dc9ebddf3eb8efc9c127e",
     "data/table1-population.json": "12f41139dad07e38a8b15d46dcb4d18fcbd4c80151e36e1a81267846e7c5b654",
-    "data/table1-evidence.json": "1405b6f18def2cac3a819c79e507be91c09f7dae3df274555da70c9d5f3db2ec"
+    "data/table1-evidence.json": "de9093b745c0d12601bb936c9b16eb861889f8aec0dd86639a5242c594ee2327"
   },
   "totals": {
     "unique_methods": 91,
-    "column_memberships": 127,
-    "unassessed_column_memberships": 1
+    "column_memberships": 128,
+    "unassessed_column_memberships": 0
   },
   "blocks": [
     {
@@ -277,8 +277,9 @@
       "label": "Foundation models",
       "short": "Foundation",
       "definition": "The method develops a pretrained representation on a broad, diverse corpus for reuse or adaptation in distinct downstream analyses. Pretraining may initialize from existing encoders. Using an external pretrained backbone, task-specific contrastive pretraining, or evaluation of the same prediction task on another cohort alone does not qualify. The evidence must describe the pretraining corpus and intended representation reuse. Corpus breadth is assessed in its biological domain, without a universal sample-count cutoff.",
-      "total": 8,
+      "total": 9,
       "members": [
+        "carhe",
         "cellwhisperer",
         "conch",
         "convirt",
@@ -288,10 +289,8 @@
         "scgpt",
         "titan"
       ],
-      "membership_unknown": 1,
-      "excluded_membership_unknown": [
-        "carhe"
-      ]
+      "membership_unknown": 0,
+      "excluded_membership_unknown": []
     },
     {
       "id": "mil",
@@ -529,14 +528,15 @@
           "excluded_unknown": []
         },
         "foundation-pretraining": {
-          "n": 8,
-          "N": 8,
+          "n": 9,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 100.0,
           "display_pct": 100,
           "band": "75–100%",
           "members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -751,14 +751,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -972,14 +973,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -1191,14 +1193,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -1412,16 +1415,17 @@
         },
         "foundation-pretraining": {
           "n": 1,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 12.5,
-          "display_pct": 13,
+          "column_total": 9,
+          "pct": 11.11111111111111,
+          "display_pct": 11,
           "band": "0–<25%",
           "members": [
             "mstar"
           ],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -1635,11 +1639,11 @@
         },
         "foundation-pretraining": {
           "n": 5,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 62.5,
-          "display_pct": 63,
+          "column_total": 9,
+          "pct": 55.55555555555556,
+          "display_pct": 56,
           "band": "50–<75%",
           "members": [
             "cellwhisperer",
@@ -1649,6 +1653,7 @@
             "scgpt"
           ],
           "negative_members": [
+            "carhe",
             "medhive",
             "mstar",
             "titan"
@@ -1857,14 +1862,15 @@
           "excluded_unknown": []
         },
         "foundation-pretraining": {
-          "n": 3,
-          "N": 8,
+          "n": 4,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 37.5,
-          "display_pct": 38,
+          "column_total": 9,
+          "pct": 44.44444444444444,
+          "display_pct": 44,
           "band": "25–<50%",
           "members": [
+            "carhe",
             "medhive",
             "mstar",
             "titan"
@@ -2080,14 +2086,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -2299,14 +2306,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -2521,16 +2529,17 @@
         },
         "foundation-pretraining": {
           "n": 1,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 12.5,
-          "display_pct": 13,
+          "column_total": 9,
+          "pct": 11.11111111111111,
+          "display_pct": 11,
           "band": "0–<25%",
           "members": [
             "medhive"
           ],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -2743,14 +2752,15 @@
           "excluded_unknown": []
         },
         "foundation-pretraining": {
-          "n": 2,
-          "N": 8,
+          "n": 3,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 25.0,
-          "display_pct": 25,
+          "column_total": 9,
+          "pct": 33.333333333333336,
+          "display_pct": 33,
           "band": "25–<50%",
           "members": [
+            "carhe",
             "medhive",
             "pertformer"
           ],
@@ -2967,14 +2977,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -3186,14 +3197,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -3412,17 +3424,18 @@
         },
         "foundation-pretraining": {
           "n": 2,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 25.0,
-          "display_pct": 25,
-          "band": "25–<50%",
+          "column_total": 9,
+          "pct": 22.22222222222222,
+          "display_pct": 22,
+          "band": "0–<25%",
           "members": [
             "medhive",
             "pertformer"
           ],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -3635,16 +3648,17 @@
         },
         "foundation-pretraining": {
           "n": 1,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 12.5,
-          "display_pct": 13,
+          "column_total": 9,
+          "pct": 11.11111111111111,
+          "display_pct": 11,
           "band": "0–<25%",
           "members": [
             "scgpt"
           ],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -3825,14 +3839,15 @@
           "excluded_unknown": []
         },
         "contrastive": {
-          "n": 8,
+          "n": 9,
           "N": 17,
           "unknown": 0,
           "column_total": 17,
-          "pct": 47.05882352941177,
-          "display_pct": 47,
-          "band": "25–<50%",
+          "pct": 52.94117647058823,
+          "display_pct": 53,
+          "band": "50–<75%",
           "members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -3844,7 +3859,6 @@
           ],
           "negative_members": [
             "ace",
-            "carhe",
             "eclare",
             "matchclot",
             "monae",
@@ -3856,14 +3870,15 @@
           "excluded_unknown": []
         },
         "foundation-pretraining": {
-          "n": 7,
-          "N": 8,
+          "n": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 87.5,
-          "display_pct": 88,
+          "column_total": 9,
+          "pct": 88.88888888888889,
+          "display_pct": 89,
           "band": "75–100%",
           "members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -4048,19 +4063,19 @@
           "excluded_unknown": []
         },
         "contrastive": {
-          "n": 2,
+          "n": 1,
           "N": 17,
           "unknown": 0,
           "column_total": 17,
-          "pct": 11.764705882352942,
-          "display_pct": 12,
+          "pct": 5.882352941176471,
+          "display_pct": 6,
           "band": "0–<25%",
           "members": [
-            "carhe",
             "virtualmultiplexer"
           ],
           "negative_members": [
             "ace",
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -4080,14 +4095,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -4302,14 +4318,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -4521,14 +4538,15 @@
           "excluded_unknown": []
         },
         "foundation-pretraining": {
-          "n": 8,
-          "N": 8,
+          "n": 9,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 100.0,
           "display_pct": 100,
           "band": "75–100%",
           "members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -4743,14 +4761,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -4963,14 +4982,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -5185,16 +5205,17 @@
         },
         "foundation-pretraining": {
           "n": 1,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 12.5,
-          "display_pct": 13,
+          "column_total": 9,
+          "pct": 11.11111111111111,
+          "display_pct": 11,
           "band": "0–<25%",
           "members": [
             "mstar"
           ],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -5376,15 +5397,16 @@
           "excluded_unknown": []
         },
         "contrastive": {
-          "n": 13,
+          "n": 14,
           "N": 17,
           "unknown": 0,
           "column_total": 17,
-          "pct": 76.47058823529412,
-          "display_pct": 76,
+          "pct": 82.3529411764706,
+          "display_pct": 82,
           "band": "75–100%",
           "members": [
             "ace",
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -5399,7 +5421,6 @@
             "titan"
           ],
           "negative_members": [
-            "carhe",
             "matchclot",
             "pathomclip",
             "virtualmultiplexer"
@@ -5407,14 +5428,15 @@
           "excluded_unknown": []
         },
         "foundation-pretraining": {
-          "n": 8,
-          "N": 8,
+          "n": 9,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 100.0,
           "display_pct": 100,
           "band": "75–100%",
           "members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -5629,14 +5651,15 @@
           "excluded_unknown": []
         },
         "foundation-pretraining": {
-          "n": 7,
-          "N": 8,
+          "n": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 87.5,
-          "display_pct": 88,
+          "column_total": 9,
+          "pct": 88.88888888888889,
+          "display_pct": 89,
           "band": "75–100%",
           "members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -5853,14 +5876,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -6073,14 +6097,15 @@
           "excluded_unknown": []
         },
         "foundation-pretraining": {
-          "n": 1,
-          "N": 8,
+          "n": 2,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 12.5,
-          "display_pct": 13,
+          "column_total": 9,
+          "pct": 22.22222222222222,
+          "display_pct": 22,
           "band": "0–<25%",
           "members": [
+            "carhe",
             "conch"
           ],
           "negative_members": [
@@ -6297,14 +6322,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -6518,14 +6544,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -6707,19 +6734,19 @@
           "excluded_unknown": []
         },
         "contrastive": {
-          "n": 1,
+          "n": 2,
           "N": 17,
           "unknown": 0,
           "column_total": 17,
-          "pct": 5.882352941176471,
-          "display_pct": 6,
+          "pct": 11.764705882352942,
+          "display_pct": 12,
           "band": "0–<25%",
           "members": [
+            "carhe",
             "multi-embed"
           ],
           "negative_members": [
             "ace",
-            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -6738,14 +6765,15 @@
           "excluded_unknown": []
         },
         "foundation-pretraining": {
-          "n": 1,
-          "N": 8,
+          "n": 2,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
-          "pct": 12.5,
-          "display_pct": 13,
+          "column_total": 9,
+          "pct": 22.22222222222222,
+          "display_pct": 22,
           "band": "0–<25%",
           "members": [
+            "carhe",
             "pertformer"
           ],
           "negative_members": [
@@ -6958,14 +6986,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -7176,14 +7205,15 @@
         },
         "foundation-pretraining": {
           "n": 0,
-          "N": 8,
+          "N": 9,
           "unknown": 0,
-          "column_total": 8,
+          "column_total": 9,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
           "members": [],
           "negative_members": [
+            "carhe",
             "cellwhisperer",
             "conch",
             "convirt",
@@ -8370,29 +8400,18 @@
       "publication_url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
       "resource_url": "https://github.com/Jwzouchenlab/CarHE",
       "blocks": [
-        "contrastive"
+        "contrastive",
+        "foundation-pretraining"
       ],
-      "component_membership_uncertain": {
-        "foundation-pretraining": {
-          "status": "not-assessed",
-          "rationale": "Published abstract and data availability establish multimodal pretraining across platforms, but do not resolve the breadth and reuse of an individual trained representation. Foundation membership remains unassessed rather than negative.",
-          "sources": [
-            {
-              "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
-              "locator": "Published Abstract and Data Availability.",
-              "evidence": "The authors describe multimodal pretraining across Visium, Visium HD and Xenium, with several tumour types and clinical applications. These sections do not establish whether one broadly pretrained representation or separately fitted models supply the applications.",
-              "checked_on": "2026-11-21"
-            }
-          ]
-        }
-      },
+      "component_membership_uncertain": {},
       "sources": [
         "https://doi.org/10.1158/0008-5472.CAN-26-1480",
         "https://github.com/Jwzouchenlab/CarHE",
         "https://github.com/Jwzouchenlab/CarHE/blob/main/README.md",
+        "https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1",
         "https://pubmed.ncbi.nlm.nih.gov/42615562/"
       ],
-      "curation_notes": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow.",
+      "curation_notes": "Foundation pretraining is supported by the original preprint v1: a pooled multi-tissue, multi-platform human corpus and reuse of learned reference representations for query images and downstream analyses. This goes beyond use of external HIPT/scGPT encoders. Full-method evidence is version-qualified because final published Methods were unavailable. The mouse experiment is separately trained, so it does not establish cross-species transfer of the human checkpoint. The clinical MLP is a downstream application and does not change the self-supervised tag for representation learning. Posterior or endpoint predictive uncertainty is not documented.",
       "reviewed_on": "2026-11-21",
       "profile": {
         "method_id": "carhe",
@@ -8411,12 +8430,19 @@
         },
         "predictive": {
           "status": "no",
-          "rationale": "The profiled output is expression prediction, not uncertainty for a disease, response or survival endpoint.",
+          "rationale": "The full workflow includes a downstream survival predictor, but no explicit endpoint predictive uncertainty estimate is documented.",
           "sources": [
             {
               "url": "https://github.com/Jwzouchenlab/CarHE",
               "locator": "README: model structure, prerequisites, inference/evaluation",
               "evidence": "HIPT, projection heads and CLIP loss produce embeddings and expression predictions. The documented evaluation reports correlations, regression error and retrieval metrics. Grad-CAM is attribution.",
+              "checked_on": "2026-11-21"
+            },
+            {
+              "url": "https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1",
+              "version": "bioRxiv v1, posted 19 June 2025",
+              "locator": "Results: overview (PDF pp.4–5), human applications (pp.6–9); Methods: preprocessing, HIPT and projection network (pp.10–12).",
+              "evidence": "The preprint describes pooled pretraining on more than two million cells/spots from more than ten tissues and more than one hundred spatial slides, its own contrastive training, and use of learned cluster-reference representations for query images. Image and inferred expression features also feed a separate survival predictor. The mouse experiment is separately trained.",
               "checked_on": "2026-11-21"
             }
           ]
@@ -8555,20 +8581,6 @@
           "boundary_notes": [],
           "conditional_updates": []
         },
-        "component_membership_uncertain": {
-          "foundation-pretraining": {
-            "status": "not-assessed",
-            "rationale": "Published abstract and data availability establish multimodal pretraining across platforms, but do not resolve the breadth and reuse of an individual trained representation. Foundation membership remains unassessed rather than negative.",
-            "sources": [
-              {
-                "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
-                "locator": "Published Abstract and Data Availability.",
-                "evidence": "The authors describe multimodal pretraining across Visium, Visium HD and Xenium, with several tumour types and clinical applications. These sections do not establish whether one broadly pretrained representation or separately fitted models supply the applications.",
-                "checked_on": "2026-11-21"
-              }
-            ]
-          }
-        },
         "accepted_changes": {
           "methodological_components": {
             "before": "contrastive;foundation-pretraining",
@@ -8596,12 +8608,16 @@
           }
         },
         "current_values": {
-          "methodological_components": "contrastive",
+          "methodological_components": "contrastive;foundation-pretraining",
           "axis_supervision": "self-supervised",
           "axis_model_transparency": "post-hoc;black-box",
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
-          "calibration_evidence": "not-assessed"
+          "calibration_evidence": "not-assessed",
+          "axis_method_scope": "domain-specific",
+          "integration_effects": "discovery;alignment;cross-modal-prediction;endpoint-prediction",
+          "dataset_size": "small;large",
+          "dataset_size_notes": "Distinct stages and units: the published lung-cancer application includes 880 patients. The original preprint v1 reports more than 2,000,000 cells/spots in pooled human pretraining (Results overview, p.4). The latter is a lower-bound pretraining example, not a verified final-publication total. These counts are not minimum requirements or a capacity ceiling."
         },
         "prior_component_membership_assessments": [
           {
@@ -8632,29 +8648,127 @@
               }
             },
             "superseded_on": "2026-11-21"
+          },
+          {
+            "block": "foundation-pretraining",
+            "assessment": {
+              "status": "not-assessed",
+              "rationale": "Published abstract and data availability establish multimodal pretraining across platforms, but do not resolve the breadth and reuse of an individual trained representation. Foundation membership remains unassessed rather than negative.",
+              "sources": [
+                {
+                  "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
+                  "locator": "Published Abstract and Data Availability.",
+                  "evidence": "The authors describe multimodal pretraining across Visium, Visium HD and Xenium, with several tumour types and clinical applications. These sections do not establish whether one broadly pretrained representation or separately fitted models supply the applications.",
+                  "checked_on": "2026-11-21"
+                }
+              ]
+            },
+            "superseded_on": "2026-11-21",
+            "reason": "Full original preprint supplied for source review."
           }
         ],
         "component_membership_assessment": {
           "foundation-pretraining": {
-            "status": "not-assessed",
-            "rationale": "Published abstract and data availability establish multimodal pretraining across platforms, but do not resolve the breadth and reuse of an individual trained representation. Foundation membership remains unassessed rather than negative.",
+            "status": "yes",
+            "rationale": "The described human workflow develops cross-modal representations on a broad, diverse pooled corpus and reuses the learned reference representations and features in distinct downstream analyses. It qualifies under the common foundation-pretraining rule, beyond use of external HIPT/scGPT encoders alone.",
             "sources": [
               {
-                "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
-                "locator": "Published Abstract and Data Availability.",
-                "evidence": "The authors describe multimodal pretraining across Visium, Visium HD and Xenium, with several tumour types and clinical applications. These sections do not establish whether one broadly pretrained representation or separately fitted models supply the applications.",
+                "url": "https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1",
+                "version": "bioRxiv v1, posted 19 June 2025",
+                "locator": "Results: overview (PDF pp.4–5), human applications (pp.6–9); Methods: preprocessing, HIPT and projection network (pp.10–12).",
+                "evidence": "The preprint describes pooled pretraining on more than two million cells/spots from more than ten tissues and more than one hundred spatial slides, its own contrastive training, and use of learned cluster-reference representations for query images. Image and inferred expression features also feed a separate survival predictor. The mouse experiment is separately trained.",
                 "checked_on": "2026-11-21"
               }
-            ]
+            ],
+            "version_scope": "Full-method evidence is from the original preprint, read alongside the published abstract and data-availability statement. It does not establish a single checkpoint across every experiment or validate unchanged final-paper implementation. The mouse application uses dataset-specific retraining."
           }
         },
         "followup_accepted_changes": {
+          "summary": {
+            "before": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs.",
+            "after": "Cross-modal pretraining aligns H&E image features with spatial transcriptomic reference representations for expression inference and downstream tissue analysis."
+          },
+          "methodological_components": {
+            "before": "contrastive",
+            "after": "contrastive;foundation-pretraining"
+          },
+          "axis_method_scope": {
+            "before": "task-specific",
+            "after": "domain-specific"
+          },
+          "integration_effects": {
+            "before": "alignment;cross-modal-prediction",
+            "after": "discovery;alignment;cross-modal-prediction;endpoint-prediction"
+          },
+          "training_requirements": {
+            "before": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders.",
+            "after": "Paired H&E and spatial-expression data support pooled contrastive pretraining, including adaptation of HIPT and learned projection heads. Query images use the learned cluster reference. A separate downstream MLP predicts survival from image and inferred expression features. The mouse experiment is dataset-specific training."
+          },
           "curation_notes": {
-            "before": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders. Foundation-pretraining membership remains unassessed: the inspected sources establish contrastive training but do not establish a distinct broadly reusable pretraining stage to the table rubric. This is not a negative classification. The unresolved candidate is excluded from that column and remains counted in confirmed components. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
-            "after": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow."
+            "before": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow.",
+            "after": "Foundation pretraining is supported by the original preprint v1: a pooled multi-tissue, multi-platform human corpus and reuse of learned reference representations for query images and downstream analyses. This goes beyond use of external HIPT/scGPT encoders. Full-method evidence is version-qualified because final published Methods were unavailable. The mouse experiment is separately trained, so it does not establish cross-species transfer of the human checkpoint. The clinical MLP is a downstream application and does not change the self-supervised tag for representation learning. Posterior or endpoint predictive uncertainty is not documented."
+          },
+          "evidence_sources": {
+            "before": "https://doi.org/10.1158/0008-5472.CAN-26-1480;https://github.com/Jwzouchenlab/CarHE/blob/main/README.md",
+            "after": "https://doi.org/10.1158/0008-5472.CAN-26-1480;https://github.com/Jwzouchenlab/CarHE/blob/main/README.md;https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1"
+          },
+          "application_tasks": {
+            "before": "alignment;cross-modal-prediction",
+            "after": "discovery;alignment;cross-modal-prediction;endpoint-prediction"
+          },
+          "application_primary_task": {
+            "before": "alignment;cross-modal-prediction",
+            "after": "cross-modal-prediction"
+          },
+          "method_family": {
+            "before": "Contrastive learning",
+            "after": "Contrastive learning;Foundation models"
+          },
+          "dataset_size": {
+            "before": "small",
+            "after": "small;large"
+          },
+          "dataset_size_notes": {
+            "before": "Published lung-cancer application includes 880 patients. These are reported examples, not a minimum sample size, capacity ceiling or power recommendation.",
+            "after": "Distinct stages and units: the published lung-cancer application includes 880 patients. The original preprint v1 reports more than 2,000,000 cells/spots in pooled human pretraining (Results overview, p.4). The latter is a lower-bound pretraining example, not a verified final-publication total. These counts are not minimum requirements or a capacity ceiling."
+          },
+          "dataset_size_sources": {
+            "before": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
+            "after": "https://doi.org/10.1158/0008-5472.CAN-26-1480;https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1"
+          },
+          "operational_checked_on": {
+            "before": "2026-11-18",
+            "after": "2026-11-21"
           }
         },
-        "prior_source_audit_note": "The source_audit and accepted_changes fields record the initial 21 November pass. component_membership_assessment, followup_accepted_changes, current_values and the current CSV contain the subsequent full-text adjudication."
+        "prior_source_audit_note": "The source_audit and accepted_changes fields record the initial 21 November pass. component_membership_assessment, followup_accepted_changes, current_values and the current CSV contain the subsequent full-text adjudication.",
+        "prior_followup_reviews": [
+          {
+            "followup_accepted_changes": {
+              "curation_notes": {
+                "before": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders. Foundation-pretraining membership remains unassessed: the inspected sources establish contrastive training but do not establish a distinct broadly reusable pretraining stage to the table rubric. This is not a negative classification. The unresolved candidate is excluded from that column and remains counted in confirmed components. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
+                "after": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow."
+              }
+            },
+            "superseded_on": "2026-11-21"
+          }
+        ],
+        "followup_source_review": {
+          "scope": "Original preprint v1 full Methods and Results, alongside the published abstract and data availability. No universal-checkpoint or cross-species-transfer assertion.",
+          "sources": [
+            {
+              "url": "https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1",
+              "version": "bioRxiv v1, posted 19 June 2025",
+              "locator": "Results: overview (PDF pp.4–5), human applications (pp.6–9); Methods: preprocessing, HIPT and projection network (pp.10–12).",
+              "evidence": "The preprint describes pooled pretraining on more than two million cells/spots from more than ten tissues and more than one hundred spatial slides, its own contrastive training, and use of learned cluster-reference representations for query images. Image and inferred expression features also feed a separate survival predictor. The mouse experiment is separately trained.",
+              "checked_on": "2026-11-21"
+            }
+          ],
+          "source_limitations": [
+            "The overview lists five platforms after saying four; the Methods lists four. The published data availability names three main platforms. No exact platform-count claim is used.",
+            "Preprint Results says 881 clinical patients while Methods and the published text say 880. The published count of 880 is retained."
+          ]
+        }
       },
       "axis_values": {
         "axis_correspondence": "paired",
@@ -8663,9 +8777,9 @@
         "axis_model_transparency": "post-hoc;black-box",
         "axis_modality_decomposition": "shared-only",
         "axis_prior_knowledge": "none",
-        "axis_method_scope": "task-specific",
+        "axis_method_scope": "domain-specific",
         "axis_supervision": "self-supervised",
-        "integration_effects": "alignment;cross-modal-prediction"
+        "integration_effects": "discovery;alignment;cross-modal-prediction;endpoint-prediction"
       }
     },
     "cell2location": {

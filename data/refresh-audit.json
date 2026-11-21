@@ -737,14 +737,31 @@
   ],
   "foundation_membership_update": {
     "checked_on": "2026-11-21",
+    "resolved_positive": [
+      "carhe"
+    ],
     "resolved_negative": [
       "multi-embed",
       "pathomclip"
     ],
-    "remaining_unknown": [
-      "carhe"
-    ],
+    "remaining_unknown": [],
+    "confirmed_count_in_manuscript": 9,
     "evidence_record": "data/table1-evidence.json",
-    "criterion_record": "data/table1-definition.json"
-  }
+    "criterion_record": "data/table1-definition.json",
+    "source_version_note": "CarHE full-method evidence comes from original preprint v1, read alongside published abstract and data availability."
+  },
+  "prior_foundation_membership_updates": [
+    {
+      "checked_on": "2026-11-21",
+      "resolved_negative": [
+        "multi-embed",
+        "pathomclip"
+      ],
+      "remaining_unknown": [
+        "carhe"
+      ],
+      "evidence_record": "data/table1-evidence.json",
+      "criterion_record": "data/table1-definition.json"
+    }
+  ]
 }

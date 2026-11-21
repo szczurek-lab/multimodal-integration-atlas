@@ -964,12 +964,19 @@
       },
       "predictive": {
         "status": "no",
-        "rationale": "The profiled output is expression prediction, not uncertainty for a disease, response or survival endpoint.",
+        "rationale": "The full workflow includes a downstream survival predictor, but no explicit endpoint predictive uncertainty estimate is documented.",
         "sources": [
           {
             "url": "https://github.com/Jwzouchenlab/CarHE",
             "locator": "README: model structure, prerequisites, inference/evaluation",
             "evidence": "HIPT, projection heads and CLIP loss produce embeddings and expression predictions. The documented evaluation reports correlations, regression error and retrieval metrics. Grad-CAM is attribution.",
+            "checked_on": "2026-11-21"
+          },
+          {
+            "url": "https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1",
+            "version": "bioRxiv v1, posted 19 June 2025",
+            "locator": "Results: overview (PDF pp.4–5), human applications (pp.6–9); Methods: preprocessing, HIPT and projection network (pp.10–12).",
+            "evidence": "The preprint describes pooled pretraining on more than two million cells/spots from more than ten tissues and more than one hundred spatial slides, its own contrastive training, and use of learned cluster-reference representations for query images. Image and inferred expression features also feed a separate survival predictor. The mouse experiment is separately trained.",
             "checked_on": "2026-11-21"
           }
         ]
@@ -1108,20 +1115,6 @@
         "boundary_notes": [],
         "conditional_updates": []
       },
-      "component_membership_uncertain": {
-        "foundation-pretraining": {
-          "status": "not-assessed",
-          "rationale": "Published abstract and data availability establish multimodal pretraining across platforms, but do not resolve the breadth and reuse of an individual trained representation. Foundation membership remains unassessed rather than negative.",
-          "sources": [
-            {
-              "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
-              "locator": "Published Abstract and Data Availability.",
-              "evidence": "The authors describe multimodal pretraining across Visium, Visium HD and Xenium, with several tumour types and clinical applications. These sections do not establish whether one broadly pretrained representation or separately fitted models supply the applications.",
-              "checked_on": "2026-11-21"
-            }
-          ]
-        }
-      },
       "accepted_changes": {
         "methodological_components": {
           "before": "contrastive;foundation-pretraining",
@@ -1149,12 +1142,16 @@
         }
       },
       "current_values": {
-        "methodological_components": "contrastive",
+        "methodological_components": "contrastive;foundation-pretraining",
         "axis_supervision": "self-supervised",
         "axis_model_transparency": "post-hoc;black-box",
         "uncertainty_type": "not-reported",
         "uncertainty_target": "not-applicable",
-        "calibration_evidence": "not-assessed"
+        "calibration_evidence": "not-assessed",
+        "axis_method_scope": "domain-specific",
+        "integration_effects": "discovery;alignment;cross-modal-prediction;endpoint-prediction",
+        "dataset_size": "small;large",
+        "dataset_size_notes": "Distinct stages and units: the published lung-cancer application includes 880 patients. The original preprint v1 reports more than 2,000,000 cells/spots in pooled human pretraining (Results overview, p.4). The latter is a lower-bound pretraining example, not a verified final-publication total. These counts are not minimum requirements or a capacity ceiling."
       },
       "prior_component_membership_assessments": [
         {
@@ -1185,29 +1182,127 @@
             }
           },
           "superseded_on": "2026-11-21"
+        },
+        {
+          "block": "foundation-pretraining",
+          "assessment": {
+            "status": "not-assessed",
+            "rationale": "Published abstract and data availability establish multimodal pretraining across platforms, but do not resolve the breadth and reuse of an individual trained representation. Foundation membership remains unassessed rather than negative.",
+            "sources": [
+              {
+                "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
+                "locator": "Published Abstract and Data Availability.",
+                "evidence": "The authors describe multimodal pretraining across Visium, Visium HD and Xenium, with several tumour types and clinical applications. These sections do not establish whether one broadly pretrained representation or separately fitted models supply the applications.",
+                "checked_on": "2026-11-21"
+              }
+            ]
+          },
+          "superseded_on": "2026-11-21",
+          "reason": "Full original preprint supplied for source review."
         }
       ],
       "component_membership_assessment": {
         "foundation-pretraining": {
-          "status": "not-assessed",
-          "rationale": "Published abstract and data availability establish multimodal pretraining across platforms, but do not resolve the breadth and reuse of an individual trained representation. Foundation membership remains unassessed rather than negative.",
+          "status": "yes",
+          "rationale": "The described human workflow develops cross-modal representations on a broad, diverse pooled corpus and reuses the learned reference representations and features in distinct downstream analyses. It qualifies under the common foundation-pretraining rule, beyond use of external HIPT/scGPT encoders alone.",
           "sources": [
             {
-              "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
-              "locator": "Published Abstract and Data Availability.",
-              "evidence": "The authors describe multimodal pretraining across Visium, Visium HD and Xenium, with several tumour types and clinical applications. These sections do not establish whether one broadly pretrained representation or separately fitted models supply the applications.",
+              "url": "https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1",
+              "version": "bioRxiv v1, posted 19 June 2025",
+              "locator": "Results: overview (PDF pp.4–5), human applications (pp.6–9); Methods: preprocessing, HIPT and projection network (pp.10–12).",
+              "evidence": "The preprint describes pooled pretraining on more than two million cells/spots from more than ten tissues and more than one hundred spatial slides, its own contrastive training, and use of learned cluster-reference representations for query images. Image and inferred expression features also feed a separate survival predictor. The mouse experiment is separately trained.",
               "checked_on": "2026-11-21"
             }
-          ]
+          ],
+          "version_scope": "Full-method evidence is from the original preprint, read alongside the published abstract and data-availability statement. It does not establish a single checkpoint across every experiment or validate unchanged final-paper implementation. The mouse application uses dataset-specific retraining."
         }
       },
       "followup_accepted_changes": {
+        "summary": {
+          "before": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs.",
+          "after": "Cross-modal pretraining aligns H&E image features with spatial transcriptomic reference representations for expression inference and downstream tissue analysis."
+        },
+        "methodological_components": {
+          "before": "contrastive",
+          "after": "contrastive;foundation-pretraining"
+        },
+        "axis_method_scope": {
+          "before": "task-specific",
+          "after": "domain-specific"
+        },
+        "integration_effects": {
+          "before": "alignment;cross-modal-prediction",
+          "after": "discovery;alignment;cross-modal-prediction;endpoint-prediction"
+        },
+        "training_requirements": {
+          "before": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders.",
+          "after": "Paired H&E and spatial-expression data support pooled contrastive pretraining, including adaptation of HIPT and learned projection heads. Query images use the learned cluster reference. A separate downstream MLP predicts survival from image and inferred expression features. The mouse experiment is dataset-specific training."
+        },
         "curation_notes": {
-          "before": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders. Foundation-pretraining membership remains unassessed: the inspected sources establish contrastive training but do not establish a distinct broadly reusable pretraining stage to the table rubric. This is not a negative classification. The unresolved candidate is excluded from that column and remains counted in confirmed components. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
-          "after": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow."
+          "before": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow.",
+          "after": "Foundation pretraining is supported by the original preprint v1: a pooled multi-tissue, multi-platform human corpus and reuse of learned reference representations for query images and downstream analyses. This goes beyond use of external HIPT/scGPT encoders. Full-method evidence is version-qualified because final published Methods were unavailable. The mouse experiment is separately trained, so it does not establish cross-species transfer of the human checkpoint. The clinical MLP is a downstream application and does not change the self-supervised tag for representation learning. Posterior or endpoint predictive uncertainty is not documented."
+        },
+        "evidence_sources": {
+          "before": "https://doi.org/10.1158/0008-5472.CAN-26-1480;https://github.com/Jwzouchenlab/CarHE/blob/main/README.md",
+          "after": "https://doi.org/10.1158/0008-5472.CAN-26-1480;https://github.com/Jwzouchenlab/CarHE/blob/main/README.md;https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1"
+        },
+        "application_tasks": {
+          "before": "alignment;cross-modal-prediction",
+          "after": "discovery;alignment;cross-modal-prediction;endpoint-prediction"
+        },
+        "application_primary_task": {
+          "before": "alignment;cross-modal-prediction",
+          "after": "cross-modal-prediction"
+        },
+        "method_family": {
+          "before": "Contrastive learning",
+          "after": "Contrastive learning;Foundation models"
+        },
+        "dataset_size": {
+          "before": "small",
+          "after": "small;large"
+        },
+        "dataset_size_notes": {
+          "before": "Published lung-cancer application includes 880 patients. These are reported examples, not a minimum sample size, capacity ceiling or power recommendation.",
+          "after": "Distinct stages and units: the published lung-cancer application includes 880 patients. The original preprint v1 reports more than 2,000,000 cells/spots in pooled human pretraining (Results overview, p.4). The latter is a lower-bound pretraining example, not a verified final-publication total. These counts are not minimum requirements or a capacity ceiling."
+        },
+        "dataset_size_sources": {
+          "before": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
+          "after": "https://doi.org/10.1158/0008-5472.CAN-26-1480;https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1"
+        },
+        "operational_checked_on": {
+          "before": "2026-11-18",
+          "after": "2026-11-21"
         }
       },
-      "prior_source_audit_note": "The source_audit and accepted_changes fields record the initial 21 November pass. component_membership_assessment, followup_accepted_changes, current_values and the current CSV contain the subsequent full-text adjudication."
+      "prior_source_audit_note": "The source_audit and accepted_changes fields record the initial 21 November pass. component_membership_assessment, followup_accepted_changes, current_values and the current CSV contain the subsequent full-text adjudication.",
+      "prior_followup_reviews": [
+        {
+          "followup_accepted_changes": {
+            "curation_notes": {
+              "before": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders. Foundation-pretraining membership remains unassessed: the inspected sources establish contrastive training but do not establish a distinct broadly reusable pretraining stage to the table rubric. This is not a negative classification. The unresolved candidate is excluded from that column and remains counted in confirmed components. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
+              "after": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow."
+            }
+          },
+          "superseded_on": "2026-11-21"
+        }
+      ],
+      "followup_source_review": {
+        "scope": "Original preprint v1 full Methods and Results, alongside the published abstract and data availability. No universal-checkpoint or cross-species-transfer assertion.",
+        "sources": [
+          {
+            "url": "https://www.biorxiv.org/content/10.1101/2025.06.15.659438v1",
+            "version": "bioRxiv v1, posted 19 June 2025",
+            "locator": "Results: overview (PDF pp.4–5), human applications (pp.6–9); Methods: preprocessing, HIPT and projection network (pp.10–12).",
+            "evidence": "The preprint describes pooled pretraining on more than two million cells/spots from more than ten tissues and more than one hundred spatial slides, its own contrastive training, and use of learned cluster-reference representations for query images. Image and inferred expression features also feed a separate survival predictor. The mouse experiment is separately trained.",
+            "checked_on": "2026-11-21"
+          }
+        ],
+        "source_limitations": [
+          "The overview lists five platforms after saying four; the Methods lists four. The published data availability names three main platforms. No exact platform-count claim is used.",
+          "Preprint Results says 881 clinical patients while Methods and the published text say 880. The published count of 880 is retained."
+        ]
+      }
     },
     {
       "method_id": "cell2location",
