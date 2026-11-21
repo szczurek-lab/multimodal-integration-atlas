@@ -290,7 +290,7 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
+      "rationale": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow.",
       "sources": [
         "https://doi.org/10.1158/0008-5472.CAN-26-1480",
         "https://github.com/Jwzouchenlab/CarHE/blob/main/README.md"
@@ -2097,19 +2097,19 @@
         "axis_modality_decomposition": "shared-only",
         "axis_prior_knowledge": "none",
         "axis_method_scope": "domain-specific",
-        "axis_supervision": "self-supervised",
-        "integration_effects": "discovery;alignment;cross-modal-prediction",
+        "axis_supervision": "self-supervised;weakly-supervised",
+        "integration_effects": "discovery;alignment;cross-modal-prediction;endpoint-prediction",
         "uncertainty_type": "not-reported",
         "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
-        "methodological_components": "contrastive",
+        "methodological_components": "contrastive;mil",
         "primary_data_regime": "image-omics",
         "publication_status": "journal",
         "code_availability": "public-code",
         "independent_benchmark": "not-assessed",
         "pretrained_model": "available"
       },
-      "rationale": "Self-supervised morphology–molecule embeddings support slide- and spot-level applications. Endpoint heads are trained separately. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
+      "rationale": "Multi-Embed is not classified as foundation pretraining: the authors explicitly distinguish it from a plug-and-play foundation model (Discussion, p.907). Its own disease- and technology-specific pretraining and transfer remain acknowledged. Attention pooling is integral to representation learning. The complete workflow includes separately trained, weakly supervised clinical fusion and endpoint prediction. No unit-level posterior or endpoint uncertainty output is documented.",
       "sources": [
         "https://doi.org/10.1038/s41592-026-03070-5",
         "https://github.com/Epoch1128/Multi-Embed/blob/main/README.md"
@@ -2440,10 +2440,10 @@
         "axis_modality_decomposition": "shared-only",
         "axis_prior_knowledge": "none",
         "axis_method_scope": "domain-specific",
-        "axis_supervision": "self-supervised",
+        "axis_supervision": "self-supervised;supervised",
         "integration_effects": "alignment;cross-modal-prediction",
-        "uncertainty_type": "not-assessed",
-        "uncertainty_target": "not-assessed",
+        "uncertainty_type": "not-reported",
+        "uncertainty_target": "not-applicable",
         "calibration_evidence": "not-assessed",
         "methodological_components": "contrastive;mil",
         "primary_data_regime": "spatial-assays;image-omics",
@@ -2452,9 +2452,10 @@
         "independent_benchmark": "not-assessed",
         "pretrained_model": "not-assessed"
       },
-      "rationale": "Paired cross-modal contrastive learning reuses pathology and single-cell encoders. Generation is not inferred from alignment alone. Additional source audit and workflow/version qualifications are preserved in data/table1-evidence.json.",
+      "rationale": "PathOmCLIP combines contrastive learning and local set aggregation with task-specific adaptation of external foundation encoders. Its own LocalCLIP pretraining is retained in the description, but broader foundation-pretraining membership is not established in the complete profiled workflow. Stage 1 is self-supervised; stage 2 predicts measured expression with a supervised regression loss. Matching probabilities are not posterior uncertainty, and point assay predictions do not establish endpoint predictive uncertainty. The paper offers code upon request.",
       "sources": [
-        "https://doi.org/10.1101/2024.12.10.627865"
+        "https://doi.org/10.1101/2024.12.10.627865",
+        "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1"
       ],
       "status": "reviewed"
     },

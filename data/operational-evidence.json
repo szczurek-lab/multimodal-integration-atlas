@@ -14,9 +14,9 @@
   "counts": {
     "dataset_size": {
       "large": 9,
-      "small": 20,
+      "small": 21,
       "medium": 38,
-      "not-assessed": 37
+      "not-assessed": 36
     },
     "software_maturity": {
       "developing": 53,
@@ -26,8 +26,8 @@
     },
     "compute_demand": {
       "moderate": 22,
-      "not-assessed": 54,
-      "high": 13,
+      "not-assessed": 53,
+      "high": 14,
       "limited": 11
     },
     "validation_evidence": {
@@ -4915,17 +4915,26 @@
     {
       "method_id": "multi-embed",
       "method": "Multi-Embed",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
-          "not-assessed"
+          "small"
         ],
-        "note": "No unambiguous multimodal observation count was established from the checked publication record and software documentation. Feature counts, patch counts and pretraining totals are not assumed to be independent patients or application requirements.",
+        "note": "Drug-response application: representation pretraining used 934 TCGA-BRCA patients, separate from the 164-patient response cohort. These are patient-level examples, not the number of spatial spots, a minimum requirement or one pooled foundation-pretraining corpus.",
         "sources": [
-          "https://doi.org/10.1038/s41592-026-03070-5",
-          "https://github.com/Epoch1128/Multi-Embed"
+          "https://doi.org/10.1038/s41592-026-03070-5"
         ],
-        "examples": []
+        "examples": [
+          {
+            "count": 934,
+            "unit": "patients",
+            "stage": "drug-response application representation pretraining",
+            "kind": "published",
+            "source": "https://doi.org/10.1038/s41592-026-03070-5",
+            "locator": "Methods, Model applications: multimodal drug response prediction (PDF p.10).",
+            "note": "Disease-specific TCGA-BRCA pretraining, disjoint from the response cohort."
+          }
+        ]
       },
       "compute_demand": {
         "values": [
@@ -5854,7 +5863,7 @@
     {
       "method_id": "pathomclip",
       "method": "PathOmCLIP",
-      "checked_on": "2026-11-18",
+      "checked_on": "2026-11-21",
       "dataset_size": {
         "values": [
           "not-assessed"
@@ -5867,11 +5876,12 @@
       },
       "compute_demand": {
         "values": [
-          "not-assessed"
+          "high"
         ],
-        "note": "No sufficiently specific hardware example or resource recommendation was established for this method from the checked sources. A Python/R implementation, optional accelerator support or model weight file size alone does not establish a compute tier.",
+        "note": "The published training configuration uses four NVIDIA A100 GPUs with 80 GB memory each (Section 3.2, p.5). This records reported hardware, not a minimum resource requirement.",
         "sources": [
-          "https://doi.org/10.1101/2024.12.10.627865"
+          "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1",
+          "https://www.researchgate.net/publication/386991102_PathOmCLIP_Connecting_tumor_histology_with_spatial_gene_expression_via_locally_enhanced_contrastive_learning_of_Pathology_and_Single-cell_foundation_model"
         ]
       },
       "validation_evidence": {

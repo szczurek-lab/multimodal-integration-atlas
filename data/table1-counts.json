@@ -108,15 +108,15 @@
     ]
   },
   "input_hashes": {
-    "data/integration_methods_library.csv": "49e66291cf90fd788d81059c1bb3cc83c6af631aedd42709777918c28784ff07",
-    "data/table1-definition.json": "93cd2742aab9450bc7d50aa2028de49ef212bc310ab65c2386d962922c344d81",
+    "data/integration_methods_library.csv": "10a2f45d89e09d0f0398f280bb33f173635909020a6b7e2cc6834d28e534e5c0",
+    "data/table1-definition.json": "e1a1fba8f01348bb9935438abf44eb2176c73bc1fa6dc9ebddf3eb8efc9c127e",
     "data/table1-population.json": "12f41139dad07e38a8b15d46dcb4d18fcbd4c80151e36e1a81267846e7c5b654",
-    "data/table1-evidence.json": "5bd33be7682e2ff02ca491d008c6bd489d8000cd178c260569152358d12aa133"
+    "data/table1-evidence.json": "1405b6f18def2cac3a819c79e507be91c09f7dae3df274555da70c9d5f3db2ec"
   },
   "totals": {
     "unique_methods": 91,
-    "column_memberships": 126,
-    "unassessed_column_memberships": 3
+    "column_memberships": 127,
+    "unassessed_column_memberships": 1
   },
   "blocks": [
     {
@@ -276,7 +276,7 @@
       "id": "foundation-pretraining",
       "label": "Foundation models",
       "short": "Foundation",
-      "definition": "The method itself includes large-scale pretraining intended to yield reusable representations or adaptation across tasks or datasets. Merely using an externally pretrained backbone does not qualify.",
+      "definition": "The method develops a pretrained representation on a broad, diverse corpus for reuse or adaptation in distinct downstream analyses. Pretraining may initialize from existing encoders. Using an external pretrained backbone, task-specific contrastive pretraining, or evaluation of the same prediction task on another cohort alone does not qualify. The evidence must describe the pretraining corpus and intended representation reuse. Corpus breadth is assessed in its biological domain, without a universal sample-count cutoff.",
       "total": 8,
       "members": [
         "cellwhisperer",
@@ -288,11 +288,9 @@
         "scgpt",
         "titan"
       ],
-      "membership_unknown": 3,
+      "membership_unknown": 1,
       "excluded_membership_unknown": [
-        "carhe",
-        "multi-embed",
-        "pathomclip"
+        "carhe"
       ]
     },
     {
@@ -300,7 +298,7 @@
       "label": "Set representation and multiple instance learning",
       "short": "Set / MIL",
       "definition": "An integral aggregation step summarizes variable-size collections of observed subunits, such as cells or image patches, into a fixed-dimensional representation for integration. Permutation-invariant or explicitly location-aware set aggregation can qualify. MIL is the subset trained with bag-level labels and does not require instance labels. Mean pooling and attention can both qualify. Ordinary fixed-grid image tokenization or incidental preprocessing alone does not qualify.",
-      "total": 9,
+      "total": 10,
       "members": [
         "m2ef-nns",
         "mmai",
@@ -308,6 +306,7 @@
         "mmsurv",
         "mpathnet",
         "mstar",
+        "multi-embed",
         "multimil",
         "pathomclip",
         "titan"
@@ -551,10 +550,10 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 9,
-          "N": 9,
+          "n": 10,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 100.0,
           "display_pct": 100,
           "band": "75–100%",
@@ -565,6 +564,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -772,9 +772,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -786,6 +786,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -992,9 +993,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -1006,6 +1007,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -1210,9 +1212,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -1224,6 +1226,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -1431,11 +1434,11 @@
         },
         "mil": {
           "n": 2,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 22.22222222222222,
-          "display_pct": 22,
+          "column_total": 10,
+          "pct": 20.0,
+          "display_pct": 20,
           "band": "0–<25%",
           "members": [
             "mstar",
@@ -1447,6 +1450,7 @@
             "mmp",
             "mmsurv",
             "mpathnet",
+            "multi-embed",
             "pathomclip",
             "titan"
           ],
@@ -1652,14 +1656,16 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 0,
-          "N": 9,
+          "n": 1,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 0.0,
-          "display_pct": 0,
+          "column_total": 10,
+          "pct": 10.0,
+          "display_pct": 10,
           "band": "0–<25%",
-          "members": [],
+          "members": [
+            "multi-embed"
+          ],
           "negative_members": [
             "m2ef-nns",
             "mmai",
@@ -1873,10 +1879,10 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 9,
-          "N": 9,
+          "n": 10,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 100.0,
           "display_pct": 100,
           "band": "75–100%",
@@ -1887,6 +1893,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -2094,9 +2101,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -2108,6 +2115,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -2312,11 +2320,11 @@
         },
         "mil": {
           "n": 2,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 22.22222222222222,
-          "display_pct": 22,
+          "column_total": 10,
+          "pct": 20.0,
+          "display_pct": 20,
           "band": "0–<25%",
           "members": [
             "mmp",
@@ -2328,6 +2336,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "pathomclip",
             "titan"
           ],
@@ -2534,11 +2543,11 @@
         },
         "mil": {
           "n": 1,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 11.11111111111111,
-          "display_pct": 11,
+          "column_total": 10,
+          "pct": 10.0,
+          "display_pct": 10,
           "band": "0–<25%",
           "members": [
             "mmp"
@@ -2549,6 +2558,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -2755,12 +2765,12 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 6,
-          "N": 9,
+          "n": 7,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 66.66666666666667,
-          "display_pct": 67,
+          "column_total": 10,
+          "pct": 70.0,
+          "display_pct": 70,
           "band": "50–<75%",
           "members": [
             "m2ef-nns",
@@ -2768,6 +2778,7 @@
             "mmp",
             "mmsurv",
             "mpathnet",
+            "multi-embed",
             "multimil"
           ],
           "negative_members": [
@@ -2977,9 +2988,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -2991,6 +3002,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -3195,9 +3207,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -3209,6 +3221,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -3421,11 +3434,11 @@
         },
         "mil": {
           "n": 1,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 11.11111111111111,
-          "display_pct": 11,
+          "column_total": 10,
+          "pct": 10.0,
+          "display_pct": 10,
           "band": "0–<25%",
           "members": [
             "mmp"
@@ -3436,6 +3449,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -3643,9 +3657,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -3657,6 +3671,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -3863,15 +3878,16 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 3,
-          "N": 9,
+          "n": 4,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 33.333333333333336,
-          "display_pct": 33,
+          "column_total": 10,
+          "pct": 40.0,
+          "display_pct": 40,
           "band": "25–<50%",
           "members": [
             "mstar",
+            "multi-embed",
             "pathomclip",
             "titan"
           ],
@@ -4085,11 +4101,11 @@
         },
         "mil": {
           "n": 6,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 66.66666666666667,
-          "display_pct": 67,
+          "column_total": 10,
+          "pct": 60.0,
+          "display_pct": 60,
           "band": "50–<75%",
           "members": [
             "m2ef-nns",
@@ -4101,6 +4117,7 @@
           ],
           "negative_members": [
             "mstar",
+            "multi-embed",
             "pathomclip",
             "titan"
           ],
@@ -4306,9 +4323,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -4320,6 +4337,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -4524,15 +4542,16 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 3,
-          "N": 9,
+          "n": 4,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 33.333333333333336,
-          "display_pct": 33,
+          "column_total": 10,
+          "pct": 40.0,
+          "display_pct": 40,
           "band": "25–<50%",
           "members": [
             "mstar",
+            "multi-embed",
             "pathomclip",
             "titan"
           ],
@@ -4745,9 +4764,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -4759,6 +4778,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -4911,14 +4931,16 @@
           "excluded_unknown": []
         },
         "contrastive": {
-          "n": 0,
+          "n": 1,
           "N": 17,
           "unknown": 0,
           "column_total": 17,
-          "pct": 0.0,
-          "display_pct": 0,
+          "pct": 5.882352941176471,
+          "display_pct": 6,
           "band": "0–<25%",
-          "members": [],
+          "members": [
+            "pathomclip"
+          ],
           "negative_members": [
             "ace",
             "carhe",
@@ -4931,7 +4953,6 @@
             "monae",
             "mstar",
             "multi-embed",
-            "pathomclip",
             "scgcm",
             "scmdcl",
             "scmgcl",
@@ -4962,14 +4983,16 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 0,
-          "N": 9,
+          "n": 1,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 0.0,
-          "display_pct": 0,
+          "column_total": 10,
+          "pct": 10.0,
+          "display_pct": 10,
           "band": "0–<25%",
-          "members": [],
+          "members": [
+            "pathomclip"
+          ],
           "negative_members": [
             "m2ef-nns",
             "mmai",
@@ -4977,8 +5000,8 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
-            "pathomclip",
             "titan"
           ],
           "excluded_unknown": []
@@ -5130,15 +5153,16 @@
           "excluded_unknown": []
         },
         "contrastive": {
-          "n": 2,
+          "n": 3,
           "N": 17,
           "unknown": 0,
           "column_total": 17,
-          "pct": 11.764705882352942,
-          "display_pct": 12,
+          "pct": 17.647058823529413,
+          "display_pct": 18,
           "band": "0–<25%",
           "members": [
             "mstar",
+            "multi-embed",
             "virtualmultiplexer"
           ],
           "negative_members": [
@@ -5151,7 +5175,6 @@
             "matchclot",
             "medhive",
             "monae",
-            "multi-embed",
             "pathomclip",
             "scgcm",
             "scmdcl",
@@ -5183,12 +5206,12 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 7,
-          "N": 9,
+          "n": 8,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 77.77777777777777,
-          "display_pct": 78,
+          "column_total": 10,
+          "pct": 80.0,
+          "display_pct": 80,
           "band": "75–100%",
           "members": [
             "m2ef-nns",
@@ -5197,6 +5220,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil"
           ],
           "negative_members": [
@@ -5404,15 +5428,16 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 3,
-          "N": 9,
+          "n": 4,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 33.333333333333336,
-          "display_pct": 33,
+          "column_total": 10,
+          "pct": 40.0,
+          "display_pct": 40,
           "band": "25–<50%",
           "members": [
             "mstar",
+            "multi-embed",
             "multimil",
             "titan"
           ],
@@ -5626,15 +5651,16 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 3,
-          "N": 9,
+          "n": 4,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 33.333333333333336,
-          "display_pct": 33,
+          "column_total": 10,
+          "pct": 40.0,
+          "display_pct": 40,
           "band": "25–<50%",
           "members": [
             "mstar",
+            "multi-embed",
             "pathomclip",
             "titan"
           ],
@@ -5848,9 +5874,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -5862,6 +5888,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -6068,14 +6095,15 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 1,
-          "N": 9,
+          "n": 2,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 11.11111111111111,
-          "display_pct": 11,
+          "column_total": 10,
+          "pct": 20.0,
+          "display_pct": 20,
           "band": "0–<25%",
           "members": [
+            "multi-embed",
             "pathomclip"
           ],
           "negative_members": [
@@ -6290,9 +6318,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -6304,6 +6332,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -6510,9 +6539,9 @@
         },
         "mil": {
           "n": 0,
-          "N": 9,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
+          "column_total": 10,
           "pct": 0.0,
           "display_pct": 0,
           "band": "0–<25%",
@@ -6524,6 +6553,7 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
             "pathomclip",
             "titan"
@@ -6677,14 +6707,16 @@
           "excluded_unknown": []
         },
         "contrastive": {
-          "n": 0,
+          "n": 1,
           "N": 17,
           "unknown": 0,
           "column_total": 17,
-          "pct": 0.0,
-          "display_pct": 0,
+          "pct": 5.882352941176471,
+          "display_pct": 6,
           "band": "0–<25%",
-          "members": [],
+          "members": [
+            "multi-embed"
+          ],
           "negative_members": [
             "ace",
             "carhe",
@@ -6696,7 +6728,6 @@
             "medhive",
             "monae",
             "mstar",
-            "multi-embed",
             "pathomclip",
             "scgcm",
             "scmdcl",
@@ -6729,12 +6760,12 @@
           "excluded_unknown": []
         },
         "mil": {
-          "n": 6,
-          "N": 9,
+          "n": 7,
+          "N": 10,
           "unknown": 0,
-          "column_total": 9,
-          "pct": 66.66666666666667,
-          "display_pct": 67,
+          "column_total": 10,
+          "pct": 70.0,
+          "display_pct": 70,
           "band": "50–<75%",
           "members": [
             "m2ef-nns",
@@ -6742,6 +6773,7 @@
             "mmp",
             "mmsurv",
             "mpathnet",
+            "multi-embed",
             "multimil"
           ],
           "negative_members": [
@@ -6895,11 +6927,11 @@
         },
         "contrastive": {
           "n": 2,
-          "N": 16,
-          "unknown": 1,
+          "N": 17,
+          "unknown": 0,
           "column_total": 17,
-          "pct": 12.5,
-          "display_pct": 13,
+          "pct": 11.764705882352942,
+          "display_pct": 12,
           "band": "0–<25%",
           "members": [
             "monae",
@@ -6916,14 +6948,13 @@
             "medhive",
             "mstar",
             "multi-embed",
+            "pathomclip",
             "scmdcl",
             "scmgcl",
             "titan",
             "virtualmultiplexer"
           ],
-          "excluded_unknown": [
-            "pathomclip"
-          ]
+          "excluded_unknown": []
         },
         "foundation-pretraining": {
           "n": 0,
@@ -6948,11 +6979,11 @@
         },
         "mil": {
           "n": 1,
-          "N": 8,
-          "unknown": 1,
-          "column_total": 9,
-          "pct": 12.5,
-          "display_pct": 13,
+          "N": 10,
+          "unknown": 0,
+          "column_total": 10,
+          "pct": 10.0,
+          "display_pct": 10,
           "band": "0–<25%",
           "members": [
             "multimil"
@@ -6964,11 +6995,11 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
+            "pathomclip",
             "titan"
           ],
-          "excluded_unknown": [
-            "pathomclip"
-          ]
+          "excluded_unknown": []
         }
       }
     },
@@ -7115,8 +7146,8 @@
         },
         "contrastive": {
           "n": 0,
-          "N": 16,
-          "unknown": 1,
+          "N": 17,
+          "unknown": 0,
           "column_total": 17,
           "pct": 0.0,
           "display_pct": 0,
@@ -7134,15 +7165,14 @@
             "monae",
             "mstar",
             "multi-embed",
+            "pathomclip",
             "scgcm",
             "scmdcl",
             "scmgcl",
             "titan",
             "virtualmultiplexer"
           ],
-          "excluded_unknown": [
-            "pathomclip"
-          ]
+          "excluded_unknown": []
         },
         "foundation-pretraining": {
           "n": 0,
@@ -7167,11 +7197,11 @@
         },
         "mil": {
           "n": 1,
-          "N": 8,
-          "unknown": 1,
-          "column_total": 9,
-          "pct": 12.5,
-          "display_pct": 13,
+          "N": 10,
+          "unknown": 0,
+          "column_total": 10,
+          "pct": 10.0,
+          "display_pct": 10,
           "band": "0–<25%",
           "members": [
             "m2ef-nns"
@@ -7182,12 +7212,12 @@
             "mmsurv",
             "mpathnet",
             "mstar",
+            "multi-embed",
             "multimil",
+            "pathomclip",
             "titan"
           ],
-          "excluded_unknown": [
-            "pathomclip"
-          ]
+          "excluded_unknown": []
         }
       }
     }
@@ -8345,28 +8375,15 @@
       "component_membership_uncertain": {
         "foundation-pretraining": {
           "status": "not-assessed",
-          "rationale": "Accessible primary materials do not clearly separate a broadly reusable CarHE checkpoint/pretraining corpus from dataset-specific contrastive training. The full publisher methods were inaccessible.",
-          "evidence": {
-            "method_id": "carhe",
-            "current": "contrastive;foundation-pretraining",
-            "decision": "do not remove solely because HIPT is externally pretrained; foundation membership remains conditional on definition",
-            "sources": [
-              {
-                "url": "https://pubmed.ncbi.nlm.nih.gov/42615562/",
-                "locator": "Published abstract and significance",
-                "evidence": "The authors explicitly describe CarHE as their multimodal pretraining framework, using contrastive alignment and applying inferred spatial features across cancer settings."
-              },
-              {
-                "url": "https://github.com/Jwzouchenlab/CarHE/blob/main/README.md",
-                "locator": "Architecture; download HIPT pretrained weights; training workflow",
-                "evidence": "HIPT is a pretrained/frozen backbone, while projection heads are trained for image/expression contrastive alignment."
-              }
-            ],
-            "established": "CarHE performs its own cross-modal alignment training in addition to reusing HIPT. It is not merely an unchanged pretrained-backbone application.",
-            "not_established": "Accessible primary materials do not clearly separate a broadly reusable CarHE checkpoint/pretraining corpus from dataset-specific contrastive training. The full publisher methods were inaccessible.",
-            "recommendation": "Retain existing tag provisionally if the intended foundation-pretraining criterion includes the paper's own reusable contrastive alignment. Otherwise mark this membership pending source-level author review, rather than assert that external HIPT alone proves either inclusion or exclusion.",
-            "set_representation": "Not established. Fixed-grid HIPT tokenization alone is insufficient."
-          }
+          "rationale": "Published abstract and data availability establish multimodal pretraining across platforms, but do not resolve the breadth and reuse of an individual trained representation. Foundation membership remains unassessed rather than negative.",
+          "sources": [
+            {
+              "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
+              "locator": "Published Abstract and Data Availability.",
+              "evidence": "The authors describe multimodal pretraining across Visium, Visium HD and Xenium, with several tumour types and clinical applications. These sections do not establish whether one broadly pretrained representation or separately fitted models supply the applications.",
+              "checked_on": "2026-11-21"
+            }
+          ]
         }
       },
       "sources": [
@@ -8375,7 +8392,7 @@
         "https://github.com/Jwzouchenlab/CarHE/blob/main/README.md",
         "https://pubmed.ncbi.nlm.nih.gov/42615562/"
       ],
-      "curation_notes": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders. Foundation-pretraining membership remains unassessed: the inspected sources establish contrastive training but do not establish a distinct broadly reusable pretraining stage to the table rubric. This is not a negative classification. The unresolved candidate is excluded from that column and remains counted in confirmed components. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
+      "curation_notes": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow.",
       "reviewed_on": "2026-11-21",
       "profile": {
         "method_id": "carhe",
@@ -8541,28 +8558,15 @@
         "component_membership_uncertain": {
           "foundation-pretraining": {
             "status": "not-assessed",
-            "rationale": "Accessible primary materials do not clearly separate a broadly reusable CarHE checkpoint/pretraining corpus from dataset-specific contrastive training. The full publisher methods were inaccessible.",
-            "evidence": {
-              "method_id": "carhe",
-              "current": "contrastive;foundation-pretraining",
-              "decision": "do not remove solely because HIPT is externally pretrained; foundation membership remains conditional on definition",
-              "sources": [
-                {
-                  "url": "https://pubmed.ncbi.nlm.nih.gov/42615562/",
-                  "locator": "Published abstract and significance",
-                  "evidence": "The authors explicitly describe CarHE as their multimodal pretraining framework, using contrastive alignment and applying inferred spatial features across cancer settings."
-                },
-                {
-                  "url": "https://github.com/Jwzouchenlab/CarHE/blob/main/README.md",
-                  "locator": "Architecture; download HIPT pretrained weights; training workflow",
-                  "evidence": "HIPT is a pretrained/frozen backbone, while projection heads are trained for image/expression contrastive alignment."
-                }
-              ],
-              "established": "CarHE performs its own cross-modal alignment training in addition to reusing HIPT. It is not merely an unchanged pretrained-backbone application.",
-              "not_established": "Accessible primary materials do not clearly separate a broadly reusable CarHE checkpoint/pretraining corpus from dataset-specific contrastive training. The full publisher methods were inaccessible.",
-              "recommendation": "Retain existing tag provisionally if the intended foundation-pretraining criterion includes the paper's own reusable contrastive alignment. Otherwise mark this membership pending source-level author review, rather than assert that external HIPT alone proves either inclusion or exclusion.",
-              "set_representation": "Not established. Fixed-grid HIPT tokenization alone is insufficient."
-            }
+            "rationale": "Published abstract and data availability establish multimodal pretraining across platforms, but do not resolve the breadth and reuse of an individual trained representation. Foundation membership remains unassessed rather than negative.",
+            "sources": [
+              {
+                "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
+                "locator": "Published Abstract and Data Availability.",
+                "evidence": "The authors describe multimodal pretraining across Visium, Visium HD and Xenium, with several tumour types and clinical applications. These sections do not establish whether one broadly pretrained representation or separately fitted models supply the applications.",
+                "checked_on": "2026-11-21"
+              }
+            ]
           }
         },
         "accepted_changes": {
@@ -8598,7 +8602,59 @@
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
-        }
+        },
+        "prior_component_membership_assessments": [
+          {
+            "block": "foundation-pretraining",
+            "assessment": {
+              "status": "not-assessed",
+              "rationale": "Accessible primary materials do not clearly separate a broadly reusable CarHE checkpoint/pretraining corpus from dataset-specific contrastive training. The full publisher methods were inaccessible.",
+              "evidence": {
+                "method_id": "carhe",
+                "current": "contrastive;foundation-pretraining",
+                "decision": "do not remove solely because HIPT is externally pretrained; foundation membership remains conditional on definition",
+                "sources": [
+                  {
+                    "url": "https://pubmed.ncbi.nlm.nih.gov/42615562/",
+                    "locator": "Published abstract and significance",
+                    "evidence": "The authors explicitly describe CarHE as their multimodal pretraining framework, using contrastive alignment and applying inferred spatial features across cancer settings."
+                  },
+                  {
+                    "url": "https://github.com/Jwzouchenlab/CarHE/blob/main/README.md",
+                    "locator": "Architecture; download HIPT pretrained weights; training workflow",
+                    "evidence": "HIPT is a pretrained/frozen backbone, while projection heads are trained for image/expression contrastive alignment."
+                  }
+                ],
+                "established": "CarHE performs its own cross-modal alignment training in addition to reusing HIPT. It is not merely an unchanged pretrained-backbone application.",
+                "not_established": "Accessible primary materials do not clearly separate a broadly reusable CarHE checkpoint/pretraining corpus from dataset-specific contrastive training. The full publisher methods were inaccessible.",
+                "recommendation": "Retain existing tag provisionally if the intended foundation-pretraining criterion includes the paper's own reusable contrastive alignment. Otherwise mark this membership pending source-level author review, rather than assert that external HIPT alone proves either inclusion or exclusion.",
+                "set_representation": "Not established. Fixed-grid HIPT tokenization alone is insufficient."
+              }
+            },
+            "superseded_on": "2026-11-21"
+          }
+        ],
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "not-assessed",
+            "rationale": "Published abstract and data availability establish multimodal pretraining across platforms, but do not resolve the breadth and reuse of an individual trained representation. Foundation membership remains unassessed rather than negative.",
+            "sources": [
+              {
+                "url": "https://doi.org/10.1158/0008-5472.CAN-26-1480",
+                "locator": "Published Abstract and Data Availability.",
+                "evidence": "The authors describe multimodal pretraining across Visium, Visium HD and Xenium, with several tumour types and clinical applications. These sections do not establish whether one broadly pretrained representation or separately fitted models supply the applications.",
+                "checked_on": "2026-11-21"
+              }
+            ]
+          }
+        },
+        "followup_accepted_changes": {
+          "curation_notes": {
+            "before": "Paired image-expression training; predicting expression from an image is separate from tolerance of incomplete training inputs. Uses pretrained image encoders. Foundation-pretraining membership remains unassessed: the inspected sources establish contrastive training but do not establish a distinct broadly reusable pretraining stage to the table rubric. This is not a negative classification. The unresolved candidate is excluded from that column and remains counted in confirmed components. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
+            "after": "CarHE performs its own cross-modal contrastive training and uses pretrained image encoders. Published Abstract and Data Availability describe pretraining across spatial-transcriptomics platforms and tumour types, but do not establish the breadth and downstream reuse of one trained representation. Foundation-pretraining membership therefore remains unassessed, not negative. It contributes to the contrastive column and is excluded only from the unresolved foundation column. Posterior and endpoint uncertainty are not documented in the profiled workflow."
+          }
+        },
+        "prior_source_audit_note": "The source_audit and accepted_changes fields record the initial 21 November pass. component_membership_assessment, followup_accepted_changes, current_values and the current CSV contain the subsequent full-text adjudication."
       },
       "axis_values": {
         "axis_correspondence": "paired",
@@ -8910,7 +8966,8 @@
       "sources": [
         "https://doi.org/10.1038/s41587-025-02857-9",
         "https://github.com/epigen/CellWhisperer",
-        "https://raw.githubusercontent.com/epigen/CellWhisperer/main/README.md"
+        "https://raw.githubusercontent.com/epigen/CellWhisperer/main/README.md",
+        "https://github.com/epigen/CellWhisperer/blob/main/README.md"
       ],
       "curation_notes": "Contrastive transcriptome-text pretraining supports retrieval and a transcriptome-aware chat interface. Text descriptions are curated from metadata; they are not a second molecular assay. Paired training is separate from querying a new RNA-only dataset. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
       "reviewed_on": "2026-11-21",
@@ -9100,6 +9157,27 @@
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
+        },
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "yes",
+            "rationale": "Own transcriptome-text alignment is trained on 1,082,413 annotated transcriptome profiles from GEO and CELLxGENE, beyond reuse of Geneformer/BioBERT/Mistral. The shared embedding model supports free-text retrieval and zero-shot prediction of cell types, tissues, diseases and organs in held-out datasets. The chat stage provides another use of the same transcriptome embeddings.",
+            "limitations": "This supports reusable human-transcriptome representations, not universal biological knowledge or reliable arbitrary chat output.",
+            "sources": [
+              {
+                "url": "https://doi.org/10.1038/s41587-025-02857-9",
+                "locator": "Results: The CellWhisperer multimodal AI connects transcriptomes and text; CellWhisperer predicts diverse cell characteristics; Discussion",
+                "evidence": "The paper describes broad transcriptome-text training and multiple zero-shot analyses without task-specific fine-tuning. Its Discussion explicitly distinguishes a once-trained model used across biological domains."
+              },
+              {
+                "url": "https://github.com/epigen/CellWhisperer/blob/main/README.md",
+                "locator": "Analyze Your Own Datasets; introductory model/data availability",
+                "evidence": "The author workflow processes user-provided human RNA-count data using released model weights.",
+                "github_blob_sha": "5dc5b0612a24f1ccb06c8c002a206af1999e811e"
+              }
+            ],
+            "checked_on": "2026-11-21"
+          }
         }
       },
       "axis_values": {
@@ -9435,7 +9513,8 @@
         "https://github.com/mahmoodlab/CONCH",
         "https://raw.githubusercontent.com/mahmoodlab/CONCH/main/README.md",
         "https://openreview.net/pdf/da0b92ad1ce26922877f70404a91245daa9d931f.pdf",
-        "https://www.nature.com/articles/s41551-025-01516-3"
+        "https://www.nature.com/articles/s41551-025-01516-3",
+        "https://github.com/mahmoodlab/CONCH/blob/main/README.md"
       ],
       "curation_notes": "Image-caption pretraining combines contrastive alignment with a captioning objective. Slide-level aggregation and endpoint adaptation are downstream stages. Released encoder weights omit the caption decoder, so public weights do not reproduce every published capability. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
       "reviewed_on": "2026-11-21",
@@ -9757,6 +9836,22 @@
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
+        },
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "yes",
+            "rationale": "Own image-text pretraining uses diverse histopathology and biomedical-text sources, including 1.17 million paired examples. One pretrained encoder framework transfers to image classification, tissue segmentation, image/text retrieval and captioning benchmarks. The author release supplies reusable image and text encoders.",
+            "limitations": "The public checkpoint omits the caption decoder. That release restriction does not negate documented broad encoder reuse.",
+            "sources": [
+              {
+                "url": "https://github.com/mahmoodlab/CONCH/blob/main/README.md",
+                "locator": "Abstract; What is CONCH?; loading model; decoder-release note",
+                "evidence": "Task-agnostic pretraining is followed by evaluation across 14 benchmarks covering distinct analysis types, rather than only one outcome across cohorts.",
+                "github_blob_sha": "effeeca0d36213f602520af682a0f3650f02791f"
+              }
+            ],
+            "checked_on": "2026-11-21"
+          }
         }
       },
       "axis_values": {
@@ -10147,6 +10242,21 @@
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
+        },
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "yes",
+            "rationale": "The method learns image encoders through its own bidirectional image-report contrastive pretraining. The paper explicitly transfers pretrained weights to four classification tasks and two zero-shot retrieval tasks.",
+            "limitations": "This is an early reusable-pretraining method and need not be called a contemporary general-purpose foundation model by its authors. Inclusion follows the review’s stated pretraining/reuse criterion, not model branding or a parameter threshold.",
+            "sources": [
+              {
+                "url": "https://proceedings.mlr.press/v182/zhang22a.html",
+                "locator": "Abstract, especially pretraining and transfer evaluation",
+                "evidence": "Medical image-report pretraining is distinct from ImageNet initialization. The authors evaluate transfer of their pretrained weights to classification and zero-shot retrieval."
+              }
+            ],
+            "checked_on": "2026-11-21"
+          }
         }
       },
       "axis_values": {
@@ -14085,6 +14195,21 @@
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
+        },
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "yes",
+            "rationale": "MedHiVE is pretrained on Merlin CT scans and reports using anatomical segmentation plus global/local contrastive objectives. This is its own multimodal training, not merely an existing backbone. The resulting pretrained model is adapted to segmentation, classification and detection. The paper additionally studies dental CBCT and anatomy outside the pretraining inventory.",
+            "limitations": "Pretraining is concentrated on abdominal CT, not unlimited anatomical breadth. Supervised organ masks are part of pretraining; a foundation-pretraining label does not imply exclusively self-supervised learning. The paper remains a preprint.",
+            "sources": [
+              {
+                "url": "https://arxiv.org/html/2611.08185v1",
+                "locator": "Sections 4.3, 5.1 and 5.2; Appendix B and C",
+                "evidence": "Pretraining uses 25,494 Merlin CT scans from 18,321 patients. Distinct downstream benchmarks include PANORAMA, AMOS, KiTS and GEPAR3D, with classification/detection and segmentation uses. Fine-tuning is explicitly separated from pretraining."
+              }
+            ],
+            "checked_on": "2026-11-21"
+          }
         }
       },
       "axis_values": {
@@ -17094,6 +17219,22 @@
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
+        },
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "yes",
+            "rationale": "Its own slide/report/gene-expression pretraining and subsequent self-taught patch-encoder training learn shared reusable pathology features across 32 cancer types. Released pretrained features are used for diagnostic and molecular prediction, survival analysis, few-/zero-shot classification and report generation.",
+            "limitations": "The breadth of the 97-task benchmark is supporting evidence. The decisive feature is shared pretraining followed by distinct adaptations, not the number of benchmark tasks alone.",
+            "sources": [
+              {
+                "url": "https://github.com/Innse/mSTAR/blob/main/README.md",
+                "locator": "Abstract; Creating model with downloaded weights; Running Inference; Downstream Task",
+                "evidence": "The official implementation supplies a pretrained patch encoder and separate workflows for diagnostic, molecular, survival, classification and generation uses.",
+                "github_blob_sha": "26a33b85b73093d1b39c3b47e589fa4799e97b2b"
+              }
+            ],
+            "checked_on": "2026-11-21"
+          }
         }
       },
       "axis_values": {
@@ -17113,27 +17254,16 @@
       "publication_url": "https://doi.org/10.1038/s41592-026-03070-5",
       "resource_url": "https://github.com/Epoch1128/Multi-Embed",
       "blocks": [
-        "contrastive"
+        "contrastive",
+        "mil"
       ],
-      "component_membership_uncertain": {
-        "foundation-pretraining": {
-          "status": "not-assessed",
-          "rationale": "Released embeddings and downstream checkpoints are documented, but those alone do not settle whether its own training satisfies the chosen foundation-model scale/scope convention.",
-          "evidence": {
-            "method_id": "multi-embed",
-            "current": "contrastive",
-            "decision": "leave unchanged in this focused freeze; reusable-pretraining membership needs full-method evidence",
-            "source": "https://github.com/Epoch1128/Multi-Embed",
-            "reason": "Released embeddings and downstream checkpoints are documented, but those alone do not settle whether its own training satisfies the chosen foundation-model scale/scope convention."
-          }
-        }
-      },
+      "component_membership_uncertain": {},
       "sources": [
         "https://doi.org/10.1038/s41592-026-03070-5",
         "https://github.com/Epoch1128/Multi-Embed",
         "https://github.com/Epoch1128/Multi-Embed/blob/main/README.md"
       ],
-      "curation_notes": "Self-supervised morphology–molecule embeddings support slide- and spot-level applications. Endpoint heads are trained separately. Foundation-pretraining membership remains unassessed: the inspected sources establish contrastive training but do not establish a distinct broadly reusable pretraining stage to the table rubric. This is not a negative classification. The unresolved candidate is excluded from that column and remains counted in confirmed components. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
+      "curation_notes": "Multi-Embed is not classified as foundation pretraining: the authors explicitly distinguish it from a plug-and-play foundation model (Discussion, p.907). Its own disease- and technology-specific pretraining and transfer remain acknowledged. Attention pooling is integral to representation learning. The complete workflow includes separately trained, weakly supervised clinical fusion and endpoint prediction. No unit-level posterior or endpoint uncertainty output is documented.",
       "reviewed_on": "2026-11-21",
       "profile": {
         "method_id": "multi-embed",
@@ -17340,19 +17470,6 @@
           ],
           "conditional_updates": []
         },
-        "component_membership_uncertain": {
-          "foundation-pretraining": {
-            "status": "not-assessed",
-            "rationale": "Released embeddings and downstream checkpoints are documented, but those alone do not settle whether its own training satisfies the chosen foundation-model scale/scope convention.",
-            "evidence": {
-              "method_id": "multi-embed",
-              "current": "contrastive",
-              "decision": "leave unchanged in this focused freeze; reusable-pretraining membership needs full-method evidence",
-              "source": "https://github.com/Epoch1128/Multi-Embed",
-              "reason": "Released embeddings and downstream checkpoints are documented, but those alone do not settle whether its own training satisfies the chosen foundation-model scale/scope convention."
-            }
-          }
-        },
         "accepted_changes": {
           "uncertainty_type": {
             "before": "not-assessed",
@@ -17372,13 +17489,94 @@
           }
         },
         "current_values": {
-          "methodological_components": "contrastive",
-          "axis_supervision": "self-supervised",
+          "methodological_components": "contrastive;mil",
+          "axis_supervision": "self-supervised;weakly-supervised",
           "axis_model_transparency": "post-hoc;black-box",
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
-        }
+        },
+        "prior_component_membership_assessments": [
+          {
+            "block": "foundation-pretraining",
+            "assessment": {
+              "status": "not-assessed",
+              "rationale": "Released embeddings and downstream checkpoints are documented, but those alone do not settle whether its own training satisfies the chosen foundation-model scale/scope convention.",
+              "evidence": {
+                "method_id": "multi-embed",
+                "current": "contrastive",
+                "decision": "leave unchanged in this focused freeze; reusable-pretraining membership needs full-method evidence",
+                "source": "https://github.com/Epoch1128/Multi-Embed",
+                "reason": "Released embeddings and downstream checkpoints are documented, but those alone do not settle whether its own training satisfies the chosen foundation-model scale/scope convention."
+              }
+            },
+            "superseded_on": "2026-11-21"
+          }
+        ],
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "no",
+            "rationale": "The published Discussion explicitly states that the method is not designed as a plug-and-play foundation model. Disease- and technology-specific pretraining and transfer are documented.",
+            "sources": [
+              {
+                "url": "https://doi.org/10.1038/s41592-026-03070-5",
+                "locator": "Discussion, journal p.907; Methods, multimodal feature projection (equations 4–5), self-supervised loss (equation 13), and clinical prediction applications.",
+                "evidence": "The authors explicitly distinguish Multi-Embed from a plug-and-play foundation model. Training and transfer are disease- and technology-specific. Attention pooling of tile sets is integral to representation learning; separate clinical fusion workflows predict survival and treatment response.",
+                "checked_on": "2026-11-21"
+              }
+            ]
+          },
+          "mil": {
+            "status": "yes",
+            "rationale": "Learned attention pooling of variable-size tile sets is integral to cross-modal representation training, independently of the clinical MIL stage.",
+            "sources": [
+              {
+                "url": "https://doi.org/10.1038/s41592-026-03070-5",
+                "locator": "Discussion, journal p.907; Methods, multimodal feature projection (equations 4–5), self-supervised loss (equation 13), and clinical prediction applications.",
+                "evidence": "The authors explicitly distinguish Multi-Embed from a plug-and-play foundation model. Training and transfer are disease- and technology-specific. Attention pooling of tile sets is integral to representation learning; separate clinical fusion workflows predict survival and treatment response.",
+                "checked_on": "2026-11-21"
+              }
+            ]
+          }
+        },
+        "followup_source_review": {
+          "scope": "Published full Methods and Discussion; confirmed set aggregation, clinical-stage supervision/output and a patient-count example.",
+          "sources": [
+            {
+              "url": "https://doi.org/10.1038/s41592-026-03070-5",
+              "locator": "Discussion, journal p.907; Methods, multimodal feature projection (equations 4–5), self-supervised loss (equation 13), and clinical prediction applications.",
+              "evidence": "The authors explicitly distinguish Multi-Embed from a plug-and-play foundation model. Training and transfer are disease- and technology-specific. Attention pooling of tile sets is integral to representation learning; separate clinical fusion workflows predict survival and treatment response.",
+              "checked_on": "2026-11-21"
+            }
+          ]
+        },
+        "followup_accepted_changes": {
+          "summary": {
+            "before": "Self-supervised morphology–molecule embeddings support slide- and spot-level applications.",
+            "after": "Disease- and technology-specific morphology–molecule embeddings combine contrastive learning with attention pooling of tile sets."
+          },
+          "methodological_components": {
+            "before": "contrastive",
+            "after": "contrastive;mil"
+          },
+          "axis_supervision": {
+            "before": "self-supervised",
+            "after": "self-supervised;weakly-supervised"
+          },
+          "integration_effects": {
+            "before": "discovery;alignment;cross-modal-prediction",
+            "after": "discovery;alignment;cross-modal-prediction;endpoint-prediction"
+          },
+          "training_requirements": {
+            "before": "Self-supervised morphology–molecule embeddings support slide- and spot-level applications. Endpoint heads are trained separately.",
+            "after": "Paired morphology–molecule representation learning is self-supervised. Separate clinical fusion stages use patient outcomes to train attention aggregation for survival or response prediction."
+          },
+          "curation_notes": {
+            "before": "Self-supervised morphology–molecule embeddings support slide- and spot-level applications. Endpoint heads are trained separately. Foundation-pretraining membership remains unassessed: the inspected sources establish contrastive training but do not establish a distinct broadly reusable pretraining stage to the table rubric. This is not a negative classification. The unresolved candidate is excluded from that column and remains counted in confirmed components. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
+            "after": "Multi-Embed is not classified as foundation pretraining: the authors explicitly distinguish it from a plug-and-play foundation model (Discussion, p.907). Its own disease- and technology-specific pretraining and transfer remain acknowledged. Attention pooling is integral to representation learning. The complete workflow includes separately trained, weakly supervised clinical fusion and endpoint prediction. No unit-level posterior or endpoint uncertainty output is documented."
+          }
+        },
+        "prior_source_audit_note": "The source_audit and accepted_changes fields record the initial 21 November pass. component_membership_assessment, followup_accepted_changes, current_values and the current CSV contain the subsequent full-text adjudication."
       },
       "axis_values": {
         "axis_correspondence": "paired",
@@ -17388,8 +17586,8 @@
         "axis_modality_decomposition": "shared-only",
         "axis_prior_knowledge": "none",
         "axis_method_scope": "domain-specific",
-        "axis_supervision": "self-supervised",
-        "integration_effects": "discovery;alignment;cross-modal-prediction"
+        "axis_supervision": "self-supervised;weakly-supervised",
+        "integration_effects": "discovery;alignment;cross-modal-prediction;endpoint-prediction"
       }
     },
     "multifac": {
@@ -18578,48 +18776,39 @@
         "contrastive",
         "mil"
       ],
-      "component_membership_uncertain": {
-        "foundation-pretraining": {
-          "status": "not-assessed",
-          "rationale": "The accessible abstract establishes cross-modal contrastive alignment using two external foundation backbones. Full methods/code were not accessible, so a distinct broadly reusable PathOmCLIP pretraining stage was not verified. Do not infer foundation membership from the backbone names.",
-          "evidence": {
-            "method_id": "pathomclip",
-            "current": "contrastive;foundation-pretraining",
-            "decision": "foundation membership unresolved; no exact change asserted",
-            "source": "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1",
-            "reason": "The accessible abstract establishes cross-modal contrastive alignment using two external foundation backbones. Full methods/code were not accessible, so a distinct broadly reusable PathOmCLIP pretraining stage was not verified. Do not infer foundation membership from the backbone names."
-          }
-        }
-      },
+      "component_membership_uncertain": {},
       "sources": [
         "https://doi.org/10.1101/2024.12.10.627865",
+        "https://www.researchgate.net/publication/386991102_PathOmCLIP_Connecting_tumor_histology_with_spatial_gene_expression_via_locally_enhanced_contrastive_learning_of_Pathology_and_Single-cell_foundation_model",
         "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1"
       ],
-      "curation_notes": "Paired cross-modal contrastive learning reuses pathology and single-cell encoders. Generation is not inferred from alignment alone. Foundation-pretraining membership remains unassessed: the inspected sources establish contrastive training but do not establish a distinct broadly reusable pretraining stage to the table rubric. This is not a negative classification. The unresolved candidate is excluded from that column and remains counted in confirmed components. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026).",
+      "curation_notes": "PathOmCLIP combines contrastive learning and local set aggregation with task-specific adaptation of external foundation encoders. Its own LocalCLIP pretraining is retained in the description, but broader foundation-pretraining membership is not established in the complete profiled workflow. Stage 1 is self-supervised; stage 2 predicts measured expression with a supervised regression loss. Matching probabilities are not posterior uncertainty, and point assay predictions do not establish endpoint predictive uncertainty. The paper offers code upon request.",
       "reviewed_on": "2026-11-21",
       "profile": {
         "method_id": "pathomclip",
         "reviewed_on": "2026-11-21",
         "posterior": {
-          "status": "not-assessed",
-          "rationale": "The abstract supports point representation learning, but inaccessible full methods and lack of verified author code prevent a firm output-level assessment.",
+          "status": "no",
+          "rationale": "InfoNCE matching probabilities do not meet the biological-posterior output criterion. The documented predictor returns a point expression vector.",
           "sources": [
             {
               "url": "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1",
-              "locator": "Preprint abstract",
-              "evidence": "The abstract describes contrastive alignment of pathology and single-cell foundation models. Full text was inaccessible to this audit.",
+              "readable_copy": "https://www.researchgate.net/publication/386991102_PathOmCLIP_Connecting_tumor_histology_with_spatial_gene_expression_via_locally_enhanced_contrastive_learning_of_Pathology_and_Single-cell_foundation_model",
+              "locator": "Sections 3.1–3.2, Figure 1 and equations 2–4 (pp.3–5); Discussion and Code Availability (p.11).",
+              "evidence": "LocalCLIP contrastive training precedes supervised spatial-expression regression. The described pretraining serves that task, without establishing broader reuse of PathOmCLIP weights. InfoNCE matching probabilities are not biological posterior outputs. Training uses four A100 GPUs with 80 GB each.",
               "checked_on": "2026-11-21"
             }
           ]
         },
         "predictive": {
-          "status": "not-assessed",
-          "rationale": "No endpoint uncertainty output was established; accessible evidence is insufficient for an audited no.",
+          "status": "no",
+          "rationale": "The documented output is point gene-expression prediction, not uncertainty for a clinical or other endpoint.",
           "sources": [
             {
               "url": "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1",
-              "locator": "Preprint abstract",
-              "evidence": "The abstract describes contrastive alignment of pathology and single-cell foundation models. Full text was inaccessible to this audit.",
+              "readable_copy": "https://www.researchgate.net/publication/386991102_PathOmCLIP_Connecting_tumor_histology_with_spatial_gene_expression_via_locally_enhanced_contrastive_learning_of_Pathology_and_Single-cell_foundation_model",
+              "locator": "Sections 3.1–3.2, Figure 1 and equations 2–4 (pp.3–5); Discussion and Code Availability (p.11).",
+              "evidence": "LocalCLIP contrastive training precedes supervised spatial-expression regression. The described pretraining serves that task, without establishing broader reuse of PathOmCLIP weights. InfoNCE matching probabilities are not biological posterior outputs. Training uses four A100 GPUs with 80 GB each.",
               "checked_on": "2026-11-21"
             }
           ]
@@ -18758,19 +18947,6 @@
           "boundary_notes": [],
           "conditional_updates": []
         },
-        "component_membership_uncertain": {
-          "foundation-pretraining": {
-            "status": "not-assessed",
-            "rationale": "The accessible abstract establishes cross-modal contrastive alignment using two external foundation backbones. Full methods/code were not accessible, so a distinct broadly reusable PathOmCLIP pretraining stage was not verified. Do not infer foundation membership from the backbone names.",
-            "evidence": {
-              "method_id": "pathomclip",
-              "current": "contrastive;foundation-pretraining",
-              "decision": "foundation membership unresolved; no exact change asserted",
-              "source": "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1",
-              "reason": "The accessible abstract establishes cross-modal contrastive alignment using two external foundation backbones. Full methods/code were not accessible, so a distinct broadly reusable PathOmCLIP pretraining stage was not verified. Do not infer foundation membership from the backbone names."
-            }
-          }
-        },
         "set_component_evidence": {
           "url": "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1",
           "locator": "Abstract",
@@ -18796,12 +18972,97 @@
         },
         "current_values": {
           "methodological_components": "contrastive;mil",
-          "axis_supervision": "self-supervised",
+          "axis_supervision": "self-supervised;supervised",
           "axis_model_transparency": "black-box",
-          "uncertainty_type": "not-assessed",
-          "uncertainty_target": "not-assessed",
+          "uncertainty_type": "not-reported",
+          "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
-        }
+        },
+        "prior_component_membership_assessments": [
+          {
+            "block": "foundation-pretraining",
+            "assessment": {
+              "status": "not-assessed",
+              "rationale": "The accessible abstract establishes cross-modal contrastive alignment using two external foundation backbones. Full methods/code were not accessible, so a distinct broadly reusable PathOmCLIP pretraining stage was not verified. Do not infer foundation membership from the backbone names.",
+              "evidence": {
+                "method_id": "pathomclip",
+                "current": "contrastive;foundation-pretraining",
+                "decision": "foundation membership unresolved; no exact change asserted",
+                "source": "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1",
+                "reason": "The accessible abstract establishes cross-modal contrastive alignment using two external foundation backbones. Full methods/code were not accessible, so a distinct broadly reusable PathOmCLIP pretraining stage was not verified. Do not infer foundation membership from the backbone names."
+              }
+            },
+            "superseded_on": "2026-11-21"
+          }
+        ],
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "no",
+            "rationale": "The complete profiled workflow documents task-specific contrastive pretraining followed by expression regression, without a broader reusable foundation-pretraining programme. This is a scoped negative, not a claim that it has no pretraining.",
+            "sources": [
+              {
+                "url": "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1",
+                "readable_copy": "https://www.researchgate.net/publication/386991102_PathOmCLIP_Connecting_tumor_histology_with_spatial_gene_expression_via_locally_enhanced_contrastive_learning_of_Pathology_and_Single-cell_foundation_model",
+                "locator": "Sections 3.1–3.2, Figure 1 and equations 2–4 (pp.3–5); Discussion and Code Availability (p.11).",
+                "evidence": "LocalCLIP contrastive training precedes supervised spatial-expression regression. The described pretraining serves that task, without establishing broader reuse of PathOmCLIP weights. InfoNCE matching probabilities are not biological posterior outputs. Training uses four A100 GPUs with 80 GB each.",
+                "checked_on": "2026-11-21"
+              }
+            ]
+          }
+        },
+        "prior_uncertainty_assessments": {
+          "posterior": {
+            "status": "not-assessed",
+            "rationale": "The abstract supports point representation learning, but inaccessible full methods and lack of verified author code prevent a firm output-level assessment.",
+            "sources": [
+              {
+                "url": "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1",
+                "locator": "Preprint abstract",
+                "evidence": "The abstract describes contrastive alignment of pathology and single-cell foundation models. Full text was inaccessible to this audit.",
+                "checked_on": "2026-11-21"
+              }
+            ]
+          },
+          "predictive": {
+            "status": "not-assessed",
+            "rationale": "No endpoint uncertainty output was established; accessible evidence is insufficient for an audited no.",
+            "sources": [
+              {
+                "url": "https://www.biorxiv.org/content/10.1101/2024.12.10.627865v1",
+                "locator": "Preprint abstract",
+                "evidence": "The abstract describes contrastive alignment of pathology and single-cell foundation models. Full text was inaccessible to this audit.",
+                "checked_on": "2026-11-21"
+              }
+            ]
+          }
+        },
+        "followup_accepted_changes": {
+          "axis_supervision": {
+            "before": "self-supervised",
+            "after": "self-supervised;supervised"
+          },
+          "uncertainty_type": {
+            "before": "not-assessed",
+            "after": "not-reported"
+          },
+          "uncertainty_target": {
+            "before": "not-assessed",
+            "after": "not-applicable"
+          },
+          "training_requirements": {
+            "before": "Paired cross-modal contrastive learning reuses pathology and single-cell encoders. Generation is not inferred from alignment alone.",
+            "after": "Paired image–expression data train LocalCLIP by contrastive learning, followed by a supervised spatial-expression regression stage. Pathology and single-cell foundation encoders supply the initial representations."
+          },
+          "curation_notes": {
+            "before": "Paired cross-modal contrastive learning reuses pathology and single-cell encoders. Generation is not inferred from alignment alone. Foundation-pretraining membership remains unassessed: the inspected sources establish contrastive training but do not establish a distinct broadly reusable pretraining stage to the table rubric. This is not a negative classification. The unresolved candidate is excluded from that column and remains counted in confirmed components. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026).",
+            "after": "PathOmCLIP combines contrastive learning and local set aggregation with task-specific adaptation of external foundation encoders. Its own LocalCLIP pretraining is retained in the description, but broader foundation-pretraining membership is not established in the complete profiled workflow. Stage 1 is self-supervised; stage 2 predicts measured expression with a supervised regression loss. Matching probabilities are not posterior uncertainty, and point assay predictions do not establish endpoint predictive uncertainty. The paper offers code upon request."
+          },
+          "evidence_sources": {
+            "before": "https://doi.org/10.1101/2024.12.10.627865",
+            "after": "https://doi.org/10.1101/2024.12.10.627865;https://www.researchgate.net/publication/386991102_PathOmCLIP_Connecting_tumor_histology_with_spatial_gene_expression_via_locally_enhanced_contrastive_learning_of_Pathology_and_Single-cell_foundation_model"
+          }
+        },
+        "prior_source_audit_note": "The source_audit and accepted_changes fields record the initial 21 November pass. component_membership_assessment, followup_accepted_changes, current_values and the current CSV contain the subsequent full-text adjudication."
       },
       "axis_values": {
         "axis_correspondence": "paired",
@@ -18811,7 +19072,7 @@
         "axis_modality_decomposition": "shared-only",
         "axis_prior_knowledge": "none",
         "axis_method_scope": "domain-specific",
-        "axis_supervision": "self-supervised",
+        "axis_supervision": "self-supervised;supervised",
         "integration_effects": "alignment;cross-modal-prediction"
       }
     },
@@ -18986,7 +19247,9 @@
       "sources": [
         "https://doi.org/10.1101/2024.12.19.629561",
         "https://github.com/alibaba/damo-pertformer",
-        "https://raw.githubusercontent.com/alibaba/damo-pertformer/main/README.md"
+        "https://raw.githubusercontent.com/alibaba/damo-pertformer/main/README.md",
+        "https://www.biorxiv.org/content/10.1101/2024.12.19.629561v2",
+        "https://github.com/alibaba/damo-pertformer/blob/main/README.md"
       ],
       "curation_notes": "Pretraining uses measured epigenomic and transcriptomic context around genes for in silico perturbation analyses. Genomic positions link the modalities. Zero-shot perturbation claims refer to the authors' evaluation; the source remains a preprint and does not establish causal or calibrated predictions for arbitrary interventions. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
       "reviewed_on": "2026-11-21",
@@ -19178,6 +19441,27 @@
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
+        },
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "yes",
+            "rationale": "Own broad pretraining uses bulk and single-cell multiomic measurements around genes, rather than labelled examples fitted separately for each intervention. The pretrained model is used without task-specific retraining for functional-regulation and genomic-element/gene/sequence perturbation analyses, with cell-state-transition applications. Author tutorials use the released parameters for knockdown, overexpression and general EGCS/perturbation inference.",
+            "limitations": "This supports the reusable-pretraining classification, not the accuracy or causal validity of every intervention claim. Evidence includes the v2 preprint abstract and current author implementation rather than a new full-paper reproduction. Multiple perturbation targets alone would be insufficient without the documented broad pretraining and shared-parameter reuse.",
+            "sources": [
+              {
+                "url": "https://www.biorxiv.org/content/10.1101/2024.12.19.629561v2",
+                "locator": "Abstract; version note",
+                "evidence": "The preprint reports bulk and single-cell multiomic pretraining and zero-shot functional perturbation/cell-fate uses. It identifies the expanded training collection in v2."
+              },
+              {
+                "url": "https://github.com/alibaba/damo-pertformer/blob/main/README.md",
+                "locator": "Introduction; Pretrained PertFormer parameter; Run PertFormer",
+                "evidence": "A common released parameter set and tutorials are supplied for several functional analyses without task-specific training.",
+                "github_blob_sha": "1a424b7ed8732edea7ed4ddc29dc797410e86e8a"
+              }
+            ],
+            "checked_on": "2026-11-21"
+          }
         }
       },
       "axis_values": {
@@ -19884,7 +20168,9 @@
         "https://doi.org/10.1038/s41592-024-02201-0",
         "https://github.com/bowang-lab/scGPT",
         "https://www.nature.com/articles/s41467-026-72570-x",
-        "https://raw.githubusercontent.com/bowang-lab/scGPT/main/README.md"
+        "https://raw.githubusercontent.com/bowang-lab/scGPT/main/README.md",
+        "https://www.nature.com/articles/s41592-024-02201-0",
+        "https://github.com/bowang-lab/scGPT/blob/main/README.md"
       ],
       "curation_notes": "The multimodal profile describes paired multi-omic fine-tuning, distinct from transcriptomic pretraining and RNA-only zero-shot use. Integration benchmarks and author tutorials support this workflow; arbitrary unpaired or whole-modality-missing integration is not inferred from masked-token training. Source-audited posterior and endpoint uncertainty statuses are documented in the reproducible Table 1 evidence ledger (21 November 2026). This is a scoped absence of a documented uncertainty output in the inspected workflow, not a claim about every possible extension.",
       "reviewed_on": "2026-11-21",
@@ -20076,6 +20362,27 @@
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
+        },
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "yes",
+            "rationale": "The method supplies its own large transcriptomic pretraining, including a whole-human checkpoint trained across more than 33 million cells. The model is adapted to cell annotation, batch integration, multiomic integration, perturbation prediction and gene-network analysis. The author model zoo recommends a shared whole-human checkpoint for most applications.",
+            "limitations": "The core pretraining is transcriptomic. Multimodal integration is a downstream adaptation, consistent with the manuscript allowing modalities to combine during pretraining, adaptation or both. Inclusion does not establish superior transfer in each task.",
+            "sources": [
+              {
+                "url": "https://www.nature.com/articles/s41592-024-02201-0",
+                "locator": "Abstract; model schematic and downstream analyses",
+                "evidence": "The original paper separates repository-scale pretraining from transfer to distinct downstream biological analyses."
+              },
+              {
+                "url": "https://github.com/bowang-lab/scGPT/blob/main/README.md",
+                "locator": "Pretrained scGPT Model Zoo; tutorials",
+                "evidence": "The released whole-human model is recommended across applications, alongside organ-specific and continual-pretraining variants.",
+                "github_blob_sha": "321cd2343c1e4ed4f54bcc973b548947952b2cba"
+              }
+            ],
+            "checked_on": "2026-11-21"
+          }
         }
       },
       "axis_values": {
@@ -22570,6 +22877,22 @@
           "uncertainty_type": "not-reported",
           "uncertainty_target": "not-applicable",
           "calibration_evidence": "not-assessed"
+        },
+        "component_membership_assessment": {
+          "foundation-pretraining": {
+            "status": "yes",
+            "rationale": "Its own slide-level visual and vision-language pretraining uses a broad pathology collection spanning neoplastic, infectious and inflammatory cases. Common slide embeddings and text encoders support classification, rare-cancer retrieval, cross-modal retrieval and report-generation evaluation, with separate downstream adaptations.",
+            "limitations": "The public release omits the caption decoder. External patch encoders are used, but the method adds its own reusable slide-model pretraining, which is the qualifying contribution.",
+            "sources": [
+              {
+                "url": "https://github.com/mahmoodlab/TITAN/blob/main/README.md",
+                "locator": "Overview; What is TITAN?; loading pretrained model; demo notebooks",
+                "evidence": "The authors document 335,645-slide pretraining, reuse in distinct clinical analyses and general-purpose slide/text encoder release.",
+                "github_blob_sha": "1040585c1850161d74ed34ab445648eb9a626938"
+              }
+            ],
+            "checked_on": "2026-11-21"
+          }
         }
       },
       "axis_values": {

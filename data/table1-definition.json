@@ -31,7 +31,7 @@
       "id": "foundation-pretraining",
       "label": "Foundation models",
       "short": "Foundation",
-      "definition": "The method itself includes large-scale pretraining intended to yield reusable representations or adaptation across tasks or datasets. Merely using an externally pretrained backbone does not qualify."
+      "definition": "The method develops a pretrained representation on a broad, diverse corpus for reuse or adaptation in distinct downstream analyses. Pretraining may initialize from existing encoders. Using an external pretrained backbone, task-specific contrastive pretraining, or evaluation of the same prediction task on another cohort alone does not qualify. The evidence must describe the pretraining corpus and intended representation reuse. Corpus breadth is assessed in its biological domain, without a universal sample-count cutoff."
     },
     {
       "id": "mil",

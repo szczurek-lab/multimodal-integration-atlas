@@ -694,7 +694,7 @@
     "Published article dates use online dates where available; year-only dates remain year-only."
   ],
   "operational_update": {
-    "checked_on": "2026-11-18",
+    "checked_on": "2026-11-21",
     "evidence_record": "data/operational-evidence.json",
     "assessed_methods": 92,
     "fields": [
@@ -703,14 +703,48 @@
       "compute_demand",
       "validation_evidence"
     ],
-    "maturity_graded": 84,
-    "dataset_size_established": 39,
-    "compute_established": 27,
-    "independent_evaluations_verified": 13,
+    "maturity_graded": 85,
+    "dataset_size_established": 56,
+    "compute_established": 39,
+    "independent_evaluations_verified": 15,
     "prospective_evaluations_verified": 0,
     "availability_corrections": {
       "medhive": "Placeholder repository; no implementation present.",
       "convirt": "Evaluation data and documentation only; no model implementation in linked repository."
     }
+  },
+  "previous_operational_updates": [
+    {
+      "checked_on": "2026-11-18",
+      "evidence_record": "data/operational-evidence.json",
+      "assessed_methods": 92,
+      "fields": [
+        "dataset_size",
+        "software_maturity",
+        "compute_demand",
+        "validation_evidence"
+      ],
+      "maturity_graded": 84,
+      "dataset_size_established": 39,
+      "compute_established": 27,
+      "independent_evaluations_verified": 13,
+      "prospective_evaluations_verified": 0,
+      "availability_corrections": {
+        "medhive": "Placeholder repository; no implementation present.",
+        "convirt": "Evaluation data and documentation only; no model implementation in linked repository."
+      }
+    }
+  ],
+  "foundation_membership_update": {
+    "checked_on": "2026-11-21",
+    "resolved_negative": [
+      "multi-embed",
+      "pathomclip"
+    ],
+    "remaining_unknown": [
+      "carhe"
+    ],
+    "evidence_record": "data/table1-evidence.json",
+    "criterion_record": "data/table1-definition.json"
   }
 }

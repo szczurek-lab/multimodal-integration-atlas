@@ -529,7 +529,7 @@
       "id": "methodological_components",
       "label": "Methodological building blocks",
       "group": "Methodological building blocks",
-      "help": "The six building blocks describe model construction and combine within a method. Foundation models contribute pretrained representations. Set representation includes aggregation and multiple instance learning. Selecting several blocks requires all of them.",
+      "help": "The six building blocks describe model construction and combine within a method. Foundation membership records the method’s own broad reusable pretraining, not external-backbone use alone. Set representation includes aggregation and multiple instance learning. Selecting several blocks requires all of them.",
       "multiple": true,
       "options": [
         {
